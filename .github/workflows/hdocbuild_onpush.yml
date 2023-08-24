@@ -1,0 +1,50 @@
+name: HDocBuildPush
+on:
+  # Triggers the workflow on push requests
+  push:
+    paths-ignore:
+      - '.github/**'
+  
+  # Allows us to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+jobs:
+  validate_push:
+    runs-on: ubuntu-latest
+    steps:
+    
+      # Checkout the relevant content for push or workflow_dispatch
+      - name: Checkout For Push or Workflow Dispatch
+        uses: actions/checkout@v2
+        with:
+           ref: ${{ github.event.inputs.branch }}
+           fetch-depth: 0    
+      
+      # Setup NodeJS LTS (18 currently)
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # Install hdoc-tools globally
+      - name: Install hdoc-tools
+        run: npm install hdoc-tools -g
+     
+     # Run hdoc validate against checked-out content
+      - name: Perform Validation
+        id: hdocbuild
+        run: |
+          if result=`hdoc validate 2>&1`; then
+              printf "Build Success!\n\n"
+              printf "$result"
+              exit 0
+          else
+            valout=$(echo "$result" | awk '/Validation Output/,0')
+            printf "Build Failed!\n\n-----------------------\n"
+            printf "$valout"
+            exit 1
+          fi
+  
+      # If build validation is successful, echo message
+      - name: Build Success
+        if: success()
+        run: echo "::notice::Build validation passed successfully."

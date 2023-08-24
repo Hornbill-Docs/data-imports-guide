@@ -1,0 +1,64 @@
+{
+  "docId": "data-imports-guide",
+  "title": "Data Imports Guide",
+  "description": "Guides to help you import your data into the Hornbill platform and applications",
+  "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
+  "productFamily": "hdocs",
+  "version": "0.0.1",
+  "audience": [
+    "public"
+  ],
+  "languages": [
+    "en"
+  ],
+  "navigation": {
+    "items": [
+      {
+        "text": "Introduction",
+        "expand": true,
+        "items": [
+          {
+            "text": "Welcome",
+            "link": "data-imports-guide/index"
+          }
+        ]
+      },
+      {
+        "text": "Importing Users",
+        "expand": false,
+        "items": [
+          {
+            "text": "From Entra ID (formerly Azure AD)",
+            "items": [
+              {
+                "text": "Introduction",
+                "link": "data-imports-guide/users/azure/overview"
+              },
+              {
+                "text": "Authentication, Rights & Roles",
+                "link": "data-imports-guide/users/azure/authentication"
+              },
+              {
+                "text": "Configuration",
+                "link": "data-imports-guide/users/azure/configuration"
+              },
+              {
+                "text": "Scheduling",
+                "link": "data-imports-guide/users/azure/scheduling"
+              },
+              {
+                "text": "Troubleshooting",
+                "link": "data-imports-guide/users/azure/debugging"
+              }
+            ]
+          },
+          {
+            "text": "From an LDAP (including Active Directory)",
+            "items": []
+          }
+        ]
+      }
+    ]
+  },
+  "tags": []
+}

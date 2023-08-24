@@ -1,0 +1,54 @@
+name: HDocBuildPull
+on:
+  # Triggers the workflow on pull request opened or reopened events
+  pull_request_target:
+    types: [opened, reopened]
+    paths-ignore:
+      - '.github/**'
+
+  
+jobs:
+  validate_pull_request:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the relevant content for pull_request_target
+      - name: Checkout For Pull Request Target
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      
+      # Setup NodeJS LTS (18 currently)
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # Install hdoc-tools globally
+      - name: Install hdoc-tools
+        run: npm install hdoc-tools -g
+     
+     # Run hdoc validate against checked-out content
+      - name: Perform Validation
+        id: hdocbuild
+        run: |
+          if result=`hdoc validate 2>&1`; then
+              printf "Build Success!\n\n"
+              printf "$result"
+              exit 0
+          else
+            valout=$(echo "$result" | awk '/Validation Output/,0')
+            printf "Build Failed!\n\n-----------------------\n"
+            printf "$valout"
+            exit 1
+          fi
+          
+      # If build validation fails, and event trigger was a pull request  then close the pull request
+      - name: Reject Pull Request
+        if: failure()
+        uses: superbrothers/close-pull-request@v3
+        with:
+          comment: "Your pull request has been rejected as build validation has failed. See the Perform Validation step of the build job for more information: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      
+      # If build validation is successful, echo message
+      - name: Build Success
+        if: success()
+        run: echo "::notice::Build validation passed successfully."

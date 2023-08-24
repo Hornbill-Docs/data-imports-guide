@@ -1,0 +1,10 @@
+{
+  "docId": "data-imports-guide",
+  "pdfGeneration": {
+    "enable": true,
+    "exclude_paths": []
+  },
+  "validation": {
+    "exclude_links": []
+  }
+}
