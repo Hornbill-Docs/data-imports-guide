@@ -15,13 +15,7 @@
     "items": [
       {
         "text": "Introduction",
-        "expand": true,
-        "items": [
-          {
-            "text": "Welcome",
-            "link": "data-imports-guide/index"
-          }
-        ]
+        "link": "data-imports-guide/index"
       },
       {
         "text": "Importing Users",
@@ -43,6 +37,10 @@
                 "link": "data-imports-guide/users/azure/configuration"
               },
               {
+                "text": "Command Line",
+                "link": "data-imports-guide/users/azure/command"
+              },
+              {
                 "text": "Scheduling",
                 "link": "data-imports-guide/users/azure/scheduling"
               },
@@ -54,9 +52,75 @@
           },
           {
             "text": "From an LDAP (including Active Directory)",
+            "draft": true,
+            "items": []
+          },
+          {
+            "text": "From a Database",
+            "draft": true,
+            "items": []
+          },
+          {
+            "text": "From Google Workspace",
+            "draft": true,
             "items": []
           }
         ]
+      },
+      {
+        "text": "Importing Service Manager Assets",
+        "draft": true,
+        "expand": false,
+        "items": [
+          {
+            "text": "Asset Records",
+            "items": []
+          },
+          {
+            "text": "Asset Relationships",
+            "items": []
+          }
+        ]
+      },
+      {
+        "text": "Importing Service Manager Requests",
+        "draft": true,
+        "expand": false,
+        "items": [
+          {
+            "text": "From Supportworks",
+            "items": []
+          },
+          {
+            "text": "From ServiceNow",
+            "items": []
+          },
+          {
+            "text": "From Databases",
+            "items": []
+          }
+        ]
+      },
+      {
+        "text": "Importing Customer Manager Records",
+        "draft": true,
+        "expand": false,
+        "items": [
+          {
+            "text": "Organizations",
+            "items": []
+          },
+          {
+            "text": "Contacts",
+            "items": []
+          }
+        ]
+      },
+      {
+        "text": "Importing Documents",
+        "draft": true,
+        "expand": false,
+        "items": []
       }
     ]
   },
