@@ -14,10 +14,6 @@
   "navigation": {
     "items": [
       {
-        "text": "Introduction",
-        "link": "data-imports-guide/index"
-      },
-      {
         "text": "Importing Users",
         "expand": false,
         "items": [
@@ -29,7 +25,7 @@
                 "link": "data-imports-guide/users/azure/overview"
               },
               {
-                "text": "Authentication, Rights & Roles",
+                "text": "Authentication",
                 "link": "data-imports-guide/users/azure/authentication"
               },
               {
@@ -37,11 +33,11 @@
                 "link": "data-imports-guide/users/azure/configuration"
               },
               {
-                "text": "Command Line",
+                "text": "Running an Import",
                 "link": "data-imports-guide/users/azure/command"
               },
               {
-                "text": "Scheduling",
+                "text": "Scheduling the Import",
                 "link": "data-imports-guide/users/azure/scheduling"
               },
               {
