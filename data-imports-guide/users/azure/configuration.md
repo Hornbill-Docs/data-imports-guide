@@ -148,6 +148,30 @@ The utility will default to `conf.json` if a configuration file is not specified
                     "SetAsHomeOrganisation": false
                 }
             }
+        ],
+        "Actions": [
+            {
+                "Action": "Trim",
+                "Value": "{{.department}}",
+                "Output": "department"
+            },
+            {
+                "Action": "Replace",
+                "Value": "{{.mobile}}",
+                "Options": {
+                    "replaceFrom": "0",
+                    "replaceWith": "+44"
+                },
+                "Output": "phone"
+            },
+            {
+                "Action": "Regex",
+                "Value": "{{.telephoneNumber}}",
+                "Options": {
+                    "regexValue": "([0-9])\\w+/g"
+                },
+                "Output": "areaCode"
+            }
         ]
     }
 }
@@ -209,3 +233,12 @@ The utility will default to `conf.json` if a configuration file is not specified
 	  - `TasksAction` - Type: `boolean` -  If set to `true`, then the user can action tasks assigned to this group.
 	  - `OnlyOneGroupAssignment` - Type: `boolean` - When set to `true`, a user can only be associated with a single group of the specified type at any one time. So for example, if in the latest import the configuration was set to associate users to the Accounting department, the users would be associated with this new department and removed from any other department group that they were already associated with.
 	  - `SetAsHomeOrganisation` - Type: `boolean` - Only used when the group type is Company (5). When set to `true`, the Company will be set as the users Home Organization.
+  - `Actions` - Type: `array` - A list of transform actions that can be performed on mapped field values:
+    - `Action` - Type: `string` - One of `Trim`, `Replace` or `Regex`.
+      - `Trim` - Trims whitespace characters from the beginning and end of the value.
+      - `Replace` - Replaces part of a value string with another string.
+      - `Regex` - Searches the value for content using a provided regular expression, and returns that value.
+    - `Options` - Type: `object` - A collection of properties to control either the `Replace` or `Regex` actions:
+      - `replaceFrom` - Type: `string` - Used in the `Replace` action. The old string that should be replaced.
+      - `replaceWith` - Type: `string` - Used in the `Replace` action. The new string to replace the old string with.
+      - `regexValue` - Type: `string` - Used in the `Regex` action. The regular expression to use to search the value.
