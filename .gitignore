@@ -5,3 +5,4 @@ package-lock.json
 VSWorkspaceState.json
 slnx.state
 slnx.sqlite
+.DS_Store

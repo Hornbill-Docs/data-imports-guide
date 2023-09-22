@@ -48,8 +48,32 @@
           },
           {
             "text": "From an LDAP (including Active Directory)",
-            "draft": true,
-            "items": []
+            "items": [
+              {
+                "text": "Introduction",
+                "link": "data-imports-guide/users/ldap/overview"
+              },
+              {
+                "text": "Authentication",
+                "link": "data-imports-guide/users/ldap/authentication"
+              },
+              {
+                "text": "Configuration",
+                "link": "data-imports-guide/users/ldap/configuration"
+              },
+              {
+                "text": "Running an Import",
+                "link": "data-imports-guide/users/ldap/command"
+              },
+              {
+                "text": "Scheduling the Import",
+                "link": "data-imports-guide/users/ldap/scheduling"
+              },
+              {
+                "text": "Troubleshooting",
+                "link": "data-imports-guide/users/ldap/debugging"
+              }
+            ]
           },
           {
             "text": "From a Database",
