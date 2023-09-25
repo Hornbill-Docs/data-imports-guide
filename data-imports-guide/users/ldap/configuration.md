@@ -87,7 +87,7 @@ This section contains the mapping between the Hornbill user record fields and th
 
 <img src="/_books/data-imports-guide/users/ldap/images/ldap_user_import_account.png" width="650px" alt="User Account Mapping Example"/>
 
-The directory attributes provided by default should be enough to get you started as they are typically where you would find this information referenced in most directory service implementations. However, it is prudent to check that the attribute specified does actually hold the information in your directory as expected. `User ID` and `User Type` are required, and mandatory.
+The directory attributes provided by default should be enough to get you started as they are typically where you would find this information referenced in most directory service implementations. However, it is prudent to check that the attribute specified does actually hold the information in your directory as expected. `User ID` and `User Type` are mandatory fields.
 
 Directory attributes can be quickly mapped using the attribute picker located to the right of each field. The contents of the attribute picker are derived from the list of attributes you defined in the previous `LDAP Server` tab.
 
@@ -108,11 +108,18 @@ There are a number of field-specific attribute mapping rules too:
 
 ### User Profile
 
-In addition to the fundamental User Account Properties, Hornbill can store much more information about a user.
+Mappings to the extended Hornbill user profile properties works in exactly the same way as the User account mapping above.
+
+<img src="/_books/data-imports-guide/users/ldap/images/ldap_user_import_profile.png" width="650px" alt="User Profile Mapping Example"/>
 
 ### User Options
 
 This section is where the ancillary associations are managed e.g Manager, Site, Role, and Group associations.
+
+#### Type
+
+This section of the import configuration allows you to define the type of the user accounts that are created in Hornbill. The best-practice approach when starting out with the Hornbill LDAP import is to set this value to `Only Create`, as this ensures the User Type is set appropriately when new accounts are created but allows you control over when an account should be promoted from Basic to Full, or demoted from Full to Basic. Setting this to `No Action` disables this section.
+
 
 ### Pre Import Actions
 

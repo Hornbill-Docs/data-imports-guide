@@ -28,8 +28,6 @@ The authentication information can only be decrypted on the computer (physical o
 
 The following is an example of how the tool will prompt you for your Instance ID and API Key on the first run of the utility:
 
-<img src="/_books/data-imports-guide/users/ldap/images/az_user_import.png" width="800px" alt="First Run Example"/>
-
 ## Testing Overview
 
 There is no substitute for hands-on experience when becoming familiar with the Hornbill import utilities. The User Import - LDAP utility accepts and understands a number of [command line arguments](/data-imports-guide/users/azure/command#command-line-arguments) that can be used when running the utility from the Windows command line or PowerShell. 
