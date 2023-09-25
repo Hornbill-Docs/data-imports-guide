@@ -190,7 +190,7 @@ The User Import - LDAP utility has the ability to associate one or more Hornbill
 * The utility reads the attribute that is specified in the orgLookup section. In the example shown, the [department] directory attribute is used.
 * It takes the content and tries to identify if there is a Hornbill Group that exists with a name that matches the value of the LDAP attribute. For example, if the `[department]` directory attribute contained `Accounting`, the utility would look for a Hornbill Group called `Accounting`.
 * If a match is found, the import will associate the user to the group.
-* If no Hornbill organisation is found, the import will move onto the next user.
+* If no Hornbill organization is found, the import will move onto the next user.
 
 :::important
 The name of the Organization (group) in Hornbill must match the value of the attribute in LDAP.
@@ -208,7 +208,7 @@ The name of the Organization (group) in Hornbill must match the value of the att
 * `Can View Tasks` - If set to `ON`, then the user can view tasks assigned to this group (only used for Groups of type `Team`).
 * `Can Action Tasks` - If set to `ON`, then the user can action tasks assigned to this group (only used for Groups of type `Team`).
 * `Only One Group Assignment` - When set to `ON`, a user can only be associated to a single group at any one time. i.e. if in the latest import the configuration was set to associate users to the Accounting department, the users would be associated to this new department and removed from any other department-type group that they were already associated with.
-* `Set As Home Organisation` - Only visible when the Type is Company. When set to `ON`, the Company will be set as the users Home Organisation.
+* `Set As Home Organization` - Only visible when the Type is Company. When set to `ON`, the Company will be set as the users Home Organization.
 
 :::note
 A successful association of a user to a Group is dependant upon the import finding a Hornbill Group with a name that matches the contents of the specified user attribute in your directory.
