@@ -5,6 +5,7 @@
   "main": "hdocbook.js",
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "hdoc-tools": "^0.11.1"
+  }
 }
