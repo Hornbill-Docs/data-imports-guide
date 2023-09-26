@@ -14,7 +14,7 @@ Ultimately, the executable will be scheduled in the Windows task scheduler (see 
 
 When you first run the utility it will prompt you for two vital pieces of information:
 
-- The Instance ID (also referred to as the instance name) can be found in the URL used by your organization to access your Hornbill instance:
+- The Instance ID (also referred to as the instance name) can be found in the URL used by your organization to access the Hornbill service:
   - ht<span>tps://live.hornbill.com/</span>`instanceid` (case sensitive).
 - A valid API key. This needs to be created against a Hornbill user account with enough rights to create and update user accounts. Details on how to create an API key can be found in the [Hornbill Platform Fundamentals](/esp-fundamentals/security/api-keys) book.
 
@@ -40,8 +40,8 @@ The most important argument when testing is `-dryrun=true`. When this is provide
 
 Below are some high level steps to help you build confidence in your configuration:
 
-1. In the configuration, specify an "UserFilter" to target a single user object. (Its good practice to initially test against a single, or small set of, user objects, as this allows the dryrun to complete quicker and there is less log content to review).
-1. Perform a dryrun (by executing the utility along with the `-dryrun=true`` command line parameter) - this allows you to confirm that the configuration is correct and that a connection to Azure can be established, without importing any user data into your Hornbill instance. 
+1. In the configuration, specify a `UserFilter` to target a single user object. It's good practice to initially test against a single, or small set of, user objects, as this allows the dryrun to complete quicker and there is less log content to review.
+1. Perform a dryrun (by executing the utility along with the `-dryrun=true` command line parameter) - this allows you to confirm that the configuration is correct and that a connection to Azure can be established, without importing any user data into your Hornbill instance. 
 1. Review the commind line output and log file for any errors or warnings, and where necessary check and rectify any errors against the Common Error Messages listed in the [Troubleshooting Azure User Imports](/data-imports-guide/users/azure/debugging) section of this book.
 1. Continue with dryrun tests until you are happy that all the errors are accounted for.
 1. Perform a live import against a single user object (set `-dryrun=false`).

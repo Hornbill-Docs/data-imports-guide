@@ -14,6 +14,10 @@
   "navigation": {
     "items": [
       {
+        "text": "Welcome",
+        "link": "data-imports-guide/index"
+      },
+      {
         "text": "Importing Users",
         "expand": false,
         "items": [
@@ -77,8 +81,32 @@
           },
           {
             "text": "From a Database",
-            "draft": true,
-            "items": []
+            "items": [
+              {
+                "text": "Introduction",
+                "link": "data-imports-guide/users/database/overview"
+              },
+              {
+                "text": "Authentication",
+                "link": "data-imports-guide/users/database/authentication"
+              },
+              {
+                "text": "Configuration",
+                "link": "data-imports-guide/users/database/configuration"
+              },
+              {
+                "text": "Running an Import",
+                "link": "data-imports-guide/users/database/command"
+              },
+              {
+                "text": "Scheduling the Import",
+                "link": "data-imports-guide/users/database/scheduling"
+              },
+              {
+                "text": "Troubleshooting",
+                "link": "data-imports-guide/users/database/debugging"
+              }
+            ]
           },
           {
             "text": "From Google Workspace",
