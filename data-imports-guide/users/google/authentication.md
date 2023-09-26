@@ -41,7 +41,7 @@ We recommend that you read the [KeySafe documentation](/esp-fundamentals/securit
 * Optionally add a Description.
 * Select Create Key to save.
 * Once the Key is created, you will need to connect to Google Workspace and your account, in order to authorize the Hornbill App to perform the listed Google Workspace options. Click `Connect` and you will be redirected to Google Workspace in a popup window.
-* Log in to your Google Workspace account, and then you will be prompted to review the operations you are authorising the Hornbill App to be allowed to perform with the chosen Google Workspace account.
+* Log in to your Google Workspace account, and then you will be prompted to review the operations you are authorizing the Hornbill App to be allowed to perform with the chosen Google Workspace account.
 * Select the scopes/permissions relevant to the import, and click `Continue`. You will then be returned to your KeySafe key.
 
 Once the key has been created, you can then lock access to it down to the API Key created against your service account. See the [KeySafe documentation](/esp-fundamentals/security/keysafe#access-control-and-usability) for more information regarding this.

@@ -177,9 +177,9 @@ The utility will default to `conf.json` if a configuration file is not specified
   * `Site`
     * `Action` - Type: `string` - Can be `both`, `create` or `update` - import actions to perform account profile site updates on the discovered user records
     * `Value` - Type: `string` - Mappable name of the site to apply to the discovered users records 
-  * `Org` - Type: `array` - Organisational units to associate the imported users with:
-    * `Action` - Type: `string` - Can be `both`, `create` or `update` - import actions to perform account organisational unit updates on the discovered user records
-    * `Value` - Type: `string` - Mappable name of the organisational unit to apply to the discovered users records
+  * `Org` - Type: `array` - Organizational units to associate the imported users with:
+    * `Action` - Type: `string` - Can be `both`, `create` or `update` - import actions to perform account organizational unit updates on the discovered user records
+    * `Value` - Type: `string` - Mappable name of the organizational unit to apply to the discovered users records
     * `Options` - Type: `object` - A collection of properties to define membership settings of organizational group:
       * `Type` - Type: `integer` - The numeric value for the group type (team = 1, company = 5, etc). See the [group type datatype documentation](/esp-api/types/simple/groupType) for supported values.
       * `Membership` - Type: `string` - The group membership role, can be one of `member`, `teamLeader` or `manager`.
