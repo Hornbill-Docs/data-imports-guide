@@ -3,7 +3,7 @@
   "title": "Data Imports Guide",
   "description": "Guides to help you import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
-  "productFamily": "hdocs",
+  "productFamily": "esp",
   "version": "0.0.1",
   "audience": [
     "public"
