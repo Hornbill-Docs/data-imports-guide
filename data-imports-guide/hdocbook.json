@@ -4,7 +4,7 @@
   "description": "Guides to help you import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "audience": [
     "public"
   ],
@@ -110,8 +110,32 @@
           },
           {
             "text": "From Google Workspace",
-            "draft": true,
-            "items": []
+            "items": [
+              {
+                "text": "Introduction",
+                "link": "data-imports-guide/users/google/overview"
+              },
+              {
+                "text": "Authentication",
+                "link": "data-imports-guide/users/google/authentication"
+              },
+              {
+                "text": "Configuration",
+                "link": "data-imports-guide/users/google/configuration"
+              },
+              {
+                "text": "Running an Import",
+                "link": "data-imports-guide/users/google/command"
+              },
+              {
+                "text": "Scheduling the Import",
+                "link": "data-imports-guide/users/google/scheduling"
+              },
+              {
+                "text": "Troubleshooting",
+                "link": "data-imports-guide/users/google/debugging"
+              }
+            ]
           }
         ]
       },

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **User Import - Database** utility provides Hornbill customers with a safe and secure way to manage user accounts on the Hornbill platform by synchronizing with accounts held in a database of your chooice.
+The **User Import - Database** utility provides Hornbill customers with a safe and secure way to manage user accounts on the Hornbill platform by synchronizing with accounts held in a database of your choice.
 
 The utility is designed to run behind a corporate firewall, connect to your database to query the required information, before transforming and loading the resulting data into your Hornbill instance as new or updated user records. It supports both the initial bulk import as well as incremental adds and updates. You can schedule the tool to run periodically to perform the import/update tasks as required.
 
