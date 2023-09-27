@@ -4,7 +4,7 @@
   "description": "Guides to help you import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "audience": [
     "public"
   ],
@@ -147,8 +147,8 @@
       },
       {
         "text": "Service Manager",
-        "draft": true,
         "expand": true,
+        "draft": true,
         "items": [
           {
             "text": "Assets",
@@ -156,17 +156,39 @@
             "items": [
               {
                 "text": "Asset Records",
-                "items": []
-              },
-              {
-                "text": "Asset Relationships",
-                "items": []
+                "items": [
+                  {
+                    "text": "Introduction",
+                    "link": "data-imports-guide/assets/overview"
+                  },
+                  {
+                    "text": "Authentication",
+                    "link": "data-imports-guide/assets/authentication"
+                  },
+                  {
+                    "text": "Configuration",
+                    "link": "data-imports-guide/assets/configuration"
+                  },
+                  {
+                    "text": "Running an Import",
+                    "link": "data-imports-guide/assets/command"
+                  },
+                  {
+                    "text": "Scheduling the Import",
+                    "link": "data-imports-guide/assets/scheduling"
+                  },
+                  {
+                    "text": "Troubleshooting",
+                    "link": "data-imports-guide/assets/debugging"
+                  }
+                ]
               }
             ]
           },
           {
             "text": "Requests",
             "expand": true,
+            "draft": true,
             "items": [
               {
                 "text": "From a Database",
