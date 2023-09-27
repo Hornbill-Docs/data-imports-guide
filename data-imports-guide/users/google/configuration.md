@@ -168,10 +168,10 @@ The utility will default to `conf.json` if a configuration file is not specified
     * `Action` - Type: `string` - Can be `both`, `create` or `update` - import actions to perform account type updates on the discovered user records
   * `Status`
     * `Action` - Type: `string` - Can be `both`, `create` or `update` - import actions to perform account status updates on the discovered user records
-    * `Value` - Type: `string` - Can be `active`, `suspended` or `archived`
+    * `Value` - Type: `string` - The [user account status](/esp-api/types/simple/accountStatusType). Can be `active`, `suspended`, or `archived`.
   * `Role`
     * `Action` - Type: `string` - Can be `both`, `create` or `update` - import actions to perform account roles on the discovered user records
-    * `Roles` - Type: `array` - A list of names of roles to apply to the discovered users
+    * `Roles` - Type: `array` - A list of [application or system roles](/esp-config/organizational-data/roles) that should be assigned to the users being imported.
   * `Image`
     * `Action` - Type: `string` - Can be `both`, `create` or `update` - import actions to perform account profile image updates on the discovered user records
   * `Site`
@@ -197,22 +197,22 @@ The utility will default to `conf.json` if a configuration file is not specified
   * `LogLevel` - The log level to apply to the output
   * `LogRetention` - The number of days to keep logs for
 
-#### Associating a Site to Hornbill User Accounts
+#### Associating a Location/Site to Hornbill User Accounts
 
-This utility has the ability to associate a Hornbill Site record to a user account based on the contents of a field. This is achieved through a look-up, the mechanism of which is quite simple and works in the following manner: 
+This utility has the ability to associate a Hornbill [Location](/esp-config/organizational-data/locations) record to a user account based on the contents of a field. This is achieved through a look-up, the mechanism of which is quite simple and works in the following manner: 
 
 * The import reads the fields (template rules work) that is specified in the `Value` field. In the example shown, the `site` field is used.
-* It takes the content and tries to identify if there is an existing site record in Hornbill with a name that matches the value of the site. e.g. if the site field contained **Brussels**, the import would look for a Hornbill Site record with the name **Brussels**.
-* If a match is found, the import will associate the user to the site.
-* If no site record is found, the import will move onto the next user.
+* It takes the content and tries to identify if there is an existing location record in Hornbill with a name that matches the value of the site. e.g. if the site field contained **Brussels**, the import would look for a Hornbill Site record with the name **Brussels**.
+* If a match is found, the import will associate the user to the location.
+* If no location record is found, the import will move onto the next user.
 
 :::note
-The name of the Site record in Hornbill must match the value of the directory attribute specified.
+The name of the [Location](/esp-config/organizational-data/locations) record in Hornbill must match the value of the directory attribute specified.
 :::
 
-#### Associating a Group to Hornbill User Accounts
+#### Associating Organizational Groups to Hornbill User Accounts
 
-This utility has the ability to associate a Hornbill Organizational Group to a user account based on the contents of a fieldname. This is achieved through a look-up, the mechanism of which is quite simple and works in the following manner:
+This utility has the ability to associate a Hornbill [Organizational Unit/Group](/esp-config/organizational-data/organization) to a user account based on the contents of a fieldname. This is achieved through a look-up, the mechanism of which is quite simple and works in the following manner:
 
 * The utility reads the attribute that is specified in the `Value` section. In the example shown, the department field is used.
 * It takes the content and tries to identify if there is a Hornbill Group that exists with a name that matches the value of the field name. e.g. if the department field contained **Accounting**, the utility would look for a Hornbill Organizational Group called **Accounting**.

@@ -102,7 +102,7 @@ General rules for the attribute mapping:
 There are a number of field-specific attribute mapping rules too:
 
 * `Password` - The password field can. and should, be left empty as the utility generates a secure password that adheres to the User Password Policy as specified on your Hornbill instance. This password will only be temporary as the user should use the "Forgot Password" link available on the Hornbill Login Screen to reset their password the first time they navigate to your Hornbill instance. If necessary during testing, this can be populated to apply a specific password to imported accounts.
-* `Site` - This can be populated with the unique key (integer) of a Hornbill Site. Note - if you plan on using the `Site Lookup` mechanism described later in this article, then this can be left blank, as this can make a site association based on the contents of a directory attribute.
+* `Site` - This can be populated with the unique key (integer) of a Hornbill [Location](/esp-config/organizational-data/locations). Note - if you plan on using the `Site Lookup` mechanism described later in this article, then this can be left blank, as this can make a location association based on the contents of a directory attribute.
 * `User Type` - This defines if a user is Co-Worker or Basic user and should ONLY have the value "user" or "basic".
 * `Country Code` - Expects ISO 3166 Alpha 2 two Character Country Code. (Active Directory references can be found in the [Microsoft documentation](https://learn.microsoft.com/en-gb/windows/win32/ad/values-for-the-countrycode-and-c-properties)
 
@@ -114,7 +114,7 @@ Mappings to the extended Hornbill user profile properties works in exactly the s
 
 ### User Options
 
-This section is where the ancillary associations are managed e.g Manager, Site, Role, and Group associations.
+This section is where the ancillary associations are managed e.g Manager, Location/Site, Role, and Group associations.
 
 <img src="/_books/data-imports-guide/users/ldap/images/ldap_user_import_options.jpg" width="650px" alt="User Options Example"/>
 
@@ -128,7 +128,7 @@ This section of the import configuration allows you to define whether the user s
 
 #### Status
 
-This section of the import configuration allows you to define whether the user status should be set on account creation, account updates, or both. Is also allows for the status value to be set to one of the following values:
+This section of the import configuration allows you to define the [user account status](/esp-api/types/simple/accountStatusType). Can be `active`, `suspended`, or `archived`. should be set on account creation, account updates, or both. Is also allows for the status value to be set to one of the following values:
 
 * `Active`
 * `Suspended`
@@ -146,7 +146,7 @@ This section of the import configuration allows you to define whether the user l
 
 #### Roles
 
-This section of the import configuration allows you to define which roles should be applied to the imported user records, on account creation, account updates, or both.
+This section of the import configuration allows you to define which [application or system roles](/esp-config/organizational-data/roles) should be applied to the imported user records, on account creation, account updates, or both.
 
 #### Manager
 
@@ -183,7 +183,7 @@ This section of the configuration affords the ability to upload images to User p
 
 #### Organizations
 
-This section of the configuration enables the association of your imported users to organizational groups in Hornbill.
+This section of the configuration enables the association of your imported users to [Organizational Unit/Group](/esp-config/organizational-data/organization) in Hornbill.
 
 The User Import - LDAP utility has the ability to associate one or more Hornbill Groups to imported user accounts based on the contents of a directory attribute. This is achieved through a **look-up**. The look-up mechanism is quite simple and works in the following manner:
 

@@ -204,10 +204,10 @@ The utility will default to `conf.json` if a configuration file is not specified
   - `Security` - Type: `object` - Contains a single property `Action`, which can be `Create`, `Update`, or `Both`. Import actions to perform on the Security fields of the discovered user records.
   - `Status` - Type: `object` - Contains two properties, Import actions to perform on the Status of the discovered user records:
     - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
-    - `Value` - Type: `string` - Can be `active`, `suspended`, or `archived`. 
+    - `Value` - Type: `string` - The [user account status](/esp-api/types/simple/accountStatusType). Can be `active`, `suspended`, or `archived`.
   - `Role` - Type: `object` - Contains two properties, Import actions to perform on the Roles of the discovered user records:
     - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
-    - `Roles` - Type: `array` - A list of roles that should be assigned to the users being imported.
+    - `Roles` - Type: `array` - A list of [application or system roles](/esp-config/organizational-data/roles) that should be assigned to the users being imported.
   - `Manager` - Type: `object` - Contains three properties, Import actions to perform on the Manager field of the discovered user records:
     - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
     - `AzField` - Type: `string` - The Entra ID field to identify the manager ID against.
@@ -219,10 +219,10 @@ The utility will default to `conf.json` if a configuration file is not specified
     - `ImageType` - Type: `string` - Image type, can be `png` or `jpg`
     - `ImageSize` - Type: `integer` - The image size to return from Entra ID, one of 48/64/96/120/240/360/432/504/648. See the [Microsoft documentation](https://learn.microsoft.com/en-us/graph/api/profilephoto-get?view=graph-rest-1.0&tabs=http) for more information and options.
     -`URI` - Type: `string` - The source mapping for the image
-  - `Site` - Type: `object` - Contains two properties, Import actions to perform on the Site of the discovered user records:
+  - `Site` - Type: `object` - Contains two properties, Import actions to perform on the [Location](/esp-config/organizational-data/locations) of the discovered user records:
     - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
-    - `Value` - Type: `string` - The source mapping of the Site.
-  - `Org` - Type: `array` - An array of objects containing several properties of Organizational Unit information to associate the imported user with:
+    - `Value` - Type: `string` - The source mapping of the Location.
+  - `Org` - Type: `array` - An array of objects containing several properties of [Organizational Unit/Group](/esp-config/organizational-data/organization) information to associate the imported user with:
     - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
     - `Value` - Type: `string` - The mapped name of the Organizational Unit.
     - `MemberOf` - Type: `string` - This field references the "memberOf" attribute of the user object in your Entra ID directory. When the distinction of a group is specified in this field, the utility will only allow the group association in Hornbill if the group DN exists in the `memberOf` attribute of the user object being processed. i.e. only allow the Hornbill group association if the user object is a member of this directory group.
