@@ -204,6 +204,12 @@
                     "link": "data-imports-guide/assets/debugging"
                   }
                 ]
+              },
+              {
+                "text": "Asset Relationships",
+                "expand": false,
+                "draft": true,
+                "link": ""
               }
             ]
           },
