@@ -4,7 +4,7 @@
 
 The options and configuration of imports using this utility are saved in one or more [JSON (JavaScript Object Notation)](https://www.json.org/json-en.html) files in the folder where the utility executable resides.
 
-We have provided a default configuration file in each of the downloadable archives: `conf.json`. This can be used as a template from which to build your import configurations.
+We have provided a selection of default configuration files, one for each of the systems that Hornbill customers most often import asset data from, in each of the downloadable archives. This can be used as a template from which to build your import configurations.
 
 :::tip
 The utility will default to `conf.json` if a configuration file is not specified as a command line argument
@@ -14,242 +14,368 @@ The utility will default to `conf.json` if a configuration file is not specified
 
 ```json
 {
-  "KeysafeKeyID": 0,
-  "Database": {
-    "Source": "mysql",
-    "Encrypt": false,
-    "Query": "SELECT userdb.*, b.fullname AS manager FROM userdb LEFT JOIN userdb b ON b.keysearch = userdb.fk_manager"
+  "KeySafeKeyID": 0,
+  "LogSizeBytes": 1000000,
+  "HornbillUserIDColumn": "h_user_id",
+  "SourceConfig": {
+    "Source": "mssql",
+    "Database": {
+      "Authentication": "SQL",
+      "Encrypt": false,
+      "Query": ""
+    }
   },
-  "Action": "Both",
-  "User": {
-    "UserDN": "{{.keysearch}}",
-    "HornbillUniqueColumn": "h_user_id",
-    "AccountMapping": {
-      "UserID": "{{.keysearch}}",
-      "LoginID": "{{.keysearch}}",
-      "EmployeeID": "{{.keysearch}}",
-      "UserType": "basic",
-      "Name": "{{.firstname}} {{.surname}}",
-      "Password": "",
-      "FirstName": "{{.firstname}}",
-      "LastName": "{{.surname}}",
-      "JobTitle": "",
-      "Site": "{{.site}}",
-      "Phone": "{{.telext}}",
-      "Email": "{{.email}}",
-      "Mobile": "[mobile]",
-      "AbsenceMessage": "",
-      "TimeZone": "",
-      "Language": "",
-      "DateTimeFormat": "",
-      "DateFormat": "",
-      "TimeFormat": "",
-      "CurrencySymbol": "",
-      "CountryCode": "",
-      "Enable2FA": "",
-      "DisableDirectLogin": "",
-      "DisableDirectLoginPasswordReset": "",
-      "DisableDevicePairing": ""
-    },
-    "Type": {
-      "Action": "Both"
-    },
-    "Status": {
-      "Action": "Both",
-      "Value": "active"
-    },
-    "Role": {
-      "Action": "Both",
-      "Roles": [
-        "Basic User Role"
-      ]
-    },
-    "ProfileMapping": {
-      "MiddleName": "",
-      "JobDescription": "",
-      "Manager": "{{.manager}}",
-      "WorkPhone": "",
-      "Qualifications": "",
-      "Interests": "",
-      "Expertise": "",
-      "Gender": "",
-      "Dob": "",
-      "Nationality": "",
-      "Religion": "",
-      "HomeTelephone": "{{.telext}}",
-      "SocialNetworkA": "",
-      "SocialNetworkB": "",
-      "SocialNetworkC": "",
-      "SocialNetworkD": "",
-      "SocialNetworkE": "",
-      "SocialNetworkF": "",
-      "SocialNetworkG": "",
-      "SocialNetworkH": "",
-      "PersonalInterests": "",
-      "homeAddress": "",
-      "PersonalBlog": "",
-      "Attrib1": "1",
-      "Attrib2": "2",
-      "Attrib3": "3",
-      "Attrib4": "4",
-      "Attrib5": "5",
-      "Attrib6": "6",
-      "Attrib7": "7",
-      "Attrib8": "8"
-    },
-    "Manager": {
-      "Action": "Both",
-      "Value": "{{.manager}}",
-      "Options": {
-        "GetStringFromValue": {
-          "Regex": "",
-          "Reverse": false
-        },
-        "MatchAgainstDistinguishedName": false,
-        "Search": {
-          "Enable": true,
-          "SearchField": ""
-        }
+  "AssetTypes": [
+    {
+      "AssetType": "Server",
+      "OperationType": "Both",
+      "Query": "",
+      "PreserveShared": false,
+      "PreserveState": false,
+      "PreserveSubState": false,
+      "PreserveOperationalState": false,
+      "AssetIdentifier": {
+        "SourceColumn": "SystemSerialNumber",
+        "Entity": "AssetsComputer",
+        "EntityColumn": "h_serial_number",
+        "SourceContractColumn": "Contract",
+        "SourceSupplierColumn": "Supplier"
       }
     },
-    "Image": {
-      "Action": "Both",
-      "UploadType": "URL",
-      "InsecureSkipVerify": false,
-      "ImageType": "jpg",
-      "URI": "http://sample.myservicedesk.com/sw/clisupp/documents/userdb/images/{{.keysearch}}.jpg"
-    },
-    "Site": {
-      "Action": "Both",
-      "Value": "{{.site}}"
-    },
-    "Org": [
-      {
-        "Action": "Both",
-        "value": "{{.department}}",
-        "MemberOf": "",
-        "Options": {
-          "Type": 2,
-          "Membership": "member",
-          "TasksView": false,
-          "TasksAction": false,
-          "OnlyOneGroupAssignment": false,
-          "SetAsHomeOrganisation": false
-        }
-      },
-      {
-        "Action": "Both",
-        "value": "{{.companyname}}",
-        "MemberOf": "",
-        "Options": {
-          "Type": 5,
-          "Membership": "member",
-          "TasksView": false,
-          "TasksAction": false,
-          "OnlyOneGroupAssignment": false,
-          "SetAsHomeOrganisation": true
-        }
+    {
+      "AssetType": "Laptop",
+      "OperationType": "Both",
+      "Query": "",
+      "PreserveShared": false,
+      "PreserveState": false,
+      "PreserveSubState": false,
+      "PreserveOperationalState": false,
+      "AssetIdentifier": {
+        "SourceColumn": "MachineName",
+        "Entity": "Asset",
+        "EntityColumn": "h_name"
       }
-    ],
-    "Actions": [
-      {
-        "Action": "Trim",
-        "Value": "{{.department}}",
-        "Output": "department"
-      },
-      {
-        "Action": "Replace",
-        "Value": "{{.mobile}}",
-        "Options": {
-          "replaceFrom": "0",
-          "replaceWith": "+44"
-        },
-        "Output": "phone"
-      },
-      {
-        "Action": "Regex",
-        "Value": "{{.telephoneNumber}}",
-        "Options": {
-          "regexValue": "([0-9])\\w+/g"
-        },
-        "Output": "areaCode"
+    },
+    {
+      "AssetType": "Desktop",
+      "OperationType": "Both",
+      "Query": "",
+      "PreserveShared": false,
+      "PreserveState": false,
+      "PreserveSubState": false,
+      "PreserveOperationalState": false,
+      "AssetIdentifier": {
+        "SourceColumn": "MachineName",
+        "Entity": "Asset",
+        "EntityColumn": "h_name"
       }
-    ]
+    },
+    {
+      "AssetType": "Virtual Machine",
+      "OperationType": "Both",
+      "Query": "",
+      "PreserveShared": false,
+      "PreserveState": false,
+      "PreserveSubState": false,
+      "PreserveOperationalState": false,
+      "AssetIdentifier": {
+        "SourceColumn": "MachineName",
+        "Entity": "Asset",
+        "EntityColumn": "h_name"
+      }
+    }
+  ],
+  "AssetGenericFieldMapping": {
+    "h_name": "",
+    "h_site": "",
+    "h_asset_tag": "",
+    "h_acq_method": "",
+    "h_actual_retired_date": "",
+    "h_beneficiary": "",
+    "h_building": "",
+    "h_cost": "",
+    "h_cost_center": "",
+    "h_country": "",
+    "h_created_date": "",
+    "h_deprec_method": "",
+    "h_deprec_start": "",
+    "h_description": "",
+    "h_disposal_price": "",
+    "h_disposal_reason": "",
+    "h_floor": "",
+    "h_geo_location": "",
+    "h_invoice_number": "",
+    "h_location": "",
+    "h_location_type": "",
+    "h_maintenance_cost": "",
+    "h_maintenance_ref": "",
+    "h_notes": "",
+    "h_operational_state": "",
+    "h_order_date": "",
+    "h_order_number": "",
+    "h_owned_by": "",
+    "h_owned_by_name": "",
+    "h_product_id": "",
+    "h_received_date": "",
+    "h_residual_value": "",
+    "h_room": "",
+    "h_scheduled_retire_date": "",
+    "h_supplier_id": "",
+    "h_supported_by": "",
+    "h_used_by": "",
+    "h_used_by_name": "",
+    "h_version": "",
+    "h_warranty_expires": "",
+    "h_warranty_start": ""
+  },
+  "AssetTypeFieldMapping": {
+    "h_name": "",
+    "h_mac_address": "",
+    "h_net_ip_address": "",
+    "h_net_computer_name": "",
+    "h_net_win_domain": "",
+    "h_model": "",
+    "h_manufacturer": "",
+    "h_cpu_info": "",
+    "h_description": "",
+    "h_last_logged_on": "",
+    "h_last_logged_on_user": "",
+    "h_memory_info": "",
+    "h_net_win_dom_role": "",
+    "h_optical_drive": "",
+    "h_os_description": "",
+    "h_os_registered_to": "",
+    "h_os_serial_number": "",
+    "h_os_service_pack": "",
+    "h_os_type": "",
+    "h_os_version": "",
+    "h_physical_disk_size": "",
+    "h_serial_number": "",
+    "h_cpu_clock_speed": "",
+    "h_physical_cpus": "",
+    "h_logical_cpus": "",
+    "h_bios_name": "",
+    "h_bios_manufacturer": "",
+    "h_bios_serial_number": "",
+    "h_bios_release_date": "",
+    "h_bios_version": "",
+    "h_max_memory_capacity": "",
+    "h_number_memory_slots": "",
+    "h_net_name": "",
+    "h_subnet_mask": ""
   }
 }
 ```
 
 ### Configuration Explanation
 
-- `KeysafeKeyID` - Type: `integer` - The ID of the KeySafe Key that contains your database authentication details. See the [KeySafe section of the Authentication article](/data-imports-guide/users/database/authentication#keysafe) for more information.
-- `Database` - Type: `object` - The information that the utility needs to query your source database.
-  - `Source` - Type: `string` - The database technology the utility needs to connect to, one of:
-    - `mssql` - Microsoft SQL Server
-    - `mysql` - MySQL or MariaDB
-    - `csv` - CSV file, via ODBC
-    - `excel` - Excel spreadsheet, via ODBC 
-  - `Encrypt` - Type: `boolean` - Specifies whether the connection between this utility and the source database should be encrypted. There is a bug in SQL Server 2008 and below that causes connection failures if the connection is encrypted. Only set this to true if your SQL Server supports this, or has been patched accordingly.
-  - `Query` - Type: `string` - The SQL query to return your list of users for import. Please note that all field names are specificied as lowercase - this is to ensure smooth operation for field mapping (as they are case-sensitive). Also, by specifying each field in use, one is following SQL best practice as it prevents unnecessary/unused data to be returned, stored and processed (longvarchar and blob fields, for instance, can take up a lot of memory). For CSV please use UPPERCASE for all field names and, also, do NOT use spaces in the headers/fieldnames.
-- `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. Import actions to perform on the discovered user records.
-- `User` - Type: `object` - Contains all source database records to Hornbill mappings, and user configuration.
-  - `UserDN` - Type: `string` - The content from the source database user records that matches the unique reference against your Hornbill user records.
-  - `HornbillUniqueColumn` - Type: `string` - Can be `h_user_id`, `h_employee_id`, `h_login_id` or `h_email`. The column from the Hornbill user records that is used to match the user records against their `UserDN` (above).
-  - `AccountMapping` - Type: `object` - Data mapping, in the format `"fieldInHornbill": "data to insert"`. The data to insert can either be hard-coded strings, mapped from the source data using one or more [Go templates](https://pkg.go.dev/text/template), or a mixture of the two. Some specific examples:
-    - `"UserType": "basic"` - All records will be created as Basic Users in Hornbill. See the [Hornbill user documentation](/esp-fundamentals/security/account-types#user-account-types) for more information.
-    - `"Password": ""` - if the Password data mapping is left empty, then the utility with generate a random password to create new users with. The generated passwords will obey the [password policies](/esp-config/security/password-policies) defined on the target Hornbill instance. 
-    - `"Site": "1"` - If set, see the comments below on SiteLookup
-    - `TimeZone` - See the [list of timezones supported by Hornbill](/data-imports-guide/timezones) for valid values.
-    - `Language` - Language localization tags, ISO 629 in combination with ISO 3166, examples:
-      - `en-GB`
-      - `en-US`
-      - `fr-FR`
-      - etc...
-    - `DateTimeFormat` - See the [list of supported DateTime formats](/data-imports-guide/date-time-formats) for valid values.
-    - `CountryCode` - ISO 3166 Alpha 2 two Character Country Code.
-  - `ProfileMapping` - Type: `object` - Data mapping for user profile fields, in the format `"fieldInHornbill": "data to insert"`. See `AccountMapping` above for details.
-  - `Type` - Type: `object` - Contains a single property `Action`, which can be `Create`, `Update`, or `Both`. Import actions to perform on the Type field of the discovered user records.
-  - `Status` - Type: `object` - Contains two properties, Import actions to perform on the Status of the discovered user records:
-    - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
-    - `Value` - Type: `string` - The [user account status](/esp-api/types/simple/accountStatusType). Can be `active`, `suspended`, or `archived`.
-  - `Role` - Type: `object` - Contains two properties, Import actions to perform on the Roles of the discovered user records:
-    - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
-    - `Roles` - Type: `array` - A list of [application or system roles](/esp-config/organizational-data/roles) that should be assigned to the users being imported.
-  - `Manager` - Type: `object` - Contains three properties, Import actions to perform on the Manager field of the discovered user records:
-    - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
-    - `Value` - Type: `string` - The mapped value of the users manager.
-    - `Options` - Type: `object` - Contains several properties to allow granular searching of the relevant manager records:
-      - `Get String From Value` - Type: `object`
-        - `Regex` - Type: `string` - Optional regular expression to match the name from a DSN String.
-        - `Reverse` Type: `boolean` - Reverse the name string matched from the regular expression, above.
-      - `Match Against DN` Type: `string` - Match the users manager against the Distinguished Name instead of their name.
-      - `Search` - Type: `object`
-        - `Enable` - Type: `boolean`
-        - `SearchField` - Type: `string` - The field to search for manager records against.
-  - `Image` - Type: `object` - Contains several properties, Import actions to perform on profile images of the discovered user records:
-    - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
-    - `UploadType` - Type: `string` - Can be `URI` or `URL` - local (network) drive or HTTP(S) served images
-    - `InsecureSkipVerify` - Type: `boolean` - Skip invalid certificate verification when importing images 
-    - `ImageType` - Type: `string` - Image type, can be `png` or `jpg`
-    - `URI` - Type: `string` - The source mapping for the image
-  - `Site` - Type: `object` - Contains two properties, Import actions to perform on the [Location](/esp-config/organizational-data/locations) of the discovered user records:
-    - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
-    - `Value` - Type: `string` - The source mapping of the Location.
-  - `Org` - Type: `array` - An array of objects containing several properties of [Organizational Unit/Group](/esp-config/organizational-data/organization) information to associate the imported user with:
-    - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
-    - `Value` - Type: `string` - The mapped name of the Organizational Unit.
-	- `Options` - Type: `object` - A collection of properties to define membership settings of organizational group:
-	  - `Type` - Type: `integer` - The numeric value for the group type (team = 1, company = 5, etc). See the [group type datatype documentation](/esp-api/types/simple/groupType) for supported values.
-	  - `Membership` - Type: `string` - The group membership role, can be one of `member`, `teamLeader` or `manager`.
-	  - `TasksView` - Type: `boolean` - If set to `true`, then the imported users can view tasks assigned to this group (Typically only required for Groups of type "Team").(Typically only required for Groups of type "Team").
-	  - `TasksAction` - Type: `boolean` -  If set to `true`, then the user can action tasks assigned to this group.
-	  - `OnlyOneGroupAssignment` - Type: `boolean` - When set to `true`, a user can only be associated with a single group of the specified type at any one time. So for example, if in the latest import the configuration was set to associate users to the Accounting department, the users would be associated with this new department and removed from any other department group that they were already associated with.
-	  - `SetAsHomeOrganisation` - Type: `boolean` - Only used when the group type is Company (5). When set to `true`, the Company will be set as the users Home Organization.
-  - `Actions` - Type: `array` - A list of transform actions that can be performed on mapped field values:
-    - `Action` - Type: `string` - One of `Trim`, `Replace` or `Regex`.
-      - `Trim` - Trims whitespace characters from the beginning and end of the value.
-      - `Replace` - Replaces part of a value string with another string.
-      - `Regex` - Searches the value for content using a provided regular expression, and returns that value.
-    - `Options` - Type: `object` - A collection of properties to control either the `Replace` or `Regex` actions:
-      - `replaceFrom` - Type: `string` - Used in the `Replace` action. The old string that should be replaced.
-      - `replaceWith` - Type: `string` - Used in the `Replace` action. The new string to replace the old string with.
-      - `regexValue` - Type: `string` - Used in the `Regex` action. The regular expression to use to search the value.
+#### Hornbill Instance Specific Configuration Properties
+
+- `KeySafeKeyID` - Type: `integer` - The ID of the KeySafe Key that contains your database authentication details. Set to 0 for importing directly from CSV files. See the [KeySafe section of the Authentication article](/data-imports-guide/assets/authentication#keysafe) for more information on supported key types.
+- `LogSizeBytes` - Type: `integer` - The maximum size that the generated Log Files should be in bytes. Setting this value to 0 will cause the tool to create one log file and not split the results between multiple logs.
+- `HornbillUserIDColumn` - Type: `string` - Used to specify the Hornbill User ID column for matching users against (asset owners, used by etc). Supported values: `h_user_id` (default), `h_employee_id`, `h_email`, `h_name`, `h_attrib1`, `h_attrib8` and `h_login_id`. **Please note:** `last logged on`, `owned by` and `used by` will use the same field - i.e. one can NOT specify which column to match to individually.
+
+#### SourceConfig
+
+- `Source` - Type: `string` - The data source that the tool will connect to. One of:
+  - `mssql` - Microsoft SQL Server (2005 or above) - will use KeySafe key type [Database Authentication](/data-imports-guide/assets/authentication#key-type-database-authentication)
+  - `mysql` - MySQL Server - will use KeySafe key type [Database Authentication](/data-imports-guide/assets/authentication#key-type-database-authentication)
+  - `mysql320` - MySQL Server v3.2.0 to v4.0 - will use KeySafe key type [Database Authentication](/data-imports-guide/assets/authentication#key-type-database-authentication)
+  - `odbc` - ODBC driver - will use KeySafe key type [Database Authentication](/data-imports-guide/assets/authentication#key-type-database-authentication)
+  - `swsql` - Supportworks SQL (Core Services v3.x) - will use KeySafe key type [Database Authentication](/data-imports-guide/assets/authentication#key-type-database-authentication)
+  - `csv` - CSV / Text file(s) - doesn't require KeySafe keys
+  - `nexthink` - Nexthink - will use KeySafe key type [Username + Password](/data-imports-guide/assets/authentication#key-type-username-password)
+  - `ldap` - LDAP / Active Directory - will use KeySafe key type [LDAP Authentication](/data-imports-guide/assets/authentication#key-type-ldap)
+  - `google` - Google Workspace Enterprise Chrome OS - will use KeySafe key type [Google Workspace](/data-imports-guide/assets/authentication#key-type-google-workspace)
+  - `certero` - Certero - will use KeySafe key type [Certero](/data-imports-guide/assets/authentication#key-type-certero)
+  - `workspaceone` - vmware Workspace One UEM - will use KeySafe type [VMWare Workspace One UEM](/data-imports-guide/assets/authentication#key-type-vmware-workspace-one-uem)
+- `CSV` - Type: `object` - Only in use if `Source` is set to `csv`
+    - `CarriageReturnRemoval` - Type: `boolean` - Certain CSV exporting systems will add extra carriage returns as a record delimiter. This is expected not to be common, hence the setting is left out of the configuration files (it is added to conf_computerSyste      * `json only for completeness sake). If not set, then the default value is `false` and no carriages returns will be stripped from the data. If set to `true`, then all carriage returns (possibly even intended ones) will be stripped.
+    - `CommaCharacter` - Type: `string` - The field separator (single) character - if left out, the default character will be a comma.
+    - `FieldsPerRecord` - Type: `integer` - The ability to give the CSV reader a hint about the number of fields in each record. Defaults to `0`, leaving the CSV reader to do the heavy lifting.
+    - `LazyQuotes` - Type: `boolean` - The ability to give the CSV reader a hint that the csv file might be using lazy quotes. Defaults to `false`.
+- `Database` - Type: `object` - Only in use if `Source` is set to `mssql`, `mysql`, `mysql320` or `swsql`
+    - `Authentication` - Type: `string` -  The type of authentication to use to connect to the SQL server. Can be either:
+      - `Windows` - Windows Account authentication, uses the logged-in Windows account to authenticate, and not the authentication details in the KeySafe Key
+      - `SQL` - uses SQL Server authentication, and will use the details in the KeySafe Key defined to connect. The Key Type should be [Database Authentication](/data-imports-guide/assets/authentication#key-type-database-authentication)
+    - `Encrypt` - Type: `boolean` - Used to specify whether the connection between the script and the database should be encrypted. **NOTE** There is a bug in SQL Server 2008 and below that causes the connection to fail if the connection is encrypted. Only set this to `true` if your SQL Server has been patched accordingly.
+    - `Query` - Type: `string` - The basic SQL query to retrieve asset information from the data source. See `AssetTypes` below for further information on filtering.
+- `LDAP` - Type: `object` - Only in use if `Source` is set to `ldap`
+    - `Server` - Type: `object` - LDAP host specific configuration:
+      - `InsecureSkipVerify` - Type: `boolean` - Used in conjunction with SSL or TLS connection types and allows the verification of SSL Certifications to be disabled i.e. `ON` sets the InsecureSkipVerify variable when querying the LDAP to `true`.
+      - `Debug` - Type: `boolean` - Enables LDAP Connection Debugging. This should only ever be enabled to troubleshoot connection issues during the initial setup and testing.
+      - `ConnectionType` - Type: `string` - The type of HTTP connection to use when communicating with the directory Server. Normal HTTP (leave the value blank), `SSL`, and `TLS` are supported.
+    - `Query` - Type: `object` - LDAP query specific configuration:
+      - `Attributes` - Type: `array` - A list of LDAP attributes to return as part of the query
+      - `Scope` - Type: `integer` - Search Scope (ScopeBaseObject = 0, ScopeSingleLevel = 1, ScopeWholeSubtree = 2) Default is 1.
+      - `DerefAliases` - Type: `integer` - Dereference Aliases (NeverDerefAliases = 0, DerefInSearching = 1, DerefFindingBaseObj = 2, DerefAlways = 3), allows you to choose at what stage during the search operation (LDAP Query) aliases are dereferenced. The default value (1) should be suitable for most.
+      - `TypesOnly` - Type: `boolean` - Enabling this setting will cause the query to return attribute types (descriptions) rather than attribute values.
+      - `SizeLimit` - Type: `integer` - Allows you to set a size limit in relation to the result set that can be returned. Setting to '0' disables this setting.
+      - `TimeLimit` - Type: `integer` - Allows you to impose a time limit (seconds) in relation to how long the LDAP query can run before timing out. Setting to '0' disables this setting.
+- `Google` - Type: `object` - Only in use if `Source` is set to `google`
+    - `Customer` - Type: `string` - The Customer ID of the Google Account. Supports my_customer to return devices enrolled to the deafult account that the KeySafe key was created with
+    - `Query` - Type: `string` - Search string as per the [Google API Documentation](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices/list)
+    - `OrgUnitPath` - Type: `string` - The full path of the Google organizational Unit where the devices reside
+- `Certero` - Type: `object` - Only in use if `Source` is set to `certero`
+    - `Expand` - Type: `string` - The Certero oData query which defines the columns and associated entitiy records that can be mapped into Hornbill asset records
+
+#### AssetTypes
+
+An array of objects detailing the asset types to import. 
+
+:::important
+During the import process assets of each type as defined below are retrieved from Hornbill and cached locally in memory to aid in the matching of existing asset records for update. This is to improve the performance of the import process, as well as to significantly reduce load on your Hornbill instance when the imports are running. If you have imported asset records into one particular Hornbill asset type, then re-import the same asset records from the source into a different Hornbill asset type, then you may see duplicate asset records being created. We suggest you run the tool against your configuration in dryrun mode and check that no duplicates would be created, and if they are then you need to update your import configuration accordingly. See AssetType, below, for one such method of avoiding duplicates. 
+:::
+
+* `AssetType` - Type: `string` - the Asset Type Name which needs to match a correct Asset Type Name in your Hornbill Instance, OR if `OperationType` below is set to `Update`, and you wish to update assets of ALL types of a specific class, then you can populate this property with `__all__:computer`, where `computer` is the asset class to update. Valid classes are:
+  * `basic`
+  * `computer`
+  * `computerPeripheral`
+  * `dataProcessingRecord`
+  * `mobileDevice`
+  * `networkDevice`
+  * `printer`
+  * `software`
+  * `system`
+  * `telecoms`
+* `OperationType` - Type: `string` - The type of operation that should be performed on discovered assets - can be `Create`, `Update` or `Both`. Defaults to `Both` if no value is provided
+* `CSVFile` - Type: `string` - The path to the CSV file to use as the data source for this specific asset type. Only required when `SourceConfig > Source` is set to `CSV`
+* `CSVFilters` - Type: `array` - An array of objects, containing zero or more filters that should be applied when working out which rows from the CSV file should be included in the asset type import. Only required when `SourceConfig > Source` is set to `CSV`, and this is non-mandatory. If no filters are provided, then all records will be imported from the CSV into the target asset type.
+  * `Column` - Type: `string` - The column name from the CSV that the filter should apply to
+  * `Operator` - Type: `string` - The operator that should be used when applying the filter. Valid values are:
+    * `EQUALS` - Does the filter Value (below) exactly match the column value
+    * `CONTAINS` - Is the filter Value (below) contained within the column value (wildcard type functionality, `*column_value*`)
+    * `IN` - Does the column value have an exact match in an array of strings supplied in `Value`, below
+  * `Value` - Type: `string` - The value to be applied in the filter
+* `PreserveShared` - Type: `boolean` - If set to `true`, when updating assets that are Shared, then the Used By fields will not be updated. Defaults to `false`
+* `PreserveState` - Type: `boolean` - If set to `true` then the State field will not be updated. Defaults to `false`
+* `PreserveSubState` - Type: `boolean` - If set to `true` then the SubState fields will not be updated. Defaults to `false`
+* `PreserveOperationalState` - Type: `boolean` - If set to `true` then the Operational State field will not be updated. Defaults to `false`
+* `NexthinkPlatform` - Type: `string` - When using Nexthink as a data source, this can be optionally set to one of the following values, depending on which type of asset records you wish to import:
+  * `windows`
+  * `mac_os`
+  * `mobile`
+* `LDAPDSN` - Type: `string` - The Distinguished Name of the LDAP container to execute your query in. Only required when `SourceConfig > Source` is set to `LDAP`
+* `Query` - Type: `string` - Not used for Workspace One or direct CSV file imports. For the other data sources:
+  * Additional SQL clauses to be appended to the Query from SourceConfig > Database > Query, to retrieve assets of that asset type. 
+  * Certero oData filter for returning asset details for that asset type
+  * Nexthink query for returning asset details for that asset type
+  * LDAP query for returning asset details for that asset type
+* `Filter` - Type: `object` - Used exclusively for applying filters to Workspace One queries, all are optional:
+  * `User` - Type: `string` - Username the device enrolled under
+  * `ModelIdentifier` - Type: `string` - Partial search by device model. Search by MD20 would return device with model MD200LL
+  * `DevicePlatformType` - Type: `string` - Device platform type, i.e. Apple, Android, WindowsPC, etc.
+  * `Ownership` - Type: `string` - Device ownership type i.e. Corporate, Employee, Shared
+  * `OrganizationGroupUUID` - Type: `string` - The UUID of the Organization Group that the devices are members of. Defaults to the keysafe key user's OrganizationGroup
+  * `ComplianceStatus` - Type: `string` - The compliance status of the devices i.e. Compliant, NonCompliant etc
+  * `SeenSince` - Type: `string` - Specifies the datetime filter for device search, which retrieves the devices that are seen after this datetime stamp.
+* `AssetIdentifier` - Type: `object` - An object containing details to help in the identification of existing asset records in the Hornbill instance. If value in an imported records DBColumn matches the value in the EntityColumn of an asset in Hornbill (within the defined Entity), then the asset record will be updated rather than a new asset being created:
+  * `SourceColumn`  - Type: `string` - Specifies the unique identifier column from the source data query. This can be either a column name, or a Go Template. **NOTE:** Importing from Certero requires this to be a Go template.
+  * `Entity` - Type: `string` - the Hornbill entity where data is stored, one of:
+      * `Asset`
+      * `AssetsComputer`
+      * `AssetsComputerPeripheral`
+      * `AssetsMobileDevice`
+      * `AssetsNetworkDevice`
+      * `AssetsPrinter`
+      * `AssetsSoftware`
+      * `AssetsTelecoms`
+  * `EntityColumn` - Type: `string` - specifies the unique identifier column from the Hornbill entity specified above. Supported values per `Entity` type:
+    * `Asset`:
+      * `h_pk_asset_id`
+      * `h_asset_tag`
+      * `h_name`
+      * `h_external_id`
+      * `h_tag_id`
+      * `h_tag_mac`  
+    * `AssetsComputer`
+      * `h_bios_serial_number`
+      * `h_mac_address`
+      * `h_net_computer_name`
+      * `h_net_ip_address`
+      * `h_net_name`
+      * `h_net_win_dom_role`
+      * `h_os_serial_number`
+      * `h_serial_number`
+      * `h_private_ip_address`
+      * `h_public_ip_address`
+      * `h_wmac_address`
+    * `AssetsComputerPeripheral`
+      * `h_serial_number`
+    * `AssetsMobileDevice`
+      * `h_data_number`
+      * `h_device_id`
+      * `h_device_name`
+      * `h_imei_number`
+      * `h_imsi_number`
+      * `h_ip_address`
+      * `h_mac_address`
+      * `h_phone_number`
+      * `h_serial_number`
+      * `h_sim_number`
+    * `AssetsNetworkDevice`
+      * `h_mac_address`
+      * `h_net_ip_address`
+      * `h_serial_number`
+    * `AssetsPrinter`
+      * `h_net_ip_address`
+      * `h_net_mac_address`
+      * `h_wmac_address`
+      * `h_serial_number`
+    * `AssetsSoftware`
+      * `h_license_key`
+    * `AssetsTelecoms`
+      * `h_phone_number`
+      * `h_extension`
+      * `h_ip_address`
+      * `h_mac_address`
+      * `h_wmac_address`
+      * `h_serial_number`
+  * `SourceContractColumn` - Type: `string` - Specifies the unique identifier column from the database query - the data in this column of the query result should be the Contract ID within Hornbill (ie `C20200700001` from `/suppliermanager/suppliercontract/view/C20200700001/`; `'C20200700001' AS Contract` hardcoded in the SQL query)
+  * `SourceSupplierColumn` - Type: `string` - Specifies the unique identifier column from the database query - the data in this column of the query result should be the Supplier ID within Hornbill (ie `###` from `suppliermanager/supplier/view/###/`)
+  * `SoftwareInventory` - Type: `object` - Details pertaining to the import of software inventory records for the specified asset type:
+      * `AssetIDColumn` - Type: `string` - The column from the asset type query that contains its primary key. This can be either a column name, or a Go Template. **NOTE**: this is ignored when performing imports from **Workspace One**. 
+      * `AppIDColumn` - Type: `string` - the column from the Software Inventory that holds the software unique ID. This can be either a column name, or a Go Template. **NOTE**: this is ignored when performing imports from **Certero, CSV, LDAP or Nexthink** - the App ID to match is a concatenation of the publisher, name and version fields (no spaces between them)
+      * `Query` - Type: `string` - the query that will be run per asset, to return its software inventory records. `{{AssetID}}` - in the query will be replaced by each assets primary key value, whose column is defined in the `AssetIDColumn` property. **NOTE**: this is NOT being processed as a template (note the absence of the full stop). **ALSO NOTE**: This is not used when importing assets from **Certero or Workspace One**.
+      * `Mapping` - Type: `object` - A key-value pair list of mapping in the format `"Hornbill Column": "Mapped Value"`, maps data into the software inventory records
+
+#### AssetGenericFieldMapping
+
+Maps data in to the generic Asset record Any value templated with `{{.columnName}}` will be populated with the corresponding response from the data source records. Providing a value of `__clear__` will `NULL` that column for the record in the database when assets are being updated ONLY. This can either be hard-coded in the config, or sent as a string column within the SQL query resultset as so:
+
+```sql
+SELECT '__clear__' AS clearColumn
+``` 
+
+Then `[clearColumn]` can be used in the mapping, for example.
+
+Any other value is treated as written examples below:
+
+* `"h_name":"{{.MachineName}}"` - The value of MachineName is taken from the SQL output and populated within this field;
+* `"h_description":"This is a description"` - The value of "h_description" would be populated with "This is a description" for ALL imported assets;
+* `"h_description":"{{.MachineName}} ({{.SystemModel}})]"` - The value of "h_description" would be populated with the value of MachineName from the SQL output, followed by the SystemModel, surrounded by brackets;
+* `"h_site":"{{.SiteName}}"` - When a string is passed to the h_site field the script attempts to resolve the given site name against the Site entity, and populates this (and h_site_id) with the correct site information. If the site cannot be resolved, the site details are not populated for the Asset record being imported.
+* `"h_owned_by":"{{.UserName}}"` - When a valid Hornbill User ID (for a Full or Basic User) is passed to this field, the user is verified on your Hornbill instance, and the tool will complete the h_owned_by and h_owned_by_name columns appropriately.
+* `"h_used_by":"{{.UserName}}"` - When a valid Hornbill User ID (for a Full or Basic User) is passed to this field, the user is verified on your Hornbill instance, and the tool will complete the h_used_by and h_used_by_name columns appropriately.
+* `"h_company_name":"{{.CompanyName}}"` - When a valid Hornbill Company group name is passed to this field, the company is verified against your Hornbill instance, and the tool will complete the h_company_id and h_company_name columns appropriately.
+
+:::tip
+Field names are all **case sensitive**.
+:::
+
+Should the column name contain a space (this is more likely when the data is coming from a CSV file, or SQL Server query), the following format will get the data: `{{index . \"Computer name\" }}`. Please be advised that there is still a distinct preference for the column names NOT to contain spaces. 
+
+Although it is preferred that any data manipulation is handled in the SQL query, should some post-production be necessary, this is possible as such:
+
+`{{.columnName | Upper}}` - Will UPPERCASE the value contained in columnName
+`{{.columnName | Lower}}` - Will lowercase the value contained in columnName
+`{{.columnName | epoch}}` - Will convert an epoch value to the YYYY-MM-DD HH:II:SS format required for a Hornbill DateTime field
+`{{.columnName | epoch_clear}}` - Will convert an epoch value to the YYYY-MM-DD HH:II:SS format required for a Hornbill DateTime field. Defaulting to CLEAR the column if unable to convert.
+`{{.columnName | date_conversion "date time format of the content in .columnName"}}` - Provide the input format based on the following reference time of Jan 2nd 2006 4 minutes and 5 seconds past 3pm - eg "02/01/2006 15:04:05" will convert the regular UK/European date time format to the format useable in the Hornbill datetime field, whereas "01/02/2006 15:04" will process default US date time. Please note that IF your formatting is already in the Hornbill date time format (2006-01-02 15:04:05), you don't need to convert anything.
+`{{.columnName | date_conversion_clear "date time format of the content in .columnName"}}` - Provide the input format based on the following reference time of Jan 2nd 2006 4 minutes and 5 seconds past 3pm - eg "02/01/2006 15:04:05" will convert the regular UK/European date time format to the format useable in the Hornbill datetime field, whereas "01/02/2006 15:04" will process default US date time. Defaulting to CLEAR the column if unable to convert.
+
+#### AssetTypeFieldMapping
+
+Maps data in to the type-specific Asset record, so the same rules as AssetGenericFieldMapping, above. For the computer asset class:
+
+`"h_last_logged_on_user":"{{.UserName}}"` - when a valid Hornbill User ID (for a Full or Basic User) is passed to this field, the user is verified on your Hornbill instance, and the tool will complete the `h_last_logged_on_user` column with an appropriate URN value for the user.

@@ -4,7 +4,7 @@
   "description": "Guides to help you import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "audience": [
     "public"
   ],
@@ -148,7 +148,6 @@
       {
         "text": "Service Manager",
         "expand": true,
-        "draft": true,
         "items": [
           {
             "text": "Assets",
@@ -156,6 +155,7 @@
             "items": [
               {
                 "text": "Asset Records",
+                "expand": false,
                 "items": [
                   {
                     "text": "Introduction",
@@ -168,6 +168,28 @@
                   {
                     "text": "Configuration",
                     "link": "data-imports-guide/assets/configuration"
+                  },
+                  {
+                    "text": "Configuration Examples",
+                    "link": "",
+                    "items": [
+                      {
+                        "text": "SCCM",
+                        "link": "data-imports-guide/assets/configexamples/sccm"
+                      },
+                      {
+                        "text": "Lansweeper",
+                        "link": "data-imports-guide/assets/configexamples/lansweeper"
+                      },
+                      {
+                        "text": "Nexthink",
+                        "link": "data-imports-guide/assets/configexamples/nexthink"
+                      },
+                      {
+                        "text": "Certero",
+                        "link": "data-imports-guide/assets/configexamples/certero"
+                      }
+                    ]
                   },
                   {
                     "text": "Running an Import",
@@ -187,7 +209,7 @@
           },
           {
             "text": "Requests",
-            "expand": true,
+            "expand": false,
             "draft": true,
             "items": [
               {
