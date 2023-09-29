@@ -209,7 +209,13 @@
                 "text": "Asset Relationships",
                 "expand": false,
                 "draft": true,
-                "link": ""
+                "link": "",
+                "items": [
+                  {
+                    "text": "Database Asset Relationship Import",
+                    "link": "data-imports-guide/assets/asset-relationship-import"
+                  }
+                ]
               }
             ]
           },
