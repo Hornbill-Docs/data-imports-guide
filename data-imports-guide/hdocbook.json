@@ -209,7 +209,21 @@
                 "text": "Asset Relationships",
                 "expand": false,
                 "draft": true,
-                "link": ""
+                "link": "",
+                "items": [
+                  {
+                    "text": "Introduction",
+                    "link": "data-imports-guide/assets/asset-relationship-intro"
+                  },
+                  {
+                    "text": "Authentication",
+                    "link": "data-imports-guide/assets/asset-relationship-auth"
+                  },
+                  {
+                    "text": "Configuration",
+                    "link": "data-imports-guide/assets/asset-relationship-config"
+                  }
+                ]
               }
             ]
           },
