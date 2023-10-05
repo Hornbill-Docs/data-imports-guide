@@ -59,7 +59,7 @@ The utility will default to `conf.json` if a configuration file is not specified
 
 #### Hornbill Instance Specific Configuration Properties
 
-- `KeySafeKeyID` - Type: `integer` - The ID of the KeySafe Key that contains your database authentication details. Set to 0 for importing directly from CSV files. See the [KeySafe section of the Authentication article](/data-imports-guide/assets/authentication#keysafe) for more information on supported key types.
+- `KeySafeKeyID` - Type: `integer` - The ID (primary key) of the KeySafe Key that contains your database connection authentication information. Note, this KeySafe Key should be of type `Database Authentication`
 
 #### SourceConfig
 
@@ -77,25 +77,7 @@ The utility will default to `conf.json` if a configuration file is not specified
       - `Windows` - Windows Account authentication, uses the logged-in Windows account to authenticate, and not the authentication details in the KeySafe Key
       - `SQL` - uses SQL Server authentication, and will use the details in the KeySafe Key defined to connect. The Key Type should be [Database Authentication](/data-imports-guide/assets/authentication#key-type-database-authentication)
     - `Encrypt` - Type: `boolean` - Used to specify whether the connection between the script and the database should be encrypted. **NOTE** There is a bug in SQL Server 2008 and below that causes the connection to fail if the connection is encrypted. Only set this to `true` if your SQL Server has been patched accordingly.
-- `Query` - Type: `string` - The basic SQL query to retrieve asset information from the data source. See `AssetTypes` below for further information on filtering.
-- `LDAP` - Type: `object` - Only in use if `Source` is set to `ldap`
-    - `Server` - Type: `object` - LDAP host specific configuration:
-      - `InsecureSkipVerify` - Type: `boolean` - Used in conjunction with SSL or TLS connection types and allows the verification of SSL Certifications to be disabled i.e. `ON` sets the InsecureSkipVerify variable when querying the LDAP to `true`.
-      - `Debug` - Type: `boolean` - Enables LDAP Connection Debugging. This should only ever be enabled to troubleshoot connection issues during the initial setup and testing.
-      - `ConnectionType` - Type: `string` - The type of HTTP connection to use when communicating with the directory Server. Normal HTTP (leave the value blank), `SSL`, and `TLS` are supported.
-    - `Query` - Type: `object` - LDAP query specific configuration:
-      - `Attributes` - Type: `array` - A list of LDAP attributes to return as part of the query
-      - `Scope` - Type: `integer` - Search Scope (ScopeBaseObject = 0, ScopeSingleLevel = 1, ScopeWholeSubtree = 2) Default is 1.
-      - `DerefAliases` - Type: `integer` - Dereference Aliases (NeverDerefAliases = 0, DerefInSearching = 1, DerefFindingBaseObj = 2, DerefAlways = 3), allows you to choose at what stage during the search operation (LDAP Query) aliases are dereferenced. The default value (1) should be suitable for most.
-      - `TypesOnly` - Type: `boolean` - Enabling this setting will cause the query to return attribute types (descriptions) rather than attribute values.
-      - `SizeLimit` - Type: `integer` - Allows you to set a size limit in relation to the result set that can be returned. Setting to '0' disables this setting.
-      - `TimeLimit` - Type: `integer` - Allows you to impose a time limit (seconds) in relation to how long the LDAP query can run before timing out. Setting to '0' disables this setting.
-- `Google` - Type: `object` - Only in use if `Source` is set to `google`
-    - `Customer` - Type: `string` - The Customer ID of the Google Account. Supports my_customer to return devices enrolled to the deafult account that the KeySafe key was created with
-    - `Query` - Type: `string` - Search string as per the [Google API Documentation](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices/list)
-    - `OrgUnitPath` - Type: `string` - The full path of the Google organizational Unit where the devices reside
-- `Certero` - Type: `object` - Only in use if `Source` is set to `certero`
-    - `Expand` - Type: `string` - The Certero oData query which defines the columns and associated entitiy records that can be mapped into Hornbill asset records
+- `Query` - Type: `string` - The basic SQL query to retrieve asset information from the data source. See `
 - `AssetIdentifier` - an object containing details to match asset information returned from the `Query`, above, to existing asset records in your Hornbill instance:
     - `Paernt` - specifies the column from the above `Query` that holds the Parent asset unique identifier
     - `Child` - specifies the column from the above Query that holds the Child asset unique identifier
@@ -120,47 +102,8 @@ The utility will default to `conf.json` if a configuration file is not specified
         - `Description` - This will attempt to match the Hornbill asset using the Description field
     - `RemoveBothSides` - Boolean true or false, if the links on both sides of the relationship need to be removed
 
-## API Key Rules
-
-This utility uses ([API keys](https://docs.hornbill.com/esp-fundamentals/security/api-keys)):
-- data:entityAddRecord
-- data:entityDeleteRecord
-- data:entityUpdateRecord
-- data:getRecordCount
-- data:queryExec
-- system:logMessage
-- apps/com.hornbill.servicemanager/Asset:linkAsset
-- apps/com.hornbill.servicemanager/Asset:unlinkAsset
-
-## Execute
-### Command Line Parameters
-- file - Defaults to 'conf.json' - Name of the Configuration file to load.
-- dryrun - Defaults to 'false' - Set to true and the XMLMC for the creation and update of assets will not be called, and instead the generated XML for each asset will be dumped to the log file. This is to aid in debugging the initial connection information.
-- creds - Defaults to 'false' - Set to true to return the API key that is stored in your import configuration. See NOTE in First Run, below. As well as user & computer specific access, you will also be prompted to input the ID of the instance that the API key was generated on.
-- version - Defaults to 'false' - Set to true to return the version number of the tool, then exit
-
-#### **First Run**
-
-From version **2.0.0** of this utility, when you first run the utility it will prompt you for the ID of your Hornbill instance (case-sensitive), and the API key (also case-sensitive) that will be used to authenticate the API calls back into Hornbill. This information will be encrypted, and stored locally on the client PC that will be running the tool. For each subsequent import run, the utility will decrypt your instance ID and API key, and will use those to make the API calls back into Hornbill.
-
-NOTE - the encrypted instance ID and API key can only be decrypted on the computer, and by the user, that performed the encryption, so please keep this in mind when scheduling your imports.
-
-Should you wish to use a different API key to what has been previously encrypted, just delete the **import.cfg** file from the folder where the import binary resides, and re-run your import from the command line inputting the Instance ID and new API Key as you would have on its first run.
-
 ## Testing
 
 If you run the application with the argument dryrun=true then no asset relationships will be created or updated, the XML used to create or update will be saved in the log file so you can ensure the data mappings are correct before running the import.
 
 ``asset_rel_import.exe -dryrun=true``
-
-## Scheduling
-### Windows
-
-You can schedule asset_rel_import.exe to run with any optional command line argument from Windows Task Scheduler:
-
-- Ensure the user account running the task has rights to asset_rel_import.exe and the containing folder.
-- Make sure the Start In parameter contains the folder where asset_rel_import.exe resides in otherwise it will not be able to pick up the correct path.
-
-## Logging
-
-ogging output is saved in the log directory in the same directory as the executable the file name contains the date and time the import was run ``asset_rel_log_20190925140000``.log 

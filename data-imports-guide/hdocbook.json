@@ -222,6 +222,18 @@
                   {
                     "text": "Configuration",
                     "link": "data-imports-guide/assets/asset-relationship-config"
+                  },
+                  {
+                    "text": "Running an Import",
+                    "link": "data-imports-guide/assets/asset-relationship-command"
+                  },
+                  {
+                    "text": "Scheduling the Import",
+                    "link": "data-imports-guide/assets/asset-relationship-scheduling"
+                  },
+                  {
+                    "text": "Troubleshooting",
+                    "link": "data-imports-guide/assets/asset-relationship-debugging"
                   }
                 ]
               }
@@ -238,11 +250,53 @@
               },
               {
                 "text": "From ServiceNow",
-                "items": []
+                "items": [
+                  {
+                    "text": "Introduction",
+                    "link": "data-imports-guide/requests/from-servicenow/intro"
+                  },
+                  {
+                    "text": "Authorization",
+                    "link": "data-imports-guide/requests/from-servicenow/authorization"
+                  },
+                  {
+                    "text": "Configuration",
+                    "link": "data-imports-guide/requests/from-servicenow/configuration"
+                  },
+                  {
+                    "text": "Executing a Request",
+                    "link": "data-imports-guide/requests/from-servicenow/command"
+                  },
+                  {
+                    "text":"Debugging",
+                    "link": "data-imports-guide/requests/from-servicenow/debugging"
+                  }
+                ]
               },
               {
                 "text": "From Supportworks",
-                "items": []
+                "items": [
+                {
+                  "text": "Introduction",
+                  "link": "data-imports-guide/requests/supportworks/intro"
+                },
+                {
+                  "text": "Authorization",
+                  "link": "data-imports-guide/requests/supportworks/authorization"
+                },
+                {
+                  "text": "Configuration",
+                  "link": "data-imports-guide/requests/supportworks/configuration"
+                },
+                {
+                  "text": "Executing a Request",
+                  "link": "data-imports-guide/requests/supportworks/command"
+                },
+                {
+                  "text":"Debugging",
+                  "link": "data-imports-guide/requests/supportworks/debugging"
+                }
+              ]
               }
             ]
           }
@@ -254,12 +308,16 @@
         "expand": true,
         "items": [
           {
+            "text": "Overview",
+            "link": "data-imports-guide/customer-manager/overview"
+          },
+          {
             "text": "Organizations",
-            "items": []
+            "link": "data-imports-guide/customer-manager/organizations"
           },
           {
             "text": "Contacts",
-            "items": []
+            "link": "data-imports-guide/customer-manager/contacts"
           }
         ]
       },
