@@ -5,6 +5,20 @@
     "exclude_paths": []
   },
   "validation": {
-    "exclude_links": []
+    "exclude_links": [],
+    "exclude_spellcheck":[
+      {
+          "document_path": "data-imports-guide/requests/from-servicenow/configuration",
+          "words": [
+              "cancelled"
+          ]
+      },
+      {
+          "document_path": "data-imports-guide/requests/supportworks/configuration",
+          "words": [
+              "cancelled"
+          ]
+      }
+    ]
   }
 }

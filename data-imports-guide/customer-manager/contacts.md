@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Any individual that belongs to an external organisation who you wish to interact with during the delivery of a service will be stored in Hornbill as Contact records. Contact records would typically be associated to an Organisation record. Contacts can be configured to use the Customer Portal for profile management and use of application features designed to allow for communication between you and your contacts.
+Any individual that belongs to an external organization who you wish to interact with during the delivery of a service will be stored in Hornbill as Contact records. Contact records would typically be associated to an organization record. Contacts can be configured to use the Customer Portal for profile management and use of application features designed to allow for communication between you and your contacts.
 
 To manage contact records, a user must possess one of the following security roles:
 
@@ -15,7 +15,7 @@ To manage contact records, a user must possess one of the following security rol
 
 Contacts can be added using the **+ New Contact** button
 
-- Complete the mandatory fields, and any optional fields including linking them to an existing organisation. Select **Create** to add the contact.
+- Complete the mandatory fields, and any optional fields including linking them to an existing organization. Select **Create** to add the contact.
 - Add a contact directly from an Organization record
 - Individual Contacts can register themselves using Guest Access when logging in for the first time
 **Contact List**
@@ -47,7 +47,7 @@ From a contact's record the following options are available to you
 Contacts can be configured to use the Customer portal for profile management and use of application features designed for contacts. Portal Access is configured via Hornbill Administration: Home > System > Manage Portals > Guest Accounts
 
 - If a contact has been allocated a portal login, their portal login details will be visible on the contact record
-- If Service Manager has also been installed, you can configure what rights the contact has when viewing organisation's requests on the customer portal, via the Organisation record > Requests section > Portal Access option
+- If Service Manager has also been installed, you can configure what rights the contact has when viewing organization's requests on the customer portal, via the organization record > Requests section > Portal Access option
 
 ## Administration
 

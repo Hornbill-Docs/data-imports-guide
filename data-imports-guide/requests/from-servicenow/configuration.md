@@ -749,7 +749,7 @@ Contains the configuration to allow the import of ServiceNow Approval Tasks as H
 Allows for the mapping of Support Groups/Team between ServiceNow and Hornbill Service Manager, where the left-side properties list the Support Group names from ServiceNow, and the right-side values are the corresponding Team names from Hornbill that should be used when assigning the new requests.
 
 ## CategoryMapping
-Allows for the mapping of Problem Profiles/Request Categories between ServiceNow and Hornbill Service Manager, where the left-side properties list the Category label from ServiceNow, and the right-side values are the corresponding Profile Codes from Hornbill that should be used when categorising the new requests.
+Allows for the mapping of Problem Profiles/Request Categories between ServiceNow and Hornbill Service Manager, where the left-side properties list the Category label from ServiceNow, and the right-side values are the corresponding Profile Codes from Hornbill that should be used when categorizing the new requests.
 
 ## ResolutionCategoryMapping
 Allows for the mapping of Resolution Profiles/Resolution Categories between ServiceNow and Hornbill Service Manager, where the left-side properties list the Resolution Category label from ServiceNow, and the right-side values are the corresponding Resolution Codes from Hornbill that should be used when applying Resolution Categories to the imported requests.

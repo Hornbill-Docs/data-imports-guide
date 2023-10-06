@@ -694,7 +694,7 @@ Allows for the mapping of Support Groups/Team between Supportworks and Hornbill 
 The following query will be helpful when listing the Supportworks Teams that exist and therefore need to be mapped in the configuration: ``SELECT DISTINCT suppgroup FROM opencall``
 
 ### CategoryMapping
-Allows for the mapping of Problem Profiles/Request Categories between Supportworks and Hornbill Service Manager, where the left-side properties list the Profile Codes (not the descriptions!) from Supportworks, and the right-side values are the corresponding Profile Codes (again, not the descriptions!) from Hornbill that should be used when categorising the new requests.
+Allows for the mapping of Problem Profiles/Request Categories between Supportworks and Hornbill Service Manager, where the left-side properties list the Profile Codes (not the descriptions!) from Supportworks, and the right-side values are the corresponding Profile Codes (again, not the descriptions!) from Hornbill that should be used when categorizing the new requests.
 
 The following query will be helpful when listing all the Supportworks Profile Codes (Logging Categories) that have ever been used against Supportworks calls: ``SELECT DISTINCT probcode from opencall``
 
