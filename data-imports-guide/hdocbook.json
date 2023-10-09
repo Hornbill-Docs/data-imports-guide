@@ -246,7 +246,28 @@
             "items": [
               {
                 "text": "From a Database",
-                "items": []
+                "items": [
+                  {
+                    "text": "Introduction",
+                    "link": "data-imports-guide/requests/database/intro"
+                  },
+                  {
+                    "text": "Authorization",
+                    "link": "data-imports-guide/requests/database/authorization"
+                  },
+                  {
+                    "text": "Configuration",
+                    "link": "data-imports-guide/requests/database/configuration"
+                  },
+                  {
+                    "text": "Running an Import",
+                    "link": "data-imports-guide/requests/database/command"
+                  },
+                  {
+                    "text": "Debugging",
+                    "link": "data-imports-guide/requests/database/debugging"
+                  }
+                ]
               },
               {
                 "text": "From ServiceNow",
