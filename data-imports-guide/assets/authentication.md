@@ -19,7 +19,7 @@ Please read the [API Key documentation](/esp-fundamentals/security/api-keys) and
 The service account that you create must be of type `User` (not `Basic`), and be granted the following roles:
 
 - **User Role** - Allows the utility to perform entity actions in the Hornbill platform.
-- **Asset Management Usert** - Allows the utility to create and update Asset Management records in Service Manager.
+- **Asset Management User** - Allows the utility to create and update Asset Management records in Service Manager.
 - **Hornbill Service Manager Integrations** - Enables a number of entity and stored query privileges. ***NOTE*** - This role is only intended for accounts that are used for integrations or to perform data imports, and should not be applied to interactive user accounts. 
 
 ### API Key Rules
