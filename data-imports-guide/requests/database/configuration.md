@@ -354,7 +354,7 @@ Allows for the mapping of Priorities between your source data and Hornbill Servi
 Allows for the mapping of Support Groups/Team between your source data and Hornbill Service Manager, where the left-side properties list the Support Group ID's from your source data, and the right-side values are the corresponding Team names from Hornbill that should be used when assigning the new requests.
 
 - **CategoryMapping**
-Allows for the mapping of Problem Profiles/Request Categories between your source data and Hornbill Service Manager, where the left-side properties list the Profile Codes from your source data, and the right-side values are the corresponding Profile Codes from Hornbill that should be used when categorising the new requests.
+Allows for the mapping of Problem Profiles/Request Categories between your source data and Hornbill Service Manager, where the left-side properties list the Profile Codes from your source data, and the right-side values are the corresponding Profile Codes from Hornbill that should be used when categorizing the new requests.
 
 - **OwnerMapping**
 Allows for the mapping of Owner IDs between your source data and Hornbill Service Manager, where the left-side properties list the Owner IDs from your source data, and the right-side values are the corresponding User IDs from Hornbill that should be used when assigning the imported requests.

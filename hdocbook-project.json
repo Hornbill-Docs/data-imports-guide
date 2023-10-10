@@ -18,7 +18,13 @@
           "words": [
               "cancelled"
           ]
-      }
+      },
+      {
+        "document_path": "data-imports-guide/requests/database/configuration",
+        "words": [
+            "cancelled"
+        ]
+    }
     ]
   }
 }
