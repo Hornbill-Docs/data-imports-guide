@@ -26,10 +26,28 @@ The Supportworks to Hornbill Service Manager Request Import Utility is provided 
 ## Installation Overview
 ### **Windows Installation**
 
-- Download the [ZIP archive](https://github.com/hornbill/goSWRequestImport/releases/latest) relevant to your operating system and architecture
-- Extract the zip into a folder you would like the application to run from e.g. C:\Call_Import\
-- Open **conf.json** and add in the necessary configuration
-- Open a Command Line Prompt as Administrator
-- Change directory to the folder containing the utility C:\Call_Import\
-- Run the command relevant to the architecture of the machine you are running this on:
+Download the [ZIP archive](https://github.com/hornbill/goSWRequestImport/releases/latest) relevant to your operating system and architecture, extract the zip file into a folder within the local user profile of the user who will run the tool. Run the command relevant to the architecture of the machine you are running this on:
 ``goSWRequestImport.exe -dryrun=true``
+
+## HTTP Proxies
+
+If you use a proxy for all of your internet traffic, the HTTP_PROXY and HTTPS_PROXY Environment variables need to be set. These environment variables hold the hostname or IP address of your proxy server. It is a standard environment variable and like any such variable, the specific steps you use to set it depends on your operating system.
+
+For windows machines, it can be set from the command line using the following:
+```cmd
+set HTTP_PROXY=HOST:PORT
+set HTTPS_PROXY=HOST:PORT
+```
+Where "HOST" is the IP address or host name of your Proxy Server and "PORT" is the specific port number. IF you require a username and password to go through the proxy, the format for the setting is as follows:
+```cmd
+set HTTP_PROXY=username:password@HOST:PORT
+set HTTPS_PROXY=username:password@HOST:PORT
+```
+### **URLs to White List**
+
+Occasionally on top of setting the HTTP_PROXY variable the following URLs need to be white listed to allow access out to our network
+
+- ``https://files.hornbill.com/instances/INSTANCENAME/zoneinfo`` - Allows access to lookup your Instance API Endpoint
+- ``https://files.hornbill.co/instances/INSTANCENAME/zoneinfo`` - Backup URL for when files.hornbill.com is unavailable
+- ``https://eurapi.hornbill.com/INSTANCENAME/xmlmc/`` - This is your Instance API Endpoint, eurapi can change so you should use the endpoint defined in the previous URL
+- ``https://api.github.com/repos/hornbill/asset-rel-import/tags`` - Allows the utility to self-update. Optional

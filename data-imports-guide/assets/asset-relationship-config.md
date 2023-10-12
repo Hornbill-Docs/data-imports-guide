@@ -101,9 +101,3 @@ The utility will default to `conf.json` if a configuration file is not specified
         - `Tag` - This will attempt to match the Hornbill asset using the Asset Tag field
         - `Description` - This will attempt to match the Hornbill asset using the Description field
     - `RemoveBothSides` - Boolean true or false, if the links on both sides of the relationship need to be removed
-
-## Testing
-
-If you run the application with the argument dryrun=true then no asset relationships will be created or updated, the XML used to create or update will be saved in the log file so you can ensure the data mappings are correct before running the import.
-
-``asset_rel_import.exe -dryrun=true``
