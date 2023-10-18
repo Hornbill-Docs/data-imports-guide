@@ -189,6 +189,7 @@ The utility will default to `conf.json` if a configuration file is not specified
   - `google` - Google Workspace Enterprise Chrome OS - will use KeySafe key type [Google Workspace](/data-imports-guide/assets/authentication#key-type-google-workspace)
   - `certero` - Certero - will use KeySafe key type [Certero](/data-imports-guide/assets/authentication#key-type-certero)
   - `workspaceone` - vmware Workspace One UEM - will use KeySafe type [VMWare Workspace One UEM](/data-imports-guide/assets/authentication#key-type-vmware-workspace-one-uem)
+  - `intune` - Microsoft Intune - will use KeySafe type [Microsoft Intune](/data-imports-guide/assets/authentication#key-type-microsoft-intune)
 - `CSV` - Type: `object` - Only in use if `Source` is set to `csv`
     - `CarriageReturnRemoval` - Type: `boolean` - Certain CSV exporting systems will add extra carriage returns as a record delimiter. This is expected not to be common, hence the setting is left out of the configuration files (it is added to conf_computerSyste      * `json only for completeness sake). If not set, then the default value is `false` and no carriages returns will be stripped from the data. If set to `true`, then all carriage returns (possibly even intended ones) will be stripped.
     - `CommaCharacter` - Type: `string` - The field separator (single) character - if left out, the default character will be a comma.
@@ -218,6 +219,8 @@ The utility will default to `conf.json` if a configuration file is not specified
     - `OrgUnitPath` - Type: `string` - The full path of the Google organizational Unit where the devices reside
 - `Certero` - Type: `object` - Only in use if `Source` is set to `certero`
     - `Expand` - Type: `string` - The Certero oData query which defines the columns and associated entitiy records that can be mapped into Hornbill asset records
+- `Intune` - Type: `object` - Only in use if `Source` is set to `intune`
+    - `Fields` - Type: `array` - A list of fields that should be returned during the API calls to Intune. These are the fields that can be mapped in the field mappings, below. See the [Intune documentation](https://learn.microsoft.com/en-us/graph/api/resources/intune-devices-manageddevice?view=graph-rest-1.0#properties) for detailed information regarding field availability
 
 #### AssetTypes
 
@@ -261,6 +264,7 @@ During the import process assets of each type as defined below are retrieved fro
   * Certero oData filter for returning asset details for that asset type
   * Nexthink query for returning asset details for that asset type
   * LDAP query for returning asset details for that asset type
+  * Microsoft Graph oData filter for returning asset details from Intune. See the [filter parameter documentation from Microsoft](https://learn.microsoft.com/en-us/graph/filter-query-parameter?tabs=http) for instruction of how these filters can be constructed, and the [managed device resource type documentation](https://learn.microsoft.com/en-us/graph/api/resources/intune-devices-manageddevice?view=graph-rest-1.0#properties) for a list of available properties.
 * `Filter` - Type: `object` - Used exclusively for applying filters to Workspace One queries, all are optional:
   * `User` - Type: `string` - Username the device enrolled under
   * `ModelIdentifier` - Type: `string` - Partial search by device model. Search by MD20 would return device with model MD200LL
