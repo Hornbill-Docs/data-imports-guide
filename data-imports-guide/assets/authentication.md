@@ -91,6 +91,22 @@ Keys of this type require a Certero API Key to be created against a user account
   * `API Endpoint` - The API Endpoint for your Cerero account.
 * Click `Create Key`.
 
+### Key Type - Cynerio
+
+Keys of this type require a Cynerio API Key to be created against a user account that has permissions to fetch assets before the details can be stored in KeySafe, and eventually be used by the Asset Import Utility.
+
+* In Hornbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
+* Click `+ Create New Key`.
+* Choose a key type of `Cynerio`.
+* Give the KeySafe key a Title.
+* Optionally add a Description.
+* Populate the following fields on the form:
+  * `Access Token URL` - Your Cynerio account specific authentication URL, in the format: `https://your-portal-login.cynerio.com`
+  * `API URL` - Your Cynerio account specific API endpoint URL, in the format: `https://your-cynerio-account.cyner.io`
+  * `Client ID` -  The Client ID for your Cynerio integration application
+  * `Client Secret` -  The Client Secret for your Cynerio integration application
+* Click `Create Key`.
+
 ### Key Type - Database Authentication
 
 * In Hornbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
