@@ -7,7 +7,7 @@ Ultimately, the executable will be scheduled in the Windows task scheduler (see 
 - `creds` - Defaults to `false` - Set to `true` to decrypt and output the API key that is stored locally. The utility will prompt you for your Instance ID, and this can only be decrypted by the user who originally performed the encryption, and only on the same machine that it was encrypted on.
 - `debug` - Defaults to `false` - Set to `true` to output extra information to the log to aid in debugging issues.
 - `dryrun` - Defaults to `false` - Set to `true` and the API calls to create and update users will not be run. Instead, the API call request payloads will be output to the log file to aid in debugging.
-- `file` - Defaults to `conf.json` - The name of the import configuration file to use.
+- `config` - The ID of the import configuration to run.
 - `workers` - Defaults to `3` - Allows you to change the number of worker threads used to process the import; increasing this can improve performance on slow import but using too many workers can have a detriment to the performance of your Hornbill instance while the import is running.
 
 ## First Run
@@ -46,7 +46,7 @@ Below are some high level steps to help you build confidence in your configurati
 1. Continue with dryrun tests until you are happy that all the errors are accounted for.
 1. Perform a live import against a single user object (set `-dryrun=false`).
 1. Review the imported user account in Hornbill and check all user properties are as expected i.e. email contains an email address etc.
-1. Where necessary, adjust the configuration file user property mappings
+1. Where necessary, adjust the configuration user property mappings
 1. Loop through steps 5 - 7 as many times as is necessary until you are happy with the information being transported into the Hornbill user account properties.
 1. Amend the `UserFilter` and/or the scope of the `Search` variable to target the user objects required for a full import.
 1. Perform a dryrun
@@ -56,11 +56,11 @@ Below are some high level steps to help you build confidence in your configurati
 ## Command Line Examples
 
 ```cmd
-ldap_user_import.exe -file="my_config.json" -dryrun=true
+ldap_user_import.exe -config="hornbill-ad-import-for-new-and-active-users" -dryrun=true
 ```
 
 ```powershell
-.\ldap_user_import.exe -file="my_config.json" -dryrun=true
+.\ldap_user_import.exe -config="hornbill-ad-import-for-new-and-active-users" -dryrun=true
 ```
 
 ## Resetting Encrypted Credentials
