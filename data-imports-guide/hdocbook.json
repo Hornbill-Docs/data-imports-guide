@@ -4,7 +4,7 @@
   "description": "Guides to help you import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.3.1",
+  "version": "0.3.4",
   "audience": [
     "public"
   ],
@@ -174,20 +174,28 @@
                     "link": "",
                     "items": [
                       {
-                        "text": "SCCM",
-                        "link": "data-imports-guide/assets/configexamples/sccm"
+                        "text": "Certero",
+                        "link": "data-imports-guide/assets/configexamples/certero"
+                      },
+                      {
+                        "text": "Cynerio",
+                        "link": "data-imports-guide/assets/configexamples/cynerio"
                       },
                       {
                         "text": "Lansweeper",
                         "link": "data-imports-guide/assets/configexamples/lansweeper"
                       },
                       {
+                        "text": "Microsoft Intune",
+                        "link": "data-imports-guide/assets/configexamples/intune"
+                      },
+                      {
                         "text": "Nexthink",
                         "link": "data-imports-guide/assets/configexamples/nexthink"
                       },
                       {
-                        "text": "Certero",
-                        "link": "data-imports-guide/assets/configexamples/certero"
+                        "text": "SCCM",
+                        "link": "data-imports-guide/assets/configexamples/sccm"
                       }
                     ]
                   },
