@@ -29,7 +29,11 @@ The Supportworks to Hornbill Service Manager Request Import Utility is provided 
 Download the [ZIP archive](https://github.com/hornbill/goSWRequestImport/releases/latest) relevant to your operating system and architecture, extract the zip file into a folder within the local user profile of the user who will run the tool. Run the command relevant to the architecture of the machine you are running this on:
 ``goSWRequestImport.exe -dryrun=true``
 
-## HTTP Proxies
+## Requirements
+### Host
+The utility connects to the Hornbill instance in the cloud over HTTPS/SSL, so as long as you have standard internet access then you should be able to use it without the need to make any proxy or firewall configuration changes.
+
+#### **HTTP Proxies**
 
 If you use a proxy for all of your internet traffic, the HTTP_PROXY and HTTPS_PROXY Environment variables need to be set. These environment variables hold the hostname or IP address of your proxy server. It is a standard environment variable and like any such variable, the specific steps you use to set it depends on your operating system.
 
@@ -43,7 +47,7 @@ Where "HOST" is the IP address or host name of your Proxy Server and "PORT" is t
 set HTTP_PROXY=username:password@HOST:PORT
 set HTTPS_PROXY=username:password@HOST:PORT
 ```
-### **URLs to White List**
+#### **URL White Listing**
 
 Occasionally on top of setting the HTTP_PROXY variable the following URLs need to be white listed to allow access out to our network
 

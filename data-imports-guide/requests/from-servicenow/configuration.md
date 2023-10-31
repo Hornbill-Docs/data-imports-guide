@@ -1,4 +1,4 @@
-# Installation
+# Configuration
 
 ## Windows
 
@@ -10,9 +10,7 @@
 - Run the command relevant to the computer you are running this on:
 - ** For Windows Machines : goServiceNowRequestImport.exe -dryrun=true
 
-## Configuration
-
-Example JSON File:
+## Example Configuration
 
 ```json
 {
@@ -675,14 +673,17 @@ Example JSON File:
   }
 }
 ```
-## HBConfig
+
+### Configuration Explanation
+#### Hornbill Instance Specific Configuration Properties
+#### **HBConfig**
 Connection information for the Hornbill instance:
 
 - “UserName” - Instance User Name with which the tool will log the new requests
 - “Password” - Instance Password for the above User
 - “InstanceId” - ID of your Hornbill instance (case sensitive)
 
-## SNAppDBConf
+#### **SNAppDBConf**
 Contains the connection information for the ServiceNow application database.
 
 - “Driver” the driver to use to connect to the database that holds the ServiceNow application information:
@@ -694,13 +695,13 @@ Contains the connection information for the ServiceNow application database.
 - “Port” SQL port
 - “Encrypt” Boolean value to specify whether the connection between the script and the database should be encrypted. ‘’NOTE’’: There is a bug in SQL Server 2008 and below that causes the connection to fail if the connection is encrypted. Only set this to true if your SQL Server has been patched accordingly.
 
-## CustomerType
+#### **CustomerType**
 Integer value 0 or 1, to determine the customer type for the records being imported:
 
 - 0 - Hornbill Users
 - 1 - Hornbill Contacts
 
-## ConfCallClass
+#### **ConfCallClass**
 Contains request-class specific configuration. This section should be repeated for all Service Manager Call Classes.
 
 - Import - boolean true/false. Specifies whether the current class section should be included in the import.
@@ -729,7 +730,7 @@ pandoc 1.17.2
 - PriorityMapping - Allows for the mapping of task-class specific Priorities between ServiceNow and Hornbill Service Manager, where the left-side properties list the Priorities from ServiceNow, and the right-side values are the corresponding Priorities from Hornbill that should be used when escalating the imported requests.
 - ServiceMapping - Allows for the mapping of task-class specific Services between ServiceNow and Hornbill Service Manager, where the left-side properties list the Service names from ServiceNow, and the right-side values are the corresponding Services from Hornbill that should be used when raising the new requests.
 
-### ConfActivities
+#### **ConfActivities**
 Contains the configuration to allow the import of ServiceNow Approval Tasks as Hornbill Activities.
 
 - Import - boolean true/false. Specifies whether Activities should be included in the import.
@@ -745,11 +746,11 @@ Contains the configuration to allow the import of ServiceNow Approval Tasks as H
 - Decision - The approval decision
 - Reason - The reason as to why the approval decision was made
 
-## TeamMapping
+#### **TeamMapping**
 Allows for the mapping of Support Groups/Team between ServiceNow and Hornbill Service Manager, where the left-side properties list the Support Group names from ServiceNow, and the right-side values are the corresponding Team names from Hornbill that should be used when assigning the new requests.
 
-## CategoryMapping
+#### **CategoryMapping**
 Allows for the mapping of Problem Profiles/Request Categories between ServiceNow and Hornbill Service Manager, where the left-side properties list the Category label from ServiceNow, and the right-side values are the corresponding Profile Codes from Hornbill that should be used when categorizing the new requests.
 
-## ResolutionCategoryMapping
+#### **ResolutionCategoryMapping**
 Allows for the mapping of Resolution Profiles/Resolution Categories between ServiceNow and Hornbill Service Manager, where the left-side properties list the Resolution Category label from ServiceNow, and the right-side values are the corresponding Resolution Codes from Hornbill that should be used when applying Resolution Categories to the imported requests.

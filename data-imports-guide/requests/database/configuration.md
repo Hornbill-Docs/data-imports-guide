@@ -1,8 +1,14 @@
 # Configuration
 
-## Configuration Overview
+## Overview
 
-A demonstration configuration file is provided within the package, which includes configuration for importing request data from your data source. If a configuration file is not specified as a command line argument when executing the tool, then a default configuration file named conf.json, containing the correct JSON, must exist. The following configuration file contains the configuration elements required when importing request data:
+The options and configuration of imports using this utility are saved in one or more [JSON (JavaScript Object Notation)](https://www.json.org/json-en.html) files in the folder where the utility executable resides.
+
+We have provided a selection of default configuration files, one for each of the systems that Hornbill customers most often import asset data from, in each of the downloadable archives. This can be used as a template from which to build your import configurations.
+
+:::tip
+The utility will default to `conf.json` if a configuration file is not specified as a command line argument
+:::
 
 ## Example Configuration File
 
@@ -249,92 +255,93 @@ A demonstration configuration file is provided within the package, which include
  }
  ```
 
-## What Do I Put In The Configuration File?
+### Configuration Example
+#### Hornbill Instance Specific Configuration Properties
 
-### **HBConfig**
-Connection information for the Hornbill instance:
+- ``InstanceID`` - This is the name of your Hornbill instance and can be found within the URL you use to navigate to it: live.hornbill.com/**instance name**/. This value is case sensitive.
+- ``APIKeys`` - This is an array of API Keys with which the tool will log the new requests. A minimum of 1 and a maximum of 10 can be defined. The more API keys provided, the more workers will import requests concurrently. API Keys can be created against the same user account in Hornbill. Details on how to create an API key can be found [here](https://docs.hornbill.com/esp-fundamentals/security/api-keys).
 
-- **InstanceID** - This is the name of your Hornbill instance and can be found within the URL you use to navigate to it: live.hornbill.com/**instance name**/. This value is case sensitive.
-- **APIKeys** - This is an array of API Keys with which the tool will log the new requests. A minimum of 1 and a maximum of 10 can be defined. The more API keys provided, the more workers will import requests concurrently. API Keys can be created against the same user account in Hornbill. Details on how to create an API key can be found [here](https://docs.hornbill.com/esp-fundamentals/security/api-keys).
-
-### **AppDBConf**
+#### **AppDBConf**
 Contains the connection information for the database (direct or via ODBC) that contains the request data for import.
 
-- **Driver** - the driver to use to connect to the database that holds the request data:
-    - **swsql** : Supportworks 7.x SQL (MySQL v4.0.16). Also supports MySQL v3.2.0 to <v5.0
-    - **mysql** : MySQL Server v5.0 or above, or MariaDB
-    - **mssql** : Microsoft SQL Server (2005 or above)
-    - **odbc** : An ODBC connection that resides on the machine performing the import
-    - **csv** : An ODBC connection that resides on the machine performing the import, which is specifically using the "Microsoft Access Text Driver", and is configured to look at a folder containing CSV files.
-- **Server** - The address for the database host (or 127.0.0.1 if using odbc or csv drivers)
-- **UserName** - The username for the SQL database
-**Password** - Password for above User Name
-**Port** - SQL port if connecting to a database directly
-**Encrypt** - Boolean value to specify whether the connection between the script and the database should be encrypted. NOTE: There is a bug in SQL Server 2008 and below that causes the connection to fail if the connection is encrypted. Only set this to true if your SQL Server has been patched accordingly.
+- ``Driver`` - the driver to use to connect to the database that holds the request data:
+    - ``swsql`` : Supportworks 7.x SQL (MySQL v4.0.16). Also supports MySQL v3.2.0 to <v5.0
+    - ``mysql`` : MySQL Server v5.0 or above, or MariaDB
+    - ``mssql`` : Microsoft SQL Server (2005 or above)
+    - ``odbc`` : An ODBC connection that resides on the machine performing the import
+    - ``csv`` : An ODBC connection that resides on the machine performing the import, which is specifically using the "Microsoft Access Text Driver", and is configured to look at a folder containing CSV files.
+- ``Server`` - The address for the database host (or 127.0.0.1 if using odbc or csv drivers)
+- ``UserName`` - The username for the SQL database
+``Password`` - Password for above User Name
+``Port`` - SQL port if connecting to a database directly
+``Encrypt`` - Boolean value to specify whether the connection between the script and the database should be encrypted. NOTE: There is a bug in SQL Server 2008 and below that causes the connection to fail if the connection is encrypted. Only set this to true if your SQL Server has been patched accordingly.
 
-### **CustomerType**
+#### **CustomerType**
 Should contain an integer value of 0 or 1, to determine the customer type for the records being imported:
 
 - 0 - Hornbill Users
 - 1 - Hornbill Contacts
 - 2 - This will first search through the Users for a matching account, and if none is found then will search through the Contacts for a matching customer
 
-### **ContactKeyColumn**
+#### **ContactKeyColumn**
 When searching through active Contacts for customer records (selecting either option 1 or 2 above), this needs populating with the unique column to search against. Examples:
 
-- h_logon_id - this is the login ID column for the contact
-- h_email_1 - this is the primary email address of the contact
+- ``h_logon_id`` - this is the login ID column for the contact
+- ``h_email_1`` - this is the primary email address of the contact
 
-### **DateTimeFormat**
+#### **DateTimeFormat**
 
 When this parameter is populated, a parser in the tool will take the mapped datetime values from the request queries (h_datelogged, h_dateresolved and h_dateclosed from CoreFieldMapping, and h_updatedate from HistoricUpdateMapping), along with the value of this parameter, and convert the datetime into a Hornbill-compatible datetime string. See the format constants in the [Go time format documentation] for more information on populating this field.
 
-### **AllowUnpublishedCatalogItems**
+#### **AllowUnpublishedCatalogItems**
 When set to ``true``, the tool will ignore the Status of the Service Catalog Items for requests being imported, allowing requests to be imported with Catalog Items in a Draft or Retired status. When set to ``false``, if the target Catalog Item is Draft or Retired, then the Catalog Item will not be associated to the request.
 
-### **LinkedRequestPostVilibility**
+#### **LinkedRequestPostVilibility**
 Defines the visibility of the Timeline updates applied when imported requests and linked with parent requests. Can be set to customer or team. See ParentRequestRefColumn in RequestTypesToImport.
 
-### **RequestTypesToImport**
+#### **RequestTypesToImport**
 A JSON array of objects that contain request-type specific configuration.
 
-- **Description** - a string that allows you to describe the current request type object within the array. This is not used by the tool, so can contain any text string.
-- **Import** - boolean true/false. Specifies whether the current class section should be included in the import.
+- ``Description`` - a string that allows you to describe the current request type object within the array. This is not used by the tool, so can contain any text string.
+- ``Import`` - boolean true/false. Specifies whether the current class section should be included in the import.
 - ServiceManagerRequestType - specifies the Service Manager request type that the current Conf section relates to.
-- **AppRequestType** - specifies the request type of the requests being imported.
-- **DefaultTeam** - If a request is being imported, and the tool cannot verify its Support Group, then the Support Group from this variable is used to assign the request.
-- **DefaultOwner** - If a request is being imported, and the tool cannot verify its Owner, then the Analyst ID from this variable is used to assign the request.
-- **DefaultPriority** - If a request is being imported, and the tool cannot verify its Priority, then the Priority from this variable is used to escalate the request.
-- **DefaultService** - If a request is being imported, and the tool cannot verify its Service from the mapping, then the Service from this variable is used to log the request.
-- **DefaultCatalog** - If the DefaultService (above) is being used for a record, then populating this with the primary key of the Catalog Item set against the Service for the Request Type being imported will ensure that the Catalog Item, and associated BPM Workflow, will be used when creating the Request. NOTE - the Catalog Item Primary Key value must be for the default language record, and not a translated catalog item record.
-- **RequestQuery** - The query used to retrieve request data from your data source
+- ``AppRequestType`` - specifies the request type of the requests being imported.
+- ``DefaultTeam`` - If a request is being imported, and the tool cannot verify its Support Group, then the Support Group from this variable is used to assign the request.
+- ``DefaultOwner`` - If a request is being imported, and the tool cannot verify its Owner, then the Analyst ID from this variable is used to assign the request.
+- ``DefaultPriority`` - If a request is being imported, and the tool cannot verify its Priority, then the Priority from this variable is used to escalate the request.
+- ``DefaultService`` - If a request is being imported, and the tool cannot verify its Service from the mapping, then the Service from this variable is used to log the request.
+- ``DefaultCatalog`` - If the DefaultService (above) is being used for a record, then populating this with the primary key of the Catalog Item set against the Service for the Request Type being imported will ensure that the Catalog Item, and associated BPM Workflow, will be used when creating the Request. NOTE - the Catalog Item Primary Key value must be for the default language record, and not a translated catalog item record.
+- ``RequestQuery`` - The query used to retrieve request data from your data source
     - When using a SQL source, this would be a SQL query
     - When using an ODBC source, this query would be specific to that ODBC connector, for example:
     - When the ODBC is using CSV files as its data source, the RequestQuery string may look like: SELECT * FROM requestImport.csv
     - When the ODBC is using The Microsoft Excel driver, and therefore an XLS or XLSX files as its data source, the RequestQuery string may look like the following, where [requestData$] refers to the worksheet in the spreadsheet that contains the request data: SELECT * FROM [requestData$]
     - IMPORTANT NOTE - When using an ODBC source to connect to CSV or Excel spreadsheets using the Microsoft Excel ODBC Driver, the SQL Query will not properly support DISTINCT or UNION statements and if using these then your data may be truncated to 255 characters per column. This is a limitation in the Microsoft Excel ODBC Driver and not this tool. The tool has extra code to help with this limitation and prevent duplication of records.
-- **RequestReferenceColumn** - This defines the column returned by the above query that holds the friendly name of the request reference
-- **RequestGUID** - This defines the column returned by the above query that holds the ID of the request reference. Depending on your data source, this may be the same as RequestReferenceColumn. This is used when searching for import request specific historic update data.
-- **ParentRequestRefColumn** - This defines the column returned by the above query that holds the ID of the Hornbill Request Reference, for the request that should be linked to the request being imported.
-- **CoreFieldMapping** - The core fields used by the API calls to raise requests within Service Manager, and how the imported data should be mapped into these fields.
+- ``RequestReferenceColumn`` - This defines the column returned by the above query that holds the friendly name of the request reference
+- ``RequestGUID`` - This defines the column returned by the above query that holds the ID of the request reference. Depending on your data source, this may be the same as RequestReferenceColumn. This is used when searching for import request specific historic update data.
+- ``ParentRequestRefColumn`` - This defines the column returned by the above query that holds the ID of the Hornbill Request Reference, for the request that should be linked to the request being imported.
+- ``CoreFieldMapping`` - The core fields used by the API calls to raise requests within Service Manager, and how the imported data should be mapped into these fields.
     - Any value wrapped with [] will be populated with the corresponding response from the request Query
     - Any Other Value is treated literally as the written example:
-        - "h_summary":"[itsm_title]", - the value of itsm_title is taken from the SQL output and populated within this field
-        - "h_description":"Incident Reference: [oldCallRef]\n\n[updatetxt]", - the request description would be populated with "Incident Reference: ", followed by the imported request reference, 2 new lines then the description text from the request.
+        - ``"h_summary":"{{.itsm_title}}"``, - the value of itsm_title is taken from the SQL output and populated within this field
+        - ``"h_description":"Incident Reference: [oldCallRef]\n\n[updatetxt]"``, - the request description would be populated with "Incident Reference: ", followed by the imported request reference, 2 new lines then the description text from the request.
 - Any Hornbill Date Field being populated should have a datetime stamp passed to it, in the following format: YYYY-MM-DD HH:MM:SS
-- Note: "h_dateclosed":"[closedatex]", - opencall.closedatex is used to hold the date a request will come off hold. This must be populated if you are importing requests from in an On-Hold or Closed status.
-- Note: "h_custom_*" - if you're mapping data to any of the custom fields in the CoreFieldMapping, then you also MUST map the data into the corresponding custom field in the AdditionalFieldMapping.
+- Note: ``"h_dateclosed":"{{.closedatex}}"``, - opencall.closedatex is used to hold the date a request will come off hold. This must be populated if you are importing requests from in an On-Hold or Closed status.
+- Note: ``"h_custom_*"`` - if you're mapping data to any of the custom fields in the CoreFieldMapping, then you also MUST map the data into the corresponding custom field in the AdditionalFieldMapping.
 - Core Fields that can resolve associated record from passed-through value:
-    - "h_site_id":"[site]", - When a string is passed to the site field, the script attempts to resolve the given site name against the Site entity, and populates the request with the correct site information. If the site cannot be resolved, the site details are not populated for the request being imported.
-    - "h_fk_user_id":"[cust_id]", - As site, above, but resolves the original request customer against the users or contacts within Hornbill.
-    - "h_ownerid":"[owner]", - As site, above, but resolves the original request owner against the analysts within Hornbill.
-    - "h_category_id":"[probcode]", - As site, above, but uses additional CategoryMapping from the configuration, as detailed below.
-    - "h_closure_category_id":"[fixcode]", - As site, above, but uses additional ResolutionCategoryMapping from the configuration, as detailed below.
-    - "h_ownerid":"[owner]", - As site, above, but resolves the original request owner against the analysts within Hornbill.
-    - "h_fk_team_id":"[suppgroup]", - As site, above, but uses additional TeamMapping from the configuration, as detailed below.
-    - "h_fk_priorityid":"[priority]", - As site, above, but uses additional PriorityMapping from the configuration, as detailed below.
-    - "h_fk_service_id":[serviceid]" - As site, above, but uses additional ServiceMapping from the configuration, as detailed below.
-    - "h_catalog_id":[serviceid]" - As site, above, but uses additional ServiceCatalogItemMapping from the configuration, as detailed below.
+    - ``"h_site_id":"{{.site}}"``, - When a string is passed to the site field, the script attempts to resolve the given site name against the Site entity, and populates the request with the correct site information. If the site cannot be resolved, the site details are not populated for the request being imported.
+    - ``"h_fk_user_id":"{{.cust_id}}"``, - As site, above, but resolves the original request customer against the users or contacts within Hornbill.
+    - ``"h_ownerid":"[owner]"``, - As site, above, but resolves the original request owner against the analysts within Hornbill.
+    - ``"h_category_id":"[probcode]"``, - As site, above, but uses additional CategoryMapping from the configuration, as detailed below.
+    - ``"h_closure_category_id":"[fixcode]"``, - As site, above, but uses additional ResolutionCategoryMapping from the configuration, as detailed below.
+    - ``"h_ownerid":"[owner]"``, - As site, above, but resolves the original request owner against the analysts within Hornbill.
+    - ``"h_fk_team_id":"[suppgroup]"``, - As site, above, but uses additional TeamMapping from the configuration, as detailed below.
+    - ``"h_fk_priorityid":"[priority]"``, - As site, above, but uses additional PriorityMapping from the configuration, as detailed below.
+    - ``"h_fk_service_id":[serviceid]"`` - As site, above, but uses additional ServiceMapping from the configuration, as detailed below.
+    - ``"h_catalog_id":[serviceid]"`` - As site, above, but uses additional ServiceCatalogItemMapping from the configuration, as detailed below.
+    :::tip
+    Field names are all **case sensitive**.
+    :::
 - AdditionalFieldMapping - Contains additional columns that can be stored against the new request record. Mapping rules are as above.
 - PublishedMapping - Contains additional configuration to allow the publishing of Problem and Known Error records being imported:
     - Publish - Boolean, whether or not to publish the imported records
@@ -348,25 +355,25 @@ A JSON array of objects that contain request-type specific configuration.
     - LastUpdated - The datetime that the published record was last updated
 - RequestHistoricUpdateQuery - The query used to retrieve request diary update data from your data source. To inject the request GUID as found in the rows returned by the RequestQuery, add {RequestGUID} in to the appropriate clause. For example, in a CSV import this may look like: SELECT * FROM diaryImport.csv WHERE CALLREFERENCE = '{RequestGUID}'. If this as an empty string, the tool will not try to add any historic update records.
 - HistoricUpdateMapping - The fields used by the API calls to store historic update records within Service Manager, and how the imported data should be mapped in to these fields. See **CoreFieldMapping** above for more information on how these should be mapped.
-- **PriorityMapping**
+- ``PriorityMapping**
 Allows for the mapping of Priorities between your source data and Hornbill Service Manager, where the left-side properties list the Priorities from the import source, and the right-side values are the corresponding Priorities from Hornbill that should be used when escalating the new requests.
-- **TeamMapping**
+- ``TeamMapping**
 Allows for the mapping of Support Groups/Team between your source data and Hornbill Service Manager, where the left-side properties list the Support Group ID's from your source data, and the right-side values are the corresponding Team names from Hornbill that should be used when assigning the new requests.
 
-- **CategoryMapping**
+- ``CategoryMapping**
 Allows for the mapping of Problem Profiles/Request Categories between your source data and Hornbill Service Manager, where the left-side properties list the Profile Codes from your source data, and the right-side values are the corresponding Profile Codes from Hornbill that should be used when categorizing the new requests.
 
-- **OwnerMapping**
+- ``OwnerMapping**
 Allows for the mapping of Owner IDs between your source data and Hornbill Service Manager, where the left-side properties list the Owner IDs from your source data, and the right-side values are the corresponding User IDs from Hornbill that should be used when assigning the imported requests.
 
-- **ResolutionCategoryMapping**
+- ``ResolutionCategoryMapping**
 Allows for the mapping of Resolution Profiles/Resolution Categories between your source data and Hornbill Service Manager, where the left-side properties list the Resolution Codes from your source data, and the right-side values are the corresponding Resolution Codes from Hornbill that should be used when applying Resolution Categories to the newly logged requests.
 
-- **ServiceMapping**
+- ``ServiceMapping**
 Allows for the mapping of Services between your source data and Hornbill Service Manager, where the left-side properties list the Service names from your source data, and the right-side values are the corresponding Services from Hornbill that should be used when raising the new requests.
 
-- **ServiceCatalogItemMapping**
+- ``ServiceCatalogItemMapping**
 Allows for the mapping of Services between your source data and Hornbill Service Manager, where the left-side properties list the Service Catalog Item names from your source data, and the right-side values are the corresponding primary keys (integer values) for the default language Catalog Item records from Hornbill that should be used when raising the new requests.
 
-- **StatusMapping**
+- ``StatusMapping**
 Allows for the mapping of Request Statuses between your source data and Hornbill Service Manager, where the left-side properties list the Status IDs from your source data, and the right-side values are the corresponding Status IDs from Hornbill that should be used when importing the requests.

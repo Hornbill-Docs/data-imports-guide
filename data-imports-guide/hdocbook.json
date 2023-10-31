@@ -348,6 +348,26 @@
         "expand": true,
         "items": [
           {
+            "text": "Introduction",
+            "link": "data-imports-guide/document-manager/overview"
+          },
+          {
+            "text": "Authentication",
+            "link": "data-imports-guide/document-manager/authentication"
+          },
+          {
+            "text": "Configuration",
+            "link": "data-imports-guide/document-manager/configuration"
+          },
+          {
+            "text": "Running an Import",
+            "link": "data-imports-guide/document-manager/command"
+          },
+          {
+            "text":"Debugging",
+            "link": "data-imports-guide/document-manager/debugging"
+          },
+          {
             "text": "Documents",
             "items": [
               {

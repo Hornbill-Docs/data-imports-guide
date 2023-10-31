@@ -2,7 +2,13 @@
 
 ## Configuration Overview
 
-A demonstration configuration file is provided within the package, which includes configuration for importing call data from Supportworks 7.6.x running ITSM Enterprise 3.6.x. If a configuration file is not specified as a command line argument when executing the tool, then a default configuration file named conf.json, containing the correct JSON, must exist. The following configuration file contains the configuration elements required when importing Supportworks call data:
+The options and configuration of imports using this utility are saved in one or more [JSON (JavaScript Object Notation)](https://www.json.org/json-en.html) files in the folder where the utility executable resides.
+
+A demonstration configuration file is provided within the package, which includes configuration for importing call data from Supportworks 7.6.x running ITSM Enterprise 3.6.x. This can be used as a template from which to build your import configurations.
+
+:::tip
+The utility will default to `conf.json` if a configuration file is not specified as a command line argument
+:::
 
 ### Example Configuration File
 
@@ -598,21 +604,21 @@ Click "Read More" to expand this section and show an example conf.json file
  }
  ```
 
-## What do I put in the Configuration file?
-### HBConfig
+### Configuration Example
+#### **Hornbill Instance Specific Configuration Properties**
 Connection information for the Hornbill instance:
 
 - "InstanceID" - This is the name of your Hornbill instance and can be found within the URL you use to navigate to it: live.hornbill.com/[instance name]/. This value is case sensitive.
 - "UserName" - Instance User Name with which the tool will log the new requests
 - "Password" - Instance Password for the above User
 
-### SWServerAddress
+#### **SWServerAddress**
 The address of the Supportworks Server. If this tool is to be run on the Supportworks Server, then this should be set to localhost.
 
-### AttachmentRoot
+#### **AttachmentRoot**
 This is the location of the Supportworks Call File Attachment Store.
 
-### SWSystemDBConf
+#### **SWSystemDBConf**
 Contains the connection information for the Supportworks cache database (sw_systemdb).
 
 - "Driver" the driver to use to connect to the sw_systemdb database:
@@ -621,7 +627,7 @@ Contains the connection information for the Supportworks cache database (sw_syst
 - "UserName" Username for a user that has read access to the SQL database from the location of the tool
 - "Password" Password for above User Name
 
-### SWAppDBConf
+#### **SWAppDBConf**
 Contains the connection information for the Supportworks application database (swdata).
 
 - "Driver" the driver to use to connect to the database that holds the Supportworks application information:
@@ -634,27 +640,27 @@ Contains the connection information for the Supportworks application database (s
 - "Port" SQL port (5002 if the data is hosted on the Supportworks server)
 - "Encrypt" Boolean value to specify whether the connection between the script and the database should be encrypted. NOTE: There is a bug in SQL Server 2008 and below that causes the connection to fail if the connection is encrypted. Only set this to true if your SQL Server has been patched accordingly.
 
-### CustomerType
+#### **CustomerType**
 Should contain an integer value of 0 or 1, to determine the customer type for the records being imported:
 
 - 0 - Hornbill Users
 - 1 - Hornbill Contacts
 
-### SMProfileCodeSeperator
+#### **SMProfileCodeSeperator**
 A string, to specify the Profile Code separator character in use on your Service Manager instance. By default this is a :
 
-### RelatedRequestQuery
+#### **RelatedRequestQuery**
 The SQL query to run to return request associations from Supportworks, to allow associated imported requests to be linked in Service Manager. The output of the SQL query needs to consist of the following columns:
 
 - parentRequest : holds the Supportworks request reference of the parent request
 - childRequest : holds the Supportworks request reference of the child request
 
-### CallDiaryQuery
+#### **CallDiaryQuery**
 The query to retrieve call diare entries, used when importing historic call update. The default value is below. where ``[sourceref]`` will be replaced by the Supportworks call reference number by the tool:
 
 ``SELECT updatetimex, repid, groupid, udsource, udcode, udtype, updatetxt, udindex, timespent FROM updatedb WHERE callref = [sourceref]``
 
-### RequestTypesToImport
+#### **RequestTypesToImport**
 A JSON array of objects that contain request-type specific configuration.
 
 - Description - a string that allows you to describe the current request type object within the array. This is not used by the tool, so can contain any text string.
@@ -683,38 +689,38 @@ A JSON array of objects that contain request-type specific configuration.
         - "h_fk_priorityid":"[priority]", - As site, above, but uses additional PriorityMapping from the configuration, as detailed below.
 - **AdditionalFieldMapping** - Contains additional columns that can be stored against the new request record. Mapping rules are as above.
 
-### PriorityMapping
+#### **PriorityMapping**
 Allows for the mapping of Priorities between Supportworks and Hornbill Service Manager, where the left-side properties list the Priorities from Supportworks, and the right-side values are the corresponding Priorities from Hornbill that should be used when escalating the new requests.
 
 The following query will be helpful when listing the Supportworks Priorities that exist and therefore need to be mapped in the configuration: ``SELECT DISTINCT priority FROM opencall``
 
-### TeamMapping
+#### **TeamMapping**
 Allows for the mapping of Support Groups/Team between Supportworks and Hornbill Service Manager, where the left-side properties list the Support Group ID's (not the Group Name!) from Supportworks, and the right-side values are the corresponding Team names from Hornbill that should be used when assigning the new requests.
 
 The following query will be helpful when listing the Supportworks Teams that exist and therefore need to be mapped in the configuration: ``SELECT DISTINCT suppgroup FROM opencall``
 
-### CategoryMapping
+#### **CategoryMapping**
 Allows for the mapping of Problem Profiles/Request Categories between Supportworks and Hornbill Service Manager, where the left-side properties list the Profile Codes (not the descriptions!) from Supportworks, and the right-side values are the corresponding Profile Codes (again, not the descriptions!) from Hornbill that should be used when categorizing the new requests.
 
 The following query will be helpful when listing all the Supportworks Profile Codes (Logging Categories) that have ever been used against Supportworks calls: ``SELECT DISTINCT probcode from opencall``
 
 This can be compared with the contents of the "probcode" table which includes the corresponding descriptions. The descriptions will help you understand what the codes relate to and therefore create suitable mappings: ``SELECT * FROM probcode``
 
-### ResolutionCategoryMapping
+#### **ResolutionCategoryMapping**
 Allows for the mapping of Resolution Profiles/Resolution Categories between Supportworks and Hornbill Service Manager, where the left-side properties list the Resolution Codes (not the descriptions!) from Supportworks, and the right-side values are the corresponding Resolution Codes (again, not the descriptions!) from Hornbill that should be used when applying Resolution Categories to the newly logged requests.
 
 The following query will be helpful when listing all the Supportworks Resolution Codes (Resolution Categories) that have ever been used against Supportworks calls: ``SELECT DISTINCT fixcode from opencall``
 
 This can be compared with the contents of the "fixcode" table which includes the corresponding descriptions. The descriptions will help you understand what the codes relate to and therefore create suitable mappings: ``SELECT * FROM fixcode``
 
-### ServiceMapping
+#### **ServiceMapping**
 Allows for the mapping of Services between Supportworks and Hornbill Service Manager, where the left-side properties list the Service names from Supportworks, and the right-side values are the corresponding Services from Hornbill that should be used when raising the new requests.
 
 The following query will be helpful when listing the Supportworks Services that exist and therefore need to be mapped in the configuration: ``SELECT DISTINCT sc_folio.service_name from opencall JOIN sc_folio ON sc_folio.fk_cmdb_id = opencall.itsm_fk_service``
 
 Not all versions of Supportworks include the concept of services. Even in versions that do, it's possible for a call in Supportworks to exist without an associated service. In this scenario it's typical to map all calls in Supportworks without a service to a Hornbill Service such as "Imported Requests" or another preferred service.
 
-### StatusMapping
+#### **StatusMapping**
 Allows for the mapping of Request Statuses between Supportworks and Hornbill Service Manager, where the left-side properties list the Status IDs from Supportworks, and the right-side values are the corresponding Status IDs from Hornbill that should be used when importing the requests.
 
 The configuration file comes pre-populated with suggested mappings between the Supportworks and Service Manager statuses.
