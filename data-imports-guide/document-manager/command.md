@@ -29,7 +29,7 @@ The authentication information can only be decrypted on the computer (physical o
 
 ## Testing Overview
 
-There is no substitute for hands-on experience when becoming familiar with the Hornbill import utilities. The Asset Import utility accepts and understands a number of [command line arguments](https://docs-internal.hornbill.com/data-imports-guide/assets/command#command-line-arguments) that can be used when running the utility from the Windows command line or PowerShell.
+There is no substitute for hands-on experience when becoming familiar with the Hornbill import utilities. The Asset Import utility accepts and understands a number of [command line arguments](https://docs-internal.hornbill.com/data-imports-guide/document-manager/command#command-line-arguments) that can be used when running the utility from the Windows command line or PowerShell.
 
 :::tip
 The most important argument when testing is `-dryrun=true`. When this is provided, no documents will be sent to Hornbill. Instead, all import requests that would have been made into Hornbill are output to a log file, including input parameters, which provides you with an opportunity to review their content and understand any error messages that may occur.
@@ -39,7 +39,7 @@ Below are some high level steps to help you build confidence in your configurati
 
 1. In the configuration, write your query accordingly to target a single or small set of document records. It’s good practice to initially test against a single, or small set of, objects, as this allows the dryrun to complete quicker and there is less log content to review.
 2. Perform a dryrun (by executing the utility along with the `-dryrun=true` command line parameter) - this allows you to confirm that the configuration is correct and that a connection to the source database can be established, without importing any asset data into your Hornbill instance.
-3. Review the commind line output and log file for any errors or warnings, and where necessary check and rectify any errors against the Common Error Messages listed in the [Troubleshooting Document Imports](/data-imports-guide/document-manager/debuggging) section of this book.
+3. Review the commind line output and log file for any errors or warnings, and where necessary check and rectify any errors against the Common Error Messages listed in the [Troubleshooting Document Imports](/data-imports-guide/document-manager/debugging) section of this book.
 4. Continue with dryrun tests until you are happy that all the errors are accounted for.
 5. Perform a live import against a single asset record (set `-dryrun=false`).
 6. Review the imported document record in Document Manager, and check all properties are as expected i.e. Document tag contains a valid Document tag etc.
@@ -47,7 +47,7 @@ Below are some high level steps to help you build confidence in your configurati
 8. Loop through steps 5 - 7 as many times as is necessary until you are happy with the information being transported into the Document Manager document record properties.
 9. Amend the query to target the asset objects required for a full import.
 10. Perform a dryrun
-11. Review the commind line output and log file for any errors or warnings, and where necessary check and rectify any errors against Common Error Messages listed in the [Troubleshooting Document Imports](/data-imports-guide/document-manager/debuggging) section of this book.
+11. Review the commind line output and log file for any errors or warnings, and where necessary check and rectify any errors against Common Error Messages listed in the [Troubleshooting Document Imports](/data-imports-guide/document-manager/debugging) section of this book.
 12. Continue with dryrun tests until you are happy that all the errors are accounted for.
 
 ## Command Line Examples

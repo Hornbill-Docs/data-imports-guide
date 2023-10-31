@@ -8,7 +8,7 @@
 - concurrent - defaults to 1. This is to specify the number of requests that should be imported concurrently, and can be an integer between 1 and 10 (inclusive). 1 is the slowest level of import, but does not affect performance of your Hornbill instance, and 10 will process the import more quickly but may affect performance of your instance.
 - attachments - defaults to true. By default, all attachments associated with the tasks that you import will be imported in to Service Manager and associated with the relevant requests. Set this to false to prevent any file attachments being imported.
 
-## Testing
+## Testing Overview
 If you run the application with the argument dryrun=true then no requests will be logged - the XML used to raise requests will instead be saved in to the log file so you can ensure the data mappings are correct before running the import.
 
 ``goServiceNowRequestImport.exe -dryrun=true``

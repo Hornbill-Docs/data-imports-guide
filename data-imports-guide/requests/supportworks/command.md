@@ -11,7 +11,10 @@
 ## Testing Overview
 
 There is no substitute for hands-on experience when becoming familiar with the Hornbill import utilities.
-The Supportworks Request import accepts and understands a number of "Command Line Parameters" that can be used when running the utility from the command line. The most important one for testing is the -dryrun=true command. When this is specified, no information will be written to Hornbill and it allows you to confirm that the configuration is correct and that a connection to your Supportworks server can be established. A dryrun still outputs a log file which provides you with an opportunity to review and understand any error messages that may occur.
+The Supportworks Request import accepts and understands a number of [command line arguments](https://docs-internal.hornbill.com/data-imports-guide/requests/supportworks/command#command-line-arguments) that can be used when running the utility from the command line. 
+:::tip
+The most important one for testing is the `-dryrun=true` command. When this is specified, no information will be written to Hornbill and it allows you to confirm that the configuration is correct and that a connection to your Supportworks server can be established. A dryrun still outputs a log file which provides you with an opportunity to review and understand any error messages that may occur.
+:::
 
 **Suggested Testing Approach**
 Below are some high level steps to help you build confidence in your configuration:

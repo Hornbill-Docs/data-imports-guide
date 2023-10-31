@@ -366,58 +366,6 @@
           {
             "text":"Debugging",
             "link": "data-imports-guide/document-manager/debugging"
-          },
-          {
-            "text": "Documents",
-            "items": [
-              {
-                "text": "My Documents",
-                "items": [
-                  {
-                    "text": "Introduction",
-                    "link": "data-imports-guide/document-manager/my-documents/overview"
-                  },
-                  {
-                    "text": "Create a Document",
-                    "link": "data-imports-guide/document-manager/my-documents/create"
-                  },
-                  {
-                    "text": "Document View",
-                    "link": "data-imports-guide/document-manager/my-documents/view"
-                  }
-                ]             
-              },
-              {
-                "text": "Libraries",
-                "items": [
-                  {
-                    "text": "Introduction",
-                    "link": "data-imports-guide/document-manager/libraries/overview"
-                  },
-                  {
-                    "text": "Create a Library",
-                    "link": "data-imports-guide/document-manager/libraries/create"
-                  }
-                ]
-              },
-              {
-                "text": "Tags",
-                "items": [
-                  {
-                    "text": "Introduction",
-                    "link": "data-imports-guide/document-manager/tags/overview"
-                  },
-                  {
-                    "text": "Tag Cloud",
-                    "link": "data-imports-guide/document-manager/tags/cloud"
-                  },
-                  {
-                    "text": "Management",
-                    "link": "data-imports-guide/document-manager/tags/management"
-                  }
-                ]
-              }
-            ]
           }
         ]
       }
