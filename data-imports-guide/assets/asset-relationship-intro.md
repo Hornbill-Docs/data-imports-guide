@@ -10,11 +10,7 @@ The utility can be downloaded from [GitHub](https://github.com/hornbill/asset-re
 
 ## Installation
 
-- Once downloaded, the ZIP archive for the utility should be extracted into a new folder within the local user profile of the user who will run the tool - whether that be your user profile to manually run the utility or the profile of a service account that will be used to schedule the running of it. For example: `C:\Users\YourUserOrServiceAccountID\Hornbill\asset_rel_import`
-- Open conf.json and add in the necessary configration
-- Open a Command Line/Terminal as Administrator
-- Change Directory to the folder with the executable and config file `C:\Users\YourUserOrYourServiceAccountID\Hornbill\asset_rel_import`
-- Run the command : asset_rel_import.exe
+Once downloaded, the ZIP archive for the utility should be extracted into a new folder within the local user profile of the user who will run the tool - whether that be your user profile to manually run the utility or the profile of a service account that will be used to schedule the running of it. For example: `C:\Users\YourUserOrServiceAccountID\Hornbill\asset_rel_import`
 
 ## Updates
 

@@ -1,6 +1,4 @@
-# Authentication
-
-The Asset Relationship Import utility uses API Keys to authenticate all API calls into Hornbill instances, and KeySafe to securely store credentials for the asset data source.
+# Authorization
 
 ## API Keys
 
@@ -19,25 +17,34 @@ Please read the [API Key documentation](/esp-fundamentals/security/api-keys) and
 The service account that you create must be of type `User` (not `Basic`), and be granted the following roles:
 
 - **User Role** - Allows the utility to perform entity actions in the Hornbill platform.
-- **Asset Management User** - Allows the utility to create and update Asset Management records in Service Manager.
+- **Asset Management Usert** - Allows the utility to create and update Asset Management records in Service Manager.
 - **Hornbill Service Manager Integrations** - Enables a number of entity and stored query privileges. ***NOTE*** - This role is only intended for accounts that are used for integrations or to perform data imports, and should not be applied to interactive user accounts. 
 
-### API Key Rules
-
-The Asset Relationship Imports require access to the following Hornbill Platform and application APIs, and your [API Key rules](/esp-fundamentals/security/api-keys#api-key-rules) should reflect those, plus additional security hardening in the form of IP rules:
+## API Key Rules
 
 This utility uses ([API keys](https://docs.hornbill.com/esp-fundamentals/security/api-keys)):
 
 ```cmd
+activity:postMessage
+bpm:processSpawn2
+session:getApplicationOption
+admin:groupGetInfo
+admin:userGetInfo
 data:entityAddRecord
-data:entityDeleteRecord
+data:entityAttachFile
+data:entityBrowseRecords
+data:entityBrowseRecords2
 data:entityUpdateRecord
-data:getRecordCount
+data:profileCodeLookup
 data:queryExec
+mail:decodeCompositeMessage
+session:userLogoff
+session:userLogon
 system:logMessage
-apps/com.hornbill.servicemanager/Asset:linkAsset
-apps/com.hornbill.servicemanager/Asset:unlinkAsset
+apps/com.hornbill.servicemanager/RelationshipEntities:add
+apps/com.hornbill.servicemanager/Requests:holdRequest
 ```
+
 ## KeySafe
 
 For the import utility to access data from your source database, authentication credentials are required to be stored in KeySafe.
@@ -47,14 +54,3 @@ We recommend that you read the [KeySafe documentation](/esp-fundamentals/securit
 :::
 
 Once the relevant key has been created, you can then lock access to it down to the API Key created against your service account. See the [KeySafe documentation](/esp-fundamentals/security/keysafe#access-control-and-usability) for more information regarding this.
-
-### Key Types
-
-As the Asset Relationship Import utility supports the import of asset data from many different data sources as listed below for the following key type:
-
-* [Database Authentication](/data-imports-guide/assets/authentication#key-type-database-authentication) - Used for the following data sources:
-  * `mssql` - Microsoft SQL Server (2005 or above).
-  * `mysql` - MySQL 4.1 or above, or any version of MariaDB.
-  * `mysql320` - MySQL Server v3.2.0 to v4.0.
-  * `odbc` - ODBC driver.
-  * `swsql` - Supportworks SQL (Core Services v3.x).
