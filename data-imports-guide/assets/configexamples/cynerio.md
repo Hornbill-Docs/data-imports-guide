@@ -3,7 +3,7 @@
 The following is an example of the SourceConfig, AssetTypes and data mapping configuration that could be used to import computer-type assets from Cynerio.
 
 :::important
-The configuration example is provided as-is, and may not be suitable to import your organizations Cynerio asset data. We highly recommend that a Cynerio administrator review the filter, expand returned fields and mappings against your Cynerio account prior to using this in a production environment.
+The configuration example is provided as-is, and may not be suitable to import your organization's Cynerio asset data. We highly recommend that a Cynerio administrator review the filter, and expand returned fields and mappings against your Cynerio account before using this in a production environment.
 :::
 
 ```json

@@ -2,12 +2,16 @@
 
 ## Logs
 
-All logs are saved in the `log` folder, which can be found in the same location as the executable. The log file names contain the date and time the import was run, for example: `Asset_Import_2023-08-30T16-19-51+01-00.log`.
+All logs are saved in the `log` folder, which can be found in the same location as the executable. The log file names contain the date and time the import was run, for example `Asset_Import_2023-08-30T16-19-51+01-00.log`.
 
 ## Common Errors
 
-Below are some common errors that you may encounter in the user imports log file and what they mean:
+Below are some common errors that you may encounter in the imports log file and what they mean:
 
+* `Error processing authentication details: Decryption of authentication data failed: Key not valid for use in specified state.`
+  * This error can occur for either of the below states and can be resolved by either running the import as the same session user and on the same computer that the original import authentication took place, or by [resetting the encrypted credentials](/data-imports-guide/assets/command#resetting-encrypted-credentials):
+    * When the user who runs the import is not the same user who first ran the import;
+    * When the import is run on a different computer from the one that originally performed the authentication details encryption. 
 * `Error Decoding Configuration File:...`
   * This will typically be due to a missing quote (") or comma (,) somewhere in the configuration file. This is where an online JSON viewer/validator can come in handy rather than trawling the conf file looking for that proverbial needle in a haystack.
 * `Get https://api.github.com/repos/hornbill/asset/tags: dial tcp xx.xx.xx.xx:xxx: ...`

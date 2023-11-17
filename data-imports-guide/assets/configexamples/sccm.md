@@ -4,11 +4,11 @@ The following is an example of the SourceConfig, AssetTypes and data mapping con
 
 In this example:
 
-* Asset records found against the Servers asset type will be verified using the SystemSerialNumber column from the DB query, and the h_serial_number column within the AssetsComputer entity in your Hornbill instance.
+* Asset records found against the Server asset type will be verified using the SystemSerialNumber column from the DB query, and the h_serial_number column within the AssetsComputer entity in your Hornbill instance.
 * Asset records found against all other defined asset types will be verified using the MachineName column from the DB query, and the h_namecolumn within the Asset entity in your Hornbill instance.
 
 :::important
-The configuration example is provided as-is, and may not be suitable to import your organizations SCCM asset data. We highly recommend that a DBA review the SQL clauses against your SCCM database prior to using this in a production environment.
+The configuration example is provided as-is, and may not be suitable to import your organization's SCCM asset data. We highly recommend that a DBA review the SQL clauses against your SCCM database before using this in a production environment.
 :::
 
 ```json

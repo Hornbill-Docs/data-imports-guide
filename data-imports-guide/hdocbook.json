@@ -4,7 +4,7 @@
   "description": "Guides to help you import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "audience": [
     "public"
   ],
@@ -297,7 +297,7 @@
                     "link": "data-imports-guide/requests/from-servicenow/command"
                   },
                   {
-                    "text":"Debugging",
+                    "text": "Debugging",
                     "link": "data-imports-guide/requests/from-servicenow/debugging"
                   }
                 ]
@@ -305,27 +305,27 @@
               {
                 "text": "From Supportworks",
                 "items": [
-                {
-                  "text": "Introduction",
-                  "link": "data-imports-guide/requests/supportworks/intro"
-                },
-                {
-                  "text": "Authorization",
-                  "link": "data-imports-guide/requests/supportworks/authorization"
-                },
-                {
-                  "text": "Configuration",
-                  "link": "data-imports-guide/requests/supportworks/configuration"
-                },
-                {
-                  "text": "Executing a Request",
-                  "link": "data-imports-guide/requests/supportworks/command"
-                },
-                {
-                  "text":"Debugging",
-                  "link": "data-imports-guide/requests/supportworks/debugging"
-                }
-              ]
+                  {
+                    "text": "Introduction",
+                    "link": "data-imports-guide/requests/supportworks/intro"
+                  },
+                  {
+                    "text": "Authorization",
+                    "link": "data-imports-guide/requests/supportworks/authorization"
+                  },
+                  {
+                    "text": "Configuration",
+                    "link": "data-imports-guide/requests/supportworks/configuration"
+                  },
+                  {
+                    "text": "Executing a Request",
+                    "link": "data-imports-guide/requests/supportworks/command"
+                  },
+                  {
+                    "text": "Debugging",
+                    "link": "data-imports-guide/requests/supportworks/debugging"
+                  }
+                ]
               }
             ]
           }
@@ -372,7 +372,7 @@
             "link": "data-imports-guide/document-manager/command"
           },
           {
-            "text":"Debugging",
+            "text": "Debugging",
             "link": "data-imports-guide/document-manager/debugging"
           }
         ]

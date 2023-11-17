@@ -8,7 +8,7 @@ For the utility to read, create and update records via the Hornbill API, it requ
 
 ### User
 
-Every action within Hornbill must be performed in the context of a user account. The user account must possess roles for the platform and applications that you are granting access to via the import utility. The above comment about roles refers to the [Hornbill Security Model](/esp-fundamentals/security/account-types) when associating roles with user accounts. This security  measure prevents you from inflating your session rights, or granting a user more rights than you have yourself.
+Every action within Hornbill must be performed in the context of a user account. The user account must possess roles for the platform and applications that you are granting access to via the import utility. The above comment about roles refers to the [Hornbill Security Model](/esp-fundamentals/security/account-types) when associating roles with user accounts. This security measure prevents you from inflating your session rights or granting a user more rights than you have yourself.
 
 :::important
 We strongly recommend that you create a Service Account in your Hornbill instance, and API Keys against that account which can then be used to perform the required API calls back into Hornbill. 
@@ -20,7 +20,7 @@ The service account that you create must be of type `User` (not `Basic`), and be
 
 - **User Role** - Allows the utility to perform entity actions in the Hornbill platform.
 - **Asset Management User** - Allows the utility to create and update Asset Management records in Service Manager.
-- **Hornbill Service Manager Integrations** - Enables a number of entity and stored query privileges. ***NOTE*** - This role is only intended for accounts that are used for integrations or to perform data imports, and should not be applied to interactive user accounts. 
+- **Hornbill Service Manager Integrations** - Grants several privileges for access to entities and the execution of stored queries. ***NOTE*** - This role is only intended for accounts that are used for integrations or to perform data imports, and should not be applied to interactive user accounts. 
 
 ### API Key Rules
 
@@ -50,11 +50,25 @@ Once the relevant key has been created, you can then lock access to it down to t
 
 ### Key Types
 
-As the Asset Relationship Import utility supports the import of asset data from many different data sources as listed below for the following key type:
+The Asset Relationship Import Utility supports a single KeySafe Key type of [Database Authentication](/data-imports-guide/assets/asset-relationship-auth#key-type-database-authentication) and supports the following database technologies: 
 
-* [Database Authentication](/data-imports-guide/assets/authentication#key-type-database-authentication) - Used for the following data sources:
-  * `mssql` - Microsoft SQL Server (2005 or above).
-  * `mysql` - MySQL 4.1 or above, or any version of MariaDB.
-  * `mysql320` - MySQL Server v3.2.0 to v4.0.
-  * `odbc` - ODBC driver.
-  * `swsql` - Supportworks SQL (Core Services v3.x).
+* `mssql` - Microsoft SQL Server (2005 or above).
+* `mysql` - MySQL 4.1 or above, or any version of MariaDB.
+* `mysql320` - MySQL Server v3.2.0 to v4.0.
+* `odbc` - ODBC driver.
+* `swsql` - Supportworks SQL (Core Services v3.x).
+
+### Key Type - Database Authentication
+
+* In Hornbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
+* Click `+ Create New Key`.
+* Choose a key type of `Database Authentication`.
+* Give the KeySafe key a Title.
+* Optionally add a Description.
+* Populate the following fields on the form:
+  * `Server` - The IP address or hostname of your database host.
+  * `Port` - The port used to connect to your database.
+  * `Database` - The database name/ID.
+  * `Username` - The username of the account that should be used to authenticate the connection to your database.
+  * `Password` - The password for the above account. 
+* Click `Create Key`.

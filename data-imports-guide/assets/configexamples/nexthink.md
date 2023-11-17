@@ -3,7 +3,7 @@
 The following is an example of the SourceConfig, AssetTypes and data mapping configuration that could be used to import computer-type assets from Nexthink.
 
 :::important
-The configuration example is provided as-is, and may not be suitable to import your organizations Nexthink asset data. We highly recommend that a Nexthink administrator review the query and mapping against your Nexthink account prior to using this in a production environment.
+The configuration example is provided as-is, and may not be suitable to import your organization's Nexthink asset data. We highly recommend that a Nexthink administrator review the query and mapping against your Nexthink account before using this in a production environment.
 :::
 
 ```json

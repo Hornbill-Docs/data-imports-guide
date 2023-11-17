@@ -5,7 +5,7 @@ The following is an example of the SourceConfig, AssetTypes and data mapping con
 In this example, asset records found against all defined asset types will be verified using the AssetName column from the DB query, and the h_name column within the Asset entity in your Hornbill instance.
 
 :::important
-The configuration example is provided as-is, and may not be suitable to import your organizations LanSweeper asset data. We highly recommend that a DBA review the SQL clauses against your LanSweeper database prior to using this in a production environment.
+The configuration example is provided as-is, and may not be suitable to import your organization's LanSweeper asset data. We highly recommend that a DBA review the SQL clauses against your LanSweeper database before using this in a production environment.
 :::
 
 ```json

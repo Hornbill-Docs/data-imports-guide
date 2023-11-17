@@ -8,7 +8,7 @@ For the utility to read, create and update records via the Hornbill API, it requ
 
 ### User
 
-Every action within Hornbill must be performed in the context of a user account. The user account must possess roles for the platform and applications that you are granting access to via the import utility. The above comment about roles refers to the [Hornbill Security Model](/esp-fundamentals/security/account-types) when associating roles with user accounts. This security  measure prevents you from inflating your session rights, or granting a user more rights than you have yourself.
+Every action within Hornbill must be performed in the context of a user account. The user account must possess roles for the platform and applications that you are granting access to via the import utility. The above comment about roles refers to the [Hornbill Security Model](/esp-fundamentals/security/account-types) when associating roles with user accounts. This security measure prevents you from inflating your session rights or granting a user more rights than you have yourself.
 
 :::important
 We strongly recommend that you create a Service Account in your Hornbill instance, and API Keys against that account which can then be used to perform the required API calls back into Hornbill. 
@@ -20,7 +20,7 @@ The service account that you create must be of type `User` (not `Basic`), and be
 
 - **User Role** - Allows the utility to perform entity actions in the Hornbill platform.
 - **Asset Management User** - Allows the utility to create and update Asset Management records in Service Manager.
-- **Hornbill Service Manager Integrations** - Enables a number of entity and stored query privileges. ***NOTE*** - This role is only intended for accounts that are used for integrations or to perform data imports, and should not be applied to interactive user accounts. 
+- **Hornbill Service Manager Integrations** - Grants several privileges for access to entities and the execution of stored queries. ***NOTE*** - This role is only intended for accounts that are used for integrations or to perform data imports, and should not be applied to interactive user accounts. 
 
 ### API Key Rules
 
@@ -70,7 +70,7 @@ As the Asset Import utility supports the import of asset data from many differen
 * [Username + Password](/data-imports-guide/assets/authentication#key-type-username-password) - Used for the following data sources:
   * `nexthink` - Nexthink.
 * [VMWare Workspace One UEM](/data-imports-guide/assets/authentication#key-type-vmware-workspace-one-uem) - Used for the following data sources:
-  * `workspaceone` - vmware Workspace One UEM.
+  * `workspaceone` - VMware Workspace One UEM.
 
 :::tip
 The `csv - CSV / Text file(s)` data source reads its data from the file system (local or network), and therefore does not require Keysafe keys.
@@ -78,7 +78,7 @@ The `csv - CSV / Text file(s)` data source reads its data from the file system (
 
 ### Key Type - Certero
 
-Keys of this type require a Certero API Key to be created against a user account that has permissions to fetch assets before the details can be stored in KeySafe, and eventually be used by the Asset Import Utility.
+Keys of this type require a Certero API Key to be created against a user account that has permission to fetch assets before the details can be stored in KeySafe, and eventually be used by the Asset Import Utility.
 
 * In Hornbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
 * Click `+ Create New Key`.
@@ -86,14 +86,14 @@ Keys of this type require a Certero API Key to be created against a user account
 * Give the KeySafe key a Title.
 * Optionally add a Description.
 * Populate the following fields on the form:
-  * `API Key Name` - The username for the API Key associated with a user account that has permissions to fetch assets.
-  * `API Key` -  An API Key associated with a user account that has permissions to fetch assets.
+  * `API Key Name` - The username for the API Key associated with a user account that has permission to fetch assets.
+  * `API Key` -  An API Key associated with a user account that has permission to fetch assets``.
   * `API Endpoint` - The API Endpoint for your Cerero account.
 * Click `Create Key`.
 
 ### Key Type - Cynerio
 
-Keys of this type require a Cynerio API Key to be created against a user account that has permissions to fetch assets before the details can be stored in KeySafe, and eventually be used by the Asset Import Utility.
+Keys of this type require a Cynerio API Key to be created against a user account that has permission to fetch assets before the details can be stored in KeySafe, and eventually be used by the Asset Import Utility.
 
 * In Hornbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
 * Click `+ Create New Key`.
@@ -101,8 +101,8 @@ Keys of this type require a Cynerio API Key to be created against a user account
 * Give the KeySafe key a Title.
 * Optionally add a Description.
 * Populate the following fields on the form:
-  * `Access Token URL` - Your Cynerio account specific authentication URL, in the format: `https://your-portal-login.cynerio.com`
-  * `API URL` - Your Cynerio account specific API endpoint URL, in the format: `https://your-cynerio-account.cyner.io`
+  * `Access Token URL` - Your Cynerio account-specific authentication URL, in the format: `https://your-portal-login.cynerio.com`
+  * `API URL` - Your Cynerio account-specific API endpoint URL, in the format: `https://your-cynerio-account.cyner.io`
   * `Client ID` -  The Client ID for your Cynerio integration application
   * `Client Secret` -  The Client Secret for your Cynerio integration application
 * Click `Create Key`.
@@ -183,8 +183,8 @@ VMware Workspace One UEM requires an oAuth Client to be created before the detai
 * Give the KeySafe key a Title.
 * Optionally add a Description.
 * Populate the following fields on the form:
-  * `Domain` - The Domain with your Workspace One UEM domain, for example: `https://cn1498.awmdm.com`.
-  * `Region` - The region ID where your VMware Workspace One UEM account is hosted. This can be found in the VMware Workspace One UEM URL, for example: `emea`.
+  * `Domain` - The Domain with your Workspace One UEM domain, for example, `https://cn1498.awmdm.com`.
+  * `Region` - The region ID where your VMware Workspace One UEM account is hosted. This can be found in the VMware Workspace One UEM URL, for example, `emea`.
   * `Client ID` - The Client ID of your VMware oAuth Client.
   * `Client Secret` - The Client Secret of your VMware oAuth Client.
 * Click `Create Key`.
