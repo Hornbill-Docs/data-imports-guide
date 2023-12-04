@@ -34,12 +34,29 @@ The utility will default to `conf.json` if a configuration file is not specified
       "PreserveState": false,
       "PreserveSubState": false,
       "PreserveOperationalState": false,
+      "AdditionalFilters": [
+        {
+          "Field": "osVersion",
+          "Operator": "REGEXMATCH",
+          "Value": "^[0-9]{1,}\\.[0-9]{1,}\\.[0-9]{1,}\\.[0-9]{1,}$"
+        },
+        {
+          "Field": "imei",
+          "Operator": "EMPTY"
+        }
+      ],
       "AssetIdentifier": {
         "SourceColumn": "SystemSerialNumber",
+        "SourceKey": "SourceDataPrimaryKey",
         "Entity": "AssetsComputer",
         "EntityColumn": "h_serial_number",
         "SourceContractColumn": "Contract",
-        "SourceSupplierColumn": "Supplier"
+        "SourceSupplierColumn": "Supplier",
+        "SharedWith": {
+          "AllowRemovals": true,
+          "UserIDField": "SharedWithSourceUserIDField",
+          "Query": ""
+        }
       }
     },
     {
@@ -278,8 +295,20 @@ During the import process assets of each type as defined below are retrieved fro
   * `SeenSince` - Type: `string` - Specifies the datetime filter for device search, which retrieves the devices that are seen after this datetime stamp.
 * `CynerioFilters` - Type: `object` - A list of fields and values to use when filtering the Cynerio asset API call resultsets by, in the following format:
   * `"CynerioFieldName":"ValueToMatch"`
+* `AdditionalFilters` - Type: `array` - A list of filter objects, to further filter the list of assets returned from `Cynerio`, `Intune` or `Google Workspace`. Each item in the list must match as `true` for the asset to be imported, and are defined as objects containing:
+  * `Field` - Type: `string` - The data source field ID to perform the filter against.
+  * `Operator` - Type: `string` - The operator to apply to the filter, can be one of:
+    * `ISEMPTY` - Is the field empty (an empty string or NULL value)
+    * `NOTEMPTY` - Does the field contain a value (so NOT an empty string or NULL value)
+    * `EQUALS` - The field contains an exact match to the `Value` defined below (case insensitive)
+    * `NOTEQUALS` - The field does not equal the `Value` defined below (case insensitive)
+    * `CONTAINS` - The field contains the `Value` defined below (case insensitive)
+    * `NOTCONTAINS` - The field does not the `Value` defined below (case insensitive)
+    * `REGEXMATCH` - The field matches the Regular Expression in the `Value` defined below
+  * `Value` - Used by the `EQUALS`, `NOTEQUALS`, `CONTAINS`, `NOTCONTAINS`, `REGEXMATCH` operators.
 * `AssetIdentifier` - Type: `object` - An object containing details to help in the identification of existing asset records in the Hornbill instance. If value in an imported records DBColumn matches the value in the EntityColumn of an asset in Hornbill (within the defined Entity), then the asset record will be updated rather than a new asset being created:
-  * `SourceColumn`  - Type: `string` - Specifies the unique identifier column from the source data query. This can be either a column name, or a Go Template. **NOTE:** Importing from Certero requires this to be a Go template.
+  * `SourceColumn` - Type: `string` - Specifies the unique identifier column from the source data query. This can be either a column name, or a Go Template. **NOTE:** Importing from Certero requires this to be a Go template.
+  * `SourceKey` - Type: `string` - The Primary Key field of the source asset records. Must be set when using the `SharedWith` feature, below.
   * `Entity` - Type: `string` - the Hornbill entity where data is stored, one of:
       * `Asset`
       * `AssetsComputer`
@@ -342,6 +371,11 @@ During the import process assets of each type as defined below are retrieved fro
       * `h_serial_number`
   * `SourceContractColumn` - Type: `string` - Specifies the unique identifier column from the database query - the data in this column of the query result should be the Contract ID within Hornbill (ie `C20200700001` from `/suppliermanager/suppliercontract/view/C20200700001/`; `'C20200700001' AS Contract` hardcoded in the SQL query)
   * `SourceSupplierColumn` - Type: `string` - Specifies the unique identifier column from the database query - the data in this column of the query result should be the Supplier ID within Hornbill (ie `###` from `suppliermanager/supplier/view/###/`)
+  * `SharedWith` - Type: `object` - Contains the configuration information that allows assets being imported from `Database` type data sources to be set as shared usage between one or more users:
+    * `AllowRemovals` - Type: `boolean` - When set to `true`, the utility will remove any users from the Shares With section of the asset being updated, when they are not listed in the source asset record. When set to `false`, the utility will NOT remove any shared used from the asset being updated. 
+    * `UserIDField` - Type: `string` - The name of the field that contains the User ID values from the `Query` below:
+    * `Query` - Type: `string` - The Query to run against database data source, to return your users associated to your asset record. Note, to inject the source Asset ID into your query, use `{{AssetID}}` in the appropriate part of your query. For example:
+      * `SELECT h_pk_asset_id, h_fk_userid FROM h_cmdb_assets_users WHERE h_fk_assetid = '{{AssetID}}'`
   * `SoftwareInventory` - Type: `object` - Details pertaining to the import of software inventory records for the specified asset type:
       * `AssetIDColumn` - Type: `string` - The column from the asset type query that contains its primary key. This can be either a column name, or a Go Template. **NOTE**: this is ignored when performing imports from **Workspace One**. 
       * `AppIDColumn` - Type: `string` - the column from the Software Inventory that holds the software unique ID. This can be either a column name, or a Go Template. **NOTE**: this is ignored when performing imports from **Certero, CSV, LDAP or Nexthink** - the App ID to match is a concatenation of the publisher, name and version fields (no spaces between them)
