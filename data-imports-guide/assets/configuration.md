@@ -7,7 +7,7 @@ The options and configuration of imports using this utility are saved in one or 
 We have provided a selection of default configuration files, one for each of the systems that Hornbill customers most often import asset data from, in each of the downloadable archives. This can be used as a template from which to build your import configurations.
 
 :::tip
-The utility will default to `conf.json` if a configuration file is not specified as a command line argument
+The utility will default to `conf.json` if a configuration file is not specified as a command line argument.
 :::
 
 ## Example Configuration

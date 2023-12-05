@@ -29,6 +29,7 @@ The Asset Relationship Imports require access to the following Hornbill Platform
 This utility uses ([API keys](https://docs.hornbill.com/esp-fundamentals/security/api-keys)):
 
 ```cmd
+admin:keysafeGetKey
 data:entityAddRecord
 data:entityDeleteRecord
 data:entityUpdateRecord
@@ -38,6 +39,7 @@ system:logMessage
 apps/com.hornbill.servicemanager/Asset:linkAsset
 apps/com.hornbill.servicemanager/Asset:unlinkAsset
 ```
+
 ## KeySafe
 
 For the import utility to access data from your source database, authentication credentials are required to be stored in KeySafe.
@@ -50,13 +52,13 @@ Once the relevant key has been created, you can then lock access to it down to t
 
 ### Key Types
 
-The Asset Relationship Import Utility supports a single KeySafe Key type of [Database Authentication](/data-imports-guide/assets/asset-relationship-auth#key-type-database-authentication) and supports the following database technologies: 
+The Asset Relationship Import Utility supports a single KeySafe Key type of [Database Authentication](/data-imports-guide/asset-relationships/authentication#key-type-database-authentication), and supports the following database technologies: 
 
 * `mssql` - Microsoft SQL Server (2005 or above).
 * `mysql` - MySQL 4.1 or above, or any version of MariaDB.
 * `mysql320` - MySQL Server v3.2.0 to v4.0.
 * `odbc` - ODBC driver.
-* `swsql` - Supportworks SQL (Core Services v3.x).
+* `swsql` - Supportworks SQL (Core Services >= v3.x).
 
 ### Key Type - Database Authentication
 

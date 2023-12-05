@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Asset Relationship** utility provides Hornbill customers with a safe and secure way to manage relationships between assets within Hornbill linked assets in the Service Manager application on the Hornbill platform, as well as dependencies and imapct record in Configuration Manager.
+The **Asset Relationship Import** utility provides Hornbill customers with a safe and secure way to manage relationships between assets within Hornbill Service Manager, in the form of linked assets, dependencies and impact records.
 
 ## Download
 

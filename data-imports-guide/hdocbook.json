@@ -4,7 +4,7 @@
   "description": "Guides to help you import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "audience": [
     "public"
   ],
@@ -216,32 +216,30 @@
               {
                 "text": "Asset Relationships",
                 "expand": false,
-                "draft": true,
-                "link": "",
                 "items": [
                   {
                     "text": "Introduction",
-                    "link": "data-imports-guide/assets/asset-relationship-intro"
+                    "link": "data-imports-guide/asset-relationships/overview"
                   },
                   {
                     "text": "Authentication",
-                    "link": "data-imports-guide/assets/asset-relationship-auth"
+                    "link": "data-imports-guide/asset-relationships/authentication"
                   },
                   {
                     "text": "Configuration",
-                    "link": "data-imports-guide/assets/asset-relationship-config"
+                    "link": "data-imports-guide/asset-relationships/configuration"
                   },
                   {
                     "text": "Running an Import",
-                    "link": "data-imports-guide/assets/asset-relationship-command"
+                    "link": "data-imports-guide/asset-relationships/command"
                   },
                   {
                     "text": "Scheduling the Import",
-                    "link": "data-imports-guide/assets/asset-relationship-scheduling"
+                    "link": "data-imports-guide/asset-relationships/scheduling"
                   },
                   {
                     "text": "Troubleshooting",
-                    "link": "data-imports-guide/assets/asset-relationship-debugging"
+                    "link": "data-imports-guide/asset-relationships/debugging"
                   }
                 ]
               }
