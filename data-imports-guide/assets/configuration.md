@@ -373,7 +373,15 @@ During the import process assets of each type as defined below are retrieved fro
   * `SourceSupplierColumn` - Type: `string` - Specifies the unique identifier column from the database query - the data in this column of the query result should be the Supplier ID within Hornbill (ie `###` from `suppliermanager/supplier/view/###/`)
   * `SharedWith` - Type: `object` - Contains the configuration information that allows assets being imported from `Database` type data sources to be set as shared usage between one or more users:
     * `AllowRemovals` - Type: `boolean` - When set to `true`, the utility will remove any users from the Shares With section of the asset being updated, when they are not listed in the source asset record. When set to `false`, the utility will NOT remove any shared used from the asset being updated. 
-    * `UserIDField` - Type: `string` - The name of the field that contains the User ID values from the `Query` below:
+    * `UserIDField` - Type: `string` - The name of the field that contains the User ID values from the `Query` below.
+    * `ShareType` - Type: `string` - The type of shares to manage. Can be one of:
+      * `All Contacts`
+      * `Company`
+      * `Contact`
+      * `Customer Organization`
+      * `Division`
+      * `Team`
+      * `User`
     * `Query` - Type: `string` - The Query to run against database data source, to return your users associated to your asset record. Note, to inject the source Asset ID into your query, use `{{AssetID}}` in the appropriate part of your query. For example:
       * `SELECT h_pk_asset_id, h_fk_userid FROM h_cmdb_assets_users WHERE h_fk_assetid = '{{AssetID}}'`
   * `SoftwareInventory` - Type: `object` - Details pertaining to the import of software inventory records for the specified asset type:
