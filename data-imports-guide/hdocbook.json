@@ -4,7 +4,7 @@
   "description": "Guides to help you import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "audience": [
     "public"
   ],
@@ -255,7 +255,7 @@
                 "items": [
                   {
                     "text": "Introduction",
-                    "link": "data-imports-guide/requests/database/intro"
+                    "link": "data-imports-guide/requests/database/overview"
                   },
                   {
                     "text": "Authorization",
@@ -280,7 +280,7 @@
                 "items": [
                   {
                     "text": "Introduction",
-                    "link": "data-imports-guide/requests/from-servicenow/intro"
+                    "link": "data-imports-guide/requests/from-servicenow/overview"
                   },
                   {
                     "text": "Authorization",
@@ -305,7 +305,7 @@
                 "items": [
                   {
                     "text": "Introduction",
-                    "link": "data-imports-guide/requests/supportworks/intro"
+                    "link": "data-imports-guide/requests/supportworks/overview"
                   },
                   {
                     "text": "Authorization",

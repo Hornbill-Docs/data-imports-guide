@@ -27,7 +27,8 @@ The utility will default to `conf.json` if a configuration file is not specified
             "givenName",
             "surname",
             "telephoneNumber",
-            "department"
+            "department",
+            "officeLocation"
         ],
         "UsersByGroupID": [
             {
@@ -132,7 +133,7 @@ The utility will default to `conf.json` if a configuration file is not specified
         },
         "Site": {
             "Action": "Both",
-            "Value": "{{.physicalDeliveryOfficeName}}"
+            "Value": "{{.officeLocation}}"
         },
         "Org": [
             {
