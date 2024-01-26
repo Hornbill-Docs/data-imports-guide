@@ -189,6 +189,11 @@ The utility will default to `conf.json` if a configuration file is not specified
 #### Hornbill Instance Specific Configuration Properties
 
 - `KeySafeKeyID` - Type: `integer` - The ID of the KeySafe Key that contains your database authentication details. Set to 0 for importing directly from CSV files. See the [KeySafe section of the Authentication article](/data-imports-guide/assets/authentication#keysafe) for more information on supported key types.
+:::tip
+The KeySafe Key ID is the unique identifier of the key, and can be found in the URL when you are on the key details form in your browser. In the example below, `4` is the KeySafe Key ID:
+
+`https://live.hornbill.com/yourinstanceid/admin/platform/security/keysafe/4/`
+:::
 - `LogSizeBytes` - Type: `integer` - The maximum size that the generated Log Files should be in bytes. Setting this value to 0 will cause the tool to create one log file and not split the results between multiple logs.
 - `HornbillUserIDColumn` - Type: `string` - Used to specify the Hornbill User ID column for matching users against (asset owners, used by etc). Supported values: `h_user_id` (default), `h_employee_id`, `h_email`, `h_name`, `h_attrib1`, `h_attrib8` and `h_login_id`. **Please note:** `last logged on`, `owned by` and `used by` will use the same field - i.e. one can NOT specify which column to match to individually.
 

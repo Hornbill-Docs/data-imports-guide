@@ -52,6 +52,12 @@ We recommend that you read the [KeySafe documentation](/esp-fundamentals/securit
 
 Once the relevant key has been created, you can then lock access to it down to the API Key created against your service account. See the [KeySafe documentation](/esp-fundamentals/security/keysafe#access-control-and-usability) for more information regarding this.
 
+:::important
+When you have created your KeySafe Key, note down the KeySafe Key ID which can be found in the URL when you are on the key details form in your browser, as this will be needed when configuring your imports. In the example below, `4` is the KeySafe Key ID:
+
+`https://live.hornbill.com/yourinstanceid/admin/platform/security/keysafe/4/`
+:::
+
 ### Key Types
 
 As the Asset Import utility supports the import of asset data from many different data sources, it must therefore also support many different KeySafe Key types:
