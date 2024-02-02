@@ -5,7 +5,7 @@ You can schedule the **User Import - Database** utility to run, with any of the 
 :::important
 Do not schedule your imports to run during the instance update window, as the imports may fail or act in an unexpected manner if the instance installs updates during this time.
 
-The update windows can be found in the [Continuous Delivery](hornbill-cloud/continuous-delivery#hornbill-update-deployment-process) document.
+The update windows can be found in the [Continuous Delivery](/hornbill-cloud/continuous-delivery#hornbill-update-deployment-process) document.
 :::
 
 There are several caveats that should be considered when scheduling this utility using the Windows Task Scheduler:
