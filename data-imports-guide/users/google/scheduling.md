@@ -2,6 +2,12 @@
 
 You can schedule the **User Import - Google** utility to run, with any of the documented command line arguments, from within the Windows Task Scheduler.
 
+:::important
+Do not schedule your imports to run during the instance update window, as the imports may fail or act in an unexpected manner if the instance installs updates during this time.
+
+The update windows can be found in the [Continuous Delivery](hornbill-cloud/continuous-delivery#hornbill-update-deployment-process) document.
+:::
+
 There are several caveats that should be considered when scheduling this utility using the Windows Task Scheduler:
 
 - Ensure the user account running the task has rights to user_import_google.exe and the containing folder. This is catered for automatically by Windows if the utility is stored and run from the service account user profile folder, as per the [installation instructions](/data-imports-guide/users/google/overview#installation).
