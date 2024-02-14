@@ -4,7 +4,7 @@
   "description": "Guides to help you import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "audience": [
     "public"
   ],
@@ -173,6 +173,10 @@
                     "text": "Configuration Examples",
                     "link": "",
                     "items": [
+                      {
+                        "text": "Azure Resource Query",
+                        "link": "data-imports-guide/assets/configexamples/azureresourcequery"
+                      },
                       {
                         "text": "Certero",
                         "link": "data-imports-guide/assets/configexamples/certero"

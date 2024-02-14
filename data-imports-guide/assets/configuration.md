@@ -213,6 +213,7 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
   - `workspaceone` - vmware Workspace One UEM - will use KeySafe type [VMWare Workspace One UEM](/data-imports-guide/assets/authentication#key-type-vmware-workspace-one-uem)
   - `intune` - Microsoft Intune - will use KeySafe type [Microsoft Intune](/data-imports-guide/assets/authentication#key-type-microsoft-intune)
   - `cynerio` - Cynerio - will use KeySafe type [Cynerio](/data-imports-guide/assets/authentication#key-type-cynerio)
+  - `azureresourcequery` - Azure Resource Query - will use KeySafe type [Azure Resource Query](/data-imports-guide/assets/authentication#key-type-azure-resource-query)
 - `CSV` - Type: `object` - Only in use if `Source` is set to `csv`
     - `CarriageReturnRemoval` - Type: `boolean` - Certain CSV exporting systems will add extra carriage returns as a record delimiter. This is expected not to be common, hence the setting is left out of the configuration files (it is added to conf_computerSyste      * `json only for completeness sake). If not set, then the default value is `false` and no carriages returns will be stripped from the data. If set to `true`, then all carriage returns (possibly even intended ones) will be stripped.
     - `CommaCharacter` - Type: `string` - The field separator (single) character - if left out, the default character will be a comma.
@@ -246,6 +247,9 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
     - `Fields` - Type: `array` - A list of fields that should be returned during the API calls to Intune. These are the fields that can be mapped in the field mappings, below. See the [Intune documentation](https://learn.microsoft.com/en-us/graph/api/resources/intune-devices-manageddevice?view=graph-rest-1.0#properties) for detailed information regarding field availability
 - `Cynerio` - Type: `object` - Only in use if `Source` is set to `cynerio`
     - `Fields` - Type: `array` - A list of fields that should be returned during the API calls to Cynerio. These are the fields that can be mapped in the field mappings, below. Speak to your Cynerio administrator or representative for detailed information regarding field availability
+- `AzureResourceQuery` - Type: `object` - Only in use if `Source` is set to `azureresourcequery`
+    - `SubscriptionIDs` - Type: `array` - An array of strings, which can hold a list of Subscription IDs to apply to the Azure Resource Query.
+    - `ManagementGroups` - Type: `array` - An array of strings, which can hold a list of Management Group IDs to apply to the Azure Resource Query. If both ManagementGroups and SubscriptionIDs are provided, ManagementGroups will be ignored as the Azure Resource Query API only supports one or the other.
 
 #### AssetTypes
 
@@ -267,6 +271,7 @@ During the import process assets of each type as defined below are retrieved fro
   * `system`
   * `telecoms`
 * `OperationType` - Type: `string` - The type of operation that should be performed on discovered assets - can be `Create`, `Update` or `Both`. Defaults to `Both` if no value is provided
+* `Clauses` - Type: `array` - An array of objects, containing zero or more query clauses that should be used in the Azure Resource Query API call. Only used when `SourceConfig > Source` is set to `azureresourcequery`. The clauses provided in this list will be joined with a pipe delimiter, and appended with an order by name, before being sent to the Azure Resource Graph Query API. See the [Resource Graph documentation](https://learn.microsoft.com/en-us/azure/governance/resource-graph/first-query-rest-api) and the [Kusto Query Language reference](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/kql-quick-reference) for more information
 * `CSVFile` - Type: `string` - The path to the CSV file to use as the data source for this specific asset type. Only required when `SourceConfig > Source` is set to `CSV`
 * `CSVFilters` - Type: `array` - An array of objects, containing zero or more filters that should be applied when working out which rows from the CSV file should be included in the asset type import. Only required when `SourceConfig > Source` is set to `CSV`, and this is non-mandatory. If no filters are provided, then all records will be imported from the CSV into the target asset type.
   * `Column` - Type: `string` - The column name from the CSV that the filter should apply to
