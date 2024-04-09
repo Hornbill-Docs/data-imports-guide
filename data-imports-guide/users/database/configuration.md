@@ -206,6 +206,7 @@ The utility will default to `conf.json` if a configuration file is not specified
       - etc...
     - `DateTimeFormat` - See the [list of supported DateTime formats](/data-imports-guide/date-time-formats) for valid values.
     - `CountryCode` - ISO 3166 Alpha 2 two Character Country Code.
+    - `NOTE` - Any value of `__clear__` will clear the target field for user records being updated.
   - `ProfileMapping` - Type: `object` - Data mapping for user profile fields, in the format `"fieldInHornbill": "data to insert"`. See `AccountMapping` above for details.
   - `Type` - Type: `object` - Contains a single property `Action`, which can be `Create`, `Update`, or `Both`. Import actions to perform on the Type field of the discovered user records.
   - `Status` - Type: `object` - Contains two properties, Import actions to perform on the Status of the discovered user records:
@@ -216,7 +217,7 @@ The utility will default to `conf.json` if a configuration file is not specified
     - `Roles` - Type: `array` - A list of [application or system roles](/esp-config/organizational-data/roles) that should be assigned to the users being imported.
   - `Manager` - Type: `object` - Contains three properties, Import actions to perform on the Manager field of the discovered user records:
     - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
-    - `Value` - Type: `string` - The mapped value of the users manager.
+    - `Value` - Type: `string` - The mapped value of the users manager. . Set to `__clear__` to remove the manager for user records being updated.
     - `Options` - Type: `object` - Contains several properties to allow granular searching of the relevant manager records:
       - `Get String From Value` - Type: `object`
         - `Regex` - Type: `string` - Optional regular expression to match the name from a DSN String.
@@ -230,7 +231,7 @@ The utility will default to `conf.json` if a configuration file is not specified
     - `UploadType` - Type: `string` - Can be `URI` or `URL` - local (network) drive or HTTP(S) served images
     - `InsecureSkipVerify` - Type: `boolean` - Skip invalid certificate verification when importing images 
     - `ImageType` - Type: `string` - Image type, can be `png` or `jpg`
-    - `URI` - Type: `string` - The source mapping for the image
+    - `URI` - Type: `string` - The source mapping for the image.. Set to `__clear__` to remove the profile image for user records being updated.
   - `Site` - Type: `object` - Contains two properties, Import actions to perform on the [Location](/esp-config/organizational-data/locations) of the discovered user records:
     - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
     - `Value` - Type: `string` - The source mapping of the Location.
