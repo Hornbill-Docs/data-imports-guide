@@ -34,6 +34,7 @@ The utility will default to `conf.json` if a configuration file is not specified
       "PreserveState": false,
       "PreserveSubState": false,
       "PreserveOperationalState": false,
+      "InPolicy": "yes",
       "AdditionalFilters": [
         {
           "Field": "osVersion",
@@ -284,6 +285,9 @@ During the import process assets of each type as defined below are retrieved fro
 * `PreserveState` - Type: `boolean` - If set to `true` then the State field will not be updated. Defaults to `false`
 * `PreserveSubState` - Type: `boolean` - If set to `true` then the SubState fields will not be updated. Defaults to `false`
 * `PreserveOperationalState` - Type: `boolean` - If set to `true` then the Operational State field will not be updated. Defaults to `false`
+* `InPolicy` - Type: `string` - If set, the In Policy flag will be updated when processing assets of this type. Supports the following values:
+  * `yes` - Sets the processed assets to In Policy
+  * `__clear__` - Clears the In-Policy flag for the processed assets
 * `NexthinkPlatform` - Type: `string` - When using Nexthink as a data source, this can be optionally set to one of the following values, depending on which type of asset records you wish to import:
   * `windows`
   * `mac_os`
