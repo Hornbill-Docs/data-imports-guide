@@ -4,10 +4,11 @@ Ultimately, the executable will be scheduled in the Windows task scheduler (see 
 
 ## Command Line Arguments
 
+- `config` - The ID of the import configuration to run.
 - `creds` - Defaults to `false` - Set to `true` to decrypt and output the API key that is stored locally. The utility will prompt you for your Instance ID, and this can only be decrypted by the user who originally performed the encryption, and only on the same machine that it was encrypted on.
 - `debug` - Defaults to `false` - Set to `true` to output extra information to the log to aid in debugging issues.
 - `dryrun` - Defaults to `false` - Set to `true` and the API calls to create and update users will not be run. Instead, the API call request payloads will be output to the log file to aid in debugging.
-- `config` - The ID of the import configuration to run.
+- `forcerun` - Defaults to `false` - Set to `true` to to bypass the existing running job check. This should be used if a previous run did not successfully complete and the utility is reporting that an import is in progress.  
 - `workers` - Defaults to `3` - Allows you to change the number of worker threads used to process the import; increasing this can improve performance on slow import but using too many workers can have a detriment to the performance of your Hornbill instance while the import is running.
 
 ## First Run

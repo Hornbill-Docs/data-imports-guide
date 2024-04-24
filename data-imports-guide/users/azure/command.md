@@ -8,6 +8,7 @@ Ultimately, the executable will be scheduled in the Windows task scheduler (see 
 - `debug` - Defaults to `false` - Set to `true` to output extra information to the log to aid in debugging issues.
 - `dryrun` - Defaults to `false` - Set to `true` and the API calls to create and update users will not be run. Instead, the API call request payloads will be output to the log file to aid in debugging.
 - `file` - Defaults to `conf.json` - The name of the import configuration file to use.
+- `forcerun` - Defaults to `false` - Set to `true` to to bypass the existing running job check. This should be used if a previous run did not successfully complete and the utility is reporting that an import is in progress.
 - `workers` - Defaults to `3` - Allows you to change the number of worker threads used to process the import; increasing this can improve performance on slow import but using too many workers can have a detriment to the performance of your Hornbill instance while the import is running.
 
 ## First Run
