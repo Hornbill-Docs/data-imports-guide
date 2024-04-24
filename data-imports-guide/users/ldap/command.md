@@ -11,6 +11,10 @@ Ultimately, the executable will be scheduled in the Windows task scheduler (see 
 - `forcerun` - Defaults to `false` - Set to `true` to to bypass the existing running job check. This should be used if a previous run did not successfully complete and the utility is reporting that an import is in progress.  
 - `workers` - Defaults to `3` - Allows you to change the number of worker threads used to process the import; increasing this can improve performance on slow import but using too many workers can have a detriment to the performance of your Hornbill instance while the import is running.
 
+:::warning
+The `forcerun` argument should **ONLY** be used when you are certain that another import is not actively in progress. Running multiple imports simultaneously against the same User records can have unexpected, and likely undesired, effects on the imported data.
+:::
+
 ## First Run
 
 When you first run the utility it will prompt you for two vital pieces of information:
