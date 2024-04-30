@@ -69,7 +69,7 @@ The configuration example is provided as-is, and may not be suitable to import y
     "h_name": "{{.ComputerSystemInventory.ComputerName}}",
     "h_asset_tag": "{{.ComputerSystemInventory.ComputerName}}",
     "h_description": "From Certero: {{.ComputerSystemInventory.Manufacturer}} ({{.ComputerSystemInventory.Model}})",
-    "h_external_id": "{{.ComputerSystemObjectId}}",
+    "h_external_id": "{{.ComputerSystemInventory.ComputerSystemObjectId}}",
     "h_external_source": "Certero"
   },
   "AssetTypeFieldMapping": {
