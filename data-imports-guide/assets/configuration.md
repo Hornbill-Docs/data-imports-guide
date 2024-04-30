@@ -428,16 +428,20 @@ Any other value is treated as written examples below:
 Field names are all **case sensitive**.
 :::
 
-Should the column name contain a space (this is more likely when the data is coming from a CSV file, or SQL Server query), the following format will get the data: `{{index . \"Computer name\" }}`. Please be advised that there is still a distinct preference for the column names NOT to contain spaces. 
+Should the column name contain a space (this is more likely when the data is coming from a CSV file, or SQL Server query), the following format will get the data: 
+
+* `{{index . \"Computer name\" }}`
+
+Please be advised that there is still a distinct preference for the column names NOT to contain spaces. 
 
 Although it is preferred that any data manipulation is handled in the SQL query, should some post-production be necessary, this is possible as such:
 
-`{{.columnName | Upper}}` - Will UPPERCASE the value contained in columnName
-`{{.columnName | Lower}}` - Will lowercase the value contained in columnName
-`{{.columnName | epoch}}` - Will convert an epoch value to the YYYY-MM-DD HH:II:SS format required for a Hornbill DateTime field
-`{{.columnName | epoch_clear}}` - Will convert an epoch value to the YYYY-MM-DD HH:II:SS format required for a Hornbill DateTime field. Defaulting to CLEAR the column if unable to convert.
-`{{.columnName | date_conversion "date time format of the content in .columnName"}}` - Provide the input format based on the following reference time of Jan 2nd 2006 4 minutes and 5 seconds past 3pm - eg "02/01/2006 15:04:05" will convert the regular UK/European date time format to the format useable in the Hornbill datetime field, whereas "01/02/2006 15:04" will process default US date time. Please note that IF your formatting is already in the Hornbill date time format (2006-01-02 15:04:05), you don't need to convert anything.
-`{{.columnName | date_conversion_clear "date time format of the content in .columnName"}}` - Provide the input format based on the following reference time of Jan 2nd 2006 4 minutes and 5 seconds past 3pm - eg "02/01/2006 15:04:05" will convert the regular UK/European date time format to the format useable in the Hornbill datetime field, whereas "01/02/2006 15:04" will process default US date time. Defaulting to CLEAR the column if unable to convert.
+* `{{.columnName | Upper}}` - Will UPPERCASE the value contained in columnName
+* `{{.columnName | Lower}}` - Will lowercase the value contained in columnName
+* `{{.columnName | epoch}}` - Will convert an epoch value to the YYYY-MM-DD HH:II:SS format required for a Hornbill DateTime field
+* `{{.columnName | epoch_clear}}` - Will convert an epoch value to the YYYY-MM-DD HH:II:SS format required for a Hornbill DateTime field. Defaulting to CLEAR the column if unable to convert.
+* `{{.columnName | date_conversion "date time format of the content in .columnName"}}` - Provide the input format based on the following reference time of Jan 2nd 2006 4 minutes and 5 seconds past 3pm - eg "02/01/2006 15:04:05" will convert the regular UK/European date time format to the format useable in the Hornbill datetime field, whereas "01/02/2006 15:04" will process default US date time. Please note that IF your formatting is already in the Hornbill date time format (2006-01-02 15:04:05), you don't need to convert anything.
+* `{{.columnName | date_conversion_clear "date time format of the content in .columnName"}}` - Provide the input format based on the following reference time of Jan 2nd 2006 4 minutes and 5 seconds past 3pm - eg "02/01/2006 15:04:05" will convert the regular UK/European date time format to the format useable in the Hornbill datetime field, whereas "01/02/2006 15:04" will process default US date time. Defaulting to CLEAR the column if unable to convert.
 
 #### AssetTypeFieldMapping
 
