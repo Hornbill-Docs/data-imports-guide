@@ -6,6 +6,14 @@ Ultimately, the executable will be scheduled in the Windows task scheduler (see 
 
 - `creds` - Defaults to `false` - Set to `true` to decrypt and output the API key that is stored locally. The utility will prompt you for your Instance ID, and this can only be decrypted by the user who originally performed the encryption, and only on the same machine that it was encrypted on.
 - `debug` - Defaults to `false` - Set to `true` to enable debug mode, which will output additional debugging information to the log.
+- `debugdata` - Defaults to `false` - Set to `true` to enable debug data mode, which when used with the `debug` argument above. and one of the following datasources, will output the datasource response payload as JSON files to the local disk in a folder called `.\debugDataSource` in the current working directory, to aid in debugging data source issues:
+  - `Azure Resource Query (Arc)`
+  - `Certero`
+  - `Cynerio`
+  - `Google Workspace`
+  - `Microsoft Intune`
+  - `Nexthink`
+  - `vmware Workspace One UEM`
 - `dryrun` - Defaults to `false` - Set to `true` and the API calls to create and update asset records will not be run. Instead, the API call request payloads will be output to the log file to aid in debugging.
 - `file` - Defaults to `conf.json` - The name of the import configuration file to use.
 - `forceupdates` - Defaults to `false` - The utility will, by default, perform a comparison between new data and old data in order to decided whether the record needs an update or not. The decision is, in essence, a detection of changes in SOURCE data, and not any data that might have been manipulated either by using the import template, the Service Manager application in your browser, or by the Hornbill API directly. This paramater caters for this - i.e. set to `true` and an update will always be attempted - whether or not there are going to be any changes.

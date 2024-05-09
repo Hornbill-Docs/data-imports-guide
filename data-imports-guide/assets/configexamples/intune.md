@@ -33,7 +33,8 @@ The configuration example is provided as-is, and may not be suitable to import y
             "totalStorageSpaceInBytes",
             "managedDeviceName",
             "physicalMemoryInBytes"
-        ]
+        ],
+        "ImportDetectedApps": true
     }
   },
   "AssetTypes": [

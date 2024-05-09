@@ -246,6 +246,7 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
     - `Expand` - Type: `string` - The Certero oData query which defines the columns and associated entitiy records that can be mapped into Hornbill asset records
 - `Intune` - Type: `object` - Only in use if `Source` is set to `intune`
     - `Fields` - Type: `array` - A list of fields that should be returned during the API calls to Intune. These are the fields that can be mapped in the field mappings, below. See the [Intune documentation](https://learn.microsoft.com/en-us/graph/api/resources/intune-devices-manageddevice?view=graph-rest-1.0#properties) for detailed information regarding field availability
+    - `ImportDetectedApps` - Type: `boolean` - Defaults to `false`. If set to `true`, then all detected apps against the Intune Managed Devices will be imported as Software Inventory records
 - `Cynerio` - Type: `object` - Only in use if `Source` is set to `cynerio`
     - `Fields` - Type: `array` - A list of fields that should be returned during the API calls to Cynerio. These are the fields that can be mapped in the field mappings, below. Speak to your Cynerio administrator or representative for detailed information regarding field availability
 - `AzureResourceQuery` - Type: `object` - Only in use if `Source` is set to `azureresourcequery`
