@@ -187,6 +187,12 @@ The utility will default to `conf.json` if a configuration file is not specified
   - `UsersByGroupID` - Type: `array` - Contains a list of objects that contain Entra ID Group information. Users who are members of these Groups will be included in the import, when the `Search` property, above, is set to `groups`.
 - `User` - Type: `object` - Contains all Entra ID to Hornbill mappings, and user configuration.
   - `Operation` - Type: `string` - Can be `Create`, `Update`, or `Both`. Import actions to perform on the discovered user records.
+  - `HornbillUniqueColumn` -  Type: `string` - The ID of the column in Hornbill that contains the users unique ID to match imported user records from the Entra ID data source against. Can be one of the following values:
+    - `h_user_id` - Identifies Hornbill users against Entra ID user field values that are defined in `User>AccountMapping>UserID`
+    - `h_employee_id` - Identifies Hornbill users against Entra ID user field values that are defined in `User>AccountMapping>EmployeeID`
+    - `h_login_id` - Identifies Hornbill users against Entra ID user field values that are defined in `User>AccountMapping>LoginID`
+    - `h_email` - Identifies Hornbill users against Entra ID user field values that are defined in `User>AccountMapping>Email`
+    - `h_mobile` - Identifies Hornbill users against Entra ID user field values that are defined in `User>AccountMapping>Mobile`
   - `AccountMapping` - Type: `object` - Data mapping, in the format `"fieldInHornbill": "data to insert"`. The data to insert can either be hard-coded strings, mapped from the source data using one or more [Go templates](https://pkg.go.dev/text/template), or a mixture of the two. Some specific examples:
     - `"UserType": "basic"` - All records will be created as Basic Users in Hornbill. See the [Hornbill user documentation](/esp-fundamentals/security/account-types#user-account-types) for more information.
     - `"Password": ""` - if the Password data mapping is left empty, then the utility with generate a random password to create new users with. The generated passwords will obey the [password policies](/esp-config/security/password-policies) defined on the target Hornbill instance. 
