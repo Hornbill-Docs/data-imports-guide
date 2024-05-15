@@ -18,7 +18,6 @@ The utility will default to `conf.json` if a configuration file is not specified
     "AzureConf": {
         "Search": "groups",
         "UserFilter": "startswith(displayName,'Dave')",
-        "UserID": "mail",
         "UserProperties": [
             "businessPhones",
             "employeeId",
