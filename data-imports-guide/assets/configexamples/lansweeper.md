@@ -1,6 +1,6 @@
 # Configuration Example - Lansweeper 7.1
 
-The following is an example of the SourceConfig, AssetTypes and data mapping configuration that could be used to import computer-type assets from a Lansweeper 7.1 data source. 
+The following is an example of the SourceConfig, AssetTypes and data mapping configuration that could be used to import computer-type assets from a Lansweeper 7.1 database. This means that the Keysafe Key that holds the credentials to authenticate requests to the database should be of type [Database Authentication](/data-imports-guide/assets/authentication#key-type-database-authentication). 
 
 In this example, asset records found against all defined asset types will be verified using the AssetName column from the DB query, and the h_name column within the Asset entity in your Hornbill instance.
 

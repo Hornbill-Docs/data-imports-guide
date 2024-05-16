@@ -1,6 +1,6 @@
 # Configuration Example - SCCM 2007 & 2012
 
-The following is an example of the SourceConfig, AssetTypes and data mapping configuration that could be used to import computer-type assets from an SCCM 2007 or 2012 data source. 
+The following is an example of the SourceConfig, AssetTypes and data mapping configuration that could be used to import computer-type assets from an SCCM 2007 or 2012  database. This means that the Keysafe Key that holds the credentials to authenticate requests to the database should be of type [Database Authentication](/data-imports-guide/assets/authentication#key-type-database-authentication). 
 
 In this example:
 
