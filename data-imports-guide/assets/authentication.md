@@ -62,7 +62,7 @@ When you have created your KeySafe Key, note down the KeySafe Key ID which can b
 
 As the Asset Import utility supports the import of asset data from many different data sources, it must therefore also support many different KeySafe Key types:
 
-* [Azure Resource Query](/data-imports-guide/assets/authentication#key-type-azure-resource-query) - Used for the following data sources:
+* [Azure Resource Query](/data-imports-guide/assets/authentication#key-type-azure-resource-query) - and optionally (for importing Software Inventory records against assets) [Azure Log Analytics](/data-imports-guide/assets/authentication#key-type-azure-resource-query). Used for the following data sources:
   * `azureresourcequery` - Azure Resource Query, including data from Azure Arc.
 * [Certero](/data-imports-guide/assets/authentication#key-type-certero) - Used for the following data sources:
   * `certero` - Certero IT Asset Management.
@@ -85,6 +85,18 @@ As the Asset Import utility supports the import of asset data from many differen
 The `csv - CSV / Text file(s)` data source reads its data from the file system (local or network), and therefore does not require Keysafe keys.
 :::
 
+### Key Type - Azure Resource Query
+
+* In Hornbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
+* Click `+ Create New Key`.
+* Choose a key type of `Azure Log Analytics`.
+* Give the KeySafe key a Title.
+* Optionally add a Description.
+* Click `Create Key`.
+* Once the Key is created, you will need to connect to Azure Log Analytics and your account, in order to authorize the Hornbill App to perform the listed Azure Log Analytics requests. Click `Connect` and you will be redirected to the Azure authentication page in a popup window.
+* Log in to your Azure Log Analytics account, and then you will be prompted to review the operations you are authorizing the Hornbill App to be allowed to perform with the chosen Azure Log Analytics account.
+* Review the scopes/permissions, and click `Continue`. You will then be returned to your KeySafe key.
+* 
 ### Key Type - Azure Resource Query
 
 * In Hornbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
