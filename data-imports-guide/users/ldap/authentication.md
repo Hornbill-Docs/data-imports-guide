@@ -54,4 +54,4 @@ Once the key has been created, you can then lock access to it down to the API Ke
 
 ### Key Example
 
-<img src="/_books/data-imports-guide/users/ldap/images/ldap_user_import_keysafe.png" width="650px" alt="KeySafe LDAP Example"/>
+<img src="/_books/data-imports-guide/users/ldap/images/ldap-user-import-keysafe.png" width="650px" alt="KeySafe LDAP Example"/>

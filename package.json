@@ -6,6 +6,5 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "hdoc-tools": "^0.11.1"
   }
 }

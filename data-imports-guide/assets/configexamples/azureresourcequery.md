@@ -15,7 +15,9 @@ The configuration example is provided as-is, and may not be suitable to import y
     "Source": "azureresourcequery",
     "AzureResourceQuery": {
       "SubscriptionIDs": [],
-      "ManagementGroups": []
+      "ManagementGroups": [],
+      "SoftwareKeysafeKeyID": 0,
+      "SoftwareLogAnalyticsWorkspaceID": "your-log-analytics-workspace-id"
     }
   },
   "AssetTypes": [
@@ -31,7 +33,23 @@ The configuration example is provided as-is, and may not be suitable to import y
         "SourceColumn": "name",
         "Entity": "Assets",
         "EntityColumn": "h_name"
-      }
+      },
+      "SoftwareInventory": {
+        "AssetIDColumn": "{{.vmId}}",
+        "AppIDColumn": "{{.Publisher}}{{.SoftwareName}}{{.CurrentVersion}}",
+        "Clauses": [
+            "ConfigurationData",
+            "where ConfigDataType == 'Software'",
+            "where _ResourceId == '{{AssetID}}'",
+            "project Publisher, SoftwareName, CurrentVersion, SourceComputerId, Computer"
+        ],
+        "Mapping": {
+            "h_app_id":"{{.Publisher}}{{.SoftwareName}}{{.CurrentVersion}}",
+            "h_app_name": "{{.SoftwareName}}",
+            "h_app_vendor":"{{.Publisher}}",
+            "h_app_version":"{{.CurrentVersion}}"
+        }
+    }
     }
 ],
 "AssetGenericFieldMapping": {

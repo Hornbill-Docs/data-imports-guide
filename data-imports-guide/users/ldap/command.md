@@ -33,7 +33,7 @@ The authentication information can only be decrypted on the computer (physical o
 
 The following is an example of how the tool will prompt you for your Instance ID and API Key on the first run of the utility:
 
-<img src="/_books/data-imports-guide/users/ldap/images/ldap_user_import.jpg" width="800px" alt="First Run Example"/>
+<img src="/_books/data-imports-guide/users/ldap/images/ldap-user-import.jpg" width="800px" alt="First Run Example"/>
 
 ## Testing Overview
 

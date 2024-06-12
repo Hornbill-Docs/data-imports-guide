@@ -55,4 +55,4 @@ Once the key has been created, you can then lock access to it down to the API Ke
 
 ### Key Example
 
-<img src="/_books/data-imports-guide/users/database/images/db_user_import_keysafe.jpg" width="650px" alt="KeySafe Example"/>
+<img src="/_books/data-imports-guide/users/database/images/db-user-import-keysafe.jpg" width="650px" alt="KeySafe Example"/>

@@ -50,8 +50,8 @@ Once the key has been created, you can then lock access to it down to the API Ke
 
 **KeySafe Key**
 
-<img src="/_books/data-imports-guide/users/google/images/google_user_import_keysafe.png" width="650px" alt="KeySafe Google Example"/>
+<img src="/_books/data-imports-guide/users/google/images/google-user-import-keysafe.png" width="650px" alt="KeySafe Google Example"/>
 
 **Google Workspace Scopes/Permissions**
 
-<img src="/_books/data-imports-guide/users/google/images/google_user_import_permissions.png" width="650px" alt="KeySafe Google Permissions"/>
+<img src="/_books/data-imports-guide/users/google/images/google-user-import-permissions.png" width="650px" alt="KeySafe Google Permissions"/>

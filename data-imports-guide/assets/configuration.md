@@ -189,7 +189,7 @@ The utility will default to `conf.json` if a configuration file is not specified
 
 #### Hornbill Instance Specific Configuration Properties
 
-- `KeySafeKeyID` - Type: `integer` - The ID of the KeySafe Key that contains your database authentication details. Set to 0 for importing directly from CSV files. See the [KeySafe section of the Authentication article](/data-imports-guide/assets/authentication#keysafe) for more information on supported key types.
+- `KeySafeKeyID` - Type: `integer` - The ID of the KeySafe Key that contains your data source authentication details. Set to 0 for importing directly from CSV files. See the [KeySafe section of the Authentication article](/data-imports-guide/assets/authentication#keysafe) for more information on supported key types.
 :::tip
 The KeySafe Key ID is the unique identifier of the key, and can be found in the URL when you are on the key details form in your browser. In the example below, `4` is the KeySafe Key ID:
 
@@ -252,6 +252,8 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
 - `AzureResourceQuery` - Type: `object` - Only in use if `Source` is set to `azureresourcequery`
     - `SubscriptionIDs` - Type: `array` - An array of strings, which can hold a list of Subscription IDs to apply to the Azure Resource Query.
     - `ManagementGroups` - Type: `array` - An array of strings, which can hold a list of Management Group IDs to apply to the Azure Resource Query. If both ManagementGroups and SubscriptionIDs are provided, ManagementGroups will be ignored as the Azure Resource Query API only supports one or the other.
+    - `SoftwareKeysafeKeyID` - Type: `integer` - The ID of the KeySafe Key that contains your data source authentication details. Azure Resource Query has no mechanism to return sotware inventory items, so the utility uses Azure Log Analytics and the Automation Update/Change/Inventory module to retrieve software installed on your Arc registered computers.
+    - `SoftwareLogAnalyticsWorkspaceID` - Type: `string` - The ID (GUID) of the Log Analytics Workspace that contains the ConfigurationData table, that holds your asset software inventory records.
 
 #### AssetTypes
 
@@ -402,7 +404,8 @@ During the import process assets of each type as defined below are retrieved fro
   * `SoftwareInventory` - Type: `object` - Details pertaining to the import of software inventory records for the specified asset type:
       * `AssetIDColumn` - Type: `string` - The column from the asset type query that contains its primary key. This can be either a column name, or a Go Template. **NOTE**: this is ignored when performing imports from **Workspace One**. 
       * `AppIDColumn` - Type: `string` - the column from the Software Inventory that holds the software unique ID. This can be either a column name, or a Go Template. **NOTE**: this is ignored when performing imports from **Certero, CSV, LDAP or Nexthink** - the App ID to match is a concatenation of the publisher, name and version fields (no spaces between them)
-      * `Query` - Type: `string` - the query that will be run per asset, to return its software inventory records. `{{AssetID}}` - in the query will be replaced by each assets primary key value, whose column is defined in the `AssetIDColumn` property. **NOTE**: this is NOT being processed as a template (note the absence of the full stop). **ALSO NOTE**: This is not used when importing assets from **Certero or Workspace One**.
+      * `Query` - Type: `string` - The query that will be run per asset, to return its software inventory records. `{{AssetID}}` - in the query will be replaced by each assets primary key value, whose column is defined in the `AssetIDColumn` property. **NOTE**: this is NOT being processed as a template (note the absence of the full stop). **ALSO NOTE**: This is not used when importing assets from **Certero, Arc or Workspace One**.
+      * `Clauses` - Type: `array` - Only used whem importing assets from **Azure Resource Query/Arc**. A list of clauses to pass to the Log Analytics query API to return Software Inventory records for imported assets. `{{AssetID}}` - in the query will be replaced by each assets primary key value, whose column is defined in the `AssetIDColumn` property. **NOTE**: this is NOT being processed as a template (note the absence of the full stop).
       * `Mapping` - Type: `object` - A key-value pair list of mapping in the format `"Hornbill Column": "Mapped Value"`, maps data into the software inventory records
 
 #### AssetGenericFieldMapping
