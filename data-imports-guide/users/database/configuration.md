@@ -182,6 +182,12 @@ The utility will default to `conf.json` if a configuration file is not specified
 ### Configuration Explanation
 
 - `KeysafeKeyID` - Type: `integer` - The ID of the KeySafe Key that contains your database authentication details. See the [KeySafe section of the Authentication article](/data-imports-guide/users/database/authentication#keysafe) for more information.
+- `CSV` - Type: `object` - If the data source is an on-disk CSV file, then this should be populated with the information needed to extract the user records. If the `DataSourceFile` value is set, then the import will skip the `Database` properties, below.
+  - `DataSourceFile` - Type: `string` - The path of the CSV file which contains the data
+  - `CommaCharacter` - Type: `string` - The character used as field separator (usually ",")
+  - `LazyQuotes` - Type: `boolean` - true/false if quoted fields might appear in an unquoted field
+  - `FieldsPerRecord` - Type: `integer` - a number that will automatically be calculated based on the first (header) line. This allows for manipulation (in case later records might have more fields)
+  - `CarriageReturnRemoval` - Type: `boolean` - true/false - tidying up the CSV file if necessary
 - `Database` - Type: `object` - The information that the utility needs to query your source database.
   - `Source` - Type: `string` - The database technology the utility needs to connect to, one of:
     - `mssql` - Microsoft SQL Server
