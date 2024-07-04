@@ -29,8 +29,10 @@ The Asset Imports require access to the following Hornbill Platform and applicat
 ```cmd
 admin:getApplicationList
 admin:groupGetList2
+admin:keysafeGetKey
 bpm::iBridgeInvoke
 data:entityAddRecord
+data:entityAddRecords
 data:entityBrowseRecords2
 data:entityDeleteRecord
 data:entityUpdateRecord
@@ -38,6 +40,9 @@ data:queryExec
 session:getApplicationList
 system:logMessage
 apps/com.hornbill.core:getSitesList
+apps/com.hornbill.servicemanager/AssetUsers:create
+apps/com.hornbill.servicemanager/AssetUsers:delete
+apps/com.hornbill.servicemanager/AssetUsers:read
 apps/com.hornbill.suppliermanager/SupplierAssets:addSupplierAsset
 apps/com.hornbill.suppliermanager/SupplierContractAssets:addSupplierContractAsset
 ```
