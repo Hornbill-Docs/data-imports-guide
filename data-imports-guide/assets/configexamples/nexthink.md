@@ -18,7 +18,6 @@ The configuration example is provided as-is, and may not be suitable to import y
     {
       "AssetType": "Server",
       "OperationType": "Both",
-      "PreserveShared": false,
       "Query": "(select (id name device_manufacturer device_model last_logon_time last_logged_on_user mac_addresses ip_addresses total_ram os_version_and_architecture os_build system_drive_capacity device_serial_number cpu_model cpu_frequency number_of_cores logical_cpu_number bios_serial_number distinguished_name) (from device (where device (eq os_version_and_architecture (pattern 'Windows*Server*')))))",
       "NexthinkPlatform": "windows",
       "AssetIdentifier": {

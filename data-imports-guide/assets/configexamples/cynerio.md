@@ -46,7 +46,6 @@ The configuration example is provided as-is, and may not be suitable to import y
     {
       "AssetType": "Server",
       "OperationType": "Both",
-      "PreserveShared": false,
       "CynerioFilters": {
         "category": "Server",
         "department": "Radiology"

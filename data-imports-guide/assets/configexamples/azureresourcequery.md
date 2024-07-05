@@ -24,7 +24,6 @@ The configuration example is provided as-is, and may not be suitable to import y
     {
       "AssetType": "Server",
       "OperationType": "Both",
-      "PreserveShared": false,
       "Clauses": [
         "Resources",
         "where type == \"microsoft.hybridcompute/machines\" and properties.osSku contains  \"Windows Server\""

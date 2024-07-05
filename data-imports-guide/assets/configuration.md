@@ -284,10 +284,10 @@ During the import process assets of each type as defined below are retrieved fro
     * `CONTAINS` - Is the filter Value (below) contained within the column value (wildcard type functionality, `*column_value*`)
     * `IN` - Does the column value have an exact match in an array of strings supplied in `Value`, below
   * `Value` - Type: `string` - The value to be applied in the filter
-* `PreserveShared` - Type: `boolean` - If set to `true`, when updating assets that are Shared, then the Used By fields will not be updated. Defaults to `false`
-* `PreserveState` - Type: `boolean` - If set to `true` then the State field will not be updated. Defaults to `false`
-* `PreserveSubState` - Type: `boolean` - If set to `true` then the SubState fields will not be updated. Defaults to `false`
-* `PreserveOperationalState` - Type: `boolean` - If set to `true` then the Operational State field will not be updated. Defaults to `false`
+* `PreserveShared` - Type: `boolean` - If set to `true`, when updating assets that are Shared, then the Used By fields will not be updated. If the property is not provided, this defaults to `false`
+* `PreserveState` - Type: `boolean` - If set to `true` then the State field will not be updated. If the property is not provided, this defaults to `false`
+* `PreserveSubState` - Type: `boolean` - If set to `true` then the SubState fields will not be updated. If the property is not provided, this defaults to `false`
+* `PreserveOperationalState` - Type: `boolean` - If set to `true` then the Operational State field will not be updated. If the property is not provided, this defaults to `false`
 * `InPolicy` - Type: `string` - If set, the In Policy flag will be updated when processing assets of this type. Supports the following values:
   * `yes` - Sets the processed assets to In Policy
   * `__clear__` - Clears the In-Policy flag for the processed assets

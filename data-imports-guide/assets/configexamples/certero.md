@@ -21,7 +21,6 @@ The configuration example is provided as-is, and may not be suitable to import y
     {
       "AssetType": "Server",
       "OperationType": "Both",
-      "PreserveShared": false,
       "Query": "startswith(ComputerSystemInventory/OperatingSystem/Caption,'Windows Server')",
       "AssetIdentifier": {
         "SourceColumn": "{{.ComputerSystemInventory.ComputerName}}",
@@ -44,7 +43,6 @@ The configuration example is provided as-is, and may not be suitable to import y
     {
       "AssetType": "Desktop",
       "OperationType": "Both",
-      "PreserveShared": false,
       "Query": "contains(ComputerSystemInventory/OperatingSystem/Caption,'Windows') and contains(ComputerSystemInventory/OperatingSystem/Caption,'Server') eq false",
       "AssetIdentifier": {
         "SourceColumn": "{{.ComputerSystemInventory.ComputerName}}",

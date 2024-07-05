@@ -41,7 +41,6 @@ The configuration example is provided as-is, and may not be suitable to import y
     {
       "AssetType": "Virtual Machine",
       "OperationType": "Both",
-      "PreserveShared": false,
       "Query": "operatingSystem eq 'Windows' and model eq 'Virtual Machine'",
       "AssetIdentifier": {
         "SourceColumn": "serialNumber",

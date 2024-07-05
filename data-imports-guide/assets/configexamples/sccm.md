@@ -115,6 +115,9 @@ The configuration example is provided as-is, and may not be suitable to import y
       "AssetType": "Laptop",
       "OperationType": "Both",
       "PreserveShared": false,
+      "PreserveState": false,
+      "PreserveSubState": false,
+      "PreserveOperationalState": false,
       "Query": "AND OASysEncl.ChassisTypes0 IN (8, 9, 10, 14) AND dbo.v_R_System.Obsolete0 = 0 ORDER BY dbo.v_R_System.ResourceID ASC",
       "AssetIdentifier": {
         "SourceColumn": "MachineName",
