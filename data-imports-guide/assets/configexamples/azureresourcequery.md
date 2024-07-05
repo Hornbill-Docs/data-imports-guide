@@ -48,32 +48,33 @@ The configuration example is provided as-is, and may not be suitable to import y
             "h_app_vendor":"{{.Publisher}}",
             "h_app_version":"{{.CurrentVersion}}"
         }
+      }
     }
-    }
-],
-"AssetGenericFieldMapping": {
-  "h_name": "{{.name}}",
-  "h_asset_tag": "{{.name}}",
-  "h_description": "From Azure: {{.name}} ({{.properties.identity.principalId}})",
-  "h_notes": "{{.properties.provisioningState}} {{.properties.planName}}"
-},
-"AssetTypeFieldMapping": {
-  "h_name": "{{.name}}",
-  "h_net_computer_name": "{{.name}}",
-  "h_model": "{{.properties.detectedProperties.model}}",
-  "h_manufacturer": "{{.properties.detectedProperties.manufacturer}}",
-  "h_net_ip_address": "{{ (index (index .properties.networkProfile.networkInterfaces 0).ipAddresses 1).address }}",
-  "h_subnet_mask": "{{ (index (index .properties.networkProfile.networkInterfaces 0).ipAddresses 1).subnet.addressPrefix }}",
-  "h_net_win_domain": "{{ .properties.domainName }}",
-  "h_cpu_info": "{{.properties.detectedProperties.processorNames}}",
-  "h_description": "From Azure: {{.name}} ({{.properties.identity.principalId}})",
-  "h_memory_info": "{{.properties.detectedProperties.totalPhysicalMemoryInBytes}}",
-  "h_os_description": "{{.properties.osSku}}",
-  "h_os_type": "{{.properties.osEdition}}",
-  "h_os_version": "{{.properties.osVersion}}",
-  "h_serial_number": "{{.properties.detectedProperties.serialNumber}}",
-  "h_physical_cpus": "{{.properties.detectedProperties.processorCount}}",
-  "h_logical_cpus": "{{.properties.detectedProperties.logicalCoreCount}}",
-  "h_net_name": "{{.properties.adFqdn}}"
+  ],
+  "AssetGenericFieldMapping": {
+    "h_name": "{{.name}}",
+    "h_asset_tag": "{{.name}}",
+    "h_description": "From Azure: {{.name}} ({{.properties.identity.principalId}})",
+    "h_notes": "{{.properties.provisioningState}} {{.properties.planName}}"
+  },
+  "AssetTypeFieldMapping": {
+    "h_name": "{{.name}}",
+    "h_net_computer_name": "{{.name}}",
+    "h_model": "{{.properties.detectedProperties.model}}",
+    "h_manufacturer": "{{.properties.detectedProperties.manufacturer}}",
+    "h_net_ip_address": "{{ (index (index .properties.networkProfile.networkInterfaces 0).ipAddresses 1).address }}",
+    "h_subnet_mask": "{{ (index (index .properties.networkProfile.networkInterfaces 0).ipAddresses 1).subnet.addressPrefix }}",
+    "h_net_win_domain": "{{ .properties.domainName }}",
+    "h_cpu_info": "{{.properties.detectedProperties.processorNames}}",
+    "h_description": "From Azure: {{.name}} ({{.properties.identity.principalId}})",
+    "h_memory_info": "{{.properties.detectedProperties.totalPhysicalMemoryInBytes}}",
+    "h_os_description": "{{.properties.osSku}}",
+    "h_os_type": "{{.properties.osEdition}}",
+    "h_os_version": "{{.properties.osVersion}}",
+    "h_serial_number": "{{.properties.detectedProperties.serialNumber}}",
+    "h_physical_cpus": "{{.properties.detectedProperties.processorCount}}",
+    "h_logical_cpus": "{{.properties.detectedProperties.logicalCoreCount}}",
+    "h_net_name": "{{.properties.adFqdn}}"
+  }
 }
 ```

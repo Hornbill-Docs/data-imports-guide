@@ -48,22 +48,23 @@ The configuration example is provided as-is, and may not be suitable to import y
         "EntityColumn": "h_serial_number"
       }
     }
-],
-"AssetGenericFieldMapping": {
-  "h_name": "{{.deviceName}}",
-  "h_asset_tag": "{{.deviceName}}",
-  "h_description": "From Intune: {{.deviceName}} ({{.model}})",
-  "h_used_by": "{{ .userPrincipalName }}"
-},
-"AssetTypeFieldMapping": {
-  "h_name": "{{.deviceName}}",
-  "h_net_computer_name": "{{.deviceName}}",
-  "h_model": "{{.model}}",
-  "h_manufacturer": "{{.manufacturer}}",
-  "h_description": "From Intune: {{.deviceName}} ({{.model}})",
-  "h_memory_info": "{{.physicalMemoryInBytes}}",
-  "h_os_description": "{{.operatingSystem}}",
-  "h_os_version": "{{.osVersion}}",
-  "h_serial_number": "{{.serialNumber}}"
+  ],
+  "AssetGenericFieldMapping": {
+    "h_name": "{{.deviceName}}",
+    "h_asset_tag": "{{.deviceName}}",
+    "h_description": "From Intune: {{.deviceName}} ({{.model}})",
+    "h_used_by": "{{ .userPrincipalName }}"
+  },
+  "AssetTypeFieldMapping": {
+    "h_name": "{{.deviceName}}",
+    "h_net_computer_name": "{{.deviceName}}",
+    "h_model": "{{.model}}",
+    "h_manufacturer": "{{.manufacturer}}",
+    "h_description": "From Intune: {{.deviceName}} ({{.model}})",
+    "h_memory_info": "{{.physicalMemoryInBytes}}",
+    "h_os_description": "{{.operatingSystem}}",
+    "h_os_version": "{{.osVersion}}",
+    "h_serial_number": "{{.serialNumber}}"
+  }
 }
 ```
