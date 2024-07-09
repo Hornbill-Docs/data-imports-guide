@@ -90,7 +90,7 @@ As the Asset Import utility supports the import of asset data from many differen
 The `csv - CSV / Text file(s)` data source reads its data from the file system (local or network), and therefore does not require Keysafe keys.
 :::
 
-### Key Type - Azure Resource Query
+### Key Type - Azure Log Analytics
 
 * In Hornbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
 * Click `+ Create New Key`.
