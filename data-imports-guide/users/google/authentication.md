@@ -4,7 +4,7 @@ The User Import - Google utility uses API Keys to authenticate all API calls int
 
 ## API Keys
 
-[[INCLUDE https://raw.githubusercontent.com/Hornbill-Docs/hdoc-library/main/hdoc-library/dataimports/users_apikeys.md]]
+[[INCLUDE https://raw.githubusercontent.com/Hornbill-Docs/hdoc-library/main/hdoc-library/dataimports/users-apikeys.md]]
 
 ### API Key Rules
 
