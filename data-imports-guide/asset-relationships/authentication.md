@@ -1,7 +1,5 @@
 # Authentication
 
-Organisation Test.
-
 The Asset Relationship Import utility uses API Keys to authenticate all API calls into Hornbill instances, and KeySafe to securely store credentials for the asset data source.
 
 ## API Keys
