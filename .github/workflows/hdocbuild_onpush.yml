@@ -13,17 +13,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
+      # Setup NodeJS Active LTS (20 currently, moving to 22 as the next LTS)
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
       # Checkout the relevant content for push or workflow_dispatch
       - name: Checkout For Push or Workflow Dispatch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
            ref: ${{ github.event.inputs.branch }}
            fetch-depth: 0    
-      
-      # Setup NodeJS LTS (18 currently)
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
 
       # Install hdoc-tools globally
       - name: Install hdoc-tools

@@ -11,16 +11,16 @@ jobs:
   validate_pull_request:
     runs-on: ubuntu-latest
     steps:
+      # Setup NodeJS Active LTS (20 currently, moving to 22 as the next LTS)
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
       # Checkout the relevant content for pull_request_target
       - name: Checkout For Pull Request Target
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      
-      # Setup NodeJS LTS (18 currently)
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
 
       # Install hdoc-tools globally
       - name: Install hdoc-tools
