@@ -27,7 +27,8 @@ The utility will default to `conf.json` if a configuration file is not specified
             "surname",
             "telephoneNumber",
             "department",
-            "officeLocation"
+            "officeLocation",
+            "onPremisesExtensionAttributes"
         ],
         "UsersByGroupID": [
             {
@@ -52,11 +53,11 @@ The utility will default to `conf.json` if a configuration file is not specified
             "Password": "",
             "FirstName": "{{.givenName}}",
             "LastName": "{{.surname}}",
-            "JobTitle": "",
+            "JobTitle": "{{.onPremisesExtensionAttributes.extensionAttribute12}}",
             "Site": "1",
             "Phone": "{{index .businessPhones 0}}",
             "Email": "{{.mail}}",
-            "Mobile": "",
+            "Mobile": "{{.onPremisesExtensionAttributes.extensionAttribute4}}",
             "AbsenceMessage": "",
             "TimeZone": "",
             "Language": "",
