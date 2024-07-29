@@ -1,10 +1,10 @@
 {
   "docId": "data-imports-guide",
-  "title": "Data Import Guides",
-  "description": "Guides to help you import your data into the Hornbill platform and applications",
+  "title": "Data Imports Guide",
+  "description": "How to use utilities to import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.5.30",
+  "version": "0.5.31",
   "audience": [
     "public"
   ],
