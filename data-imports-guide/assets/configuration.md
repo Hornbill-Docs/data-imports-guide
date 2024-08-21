@@ -244,6 +244,7 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
     - `OrgUnitPath` - Type: `string` - The full path of the Google organizational Unit where the devices reside
 - `Certero` - Type: `object` - Only in use if `Source` is set to `certero`
     - `Expand` - Type: `string` - The Certero oData query which defines the columns and associated entitiy records that can be mapped into Hornbill asset records
+    - `ClientPagingPageSize` - Type: `integer` - Defaults to `0`, if this is set to a value > 0, then the Certero server-side pagination (5,000 records per page) is disabled and replaced by client-side pagination in the import utility, and the utility will pull the records from Certero in pages of this size
 - `Intune` - Type: `object` - Only in use if `Source` is set to `intune`
     - `Fields` - Type: `array` - A list of fields that should be returned during the API calls to Intune. These are the fields that can be mapped in the field mappings, below. See the [Intune documentation](https://learn.microsoft.com/en-us/graph/api/resources/intune-devices-manageddevice?view=graph-rest-1.0#properties) for detailed information regarding field availability
     - `ImportDetectedApps` - Type: `boolean` - Defaults to `false`. If set to `true`, then all detected apps against the Intune Managed Devices will be imported as Software Inventory records
