@@ -124,9 +124,9 @@ Keys of this type require a Certero API Key to be created against a user account
 * Give the KeySafe key a Title.
 * Optionally add a Description.
 * Populate the following fields on the form:
-  * `API Key Name` - The username for the API Key associated with a user account that has permission to fetch assets.
-  * `API Key` -  An API Key associated with a user account that has permission to fetch assets``.
-  * `API Endpoint` - The API Endpoint for your Cerero account.
+  * `API Key Name` - The name of the API Key associated with a user account that has permission to fetch assets.
+  * `API Key` -  An API Key associated with a user account that has permission to fetch assets.
+  * `API Endpoint` - The API Endpoint used to access the assets records contained in your Cerero instance, for example: `https://yourinstance.cloud.certero.com/api/odata/ComputerSystem`
 * Click `Create Key`.
 
 ### Key Type - Cynerio
