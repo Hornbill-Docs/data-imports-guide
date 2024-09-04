@@ -234,7 +234,19 @@ The utility will default to `conf.json` if a configuration file is not specified
     - `Value` - Type: `string` - The mapped name of the Organizational Unit.
     - `MemberOf` - Type: `string` - This field references the "memberOf" attribute of the user object in your Entra ID directory. When the distinction of a group is specified in this field, the utility will only allow the group association in Hornbill if the group DN exists in the `memberOf` attribute of the user object being processed. i.e. only allow the Hornbill group association if the user object is a member of this directory group.
 	- `Options` - Type: `object` - A collection of properties to define membership settings of organizational group:
-	  - `Type` - Type: `integer` - The numeric value for the group type (team = 1, company = 5, etc). See the [group type datatype documentation](/esp-api/types/simple/groupType) for supported values.
+	  - `Type` - Type: `integer` - The numeric value for the group type: 
+    	- `0` - `general`
+        - `1` - `team`
+        - `2` - `department`
+        - `3` - `costcenter`
+        - `4` - `division`
+        - `5` - `company`
+        - `6` - `businessUnit`
+        - `7` - `directorate`
+        - `8` - `branch`
+        - `9` - `function`
+        - `10` - `board`
+        - `11` - `subsidiary`
 	  - `Membership` - Type: `string` - The group membership role, can be one of `member`, `teamLeader` or `manager`.
 	  - `TasksView` - Type: `boolean` - If set to `true`, then the imported users can view tasks assigned to this group (Typically only required for Groups of type "Team").(Typically only required for Groups of type "Team").
 	  - `TasksAction` - Type: `boolean` -  If set to `true`, then the user can action tasks assigned to this group.
