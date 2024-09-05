@@ -108,7 +108,7 @@ There are a number of field-specific attribute mapping rules too:
 
 ### User Profile
 
-Mappings to the extended Hornbill user profile properties works in exactly the same way as the User account mapping above.
+Mappings to the extended Hornbill user profile properties works in exactly the same way as the user account mapping above. The user profile mappings are only applied on update to an exising account. These will not show when an account is first created.   
 
 <img src="/_books/data-imports-guide/users/ldap/images/ldap-user-import-profile.png" width="650px" alt="User Profile Mapping Example"/>
 
