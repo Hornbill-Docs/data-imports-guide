@@ -216,8 +216,11 @@ The utility will default to `conf.json` if a configuration file is not specified
     - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
     - `Roles` - Type: `array` - A list of [application or system roles](/esp-config/organizational-data/roles) that should be assigned to the users being imported.
   - `Manager` - Type: `object` - Contains three properties, Import actions to perform on the Manager field of the discovered user records:
-    - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
+    - `Action` - Type: `string` - Can be:
+      -  `Create`, `Update`, or `Both` - any of these (case-insensitve) can be used to activate manager association
+      - Any other value will disable manager search & setting.
     - `AzField` - Type: `string` - The Entra ID field to identify the manager ID against.
+    - `ClearIfNoManager` - Type: `boolean` - Defaults to `false`. Set to `true` to clear the Hornbill users manager field should the matched user no longer have a manager against their Entra ID user object
     - `HornbillUniqueColumn` - Type: `string` - The Hornbill field to identify the imported users' manager ID against.
   - `Image` - Type: `object` - Contains several properties, Import actions to perform on profile images of the discovered user records:
     - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`. 
