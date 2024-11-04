@@ -15,6 +15,7 @@ The utility will default to `conf.json` if a configuration file is not specified
 ```json
 {
     "KeysafeKeyID": 0,
+    "ImportID": "UniqueImportID",
     "AzureConf": {
         "Search": "groups",
         "UserFilter": "startswith(displayName,'Dave')",
@@ -181,6 +182,7 @@ The utility will default to `conf.json` if a configuration file is not specified
 ### Configuration Explanation
 
 - `KeysafeKeyID` - Type: `integer` - The ID of the KeySafe Key that contains your Azure authentication details. See the [KeySafe section of the Authentication article](/data-imports-guide/users/azure/authentication#keysafe) for more information.
+- `ImportID` - Type: `string` - A unique import ID to be associated with any run import jobs. This allows for different import configiurations (for example, imports from different Entra ID tenants) to be run concurrently.
 - `AzureConf` - Type: `object` - The information that the utility needs to query Entra ID.
   - `Search` - Type: `string` - Can be `users` or `groups`. See `UserFilter` and `UsersByGroupID` below.
   - `UserFilter` - Type: `string` - Allows you to apply a filter against the list of users returned by Entra ID for processing, when the `Search` property, above, is set to `users`. See the [Microsoft API documentation](https://learn.microsoft.com/en-us/graph/api/user-list?view=graph-rest-1.0&tabs=http#example-7-use-search-to-get-users-with-display-names-that-contain-the-letters-wa-or-the-letters-ad-including-a-count-of-returned-objects) for more information.
