@@ -261,7 +261,7 @@ The utility will default to `conf.json` if a configuration file is not specified
 #### Hornbill Instance Specific Configuration Properties
 
 - ``InstanceID`` - This is the name of your Hornbill instance and can be found within the URL you use to navigate to it: live.hornbill.com/**instance name**/. This value is case sensitive.
-- ``APIKeys`` - This is an array of API Keys with which the tool will log the new requests. A minimum of 1 and a maximum of 10 can be defined. The more API keys provided, the more workers will import requests concurrently. API Keys can be created against the same user account in Hornbill. Details on how to create an API key can be found [here](https://docs.hornbill.com/esp-fundamentals/security/api-keys).
+- ``APIKeys`` - This is an array of API Keys with which the tool will log the new requests. A minimum of 1 and a maximum of 10 can be defined. The more API keys provided, the more workers will import requests concurrently. API Keys can be created against the same user account in Hornbill. Details on how to create an API key can be found [here](/esp-fundamentals/security/api-keys).
 
 #### **AppDBConf**
 Contains the connection information for the database (direct or via ODBC) that contains the request data for import.

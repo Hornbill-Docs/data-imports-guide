@@ -5,10 +5,6 @@ The **Hornbill Document Importer** provides a simple, safe and secure way to bul
 
 The tool is designed to run behind your corporate firewall and connects to your Hornbill instance in the cloud over HTTPS/SSL. So as long as you have standard internet access then you should be able to use the tool without the need to make any firewall configuration changes.
 
-## Download
-
-The Hornbill Document Import Tool is provided open source under the [Hornbill Community Licence](https://wiki.hornbill.com/index.php/The_Hornbill_Community_License_(HCL)) and can be found on [GitHub](https://github.com/hornbill/goHornbillDocumentImport)
-
 ## Installation
 
 Once downoaded, the [Zip archive](https://github.com/hornbill/goHornbillDocumentImport/releases/latest) for the utility should be extracted into a new folder within the local user profile of the user who will run the tool - whether that be your user profile of a service account that will be used to schedule the running of it.

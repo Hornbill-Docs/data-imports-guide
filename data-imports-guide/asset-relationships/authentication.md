@@ -26,7 +26,7 @@ The service account that you create must be of type `User` (not `Basic`), and be
 
 The Asset Relationship Imports require access to the following Hornbill Platform and application APIs, and your [API Key rules](/esp-fundamentals/security/api-keys#api-key-rules) should reflect those, plus additional security hardening in the form of IP rules:
 
-This utility uses ([API keys](https://docs.hornbill.com/esp-fundamentals/security/api-keys)):
+This utility uses ([API keys](/esp-fundamentals/security/api-keys)):
 
 ```cmd
 admin:keysafeGetKey

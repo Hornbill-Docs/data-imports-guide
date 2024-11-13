@@ -19,10 +19,6 @@ Importing Supportworks call data and associated file attachments into your Hornb
 
 When running the import tool, after the call records are imported, you will receive a warning before importing the associated call file attachments. Please take note of the information presented, as this will inform you the amount of Hornbill storage space you have available to your instance, and the approximate amount that will be consumed should you continue with the file attachment import.
 
-## Open Source
-
-The Supportworks to Hornbill Service Manager Request Import Utility is provided open-source under the [Hornbill Community Licence](https://wiki.hornbill.com/index.php/The_Hornbill_Community_License_(HCL)) and can be found [Here](https://github.com/hornbill/goSWRequestImport) on GitHub
-
 ## Installation Overview
 ### **Windows Installation**
 

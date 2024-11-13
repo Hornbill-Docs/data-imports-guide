@@ -21,7 +21,7 @@ The service account that you create must be of type `User` (not `Basic`), and be
 - **Hornbill Service Manager Integrations** - Enables a number of entity and stored query privileges. ***NOTE*** - This role is only intended for accounts that are used for integrations or to perform data imports, and should not be applied to interactive user accounts. 
 
 ## API Key Rules
-This utility uses ([API keys](https://docs.hornbill.com/esp-fundamentals/security/api-keys)):
+This utility uses ([API keys](/esp-fundamentals/security/api-keys)):
 ```cmd
 activity:postMessage
 bpm:processSpawn2

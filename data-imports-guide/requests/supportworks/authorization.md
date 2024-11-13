@@ -22,7 +22,7 @@ The service account that you create must be of type `User` (not `Basic`), and be
 
 ## API Key Rules
 
-This utility uses ([API keys](https://docs.hornbill.com/esp-fundamentals/security/api-keys)):
+This utility uses ([API keys](/esp-fundamentals/security/api-keys)):
 
 ```cmd
 activity:postMessage

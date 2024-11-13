@@ -3,15 +3,15 @@
 The Document Import utility uses API Keys to authenticate all API calls into Hornbill instances, and KeySafe to securely store credentials for the asset data source.
 
 ## API Keys
-For the utility to read, create and update records via the Hornbill API, it requires an [API Key](https://docs-internal.hornbill.com/esp-fundamentals/security/api-keys) to be securely stored alongside the client.
+For the utility to read, create and update records via the Hornbill API, it requires an [API Key]/esp-fundamentals/security/api-keys) to be securely stored alongside the client.
 
 ## User
-Every action within Hornbill must be performed in the context of a user account. The user account must possess roles for the platform and applications that you are granting access to via the import utility. The above comment about roles refers to the [Hornbill Security Model](https://docs-internal.hornbill.com/esp-fundamentals/security/account-types) when associating roles with user accounts. This security measure prevents you from inflating your session rights, or granting a user more rights than you have yourself.
+Every action within Hornbill must be performed in the context of a user account. The user account must possess roles for the platform and applications that you are granting access to via the import utility. The above comment about roles refers to the [Hornbill Security Model]/esp-fundamentals/security/account-types) when associating roles with user accounts. This security measure prevents you from inflating your session rights, or granting a user more rights than you have yourself.
 
 :::important
 We strongly recommend that you create a Service Account in your Hornbill instance, and API Keys against that account which can then be used to perform the required API calls back into Hornbill.
 
-Please read the [API Key documentation](https://docs-internal.hornbill.com/esp-fundamentals/security/api-keys) and [best practice guide](https://docs-internal.hornbill.com/esp-fundamentals/best-practice/platform-api-keys) before creating API keys against your user records.
+Please read the [API Key documentation]/esp-fundamentals/security/api-keys) and [best practice guide]/esp-fundamentals/best-practice/platform-api-keys) before creating API keys against your user records.
 :::
 
 The service account that you create must be of type `User` (not `Basic`), and be granted the following roles:
@@ -22,7 +22,7 @@ The service account that you create must be of type `User` (not `Basic`), and be
 
 ## API Key Rules
 
-The Document Import Utility require access to the following Hornbill Platform and application APIs, and your [API Key rules](https://docs-internal.hornbill.com/esp-fundamentals/security/api-keys#api-key-rules) should reflect those, plus additional security hardening in the form of IP rules:
+The Document Import Utility require access to the following Hornbill Platform and application APIs, and your [API Key rules]/esp-fundamentals/security/api-keys#api-key-rules) should reflect those, plus additional security hardening in the form of IP rules:
 
 ```cmd
 data:entityAddRecord
@@ -35,7 +35,7 @@ library:documentAdd
 For the import utility to access data from your source database, authentication credentials are required to be stored in KeySafe.
 
 :::note
-We recommend that you read the [KeySafe documentation](https://docs-internal.hornbill.com/esp-fundamentals/security/keysafe) before storing credentials in KeySafe.
+We recommend that you read the [KeySafe documentation]/esp-fundamentals/security/keysafe) before storing credentials in KeySafe.
 :::
 
-Once the relevant key has been created, you can then lock access to it down to the API Key created against your service account. See the [KeySafe documentation](https://docs-internal.hornbill.com/esp-fundamentals/security/keysafe#access-control-and-usability) for more information regarding this.
+Once the relevant key has been created, you can then lock access to it down to the API Key created against your service account. See the [KeySafe documentation]/esp-fundamentals/security/keysafe#access-control-and-usability) for more information regarding this.

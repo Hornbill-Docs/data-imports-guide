@@ -6,10 +6,6 @@ The utility provides a simple, safe and secure way to migrate call data from a d
 
 The tool connects to your Hornbill instance in the cloud over HTTPS/SSL, so as long as you have standard internet access then you should be able to use the tool without the need to make any firewall configuration changes.
 
-## Download
-
-The Hornbill Service Manager Request Import Utility is provided open source under the [Hornbill Community Licence](https://wiki.hornbill.com/index.php/The_Hornbill_Community_License_(HCL)) and can be found [here](https://github.com/hornbill/goHornbillRequestImport) on GitHub
-
 ## Installation
 
 Download the OS and architecture specific [ZIP archive](https://github.com/hornbill/goHornbillRequestImport/releases/latest) extract the zip file into a folder you would like the application to run from e.g. ``C:\request_import\`` - within the local user profile of the user who will run the tool. For example:
