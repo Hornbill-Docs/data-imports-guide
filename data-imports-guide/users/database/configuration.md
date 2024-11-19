@@ -212,6 +212,10 @@ The utility will default to `conf.json` if a configuration file is not specified
       - etc...
     - `DateTimeFormat` - See the [list of supported DateTime formats](/data-imports-guide/date-time-formats) for valid values.
     - `CountryCode` - ISO 3166 Alpha 2 two Character Country Code.
+    - `Enable2FA` - Can be `disabled` or `email`. To disable/enable the type of Two-Factor Authentication on the account.
+    - `DisableDirectLogin` - Type: `boolean` - To allow/prevent the account from being logged into using the Direct Login function.
+    - `DisableDirectLoginPasswordReset` - Type: `boolean` - To allow/prevent the account from being able to use the Password Reset Request feature of Direct Login.
+    - `DisableDevicePairing` - Type: `boolean` - To allow/prevent the account from being able to pair to other devices from which they can log in using the mobile app.
     - `NOTE` - Any value of `__clear__` will clear the target field for user records being updated.
   - `ProfileMapping` - Type: `object` - Data mapping for user profile fields, in the format `"fieldInHornbill": "data to insert"`. See `AccountMapping` above for details.
   - `Type` - Type: `object` - Contains a single property `Action`, which can be `Create`, `Update`, or `Both`. Import actions to perform on the Type field of the discovered user records.
