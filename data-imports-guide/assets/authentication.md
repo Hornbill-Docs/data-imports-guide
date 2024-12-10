@@ -79,6 +79,8 @@ As the Asset Import utility supports the import of asset data from many differen
   * `swsql` - Supportworks SQL (Core Services v3.x).
 * [Google Workspace](/data-imports-guide/assets/authentication#key-type-google-workspace) - Used for the following data sources:
   * `google` - Google Workspace Enterprise Chrome OS.
+* [Jamf](/data-imports-guide/assets/authentication#key-type-jamf) - Used for the following data sources:
+  * `jamf` - Jamf 
 * [LDAP Authentication](/data-imports-guide/assets/authentication#key-type-ldap) - Used for the following data sources:
   * `ldap` - LDAP data sources (including Active Directory).
 * [Username + Password](/data-imports-guide/assets/authentication#key-type-username-password) - Used for the following data sources:
@@ -171,6 +173,18 @@ Keys of this type require a Cynerio API Key to be created against a user account
 * Once the Key is created, you will need to connect to Google Workspace and your account, in order to authorize the Hornbill App to perform the listed Google Workspace options. Click `Connect` and you will be redirected to Google Workspace in a popup window.
 * Log in to your Google Workspace account, and then you will be prompted to review the operations you are authorizing the Hornbill App to be allowed to perform with the chosen Google Workspace account.
 * Select the scopes/permissions relevant to the import, and click `Continue`. You will then be returned to your KeySafe key.
+
+### Key Type - Jamf
+
+* In Hornbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
+* Click `+ Create New Key`.
+* Choose a key type of `Jamf`.
+* Give the KeySafe key a Title.
+* Optionally add a Description.
+* `Username` - The username of your account should be used to authenticate the connection.
+* `Jamf Server` - The name that appears in the url when you login to Jamf, for example: "https://'JAMF SERVER NAME'.jamfcloud.com/". Please only include the name as it appears in the URL.
+* `Password` - The password associated with the above username.
+* Click `Create Key`.
 
 ### Key Type - Microsoft Intune
 

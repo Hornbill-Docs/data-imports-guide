@@ -186,6 +186,10 @@
                         "link": "data-imports-guide/assets/configexamples/cynerio"
                       },
                       {
+                        "text": "Jamf",
+                        "link": "data-imports-guide/assets/configexamples/jamf"
+                      },
+                      {
                         "text": "Lansweeper",
                         "link": "data-imports-guide/assets/configexamples/lansweeper"
                       },
