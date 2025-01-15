@@ -4,7 +4,7 @@
   "description": "How to use utilities to import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.5.38",
+  "version": "0.5.39",
   "audience": [
     "public"
   ],
@@ -250,6 +250,36 @@
                     "link": "data-imports-guide/asset-relationships/debugging"
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "text": "Contacts",
+            "expand": false,
+            "items": [
+              {
+                "text": "Introduction",
+                "link": "data-imports-guide/contacts/overview"
+              },
+              {
+                "text": "Authentication",
+                "link": "data-imports-guide/contacts/authentication"
+              },
+              {
+                "text": "Configuration",
+                "link": "data-imports-guide/contacts/configuration"
+              },
+              {
+                "text": "Running an Import",
+                "link": "data-imports-guide/contacts/command"
+              },
+              {
+                "text": "Scheduling the Import",
+                "link": "data-imports-guide/contacts/scheduling"
+              },
+              {
+                "text": "Troubleshooting",
+                "link": "data-imports-guide/contacts/debugging"
               }
             ]
           },
