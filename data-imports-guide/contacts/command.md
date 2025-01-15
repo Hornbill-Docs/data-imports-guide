@@ -33,7 +33,7 @@ The following is an example of how the tool will prompt you for your Instance ID
 
 ## Testing Overview
 
-There is no substitute for hands-on experience when becoming familiar with the Hornbill import utilities. The Contact Import utility accepts and understands a number of [command line arguments](/data-imports-guide/assets/command#command-line-arguments) that can be used when running the utility from the Windows command line or PowerShell. 
+There is no substitute for hands-on experience when becoming familiar with the Hornbill import utilities. The Contact Import utility accepts and understands a number of [command line arguments](/data-imports-guide/contacts/command#command-line-arguments) that can be used when running the utility from the Windows command line or PowerShell. 
 
 :::tip
 The most important argument when testing is `-dryrun=true`. When this is provided, no record create or update API calls will be sent to Hornbill. Instead, all create or update requests that would have been made into Hornbill are output to a log file, including input parameters, which provides you with an opportunity to review their content and understand any error messages that may occur.

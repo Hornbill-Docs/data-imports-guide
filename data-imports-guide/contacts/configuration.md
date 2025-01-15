@@ -59,7 +59,8 @@ The utility will default to `conf.json` if a configuration file is not specified
 
 #### Hornbill Instance Specific Configuration Properties
 
-- `KeySafeKeyID` - Type: `integer` - The ID of the KeySafe Key that contains your data source authentication details. Set to 0 for importing directly from CSV files. See the [KeySafe section of the Authentication article](/data-imports-guide/assets/authentication#keysafe) for more information on supported key types.
+- `KeySafeKeyID` - Type: `integer` - The ID of the KeySafe Key that contains your data source authentication details. Set to 0 for importing directly from CSV files. 
+
 :::tip
 The KeySafe Key ID is the unique identifier of the key, and can be found in the URL when you are on the key details form in your browser. In the example below, `4` is the KeySafe Key ID:
 
@@ -68,9 +69,7 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
 #### SourceConfig
 
 - `SQLConf` - Type: `object` - The SQL configuration for the import
-  - `mssql` - Microsoft SQL Server (2005 or above) - will use KeySafe key type [Database Authentication](/data-imports-guide/contacts/authentication#key-type-database-authentication)
-  - `mysql` - MySQL Server - will use KeySafe key type [Database Authentication](/data-imports-guide/contacts/authentication#key-type-database-authentication)
-  - `mysql320` - MySQL Server v3.2.0 to v4.0 - will use KeySafe key type [Database Authentication](/data-imports-guide/contacts/authentication#key-type-database-authentication)
+  - `mssql` - Microsoft SQL Server (2005 or above)
   - `Encrypt` - Type: `boolean` - Used to specify whether the connection between the script and the database should be encrypted. **NOTE** There is a bug in SQL Server 2008 and below that causes the connection to fail if the connection is encrypted. Only set this to `true` if your SQL Server has been patched accordingly.
   - `Query` - Type: `string` - The basic SQL query to retrieve contact information from the data source.
 - `CSVConf` - Type: `object` - The CSV configuration for the import
@@ -114,4 +113,3 @@ Any other value is treated as written examples below:
 :::tip
 Field names are all **case sensitive**.
 :::
-
