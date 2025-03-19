@@ -85,6 +85,8 @@ As the Asset Import utility supports the import of asset data from many differen
   * `ldap` - LDAP data sources (including Active Directory).
 * [Username + Password](/data-imports-guide/assets/authentication#key-type-username-password) - Used for the following data sources:
   * `nexthink` - Nexthink.
+* [Virima](/data-imports-guide/assets/authentication#key-type-virima) - Used for the following data sources:
+  * `virima` - Virima.
 * [VMWare Workspace One UEM](/data-imports-guide/assets/authentication#key-type-vmware-workspace-one-uem) - Used for the following data sources:
   * `workspaceone` - VMware Workspace One UEM.
 
@@ -223,6 +225,22 @@ Keys of this type require a Cynerio API Key to be created against a user account
   * `Username` - The username of the account that should be used to authenticate the connection to your account.
   * `Password` - The password for the above account. 
   * `API Endpoint` - The service API endpoint.
+* Click `Create Key`.
+
+### Key Type - Virima
+
+Keys of this type require an API Key and Tenant ID to be created and provided to you by Virima. This API key needs permission to fetch CIs and software inventory records, before the details can be stored in KeySafe, and eventually be used by the Asset Import Utility.
+
+* In Hornbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
+* Click `+ Create New Key`.
+* Choose a key type of `Virima`.
+* Give the KeySafe key a Title.
+* Optionally add a Description.
+* Populate the following fields on the form:
+  * `API Key Name` - The name of the API Key associated with a user account that has permission to fetch assets.
+  * `Tenant ID` - The Tenant ID as provided by Virima.
+  * `API Key` -  The API Key as provided by Virima.
+  * `API Endpoint` - The API Endpoint for your Virima tenant, for example: `https://login-euc1.virima.com/www_em/rest`
 * Click `Create Key`.
 
 ### Key Type - VMWare Workspace One UEM

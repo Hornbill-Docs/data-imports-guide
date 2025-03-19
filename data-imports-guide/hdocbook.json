@@ -4,7 +4,7 @@
   "description": "How to use utilities to import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.5.39",
+  "version": "0.5.40",
   "audience": [
     "public"
   ],
@@ -204,6 +204,10 @@
                       {
                         "text": "SCCM",
                         "link": "data-imports-guide/assets/configexamples/sccm"
+                      },
+                      {
+                        "text": "Virima",
+                        "link": "data-imports-guide/assets/configexamples/virima"
                       }
                     ]
                   },

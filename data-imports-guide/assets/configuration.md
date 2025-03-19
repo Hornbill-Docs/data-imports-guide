@@ -215,6 +215,7 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
   - `intune` - Microsoft Intune - will use KeySafe type [Microsoft Intune](/data-imports-guide/assets/authentication#key-type-microsoft-intune)
   - `cynerio` - Cynerio - will use KeySafe type [Cynerio](/data-imports-guide/assets/authentication#key-type-cynerio)
   - `azureresourcequery` - Azure Resource Query - will use KeySafe type [Azure Resource Query](/data-imports-guide/assets/authentication#key-type-azure-resource-query)
+  - `virima` - Virima - will use KeySafe type [Virima](/data-imports-guide/assets/authentication#key-type-virima)
 - `CSV` - Type: `object` - Only in use if `Source` is set to `csv`
     - `CarriageReturnRemoval` - Type: `boolean` - Certain CSV exporting systems will add extra carriage returns as a record delimiter. This is expected not to be common, hence the setting is left out of the configuration files (it is added to conf_computerSyste      * `json only for completeness sake). If not set, then the default value is `false` and no carriages returns will be stripped from the data. If set to `true`, then all carriage returns (possibly even intended ones) will be stripped.
     - `CommaCharacter` - Type: `string` - The field separator (single) character - if left out, the default character will be a comma.
@@ -255,6 +256,11 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
     - `ManagementGroups` - Type: `array` - An array of strings, which can hold a list of Management Group IDs to apply to the Azure Resource Query. If both ManagementGroups and SubscriptionIDs are provided, ManagementGroups will be ignored as the Azure Resource Query API only supports one or the other.
     - `SoftwareKeysafeKeyID` - Type: `integer` - The ID of the KeySafe Key that contains your data source authentication details. Azure Resource Query has no mechanism to return sotware inventory items, so the utility uses Azure Log Analytics and the Automation Update/Change/Inventory module to retrieve software installed on your Arc registered computers.
     - `SoftwareLogAnalyticsWorkspaceID` - Type: `string` - The ID (GUID) of the Log Analytics Workspace that contains the ConfigurationData table, that holds your asset software inventory records.
+- `Virima` - Type: `object` - Only in use if `Source` is set to `virima`
+  - `Module` - Type: `string` - The Virima module to query, for example: `CmdbCi`
+  - `ClassName` - Type: `string` - The Virima class to query, for example: `CmdbCi`
+  - `DBClassName` - Type: `string` - The Virima database class to query, for example: `TCI`
+  - `Sort` - Type: `object` - record sort information.
 
 #### AssetTypes
 
@@ -313,6 +319,7 @@ During the import process assets of each type as defined below are retrieved fro
   * `SeenSince` - Type: `string` - Specifies the datetime filter for device search, which retrieves the devices that are seen after this datetime stamp.
 * `CynerioFilters` - Type: `object` - A list of fields and values to use when filtering the Cynerio asset API call resultsets by, in the following format:
   * `"CynerioFieldName":"ValueToMatch"`
+* `Virima` - Type: `array` - A list of filters to apply to the Virima CI query, as per the [FilterPojo construct](https://login.virima.com/www_em/constructs.html#FilterPojo) in the Virima documentation
 * `AdditionalFilters` - Type: `array` - A list of filter objects, to further filter the list of assets returned from `Cynerio`, `Intune` or `Google Workspace`. Each item in the list must match as `true` for the asset to be imported, and are defined as objects containing:
   * `Field` - Type: `string` - The data source field ID to perform the filter against.
   * `Operator` - Type: `string` - The operator to apply to the filter, can be one of:
@@ -408,6 +415,8 @@ During the import process assets of each type as defined below are retrieved fro
       * `Query` - Type: `string` - The query that will be run per asset, to return its software inventory records. `{{AssetID}}` - in the query will be replaced by each assets primary key value, whose column is defined in the `AssetIDColumn` property. **NOTE**: this is NOT being processed as a template (note the absence of the full stop). **ALSO NOTE**: This is not used when importing assets from **Certero, Arc or Workspace One**.
       * `Clauses` - Type: `array` - Only used whem importing assets from **Azure Resource Query/Arc**. A list of clauses to pass to the Log Analytics query API to return Software Inventory records for imported assets. `{{AssetID}}` - in the query will be replaced by each assets primary key value, whose column is defined in the `AssetIDColumn` property. **NOTE**: this is NOT being processed as a template (note the absence of the full stop).
       * `Mapping` - Type: `object` - A key-value pair list of mapping in the format `"Hornbill Column": "Mapped Value"`, maps data into the software inventory records
+  * `AssetTypeFieldMapping` - Type: `object` - Maps data in to the type-specific Asset record, so the same rules as `AssetGenericFieldMapping` and `AssetTypeFieldMapping` detailed below. **NOTE**: if `AssetTypeFieldMapping` is supplied against the asset type, then the generic `AssetTypeFieldMapping` object below will be ignored. If this is not provided, or is an empty object, then the tool will use the `AssetTypeFieldMapping` columns below as the default. This allows for the import of assets of multiple classes using the same configuration file.
+
 
 #### AssetGenericFieldMapping
 
@@ -453,6 +462,6 @@ As well as the above transforms, we have also included the [Sprig package for Go
 
 #### AssetTypeFieldMapping
 
-Maps data in to the type-specific Asset record, so the same rules as AssetGenericFieldMapping, above. For the computer asset class:
+Maps data in to the type-specific Asset record, so the same rules as AssetGenericFieldMapping. For the computer asset class:
 
 `"h_last_logged_on_user":"{{.UserName}}"` - when a valid Hornbill User ID (for a Full or Basic User) is passed to this field, the user is verified on your Hornbill instance, and the tool will complete the `h_last_logged_on_user` column with an appropriate URN value for the user.
