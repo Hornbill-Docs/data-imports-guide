@@ -5,7 +5,9 @@
     "exclude_paths": []
   },
   "validation": {
-    "exclude_links": [],
+    "exclude_links": [
+      "https://community.hornbill.com*"
+    ],
     "exclude_spellcheck":[
       {
           "document_path": "data-imports-guide/requests/from-servicenow/configuration",
