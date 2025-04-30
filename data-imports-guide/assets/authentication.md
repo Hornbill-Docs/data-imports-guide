@@ -83,7 +83,7 @@ As the Asset Import utility supports the import of asset data from many differen
   * `jamf` - Jamf 
 * [LDAP Authentication](/data-imports-guide/assets/authentication#key-type-ldap) - Used for the following data sources:
   * `ldap` - LDAP data sources (including Active Directory).
-* [oAuth 2.0](/data-imports-guide/assets/authentication#key-type-oauth2.0) - Used for the following datasources:
+* [oAuth 2.0](/data-imports-guide/assets/authentication#key-type-oauth-20) - Used for the following datasources:
   * `manage engine` - Manage Engine
 * [Username + Password](/data-imports-guide/assets/authentication#key-type-username-password) - Used for the following data sources:
   * `nexthink` - Nexthink.
