@@ -11,6 +11,8 @@ Ultimately, the executable will be scheduled in the Windows task scheduler (see 
   - `Certero`
   - `Cynerio`
   - `Google Workspace`
+  - `Jamf`
+  - `Manage Engine`
   - `Microsoft Intune`
   - `Nexthink`
   - `vmware Workspace One UEM`

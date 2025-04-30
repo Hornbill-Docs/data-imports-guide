@@ -210,6 +210,7 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
   - `nexthink` - Nexthink - will use KeySafe key type [Username + Password](/data-imports-guide/assets/authentication#key-type-username-password)
   - `ldap` - LDAP / Active Directory - will use KeySafe key type [LDAP Authentication](/data-imports-guide/assets/authentication#key-type-ldap)
   - `google` - Google Workspace Enterprise Chrome OS - will use KeySafe key type [Google Workspace](/data-imports-guide/assets/authentication#key-type-google-workspace)
+  - `manageengine` - Manage Engine - will use KeySafe  key type [oAuth 2.0](/data-imports-guide/assets/authentication#key-type-oauth-20)
   - `certero` - Certero - will use KeySafe key type [Certero](/data-imports-guide/assets/authentication#key-type-certero)
   - `workspaceone` - vmware Workspace One UEM - will use KeySafe type [VMWare Workspace One UEM](/data-imports-guide/assets/authentication#key-type-vmware-workspace-one-uem)
   - `intune` - Microsoft Intune - will use KeySafe type [Microsoft Intune](/data-imports-guide/assets/authentication#key-type-microsoft-intune)

@@ -4,7 +4,7 @@
   "description": "How to use utilities to import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.5.43",
+  "version": "0.5.44",
   "audience": [
     "public"
   ],
@@ -192,6 +192,10 @@
                       {
                         "text": "Lansweeper",
                         "link": "data-imports-guide/assets/configexamples/lansweeper"
+                      },
+                      {
+                        "text": "Manage Engine",
+                        "link": "data-imports-guide/assets/configexamples/manageengine"
                       },
                       {
                         "text": "Microsoft Intune",
