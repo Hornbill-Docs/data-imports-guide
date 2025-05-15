@@ -4,7 +4,7 @@
   "description": "How to use utilities to import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.5.44",
+  "version": "0.5.45",
   "audience": [
     "public"
   ],
@@ -18,140 +18,40 @@
         "link": "data-imports-guide/index"
       },
       {
-        "text": "Platform",
+        "text": "Cloud Data Imports",
         "expand": true,
+        "draft": true,
         "items": [
           {
             "text": "Users",
-            "expand": true,
             "items": [
               {
-                "text": "From a Database",
-                "items": [
-                  {
-                    "text": "Introduction",
-                    "link": "data-imports-guide/users/database/overview"
-                  },
-                  {
-                    "text": "Authentication",
-                    "link": "data-imports-guide/users/database/authentication"
-                  },
-                  {
-                    "text": "Configuration",
-                    "link": "data-imports-guide/users/database/configuration"
-                  },
-                  {
-                    "text": "Running an Import",
-                    "link": "data-imports-guide/users/database/command"
-                  },
-                  {
-                    "text": "Scheduling the Import",
-                    "link": "data-imports-guide/users/database/scheduling"
-                  },
-                  {
-                    "text": "Troubleshooting",
-                    "link": "data-imports-guide/users/database/debugging"
-                  }
-                ]
+                "text": "Overview",
+                "link": "data-imports-guide/cloud-users/overview"
               },
               {
-                "text": "From Entra ID (formerly Azure AD)",
-                "items": [
-                  {
-                    "text": "Introduction",
-                    "link": "data-imports-guide/users/azure/overview"
-                  },
-                  {
-                    "text": "Authentication",
-                    "link": "data-imports-guide/users/azure/authentication"
-                  },
-                  {
-                    "text": "Configuration",
-                    "link": "data-imports-guide/users/azure/configuration"
-                  },
-                  {
-                    "text": "Running an Import",
-                    "link": "data-imports-guide/users/azure/command"
-                  },
-                  {
-                    "text": "Scheduling the Import",
-                    "link": "data-imports-guide/users/azure/scheduling"
-                  },
-                  {
-                    "text": "Troubleshooting",
-                    "link": "data-imports-guide/users/azure/debugging"
-                  }
-                ]
+                "text": "Entra ID",
+                "link": "data-imports-guide/cloud-users/entraid"
               },
               {
-                "text": "From Google Workspace",
-                "items": [
-                  {
-                    "text": "Introduction",
-                    "link": "data-imports-guide/users/google/overview"
-                  },
-                  {
-                    "text": "Authentication",
-                    "link": "data-imports-guide/users/google/authentication"
-                  },
-                  {
-                    "text": "Configuration",
-                    "link": "data-imports-guide/users/google/configuration"
-                  },
-                  {
-                    "text": "Running an Import",
-                    "link": "data-imports-guide/users/google/command"
-                  },
-                  {
-                    "text": "Scheduling the Import",
-                    "link": "data-imports-guide/users/google/scheduling"
-                  },
-                  {
-                    "text": "Troubleshooting",
-                    "link": "data-imports-guide/users/google/debugging"
-                  }
-                ]
+                "text": "Google Workspace",
+                "link": "data-imports-guide/cloud-users/googleworkspace"
               },
               {
-                "text": "From an LDAP (including Active Directory)",
-                "items": [
-                  {
-                    "text": "Introduction",
-                    "link": "data-imports-guide/users/ldap/overview"
-                  },
-                  {
-                    "text": "Authentication",
-                    "link": "data-imports-guide/users/ldap/authentication"
-                  },
-                  {
-                    "text": "Configuration",
-                    "link": "data-imports-guide/users/ldap/configuration"
-                  },
-                  {
-                    "text": "Running an Import",
-                    "link": "data-imports-guide/users/ldap/command"
-                  },
-                  {
-                    "text": "Scheduling the Import",
-                    "link": "data-imports-guide/users/ldap/scheduling"
-                  },
-                  {
-                    "text": "Troubleshooting",
-                    "link": "data-imports-guide/users/ldap/debugging"
-                  }
-                ]
+                "text": "Data Mapping",
+                "link": "data-imports-guide/cloud-users/data-mapping"
               }
             ]
           }
         ]
       },
       {
-        "text": "Service Manager",
+        "text": "Local Data Imports",
         "expand": true,
         "items": [
           {
             "text": "Assets",
-            "expand": true,
+            "expand": false,
             "items": [
               {
                 "text": "Asset Records",
@@ -372,52 +272,128 @@
                 ]
               }
             ]
-          }
-        ]
-      },
-      {
-        "text": "Customer Manager",
-        "draft": true,
-        "expand": true,
-        "items": [
-          {
-            "text": "Overview",
-            "link": "data-imports-guide/customer-manager/overview"
           },
           {
-            "text": "Organizations",
-            "link": "data-imports-guide/customer-manager/organizations"
-          },
-          {
-            "text": "Contacts",
-            "link": "data-imports-guide/customer-manager/contacts"
-          }
-        ]
-      },
-      {
-        "text": "Document Manager",
-        "draft": true,
-        "expand": true,
-        "items": [
-          {
-            "text": "Introduction",
-            "link": "data-imports-guide/document-manager/overview"
-          },
-          {
-            "text": "Authentication",
-            "link": "data-imports-guide/document-manager/authentication"
-          },
-          {
-            "text": "Configuration",
-            "link": "data-imports-guide/document-manager/configuration"
-          },
-          {
-            "text": "Running an Import",
-            "link": "data-imports-guide/document-manager/command"
-          },
-          {
-            "text": "Debugging",
-            "link": "data-imports-guide/document-manager/debugging"
+            "text": "Users",
+            "expand": false,
+            "items": [
+              {
+                "text": "From a Database",
+                "items": [
+                  {
+                    "text": "Introduction",
+                    "link": "data-imports-guide/users/database/overview"
+                  },
+                  {
+                    "text": "Authentication",
+                    "link": "data-imports-guide/users/database/authentication"
+                  },
+                  {
+                    "text": "Configuration",
+                    "link": "data-imports-guide/users/database/configuration"
+                  },
+                  {
+                    "text": "Running an Import",
+                    "link": "data-imports-guide/users/database/command"
+                  },
+                  {
+                    "text": "Scheduling the Import",
+                    "link": "data-imports-guide/users/database/scheduling"
+                  },
+                  {
+                    "text": "Troubleshooting",
+                    "link": "data-imports-guide/users/database/debugging"
+                  }
+                ]
+              },
+              {
+                "text": "From Entra ID (formerly Azure AD)",
+                "items": [
+                  {
+                    "text": "Introduction",
+                    "link": "data-imports-guide/users/azure/overview"
+                  },
+                  {
+                    "text": "Authentication",
+                    "link": "data-imports-guide/users/azure/authentication"
+                  },
+                  {
+                    "text": "Configuration",
+                    "link": "data-imports-guide/users/azure/configuration"
+                  },
+                  {
+                    "text": "Running an Import",
+                    "link": "data-imports-guide/users/azure/command"
+                  },
+                  {
+                    "text": "Scheduling the Import",
+                    "link": "data-imports-guide/users/azure/scheduling"
+                  },
+                  {
+                    "text": "Troubleshooting",
+                    "link": "data-imports-guide/users/azure/debugging"
+                  }
+                ]
+              },
+              {
+                "text": "From Google Workspace",
+                "items": [
+                  {
+                    "text": "Introduction",
+                    "link": "data-imports-guide/users/google/overview"
+                  },
+                  {
+                    "text": "Authentication",
+                    "link": "data-imports-guide/users/google/authentication"
+                  },
+                  {
+                    "text": "Configuration",
+                    "link": "data-imports-guide/users/google/configuration"
+                  },
+                  {
+                    "text": "Running an Import",
+                    "link": "data-imports-guide/users/google/command"
+                  },
+                  {
+                    "text": "Scheduling the Import",
+                    "link": "data-imports-guide/users/google/scheduling"
+                  },
+                  {
+                    "text": "Troubleshooting",
+                    "link": "data-imports-guide/users/google/debugging"
+                  }
+                ]
+              },
+              {
+                "text": "From an LDAP (including Active Directory)",
+                "items": [
+                  {
+                    "text": "Introduction",
+                    "link": "data-imports-guide/users/ldap/overview"
+                  },
+                  {
+                    "text": "Authentication",
+                    "link": "data-imports-guide/users/ldap/authentication"
+                  },
+                  {
+                    "text": "Configuration",
+                    "link": "data-imports-guide/users/ldap/configuration"
+                  },
+                  {
+                    "text": "Running an Import",
+                    "link": "data-imports-guide/users/ldap/command"
+                  },
+                  {
+                    "text": "Scheduling the Import",
+                    "link": "data-imports-guide/users/ldap/scheduling"
+                  },
+                  {
+                    "text": "Troubleshooting",
+                    "link": "data-imports-guide/users/ldap/debugging"
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
