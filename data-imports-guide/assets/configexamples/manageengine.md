@@ -1,4 +1,4 @@
-# Configuration Example - Jamf
+# Configuration Example - Manage Engine
 
 The following is an example of the SourceConfig, AssetTypes and data mapping configuration that could be used to import Devices and software assets from Manage Engine.
 
