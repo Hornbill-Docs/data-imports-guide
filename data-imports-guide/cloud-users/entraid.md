@@ -19,37 +19,32 @@ Once your Keysafe Key is ready and connected to your Entra ID account, you’re 
 
 ## Step 2: Create Your First Import
 
-### Where to Find Cloud Data Imports
+**To find Cloud Data Imports:**
 
-To get started:
-
-1. Go to `Configuration`
-2. Select `Platform Configuration`
-3. Navigate to:  
-   `Data > Cloud Data Imports`
+Navigate to **Configuration > Platform Configuration > Data > Cloud Data Imports**.
 
 ---
 
-### Create a New Import Configuration
+**To create a new import configuration:**
 
-1. Click the `+ Add New` button at the top-right.
+1. At the top right of the configurations list, click **+ Add New**.
+    ::: note
+    If this is your first import configuration, click the button that says **No import configurations are set up. Click here to create your first import.**
+    :::
 2. Give your import a clear and unique name.
-3. Click `Create`.
+3. Click **Create**.
 4. (Optional) Add a description in the **Description** field to explain what the import does.
 
 ---
 
-### Choose the Data Source
+**To choose the data source:**
 
-1. Click on the **Data Source** tab.
-2. In the **Data Source Settings** area, click the edit icon next to the **Import** field.
-3. In the pop-up window, select the following:
-   - `Cloud Data Imports`
-   - `Users`
-   - `Entra ID`
-   - Then click `Apply`
+1. Click the **Data Source** tab.
+2. In the **Data Source Settings** area, in the **Import** field, click the edit icon.
+3. In the Hornbill Integration Bridge dialog, select **Cloud Data Imports** > **Users** > **Entra ID**.
+4. Click **Apply**.
 
-Once you've done that, the **Source / Import Options** section will appear with settings you can customize.
+Once you've done that, the **Source / Import Options** section appears, with settings you can customize.
 
 ### Source / Import Options
 
