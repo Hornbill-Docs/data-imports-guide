@@ -166,49 +166,118 @@ Check out [Google’s example queries](https://developers.google.com/workspace/a
 
 When you connect to **Google Workspace** to import users, Google presents us with a standard set of fields for each person. These fields are available for mapping and filtering. Here's what gets included:
 
-- `addresses`
-- `agreedToTerms`
-- `aliases`
-- `archived`
-- `changePasswordAtNextLogin`
-- `creationTime`
-- `customerId`
-- `customSchemas`
-- `deletionTime`
-- `emails`
-- `etag`
-- `externalIds`
-- `gender`
-- `id`
-- `ims`
-- `includeInGlobalAddressList`
-- `ipWhitelisted`
-- `isAdmin`
-- `isDelegatedAdmin`
-- `isEnforcedIn2Sv`
-- `isEnrolledIn2Sv`
-- `isMailboxSetup`
-- `keywords`
-- `kind`
-- `languages`
-- `lastLoginTime`
-- `locations`
-- `name`
-- `nonEditableAliases`
-- `notes`
-- `orgUnitPath`
-- `organizations`
-- `password`
-- `phones`
-- `posixAccounts`
-- `primaryEmail`
-- `recoveryEmail`
-- `recoveryPhone`
-- `relations`
-- `suspended`
-- `suspensionReason`
-- `thumbnailPhotoEtag`
-- `thumbnailPhotoUrl`
-- `websites`
+### Name
+ - `displayName`
+ - `familyName`
+ - `fullName`
+ - `givenName`
 
----
+### Account Information
+ - `agreedToTerms`
+ - `aliases`
+ - `archived`
+ - `changePasswordAtNextLogin`
+ - `creationTime`
+ - `customSchemas`
+ - `deletionTime`
+ - `etag`
+ - `id`
+ - `includeInGlobalAddressList`
+ - `ipWhitelisted`
+ - `isAdmin`
+ - `isDelegatedAdmin`
+ - `isEnforcedIn2Sv`
+ - `isEnrolledIn2Sv`
+ - `isMailboxSetup`
+ - `keywords`
+ - `kind`
+ - `languages`
+ - `lastLoginTime`
+ - `notes`
+ - `orgUnitPath`
+ - `suspended`
+ - `suspensionReason`
+ - `thumbnailPhotoEtag`
+ - `thumbnailPhotoUrl`
+
+### External ID Fields
+ - `accountExternalId`
+ - `customerExternalId`
+ - `loginExternalId`
+ - `networkExternalId`
+ - `organizationExternalId`
+
+### Contact Information
+ - `companyMainPhone`
+ - `homeEmail`
+ - `homePhone`
+ - `mobilePhone`
+ - `otherEmail`
+ - `primaryEmail`
+ - `recoveryEmail`
+ - `recoveryPhone`
+ - `workEmail`
+ - `workMobilePhone`
+ - `workPhone`
+
+### Organization Information
+ - `dottedLineManager`
+ - `manager`
+
+#### Organization Types
+  - `domainOnlyOrganization`
+  - `primaryOrganization`
+  - `schoolOrganization`
+  - `unknownOrganization`
+  - `workOrganization`
+
+The following fields are available, where populated, for each of the above organization types:
+ - `costCenter`
+ - `department`
+ - `description`
+ - `domain`
+ - `fullTimeEquivalent`
+ - `location`
+ - `name`
+ - `symbol`
+ - `title`
+
+ And can be mapped in the following way: `{{domainOnlyOrganization.costCenter}}`.
+
+ ### Address Information
+
+ #### Address Types
+ - `homeAddress`
+ - `otherAddress`
+ - `primaryAddress`
+ - `workAddress`
+
+ The following fields are available, where populated, for each of the above organization types:
+ - `country`
+ - `countryCode`
+ - `extendedAddress`
+ - `formatted`
+ - `locality`
+ - `poBox`
+ - `postalCode`
+ - `postalCode`
+ - `region`
+ - `region`
+ - `streetAddress`
+
+ And can be mapped in the following way: `{{homeAddress.streetAddress}}`.
+ 
+ ### Location Information
+
+#### Location Types
+- `defaultLocation`
+- `deskLocation`
+
+ The following fields are available, where populated, for each of the above organization types:
+ - `area`
+ - `buildingId`
+ - `deskCode`
+ - `floorName`
+ - `floorSection`
+
+ And can be mapped in the following way: `{{defaultLocation.buildingId}}`.
