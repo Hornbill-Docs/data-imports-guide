@@ -226,14 +226,14 @@ Keys of this type require a Cynerio API Key to be created against a user account
   * `Client Id` - The client id associated with the Zoho Server Based application that will be used to authenticate the connection.
   * `Client Secret` - The client secret associated with the Zoho Server Based application that will be used to authenticate the connection.
   * `oAuth Scope` - This field needs to be set to 'DesktopCentralCloud.Inventory.READ'.
-  * `Authorization URL` - This fields needs to be set to 'https://accounts.zoho.{YOUR-DOMAIN}/oauth/v2/auth'.
-  * `Access URL` - This field needs to be set to 'https://accounts.zoho.{YOUR-DOMAIN}/oauth/v2/token'.
+  * `Authorization URL` - This fields needs to be set to `https://accounts.zoho.{YOUR-DOMAIN}/oauth/v2/auth`.
+  * `Access URL` - This field needs to be set to `https://accounts.zoho.{YOUR-DOMAIN}/oauth/v2/token`.
   * `Resposne Type` - This field needs to be set to 'code'.
   * `Additional Params` - This field needs to be set to 'access_type=offline'.
   * `Grant Type` - This field needs to be set to 'authorization_code'.
-  * `Refresh URL` - This field needs to be set to 'https://accounts.zoho.{YOUR-DOMAIN}/oauth/v2/token'.
+  * `Refresh URL` - This field needs to be set to `https://accounts.zoho.{YOUR-DOMAIN}/oauth/v2/token`.
   * `Refresh Grant Type` - This fields needs to be set to 'refresh_token'.
-  * `API Endpoint` - The API endpoint your instance points to when calling functions this would include the domain specific to your location. More information about Manage Engine domains can be found [here](https://www.manageengine.com/products/desktop-central/api/cloud_index.html). An example of a UK based domain API endpoint would be 'https://endpointcentral.manageengine.uk'.
+  * `API Endpoint` - The API endpoint your instance points to when calling functions this would include the domain specific to your location. More information about Manage Engine domains can be found [here](https://www.manageengine.com/products/desktop-central/api/cloud_index.html). An example of a UK based domain API endpoint would be `https://endpointcentral.manageengine.uk`.
 * Click `Create Key`.
 
 :::note

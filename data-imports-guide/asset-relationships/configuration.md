@@ -30,12 +30,9 @@ The utility will default to `conf.json` if a configuration file is not specified
     },
     "DepencencyMapping": {
         "SourceDependency":"HornbillDependency",
-        "Runs":"Runs",
-        "Runs On":"Runs On",
-        "Hosts":"Hosts",
-        "Hosted On":"Hosted On",
-        "Members":"Members",
-        "Member Of":"Member Of"
+        "Connected To":"Connected To",
+        "Depends On":"Depends On",
+        "Installed On":"Installed On"
     },
     "ImpactMapping": {
         "SourceImpact":"HornbillImpact",
@@ -83,7 +80,7 @@ The utility will default to `conf.json` if a configuration file is not specified
         - `Name` - This will attempt to match the Hornbill asset using the Name field.
         - `Tag` - This will attempt to match the Hornbill asset using the Asset Tag field.
         - `Description` - This will attempt to match the Hornbill asset using the Description field.
-- `DependencyMapping` - Type: `object` - A collection of key-value property pairs, to match the dependency column output from the `Query` to the available Hornbill dependency values. The property names should be the dependencies as expected from the `Query` output, and their values should be the matching depencency from your Hornbill instance.
+- `DependencyMapping` - Type: `object` - A collection of key-value property pairs, to match the dependency column output from the `Query` to the available Hornbill dependency values. The property names (`SourceDependency` in the above example) should be the dependencies as expected from the `Query` output, and their values (`HornbillDependency` in the above example) should be the matching depencency from your Hornbill instance. See the [Relationship Definitions documentation](/servicemanager-user-guide/configuration-management/configuration-item-explorer#relationship-definitions) for more information.
 - `ImpactMapping` - Type: `object` - A collection of key-value property pairs, to match the impact column output from the Query to the available Hornbill impact values. The property names should be the impacts as expected from the Query output, and their values should be the matching impact from your Hornbill instance.
 - `RemoveLinks` - Type: `boolean` - Defines whether or not to attempt removal of asset relationship records.
 - `RemoveQuery` - Type: `string` - The basic SQL query to retrieve records for asset relationship removal from the data source.
