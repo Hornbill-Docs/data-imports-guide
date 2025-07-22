@@ -10,7 +10,7 @@ To securely connect Hornbill to your Entra ID, you’ll first need to create som
 
 This key safely stores your login credentials and gives Hornbill permission to access your Entra ID user data.
 
-- Use the **Entra ID User Management** Key type.
+- Use the **Entra ID User Import** Key type.
 - For help creating the key, follow the [Keysafe setup guide](/esp-config/security/keysafe) in the Hornbill Platform Configuration Guide.
 
 Once your Keysafe Key is ready and connected to your Entra ID account, you’re all set to move on.
