@@ -198,6 +198,7 @@ When you connect to **Entra ID** to import users, the system brings in a standar
 - **mailNickname** – Short name used in email
 - **manager** – Their manager
 - **memberOf** – Groups the user belongs to
+- **memberOfNames** – A comma-separated list of the Display Names of the Groups that the user belongs to
 - **mobilePhone** – Mobile number
 - **officeLocation** – Office address or location
 - **onPremisesDistinguishedName** – Internal system path
