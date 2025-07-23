@@ -32,7 +32,8 @@ The configuration example is provided as-is, and may not be suitable to import y
             "userDisplayName",
             "totalStorageSpaceInBytes",
             "managedDeviceName",
-            "physicalMemoryInBytes"
+            "physicalMemoryInBytes",
+            "imei"
         ],
         "ImportDetectedApps": true
     }
@@ -46,6 +47,54 @@ The configuration example is provided as-is, and may not be suitable to import y
         "SourceColumn": "serialNumber",
         "Entity": "AssetsComputer",
         "EntityColumn": "h_serial_number"
+      },
+      "SoftwareInventory": {
+        "Mapping": {
+          "h_app_id":"{{.id}}",
+          "h_app_name": "{{.displayName}}",
+          "h_app_vendor":"{{.publisher}}",
+          "h_app_version":"{{.version}}"
+        }
+      },
+      "AssetTypeFieldMapping": {
+        "h_name": "{{.deviceName}}",
+        "h_net_computer_name": "{{.deviceName}}",
+        "h_model": "{{.model}}",
+        "h_manufacturer": "{{.manufacturer}}",
+        "h_description": "From Intune: {{.deviceName}} ({{.model}})",
+        "h_memory_info": "{{.physicalMemoryInBytes}}",
+        "h_os_description": "{{.operatingSystem}}",
+        "h_os_version": "{{.osVersion}}",
+        "h_serial_number": "{{.serialNumber}}"
+      }
+    },
+    {
+      "AssetType": "iPhone",
+      "OperationType": "Both",
+      "Query": "startsWith(model, 'iPhone')",
+      "AssetIdentifier": {
+        "SourceColumn": "serialNumber",
+        "Entity": "AssetsMobileDevice",
+        "EntityColumn": "h_serial_number"
+      },
+      "SoftwareInventory": {
+        "Mapping": {
+          "h_app_id":"{{.id}}",
+          "h_app_name": "{{.displayName}}",
+          "h_app_vendor":"{{.publisher}}",
+          "h_app_version":"{{.version}}"
+        }
+      },
+      "AssetTypeFieldMapping": {
+        "h_name": "{{.deviceName}}",
+        "h_imei_number": "{{.imei}}",
+        "h_model": "{{.model}}",
+        "h_manufacturer": "{{.manufacturer}}",
+        "h_description": "From Intune: {{.deviceName}} ({{.model}})",
+        "h_memory_info": "{{.physicalMemoryInBytes}}",
+        "h_os_description": "{{.operatingSystem}}",
+        "h_os_version": "{{.osVersion}}",
+        "h_serial_number": "{{.serialNumber}}"
       }
     }
   ],
@@ -54,17 +103,6 @@ The configuration example is provided as-is, and may not be suitable to import y
     "h_asset_tag": "{{.deviceName}}",
     "h_description": "From Intune: {{.deviceName}} ({{.model}})",
     "h_used_by": "{{ .userPrincipalName }}"
-  },
-  "AssetTypeFieldMapping": {
-    "h_name": "{{.deviceName}}",
-    "h_net_computer_name": "{{.deviceName}}",
-    "h_model": "{{.model}}",
-    "h_manufacturer": "{{.manufacturer}}",
-    "h_description": "From Intune: {{.deviceName}} ({{.model}})",
-    "h_memory_info": "{{.physicalMemoryInBytes}}",
-    "h_os_description": "{{.operatingSystem}}",
-    "h_os_version": "{{.osVersion}}",
-    "h_serial_number": "{{.serialNumber}}"
   }
 }
 ```
