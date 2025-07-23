@@ -91,7 +91,6 @@ The configuration example is provided as-is, and may not be suitable to import y
         "h_model": "{{.model}}",
         "h_manufacturer": "{{.manufacturer}}",
         "h_description": "From Intune: {{.deviceName}} ({{.model}})",
-        "h_memory_info": "{{.physicalMemoryInBytes}}",
         "h_os_description": "{{.operatingSystem}}",
         "h_os_version": "{{.osVersion}}",
         "h_serial_number": "{{.serialNumber}}"
