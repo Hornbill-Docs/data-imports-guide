@@ -30,7 +30,7 @@ The Asset Imports require access to the following Hornbill Platform and applicat
 admin:getApplicationList
 admin:groupGetList2
 admin:keysafeGetKey
-bpm::iBridgeInvoke
+bpm:iBridgeInvoke
 data:entityAddRecord
 data:entityAddRecords
 data:entityBrowseRecords2
