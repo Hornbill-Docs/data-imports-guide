@@ -20,7 +20,7 @@ admin:userDeleteGroup
 admin:userProfileSet
 admin:userSetAccountStatus
 admin:userUpdate
-bpm::iBridgeInvoke
+bpm:iBridgeInvoke
 data:queryExec
 ```
 
