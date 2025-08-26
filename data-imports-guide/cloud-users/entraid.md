@@ -2,7 +2,7 @@
 
 Before you can start importing user data from Entra ID, there are a few setup steps to follow.
 
----
+
 
 ## Step 1: Set Up a Keysafe Key
 
@@ -15,15 +15,13 @@ This key safely stores your login credentials and gives Hornbill permission to a
 
 Once your Keysafe Key is ready and connected to your Entra ID account, you’re all set to move on.
 
----
+
 
 ## Step 2: Create Your First Import
 
 **To find Cloud Data Imports:**
 
 Navigate to **Configuration > Platform Configuration > Data > Cloud Data Imports**.
-
----
 
 **To create a new import configuration:**
 
@@ -35,7 +33,6 @@ Navigate to **Configuration > Platform Configuration > Data > Cloud Data Imports
 3. Click **Create**.
 4. (Optional) Add a description in the **Description** field to explain what the import does.
 
----
 
 **To choose the data source:**
 
@@ -64,6 +61,10 @@ Choose the **Keysafe Key** you created earlier — this is what allows Hornbill 
 
 This is where you can enter a **filter** to limit which users are imported.
 
+::: caution
+If you leave this field empty, and do not provide any Group ID Filters (see below for details), then *all users* from your Entra ID account will be processed.
+:::
+
 - Hornbill uses Microsoft’s [Graph API](https://learn.microsoft.com/en-us/graph/api/user-list?view=graph-rest-1.0&tabs=http) to access Entra ID.
 - You can write a query using oData to select specific users based on things like department, email domain, etc.
 
@@ -71,11 +72,27 @@ Resources to help you write queries:
 - [$filter syntax guide](https://learn.microsoft.com/en-us/graph/filter-query-parameter?tabs=http)
 - [List of available user fields](https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties)
 
+
 ::: important
-If you leave this blank, *all users* from your Entra ID account will be imported.
+Not all properties from the [Microsoft Graph User Resource type](https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0) can be used in query filters, and a number of these properties do not support the full range of oData operators to query against. See the [list of available user fields](https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties) for a full list of properties, which details which of the properties can be used in the query filters, and which oData operators are supported by each.
+
+For example:
+
+- The value of `onPremisesDistinguishedName` can be returned and mapped into your Hornbill user records, but the field can **not** be used in a query filter
+- The value of `onPremisesUserPrincipalName` can be returned and mapped into your Hornbill user records, but **does** support filtering using the documented oData query operators
 :::
 
 ---
+
+#### Group ID Filter
+
+This is where you can provide additional **Group IDs**, to further filter the list of users returned by your optional Query (ad detailed above).
+
+This is a list of group identifiers, and if each user returned by the query is a member of at least one of the groups then that user will be processed by the data import job. The following group properties are supported:
+
+- `id`
+- `displayName`
+- `mail`
 
 #### Fields – Additional
 
@@ -108,7 +125,7 @@ Define how user data should map to Hornbill fields during import.
 
 ---
 
-### Memberships
+#### Memberships
 
 This section lets you assign imported users to **organizational groups** in Hornbill.
 
@@ -128,7 +145,7 @@ This section lets you assign imported users to **organizational groups** in Horn
 
 ---
 
-### Role Assignments
+#### Role Assignments
 
 Assign roles to users as part of the import process.
 
@@ -139,7 +156,7 @@ Assign roles to users as part of the import process.
   - `Unassign if Assigned` – Remove role if the user already has it
 - **Role** – The name of the role to assign
 
----
+
 
 ## Filtering: Only Bring In Who You Need
 
@@ -147,21 +164,29 @@ You don’t have to import *everyone*. You can choose who to bring in by setting
 
 Here are a few examples:
 
+---
+
 ### Filter by Department
 
 To import only users from the Application Development department:
 
-> ```text
-> department eq 'Application Development'
-> ```
+```cmd
+department eq 'Application Development'
+
+```
+
+---
 
 ### Filter by Email Domain
 
 To import users whose email address ends with @hornbill.com:
 
-> ```text
-> endswith(mail,'@hornbill.com')
-> ```
+```cmd
+endswith(mail,'@hornbill.com')
+
+```
+
+---
 
 ### Combine Filters
 
@@ -170,18 +195,17 @@ You can also combine filters. For example, to bring in users who both:
 - Have an email address ending in @hornbill.com and
 - Work in the Application Development department:
 
-> ```text
-> endswith(mail,'@hornbill.com') and department eq 'Application Development'
-> ```
+```cmd
+endswith(mail,'@hornbill.com') and department eq 'Application Development'
 
----
+```
 
 ## Default Fields
 
 When you connect to **Entra ID** to import users, the system brings in a standard set of information (called "fields") for each person. These fields are available for mapping and filtering. Here's what gets included by default:
 
 - **accountEnabled** – Is the account active?
-- **businessPhones** – Work phone number(s)
+- **businessPhones** – A comma-separated list of the business phone numbers stored against the user
 - **city** – City location
 - **companyName** – Name of the company
 - **country** – Country location
@@ -196,8 +220,11 @@ When you connect to **Entra ID** to import users, the system brings in a standar
 - **jobTitle** – Job title or role
 - **mail** – Email address
 - **mailNickname** – Short name used in email
-- **manager** – Their manager
-- **memberOf** – Groups the user belongs to
+- **manager.id** - The ID of the users manager
+- **manager.displayName** - The Display Name of the users manager
+- **manager.mail** - The email address of the users manager
+- **manager.userPrincipalName** - 
+- **memberOf** – An array of Groups that the user belongs to - see [memberOf Field Mapping](#advanced-field-mapping-memberof) for more information
 - **memberOfNames** – A comma-separated list of the Display Names of the Groups that the user belongs to
 - **mobilePhone** – Mobile number
 - **officeLocation** – Office address or location
@@ -205,7 +232,7 @@ When you connect to **Entra ID** to import users, the system brings in a standar
 - **onPremisesDomainName** – Local network domain name
 - **onPremisesSamAccountName** – Network username
 - **onPremisesUserPrincipalName** – Network login name (like email)
-- **otherMails** – Any extra email addresses
+- **otherMails** – A comma-separated list of extra email addresses stored against the user
 - **postalCode** – ZIP/postal code
 - **securityIdentifier** – Security ID from the system
 - **state** – State or region
@@ -213,3 +240,105 @@ When you connect to **Entra ID** to import users, the system brings in a standar
 - **surname** – Last name
 - **userPrincipalName** – Main login name (often their email)
 - **userType** – Type of user (e.g., member or guest)
+
+
+## Advanced Field Mapping - memberOf
+
+::: warning
+This section describes an **Advanced Feature**.  
+Before using these examples, ensure you are familiar with:
+
+- [Mustache templating](/data-imports-guide/cloud-users/data-mapping) (for building dynamic mappings)  
+- [Microsoft Graph User resource](https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties) (to understand available fields and their structure)  
+
+A solid understanding of both is strongly recommended, as incorrect mappings may result in unexpected data imports.
+:::
+
+When importing users from **Entra ID** (via the Microsoft Graph API), each user includes a `memberOf` property. This property contains an **array of group objects** that the user belongs to.
+
+Each group object provides the following fields:
+
+
+| Field               | Type             | Example Value                          | Description                                                |
+| ------------------- | ---------------- | -------------------------------------- | ---------------------------------------------------------- |
+| **id**              | `string (GUID)`  | `a1b2c3d4-e5f6-7890-1234-56789abcdef0` | Unique identifier for the group in Entra ID                |
+| **displayName**     | `string`         | `HR Team`                              | Human-readable name of the group                           |
+| **mailEnabled**     | `boolean`        | `true`                                 | Indicates if the group is mail-enabled                     |
+| **securityEnabled** | `boolean`        | `false`                                | Indicates if the group is security-enabled                 |
+| **uniqueName**      | `string`         | `contoso.com/Groups/HR`                | Unique path-like name of the group                         |
+| **visibility**      | `string`         | `Private`                              | Group visibility (`Public`, `Private`, `HiddenMembership`) |
+| **mail**            | `string (email)` | `hr-team@contoso.com`                  | Group’s email address, if available                        |
+
+
+### Accessing memberOf Data in Templates
+
+Since `memberOf` is an **array**, you can access its values using **mustache template iteration**. For example:
+
+```cmd
+{{#memberOf}}
+  Group ID: {{id}}
+  Group Name: {{displayName}}
+  Group Email: {{mail}}
+{{/memberOf}}
+```
+
+This will output details for **every group** the user is a member of.
+
+### Mapping Examples
+
+--- 
+
+**Example 1: Mapping a Single Group Name**
+
+If you want the **first group name**:
+
+```cmd
+{{memberOf.0.displayName}}
+
+```
+
+--- 
+**Example 2: Mapping All Group Names as a Comma-Separated List**
+
+```cmd
+{{#memberOf}}{{displayName}},{{/memberOf}}
+
+```
+
+Example output:
+
+> ```text
+> HR Team,Finance,IT,
+> ```
+
+---
+
+**Example 3: Filtering by Group Type**
+
+Map **only mail-enabled groups**:
+
+```cmd
+{{#memberOf}}
+ {{#mailEnabled}}{{displayName}}{{/mailEnabled}}
+{{/memberOf}}
+```
+
+---
+
+**Example 4: Mapping All Group IDs**
+
+```cmd
+{{#memberOf}}{{id}};{{/memberOf}}
+
+```
+
+---
+
+### Best Practices
+
+* Decide if your field should contain **one value** (e.g., the first group) or **multiple values** (e.g., a list).
+* Use iteration (`{{#memberOf}}...{{/memberOf}}`) for handling multiple groups.
+* Be aware of trailing separators (commas, semicolons) when concatenating multiple values.
+* Some fields (like `mailEnabled` and `securityEnabled`) are **boolean flags** — useful for filtering, not direct mapping.
+
+With these patterns, you can flexibly map **group membership information** from Entra ID into your Hornbill user fields.
