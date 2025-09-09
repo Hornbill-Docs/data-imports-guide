@@ -202,13 +202,13 @@ For example, if the source field `employeeId` contained `100`, this would result
 
 * The number to add to the source value.
 
-### substract
+### subtract
 
 Subtracts a numeric value from the source number. If the source value or argument cannot be converted to a number, the result is an empty string.
 
 For example, if the source field `leaveBalance` contained `25`, this would result in `20`:
 
-> `{{leaveBalance | substract : 5}}`
+> `{{leaveBalance | subtract : 5}}`
 
 **Arguments:**
 
