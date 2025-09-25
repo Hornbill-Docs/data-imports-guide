@@ -1,29 +1,34 @@
-# Setting Up Your First Entra ID User Import
+# Setting up your Entra ID user import
 
-Before you can start importing user data from Entra ID, there are a few setup steps to follow.
+To import user data from Entra ID, you must first complete a one-time preparation step: you must [set up a KeySafe key](/data-imports-guide/cloud-users/entraid#setting-up-a-keysafe-keydata-imports-guide/cloud-users/entraid#set-up-a-keysafe-key). Then, for each import you do, there are [configuration steps to perform](/data-imports-guide/cloud-users/entraid#creating-an-import-configuration).
 
+Before you begin, make sure you [understand the ways of filtering the data you import](/data-imports-guide/cloud-users/entraid#filtering-import-only-the-users-you-need).
 
+This article also covers the [default fields](/data-imports-guide/cloud-users/entraid#about-default-fields) Hornbill brings in for each user when you do an import.
 
-## Step 1: Set Up a KeySafe Key
+For admins familiar with mustache templating and Microsoft Graph User resource, this article also provides information about an advanced feature: [mapping fields using the memberOf property](/data-imports-guide/cloud-users/entraid#advanced-field-mapping-with-the-memberof-property).
+
+## How many separate imports will you do?
+If you have both Full Users and Basic Users, you will likely want to do two imports. This is because all users brought in from a single import get assigned the same user type. You cannot import all of your users in one import and then afterward specify that some of them are are Full Users and others are Basic Users. You will need to do *more* than two imports if you'll have more than two user types. Plan accordingly based on how many different groups you will organize your users into.
+
+## Setting up a KeySafe Key
 
 To securely connect Hornbill to your Entra ID, you’ll first need to create something called a **KeySafe Key**.
 
 This key safely stores your login credentials and gives Hornbill permission to access your Entra ID user data.
 
-- Use the **Entra ID User Import** Key type.
-- For help creating the key, follow the [KeySafe setup guide](/esp-config/security/keysafe) in the Hornbill Platform Configuration Guide.
+- Use the *Entra ID User Import* key type.
+- For help creating the key, see the [Platform Configuration Guide](/esp-config/security/keysafe).
 
 Once your KeySafe Key is ready and connected to your Entra ID account, you’re all set to move on.
 
-
-
-## Step 2: Create Your First Import
+## Creating an import configuration
 
 **To find Cloud Data Imports:**
 
 Navigate to **Configuration > Platform Configuration > Data > Cloud Data Imports**.
 
-**To create a new import configuration:**
+**To create an import configuration:**
 
 1. At the top right of the configurations list, click **+ Add New**.
     ::: note
@@ -33,17 +38,15 @@ Navigate to **Configuration > Platform Configuration > Data > Cloud Data Imports
 3. Click **Create**.
 4. (Optional) Add a description in the **Description** field to explain what the import does.
 
-
 **To choose the data source:**
 
 1. Click the **Data Source** tab.
 2. In the **Data Source Settings** area, in the **Import** field, click the edit icon.
 3. In the Hornbill Integration Bridge dialog, select **Cloud Data Imports** > **Users** > **Entra ID**.
 4. Click **Apply**.
+5. The **Source / Import Options** section appears, with settings you can customize. Use [the information about options](/data-imports-guide/cloud-users/entraid#source-import-options) to make your choices.
 
-Once you've done that, the **Source / Import Options** section appears, with settings you can customize.
-
-### Source / Import Options
+### Source/import options
 
 Here’s a breakdown of the options available when setting up your Entra ID user import. These settings give you control over what gets imported, when, and how.
 
@@ -51,18 +54,16 @@ Here’s a breakdown of the options available when setting up your Entra ID user
 
 #### KeySafe Key
 
-Choose the **KeySafe Key** you created earlier — this is what allows Hornbill to securely access your Entra ID account.
-
-[Learn how to create a KeySafe Key →](#step-1-set-up-a-keysafe-key)
+Choose the **KeySafe Key** [you created earlier](/data-imports-guide/cloud-users/entraid#set-up-a-keysafe-key). This is what allows Hornbill to securely access your Entra ID account.
 
 ---
 
 #### Query (Optional)
 
-This is where you can enter a **filter** to limit which users are imported.
+This is where you can enter a filter to limit which users are imported. Make sure you [understand the ways of filtering the data you import](/data-imports-guide/cloud-users/entraid#filtering-import-only-the-users-you-need). 
 
 ::: caution
-If you leave this field empty, and do not provide any Group ID Filters (see below for details), then *all users* from your Entra ID account will be processed.
+If you leave this field empty, and do not provide any Group ID filters, then *all users* from your Entra ID account will be processed.
 :::
 
 - Hornbill uses Microsoft’s [Graph API](https://learn.microsoft.com/en-us/graph/api/user-list?view=graph-rest-1.0&tabs=http) to access Entra ID.
@@ -84,7 +85,7 @@ For example:
 
 ---
 
-#### Group ID Filter
+#### Group ID filter
 
 This is where you can provide additional **Group IDs**, to further filter the list of users returned by your optional Query (ad detailed above).
 
@@ -158,7 +159,7 @@ Assign roles to users as part of the import process.
 
 
 
-## Filtering: Only Bring In Who You Need
+## Filtering: Import only the users you need
 
 You don’t have to import *everyone*. You can choose who to bring in by setting up simple filters (also called "queries").
 
@@ -166,7 +167,7 @@ Here are a few examples:
 
 ---
 
-### Filter by Department
+### Filter by department
 
 To import only users from the Application Development department:
 
@@ -177,7 +178,7 @@ department eq 'Application Development'
 
 ---
 
-### Filter by Email Domain
+### Filter by email domain
 
 To import users whose email address ends with @hornbill.com:
 
@@ -188,7 +189,7 @@ endswith(mail,'@hornbill.com')
 
 ---
 
-### Combine Filters
+### Combine filters
 
 You can also combine filters. For example, to bring in users who both:
 
@@ -200,7 +201,7 @@ endswith(mail,'@hornbill.com') and department eq 'Application Development'
 
 ```
 
-## Default Fields
+## About default fields
 
 When you connect to **Entra ID** to import users, the system brings in a standard set of information (called "fields") for each person. These fields are available for mapping and filtering. Here's what gets included by default:
 
@@ -242,7 +243,7 @@ When you connect to **Entra ID** to import users, the system brings in a standar
 - **userType** – Type of user (e.g., member or guest)
 
 
-## Advanced Field Mapping - memberOf
+## Advanced field mapping with the memberOf property
 
 ::: warning
 This section describes an **Advanced Feature**.  
@@ -270,7 +271,7 @@ Each group object provides the following fields:
 | **mail**            | `string (email)` | `hr-team@contoso.com`                  | Group’s email address, if available                        |
 
 
-### Accessing memberOf Data in Templates
+### Accessing memberOf data in templates
 
 Since `memberOf` is an **array**, you can access its values using **mustache template iteration**. For example:
 
@@ -284,11 +285,11 @@ Since `memberOf` is an **array**, you can access its values using **mustache tem
 
 This will output details for **every group** the user is a member of.
 
-### Mapping Examples
+### Mapping examples
 
 --- 
 
-**Example 1: Mapping a Single Group Name**
+**Example 1: Mapping a single group name**
 
 If you want the **first group name**:
 
@@ -298,7 +299,7 @@ If you want the **first group name**:
 ```
 
 --- 
-**Example 2: Mapping All Group Names as a Comma-Separated List**
+**Example 2: Mapping all group names as a comma-separated list**
 
 ```cmd
 {{#memberOf}}{{displayName}},{{/memberOf}}
@@ -313,7 +314,7 @@ Example output:
 
 ---
 
-**Example 3: Filtering by Group Type**
+**Example 3: Filtering by group type**
 
 Map **only mail-enabled groups**:
 
@@ -325,7 +326,7 @@ Map **only mail-enabled groups**:
 
 ---
 
-**Example 4: Mapping All Group IDs**
+**Example 4: Mapping all group IDs**
 
 ```cmd
 {{#memberOf}}{{id}};{{/memberOf}}
@@ -334,7 +335,7 @@ Map **only mail-enabled groups**:
 
 ---
 
-### Best Practices
+### Best practices for mapping using memberOf
 
 * Decide if your field should contain **one value** (e.g., the first group) or **multiple values** (e.g., a list).
 * Use iteration (`{{#memberOf}}...{{/memberOf}}`) for handling multiple groups.

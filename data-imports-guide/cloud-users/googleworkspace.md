@@ -1,10 +1,13 @@
-# Setting Up Your First Google Workspace User Import
+# Setting up your Google Workspace user import
 
-Before you can start importing user data from Google Workspace, there are a few setup steps to follow.
+To import user data from Google Workspace, you must first complete a one-time preparation step: you must [set up a KeySafe key](/data-imports-guide/cloud-users/googleworkspace#setting-up-a-keysafe-key). Then, for each import you do, there are [configuration steps to perform](/data-imports-guide/cloud-users/googleworkspace#creating-an-import-configuration).
 
----
+Before you begin, make sure you [understand the ways of filtering the data you import](/data-imports-guide/cloud-users/googleworkspace#filtering-import-only-the-users-you-need).
 
-## Step 1: Set Up a Keysafe Key
+## How many separate imports will you do?
+If you have both Full Users and Basic Users, you will likely want to do two imports. This is because all users brought in from a single import get assigned the same user type. You cannot import all of your users in one import and then afterward specify that some of them are are Full Users and others are Basic Users. You will need to do *more* than two imports if you'll have more than two user types. Plan accordingly based on how many different groups you will organize your users into.
+
+## Setting up a Keysafe Key
 
 To securely connect Hornbill to your Google Workspace, you’ll first need to create something called a **Keysafe Key**.
 
@@ -17,53 +20,42 @@ Once your Keysafe Key is ready and connected to your Google Workspace account, y
 
 ---
 
-## Step 2: Create Your First Import
+## Creating an import configuration
 
-### Where to Find Cloud Data Imports
+**To find Cloud Data Imports:**
 
-To get started:
+Navigate to **Configuration > Platform Configuration > Data > Cloud Data Imports**.
 
-1. Go to `Configuration`
-2. Select `Platform Configuration`
-3. Navigate to:  
-   `Data > Cloud Data Imports`
+**To create an import configuration:**
 
----
-
-### Create a New Import Configuration
-
-1. Click the `+ Add New` button at the top-right.
+1. At the top right of the configurations list, click **+ Add New**.
+    ::: note
+    If this is your first import configuration, click the button that says **No import configurations are set up. Click here to create your first import.**
+    :::
 2. Give your import a clear and unique name.
-3. Click `Create`.
+3. Click **Create**.
 4. (Optional) Add a description in the **Description** field to explain what the import does.
 
 ---
+**To choose the data source:**
 
-### Choose the Data Source
-
-1. Click on the **Data Source** tab.
-2. In the **Data Source Settings** area, click the edit icon next to the **Import** field.
-3. In the pop-up window, select the following:
-   - `Cloud Data Imports`
-   - `Users`
-   - `Google Workspace`
-   - Then click `Apply`
-
-Once you've done that, the **Source / Import Options** section will appear with settings you can customize.
+1. Click the **Data Source** tab.
+2. In the **Data Source Settings** area, in the **Import** field, click the edit icon.
+3. In the Hornbill Integration Bridge dialog, select **Cloud Data Imports** > **Users** > **Google Workspace**.
+4. Click **Apply**.
+5. The **Source / Import Options** section appears, with settings you can customize. Use [the information about options](/data-imports-guide/cloud-users/googleworkspace#source-import-options) to make your choices.
 
 ---
 
 ### Source / Import Options
 
-Here’s what you can set up:
+Here’s a breakdown of the options available when setting up your Google Workspace user import. These settings give you control over what gets imported, when, and how.
 
 ---
 
 #### Keysafe Key
 
-Choose the **Keysafe Key** you created earlier — this is what allows Hornbill to securely access your Google Workspace account.
-
-[Learn how to create a Keysafe Key →](#step-1-set-up-a-keysafe-key)
+Choose the **KeySafe Key** [you created earlier](/data-imports-guide/cloud-users/googleworkspace#set-up-a-keysafe-key). This is what allows Hornbill to securely access your Google Workspace account.
 
 ---
 
@@ -154,7 +146,7 @@ Assign roles to users as part of the import process.
 
 ---
 
-## Filtering: Import Only the Users You Need
+## Filtering: Import only the users you need
 
 You don’t have to bring everyone in! Use **queries** to filter users by department, location, or other fields.
 
