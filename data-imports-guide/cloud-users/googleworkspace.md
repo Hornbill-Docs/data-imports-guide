@@ -1,10 +1,10 @@
 # Setting up your Google Workspace user import
 
-To import user data from Google Workspace, you must first complete a one-time preparation step: you must [set up a KeySafe key](/data-imports-guide/cloud-users/googleworkspace#setting-up-a-keysafe-key). Then, for each import you do, there are [configuration steps to perform](/data-imports-guide/cloud-users/googleworkspace#creating-an-import-configuration).
+<!--To import user data from Google Workspace, you must first complete a one-time preparation step: you must [set up a KeySafe key](/data-imports-guide/cloud-users/googleworkspace#setting-up-a-keysafe-key). Then, for each import you do, there are [configuration steps to perform](/data-imports-guide/cloud-users/googleworkspace#creating-an-import-configuration).-->
 
 Before you begin, make sure you [understand the ways of filtering the data you import](/data-imports-guide/cloud-users/googleworkspace#filtering-import-only-the-users-you-need).
 
-## How many separate imports will you do?
+<!--## How many separate imports will you do?
 If you have both Full Users and Basic Users, you will likely want to do two imports. This is because all users brought in from a single import get assigned the same user type. You cannot import all of your users in one import and then afterward specify that some of them are are Full Users and others are Basic Users. You will need to do *more* than two imports if you'll have more than two user types. Plan accordingly based on how many different groups you will organize your users into.
 
 ## Setting up a Keysafe Key
@@ -16,7 +16,7 @@ This key safely stores your login credentials and gives Hornbill permission to a
 - Use the **Google Workspace User Management** Key type.
 - For help creating the key, follow the [Keysafe setup guide](/esp-config/security/keysafe) in the Hornbill Platform Configuration Guide.
 
-Once your Keysafe Key is ready and connected to your Google Workspace account, you’re all set to move on.
+Once your Keysafe Key is ready and connected to your Google Workspace account, you’re all set to move on.-->
 
 ---
 

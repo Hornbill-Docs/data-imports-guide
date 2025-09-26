@@ -1,6 +1,6 @@
 # Setting up your Entra ID user import
 
-To import user data from Entra ID, you must first complete a one-time preparation step: you must [set up a KeySafe key](/data-imports-guide/cloud-users/entraid#setting-up-a-keysafe-keydata-imports-guide/cloud-users/entraid#set-up-a-keysafe-key). Then, for each import you do, there are [configuration steps to perform](/data-imports-guide/cloud-users/entraid#creating-an-import-configuration).
+<!--To import user data from Entra ID, you must first complete a one-time preparation step: you must [set up a KeySafe key](/data-imports-guide/cloud-users/entraid#setting-up-a-keysafe-keydata-imports-guide/cloud-users/entraid#set-up-a-keysafe-key). Then, for each import you do, there are [configuration steps to perform](/data-imports-guide/cloud-users/entraid#creating-an-import-configuration).-->
 
 Before you begin, make sure you [understand the ways of filtering the data you import](/data-imports-guide/cloud-users/entraid#filtering-import-only-the-users-you-need).
 
@@ -8,7 +8,7 @@ This article also covers the [default fields](/data-imports-guide/cloud-users/en
 
 For admins familiar with mustache templating and Microsoft Graph User resource, this article also provides information about an advanced feature: [mapping fields using the memberOf property](/data-imports-guide/cloud-users/entraid#advanced-field-mapping-with-the-memberof-property).
 
-## How many separate imports will you do?
+<!--## How many separate imports will you do?
 If you have both Full Users and Basic Users, you will likely want to do two imports. This is because all users brought in from a single import get assigned the same user type. You cannot import all of your users in one import and then afterward specify that some of them are are Full Users and others are Basic Users. You will need to do *more* than two imports if you'll have more than two user types. Plan accordingly based on how many different groups you will organize your users into.
 
 ## Setting up a KeySafe Key
@@ -20,7 +20,7 @@ This key safely stores your login credentials and gives Hornbill permission to a
 - Use the *Entra ID User Import* key type.
 - For help creating the key, see the [Platform Configuration Guide](/esp-config/security/keysafe).
 
-Once your KeySafe Key is ready and connected to your Entra ID account, you’re all set to move on.
+Once your KeySafe Key is ready and connected to your Entra ID account, you’re all set to move on.-->
 
 ## Creating an import configuration
 

@@ -1,8 +1,8 @@
-# Data Mapping and Manipulation
+# Data mapping and manipulation
 
 Hornbill provides the ability for data import administrators to map their source field data into target Hornbill user fields. Some basic string manipulation methods are also available.
 
-## Mapping Data with Tags
+## Mapping data with tags
 
 The mapping of source data into user fields in Hornbill Cloud Data Imports is done using mustache tags. Tags are wrapped in double curly braces. For example `{{givenName}}` is a tag; another one is `{{#givenName}}`. In both examples, we'd refer to `givenName` as the key or tag key. See the [Mustache specification](https://mustache.github.io/mustache.5.html) for detailed information about supported tag types.
 
@@ -14,7 +14,7 @@ If you're performing updates against your imported users, you can empty the valu
 
 > `__clear__`
 
-### Using Auto-Complete
+### Using auto-complete
 
 When populating the user property fields, where relevant, and once you start typing a field name, you will be presented with a list of matching fields to choose from. These are the default output field sets for the platform you are importing user records from. 
 
@@ -22,9 +22,9 @@ To auto-complete the field, choose the field you want, then select it using a mo
 
 ![Mapping Auto-Complete](/_books/data-imports-guide/cloud-users/images/cloud-import-autocomplete.png)
 
-## Applying Transforms
+## Applying transforms
 
-When mapping user record fields from your source system (such as Entra ID) into Hornbill user fields, there may be situations where the data you receive is not in the exact format you want to store, display, or work with in Hornbill. To ensure consistency, accuracy, and usability of your user records, you can apply transformations to the imported values during the mapping process.
+When mapping user record fields from your source system (such as Entra ID or Google Workspace) into Hornbill user fields, there may be situations where the data you receive is not in the exact format you want to store, display, or work with in Hornbill. To ensure consistency, accuracy, and usability of your user records, you can apply transformations to the imported values during the mapping process.
 
 Transformations are useful in a variety of scenarios, for example:
 
@@ -33,6 +33,8 @@ Transformations are useful in a variety of scenarios, for example:
 * **Deriving new values** – Constructing email addresses, combining first and last names, or generating display names.
 * **Ensuring compatibility** – Converting values to match Hornbill’s required field types or structures.
 * **Business-specific adjustments** – Applying company naming conventions, appending department codes, or localizing job titles.
+
+You can [use multiple transforms in the same mapping configuration field](/data-imports-guide/cloud-users/data-mapping#using-multiple-transforms).
 
 The following is a list of the supported transformations, along with examples of how they can be used.
 
@@ -240,7 +242,7 @@ For example, if the source field `totalStorage` contained `1024`, this would res
 
 * The number to divide the source value by.
 
-## Using Multiple Transforms
+## Using multiple transforms
 
 You can use multiple transforms in the same mapping configuration field, and they will be applied in the specified order. In the below example, if the source data record field `email` contained `your.user@hornbill.com`, this would result in `HORNBILL.COM` being applied to the field it is being mapped into. This is because we're applying a `slice` transform to remove `your.user@`, then applying an `upperCase` transform on the rest of the string.
 
