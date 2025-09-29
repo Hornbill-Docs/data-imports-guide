@@ -4,16 +4,20 @@
 
 Going beyond the provision of on-premise hosted utilities for importing user objects and related records, Hornbill also provides the ability to import user objects natively from various cloud data sources.
 
-This feature enables seamless data imports into Hornbill instances from external cloud services, eliminating the need for customer-hosted binaries or configuration. The import process for User type records is streamlined, while ensuring flexibility, security, and ease of management.
+This feature enables seamless data imports into Hornbill instances from external cloud services, eliminating the need for customer-hosted binaries or configuration. The import process for user-type records is streamlined, while ensuring flexibility, security, and ease of management.
+
+When importing users from cloud services, you will generally take the following steps:
+1. (*One time only*) If you have not yet imported data from cloud services, [you must set up a KeySafe key](/data-imports-guide/cloud-users/overview#setting-up-a-keysafe-key).
+1. Set up an import configuration. This varies based on your cloud platform. See the instructions [for Entra ID](/data-imports-guide/cloud-users/entraid) or [for Google Workspace](/data-imports-guide/cloud-users/googleworkspace), depending on your platform.
+1. [Run a preview of the import](/data-imports-guide/cloud-users/overview#previewing-an-import). Make edits to your configuration until you're happy with how the data looks.
+1. [Run an impact analysis](/data-imports-guide/cloud-users/overview#running-an-impact-analysis). Again, make edits to the configuration until you're happy.
+1. Run the import using the **Run Import** option, which is when the users actually get imported.
 
 ## Accessing Cloud Data Imports
 
 Access to Cloud Data Imports is controlled by a system role called *Data Imports Administrator*. This role allows users to create and manage data-import configurations, and to run cloud-to-cloud data-import jobs.
 
 To find Cloud Data Imports, navigate to **Configuration > Platform Configuration > Data > Cloud Data Imports**.
-
-## How many separate imports will you do?
-If you have both Full Users and Basic Users, you will likely want to do two imports. This is because all users brought in from a single import get assigned the same user type. You cannot import all of your users in one import and then afterward specify that some of them are are Full Users and others are Basic Users. You will need to do *more* than two imports if you'll have more than two user types. Plan your separate import jobs based on how many different groups you will organize your users into.
 
 ## Setting up a KeySafe key
 
@@ -24,7 +28,10 @@ This key safely stores your login credentials and gives Hornbill permission to a
 - Depending on your cloud platform, use either the *Entra ID User Import* key type or the *Google Workspace User Management* key type.
 - For help creating the key, see the [Platform Configuration Guide](/esp-config/security/keysafe).
 
-Once your KeySafe Key is ready and connected to your cloud platform account, you’re all set to move on.
+Once your KeySafe key is ready and connected to your cloud platform account, you’re all set to move on.
+
+## How many separate imports will you do?
+If you have both Full Users and Basic Users, you will likely want to do two imports. This is because all users brought in from a single import get assigned the same user type. You cannot import all of your users in one import and then afterward specify that some of them are are Full Users and others are Basic Users. You will need to do *more* than two imports if you'll have more than two user types. Plan your separate import jobs based on how many different groups you will organize your users into.
 
 ## Using the correct platform-specific import instructions
 
@@ -36,10 +43,15 @@ Cloud data-import configurations, although similar in many ways, do have target 
 But before you begin configuring your import, read on for more overview information that applies to all cloud imports regardless of data platform.
 
 ## Previewing an import
+When you click the **Run Import** button, you'll see there are three ways to run an import: Data Preview, Analyze Impact, and the actual import itself. The first two allow you to make sure that your import configuration will work as intended before you run the actual import.
 
-Once you have built your import configuration, before running or scheduling an import,  make sure to first run one or more preview import jobs. A preview import job returns a maximum of 50 records for review.
+![Data Preview, Impact Analysis, Run Import](/_books/data-imports-guide/cloud-users/images/cloud-import-run-import.png)
 
-The next step is to review these records from the [Processing History](#processing-history) tab. Check that the job runs as intended --- that your user data is brought in the way you want. If not, run more preview import jobs until you get it right.
+Once you have built your import configuration, before running or scheduling an import,  make sure to first run one or more preview import jobs. Previewing the data to be returned allows you to make sure you've properly set up the user *handles* (each user object's unique identifier).
+
+Run the preview, then spot-test a few users. By default, you get the first 50 records for review. Make edits to your config until you're happy with the data preview.
+
+You review these records from the [Processing History](#processing-history) tab. Check that the job runs as intended --- that your user data is brought in the way you want. If not, run more preview import jobs until you get it right.
 
 ::: tip
 You can change the default number of records returned in a data preview. For example, to diagnose a problem, you may want to run a preview for just a single user. In this case, you would set the data preview for just one record number (in **Run Import** > **Data Preview**), for example "From 1,234 to 1,234".
@@ -49,7 +61,16 @@ Once you are happy with the import configuration, mappings, and records output f
 
 - Run an ad-hoc full import by clicking the **Run Import** button to the top right of the view.
 - Schedule an import to run one or more times, by visiting the **Control & Schedule** tab.
+<!--
+## Running an impact analysis
+*Impact Analysis: It runs through and as much as it can it makes all the changes and tells you that the changes it made. Except it doesn't actually go and make the changes at all, and your actual Hornbill config is not changed in any way. This way you can verify that the changes are as expected. Checking the Summary field in the Processing Information view for an import configuration. This allows you to make sure that you haven't done something unintended such as giving ____*
 
+Include Diagnostics is like a "verbose" mode. When you want to understand exactly what is going on when the import doesn't work as expected, use this feature and view the information in the Log tab for the import run.
+
+::: note 
+You cannot run more than one import at once for a config. If you see a status of *Initialized*, it's because the tool is waiting for the first run to finish.
+:::
+-->
 ## Viewing the processing history
 
 The **Processing History** tab contains a list of all data-import jobs that have been executed using the selected data import configuration. You can see the run date; whether the run was a data preview, an impact analysis, or an actual import; the records processed and actioned; any problems encountered; and the job status (Initialized, Active, Completed, Succeeded, Failed).

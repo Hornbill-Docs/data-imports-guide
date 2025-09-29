@@ -47,7 +47,7 @@ Navigate to **Configuration > Platform Configuration > Data > Cloud Data Imports
 
 ---
 
-### Source / Import Options
+### Source/import options
 
 Here’s a breakdown of the options available when setting up your Google Workspace user import. These settings give you control over what gets imported, when, and how.
 
@@ -133,7 +133,7 @@ This section lets you assign imported users to **organizational groups** in Horn
 
 ---
 
-### Role Assignments
+### Role assignments
 
 Assign roles to users as part of the import process.
 
@@ -154,7 +154,7 @@ Check out [Google’s example queries](https://developers.google.com/workspace/a
 
 ---
 
-## Available Fields
+## Available fields
 
 When you connect to **Google Workspace** to import users, Google presents us with a standard set of fields for each person. These fields are available for mapping and filtering. Here's what gets included:
 
