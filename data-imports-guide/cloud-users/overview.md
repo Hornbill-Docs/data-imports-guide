@@ -8,7 +8,7 @@ This feature enables seamless data imports into Hornbill instances from external
 
 When importing users from cloud services, you will generally take the following steps:
 1. (One time only) If you have not yet imported data from cloud services, [you must set up a KeySafe key](/data-imports-guide/cloud-users/overview#setting-up-a-keysafe-key).
-1. Read [Data Mapping](data-imports-guide/cloud-users/data-mapping) to understand how you can manipulate the user data as part of setting up your import configuration. You need to understand that you'll be mapping your source data using Mustache tags, and that you can make changes to the data as you bring it in by applying transformations.
+1. Read [Data Mapping](/data-imports-guide/cloud-users/data-mapping) to understand how you can manipulate the user data as part of setting up your import configuration. You need to understand that you'll be mapping your source data using Mustache tags, and that you can make changes to the data as you bring it in by applying transformations.
 1. Set up an import configuration. This varies based on your cloud platform. See the instructions [for Entra ID](/data-imports-guide/cloud-users/entraid) or [for Google Workspace](/data-imports-guide/cloud-users/googleworkspace), depending on your platform.
 1. [Run a preview of the import](/data-imports-guide/cloud-users/overview#previewing-an-import). Make edits to your configuration until you're happy with how the data looks.
 1. [Run an impact analysis](/data-imports-guide/cloud-users/overview#running-an-impact-analysis). Again, make edits to the configuration until you're happy.
@@ -50,7 +50,7 @@ When you click the **Run Import** button, you'll see there are three ways to run
 
 ![Data Preview, Impact Analysis, Run Import](/_books/data-imports-guide/cloud-users/images/cloud-import-run-import.png)
 
-When you run a data preview, by default, you get the first 50 records for review. You review these records from the [Processing History](#processing-history) tab. Check that the job runs as intended --- that your user data is brought in the way you want. If not, make changes to your configuration and then run more preview jobs until you get it right.
+When you run a data preview, by default, you get the first 50 records for review. You review these records from the [Processing History](/data-imports-guide/cloud-users/overview#about-viewing-the-processing-history) tab. Check that the job runs as intended --- that your user data is brought in the way you want. If not, make changes to your configuration and then run more preview jobs until you get it right.
 
 ::: tip
 You can change the default number of records returned in a data preview. For example, to diagnose a problem, you may want to run a preview for just a single user. In this case, you would set the data preview for just one record number (in **Run Import** > **Data Preview**), for example "From 1,234 to 1,234".
