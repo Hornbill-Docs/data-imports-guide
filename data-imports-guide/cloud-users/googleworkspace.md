@@ -43,7 +43,7 @@ Navigate to **Configuration > Platform Configuration > Data > Cloud Data Imports
 2. In the **Data Source Settings** area, in the **Import** field, click the edit icon.
 3. In the Hornbill Integration Bridge dialog, select **Cloud Data Imports** > **Users** > **Google Workspace**.
 4. Click **Apply**.
-5. The **Source / Import Options** section appears, with settings you can customize. Use [the information about options](/data-imports-guide/cloud-users/googleworkspace#source-import-options) to make your choices.
+5. The **Source / Import Options** section appears, with settings you can customize. Use [the information about options](/data-imports-guide/cloud-users/googleworkspace#sourceimport-options) to make your choices.
 
 ---
 
@@ -55,7 +55,7 @@ Here’s a breakdown of the options available when setting up your Google Worksp
 
 #### Keysafe Key
 
-Choose the **KeySafe Key** [you created earlier](/data-imports-guide/cloud-users/googleworkspace#set-up-a-keysafe-key). This is what allows Hornbill to securely access your Google Workspace account.
+Choose the **KeySafe Key** [you created earlier](/data-imports-guide/cloud-users/overview#setting-up-a-keysafe-key). This is what allows Hornbill to securely access your Google Workspace account.
 
 ---
 
@@ -77,7 +77,7 @@ Use this to search or filter users based on different profile fields, including 
 See [Google’s Search Users documentation](https://developers.google.com/workspace/admin/directory/v1/guides/search-users) for examples.
 
 ::: important
-If no query is provided, *all users* from your Google Workspace domain will be imported!
+If no query is provided, all users from your Google Workspace domain will be imported!
 :::
 
 ---
@@ -100,7 +100,7 @@ Choose what Hornbill should do with the users it finds:
 
 #### Account Status
 
-Set the **status** of the users being imported (e.g. active, inactive), and choose *when* this status should be applied.
+Set the status of the users being imported (e.g. *Active*, *Inactive*), and choose when this status should be applied.
 
 ---
 
@@ -109,20 +109,20 @@ Set the **status** of the users being imported (e.g. active, inactive), and choo
 Define how user data should map to Hornbill fields during import.
 
 - Supports [Mustache templates](/data-imports-guide/cloud-users/data-mapping) for custom formatting or combining data.
-- Input fields offer **auto-complete** to help you select fields from your Google Workspace source.
+- Input fields offer auto-complete to help you select fields from your Google Workspace source.
 
 ---
 
 ### Memberships
 
-This section lets you assign imported users to **organizational groups** in Hornbill.
+This section lets you assign imported users to organizational groups in Hornbill.
 
 - **Action** – When should the user be added to the group?
-  - `Create` – Add user only during Create actions
-  - `Update` – Add user only during Update actions
-  - `Create & Update` – Add user during both
-  - `Unassign if Assigned` – Remove user from the group if already assigned
-- **Organization ID** – The ID of the group you want to assign
+  - `Create` – Add user only during Create actions.
+  - `Update` – Add user only during Update actions.
+  - `Create & Update` – Add user during both.
+  - `Unassign if Assigned` – Remove user from the group if already assigned.
+- **Organization ID** – The ID of the group you want to assign.
 - **Membership** – Choose one:
   - `Member`
   - `Team Leader`
@@ -138,17 +138,17 @@ This section lets you assign imported users to **organizational groups** in Horn
 Assign roles to users as part of the import process.
 
 - **Action** – When should the role be assigned or removed?
-  - `Create` – Assign role only when the user is newly created
-  - `Update` – Assign role only during updates
-  - `Create & Update` – Assign during both
-  - `Unassign if Assigned` – Remove role if the user already has it
-- **Role** – The name of the role to assign
+  - `Create` – Assign role only when the user is newly created.
+  - `Update` – Assign role only during updates.
+  - `Create & Update` – Assign during both.
+  - `Unassign if Assigned` – Remove role if the user already has it.
+- **Role** – The name of the role to assign.
 
 ---
 
 ## Filtering: Import only the users you need
 
-You don’t have to bring everyone in! Use **queries** to filter users by department, location, or other fields.
+You don’t have to bring everyone in! Use queries to filter users by department, location, or other fields.
 
 Check out [Google’s example queries](https://developers.google.com/workspace/admin/directory/v1/guides/search-users#examples) for ideas.
 
@@ -156,7 +156,7 @@ Check out [Google’s example queries](https://developers.google.com/workspace/a
 
 ## Available fields
 
-When you connect to **Google Workspace** to import users, Google presents us with a standard set of fields for each person. These fields are available for mapping and filtering. Here's what gets included:
+When you connect to Google Workspace to import users, Google presents you with a standard set of fields for each person. These fields are available for mapping and filtering. Here's what gets included:
 
 ### Name
  - `displayName`
