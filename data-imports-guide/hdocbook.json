@@ -4,7 +4,7 @@
   "description": "How to use utilities to import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.5.56",
+  "version": "0.5.57",
   "audience": [
     "public"
   ],
@@ -20,7 +20,7 @@
       {
         "text": "Cloud Data Imports",
         "expand": true,
-        "draft": true,
+        "draft": false,
         "items": [
           {
             "text": "Users",
