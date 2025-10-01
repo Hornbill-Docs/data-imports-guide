@@ -1,5 +1,7 @@
 # Importing users from cloud services
-
+_____
+This *Cloud Data Imports* section of the documentation covers a feature coming soon that will be available in Hornbill Core UI builds higher than 2475.
+_____
 ## Overview
 
 Going beyond the provision of on-premise hosted utilities for importing user objects and related records, Hornbill also provides the ability to import user objects natively from various cloud data sources.

@@ -1,12 +1,14 @@
 ---
 title: Setting up your Entra ID user import
 layout: article
-keywords: copy import, 
+keywords: copy import 
 ---
 
 # Setting up your Entra ID user import
 
-<!--To import user data from Entra ID, you must first complete a one-time preparation step: you must [set up a KeySafe key](/data-imports-guide/cloud-users/entraid#setting-up-a-keysafe-keydata-imports-guide/cloud-users/entraid#set-up-a-keysafe-key). Then, for each import you do, there are [configuration steps to perform](/data-imports-guide/cloud-users/entraid#creating-an-import-configuration).-->
+_____
+This *Cloud Data Imports* section of the documentation covers a feature coming soon that will be available in Hornbill Core UI builds higher than 2475.
+_____
 
 Before you begin, make sure you [understand the ways of filtering the data you import](/data-imports-guide/cloud-users/entraid#filtering-import-only-the-users-you-need).
 

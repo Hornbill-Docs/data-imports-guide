@@ -1,5 +1,9 @@
 # Data mapping and manipulation
 
+_____
+This *Cloud Data Imports* section of the documentation covers a feature coming soon that will be available in Hornbill Core UI builds higher than 2475.
+_____
+
 Hornbill provides the ability for data import administrators to map their source field data into target Hornbill user fields. Some basic string manipulation methods are also available.
 
 ## Mapping data with tags
