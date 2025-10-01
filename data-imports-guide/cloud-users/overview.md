@@ -10,6 +10,9 @@ When importing users from cloud services, you will generally take the following 
 1. (One time only) If you have not yet imported data from cloud services, [you must set up a KeySafe key](/data-imports-guide/cloud-users/overview#setting-up-a-keysafe-key).
 1. Read [Data Mapping](/data-imports-guide/cloud-users/data-mapping) to understand how you can manipulate the user data as part of setting up your import configuration. You need to understand that you'll be mapping your source data using Mustache tags, and that you can make changes to the data as you bring it in by applying transformations.
 1. Set up an import configuration. This varies based on your cloud platform. See the instructions [for Entra ID](/data-imports-guide/cloud-users/entraid) or [for Google Workspace](/data-imports-guide/cloud-users/googleworkspace), depending on your platform.
+    ::: tip
+    If you already have set up at least one import configuration, consider whether it makes sense to copy that one and make adjustments to it rather than creating an all-new one. See [Copying an import configuration](/data-imports-guide/cloud-users/overview#copying-an-import-configuration).
+    :::
 1. [Run a preview of the import](/data-imports-guide/cloud-users/overview#previewing-an-import). Make edits to your configuration until you're happy with how the data looks.
 1. [Run an impact analysis](/data-imports-guide/cloud-users/overview#running-an-impact-analysis). Again, make edits to the configuration until you're happy.
 1. Run the import using the **Run Import** option, which is when the users actually get imported. Another option is to [schedule the import run](/data-imports-guide/cloud-users/overview#scheduling-an-import).
@@ -42,6 +45,19 @@ Cloud data-import configurations, although similar in many ways, do have target 
 - [Importing users from Google Workspace](/data-imports-guide/cloud-users/googleworkspace)
 
 But before you begin configuring your import, read on for more overview information that applies to all cloud imports regardless of data platform.
+
+## Copying an import configuration
+An alternative way to create a new import is to copy an existing configuration. This is useful if you've already done the work of setting up a configuration and making sure it imports the user data as intended. Perhaps you need another import configuration that is similar to the first one. Rather than starting from scratch, it may make sense for you to copy the existing configuration and then make tweaks as necessary.
+
+![Copy an existing import configuration](/_books/data-imports-guide/cloud-users/images/cloud-import-copy-import.png)
+
+**To copy an import configuration:**
+
+1. In **Configuration > Platform Configuration > Data > Cloud Data Imports**, at the top right of the configurations list, click the down arrow next to **+ Add New**.
+1. In the Copy Cloud Import dialog, begin typing the name of the import configuration you want to copy, then when it appears in the filter, select it.
+1. In the New Import Name field, give the copied configuration a clear and unique name.
+1. Click **Copy Import**.
+1. The data source settings and source/import options from your existing import are copied over to this newly created copy. Use the **Edit** buttons in the settings and options to make tweaks to the configuration to suit the needs of your new import.
 
 ## Previewing an import
 Once you have built your import configuration, before running or scheduling an import, make sure to first run one or more preview jobs.
@@ -80,7 +96,7 @@ When you use the **Analyze Impact** option in the **Run Import** dropdown, the s
     * The Details tab provides information about the import run as well as a summary of counts for records added and updated, new users added, roles granted, groups assigned, and any problems encountered.
     * The Log tab provides detailed information about each step of the run in chronological order. You can filter what you see in the log by source (System, iBridge, or Import) and by severity (Error, Warning, Notice, Info).
 1. (Optional) If your impact analysis reveals problems in the import configuration, use the **Include Diagnostics** toggle and run another impact analysis. This option provides greater detail in the Log tab about what happened in the run.
--->
+
 ### About viewing the processing history
 
 The **Processing History** tab contains a list of all data-import jobs that have been executed using the selected data import configuration. You can see the run date; whether the run was a data preview, an impact analysis, or an actual import; the records processed and actioned; any problems encountered; and the job status (*Initialized*, *Active*, *Completed*, *Succeeded*, *Failed*).

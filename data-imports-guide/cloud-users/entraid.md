@@ -1,3 +1,9 @@
+---
+title: Setting up your Entra ID user import
+layout: article
+keywords: copy import, 
+---
+
 # Setting up your Entra ID user import
 
 <!--To import user data from Entra ID, you must first complete a one-time preparation step: you must [set up a KeySafe key](/data-imports-guide/cloud-users/entraid#setting-up-a-keysafe-keydata-imports-guide/cloud-users/entraid#set-up-a-keysafe-key). Then, for each import you do, there are [configuration steps to perform](/data-imports-guide/cloud-users/entraid#creating-an-import-configuration).-->
