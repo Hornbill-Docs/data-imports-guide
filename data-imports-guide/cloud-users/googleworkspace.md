@@ -24,20 +24,31 @@ Navigate to **Configuration > Platform Configuration > Data > Cloud Data Imports
 3. Click **Create**.
 4. (Optional) Add a description in the **Description** field to explain what the import does.
 
----
 **To choose the data source:**
 
 1. Click the **Data Source** tab.
 2. In the **Data Source Settings** area, in the **Import** field, click the edit icon.
 3. In the Hornbill Integration Bridge dialog, select **Cloud Data Imports** > **Users** > **Google Workspace**.
 4. Click **Apply**.
-5. The **Source / Import Options** section appears, with settings you can customize. Use [the information about options](/data-imports-guide/cloud-users/googleworkspace#sourceimport-options) to make your choices.
 
----
+    The **Source / Import Options** section appears, with settings you can customize.
+
+**To customize the settings in the Data Source tab:**
+1. Use the edit buttons to make your choices.
+1. Make sure to read [the information about source/import options](/data-imports-guide/cloud-users/googleworkspace#sourceimport-options) as you configure your import.
 
 ### Source/import options
 
-Here’s a breakdown of the options available when setting up your Google Workspace user import. These settings give you control over what gets imported, when, and how.
+This section covers the options available when setting up your Google Workspace user import. These settings give you control over what gets imported, when, and how.
+
+::: important
+### About memberships and role assignments
+When you are configuring your import in the **Data Source** tab, there are two essential import options you need to be aware of: *memberships* and *role assignments*.
+
+A user record is useful only if it has been assigned to a membership. A membership is an organizational grouping in Hornbill, such as *Department* or *Company*. The record can be assigned to an organizational grouping as *Member*, *Team Leader*, or *Manager*. You can create any number of memberships to apply to the users you are importing.
+
+For important details, refer to [Memberships and roles](/data-imports-guide/cloud-users/memberships-and-roles) as you are assigning memberships and roles in your import configuration.
+:::
 
 ---
 
@@ -98,45 +109,11 @@ Define how user data should map to Hornbill fields during import.
 
 - Supports [Mustache templates](/data-imports-guide/cloud-users/data-mapping) for custom formatting or combining data.
 - Input fields offer auto-complete to help you select fields from your Google Workspace source.
-
----
-
-### Memberships
-
-This section lets you assign imported users to organizational groups in Hornbill.
-
-- **Action** – When should the user be added to the group?
-  - `Create` – Add user only during Create actions.
-  - `Update` – Add user only during Update actions.
-  - `Create & Update` – Add user during both.
-  - `Unassign if Assigned` – Remove user from the group if already assigned.
-- **Organization ID** – The ID of the group you want to assign.
-- **Membership** – Choose one:
-  - `Member`
-  - `Team Leader`
-  - `Manager`
-- **Can View Tasks** – Should this user be able to *see* tasks for the group?
-- **Can Action Tasks** – Should this user be able to *work on* tasks?
-- **Single Assignment per Group Type** – Ensures the user belongs to just one group per type, removing them from others of the same type.
-
----
-
-### Role assignments
-
-Assign roles to users as part of the import process.
-
-- **Action** – When should the role be assigned or removed?
-  - `Create` – Assign role only when the user is newly created.
-  - `Update` – Assign role only during updates.
-  - `Create & Update` – Assign during both.
-  - `Unassign if Assigned` – Remove role if the user already has it.
-- **Role** – The name of the role to assign.
-
 ---
 
 ## Filtering: Import only the users you need
 
-You don’t have to bring everyone in! Use queries to filter users by department, location, or other fields.
+You don’t have to bring in every user record. Use queries to filter users by department, location, or other fields.
 
 Check out [Google’s example queries](https://developers.google.com/workspace/admin/directory/v1/guides/search-users#examples) for ideas.
 

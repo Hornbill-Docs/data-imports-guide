@@ -40,6 +40,10 @@
               {
                 "text": "Data Mapping",
                 "link": "data-imports-guide/cloud-users/data-mapping"
+              },
+              {
+                "text": "Memberships and Role Assignments",
+                "link": "data-imports-guide/cloud-users/memberships-and-roles"
               }
             ]
           }
