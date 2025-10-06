@@ -1,18 +1,25 @@
+---
+title: Data mapping and manipulation
+layout: article
+keywords: handle, update imported users
+---
 # Data mapping and manipulation
 
 _____
 This *Cloud Data Imports* section of the documentation covers a feature coming soon that will be available in Hornbill Core UI builds higher than 2475.
 _____
 
-Hornbill provides the ability for data import administrators to map their source field data into target Hornbill user fields. Some basic string manipulation methods are also available.
+When you create your import configuration, a large part of what you are doing is mapping data. You are mapping your user data from your source (such as from Entra ID or Google Workspace) into target Hornbill user fields. You complete most of this mapping by typing in fields and by selecting from dropdowns in the Cloud Data Imports user interface. It is important to note, however, that some basic [string manipulation methods](/data-imports-guide/cloud-users/data-mapping#applying-transforms) are also available.
 
 ## Mapping data with tags
 
-The mapping of source data into user fields in Hornbill Cloud Data Imports is done using mustache tags. Tags are wrapped in double curly braces. For example `{{givenName}}` is a tag; another one is `{{#givenName}}`. In both examples, we'd refer to `givenName` as the key or tag key. See the [Mustache specification](https://mustache.github.io/mustache.5.html) for detailed information about supported tag types.
+The mapping of source data into user fields in Hornbill Cloud Data Imports is done using mustache tags. Tags are wrapped in double curly braces. For example `{{givenName}}` is a tag; another one is `{{#givenName}}`. In both examples, `givenName` is referred to as the *key* or *tag key*. See the [Mustache specification](https://mustache.github.io/mustache.5.html) for detailed information about supported tag types.
 
-You can use multiple tags in the same mapping configuration field, should you wish to use more than one field from the source data record. Populating the Display Name field in Hornbill with the user's given name, followed by a space, followed by the family name, is one example where this may be useful:
+You can use multiple tags in the same mapping configuration field, should you wish to use more than one field from the source data record.
 
-> `{{givenName}} {{familyName}}`
+For example, when importing user records from your source, imagine your records each include a first name and a last name, but no handle. A *handle* --- also known as a *display name* --- is needed in Hornbill. The handle captures both the first name and the last name in one field. Because your source records don't include a handle, you have to create one. In the Data Source tab, in the User Properties dialog, you specify that the handle is `{{givenName}} {{familyName}}`. As shown below, you're populating the Handle field in Hornbill with the user's given name, followed by a space, followed by the family name.
+
+![Creating a handle](/_books/data-imports-guide/cloud-users/images/givenname-plus-surname-makes-handle.png)
 
 If you're performing updates against your imported users, you can empty the value of any supported text column using the following notation:
 
@@ -28,9 +35,17 @@ To auto-complete the field, choose the field you want, then select it using a mo
 
 ## Applying transforms
 
-When mapping user record fields from your source system (such as Entra ID or Google Workspace) into Hornbill user fields, there may be situations where the data you receive is not in the exact format you want to store, display, or work with in Hornbill. To ensure consistency, accuracy, and usability of your user records, you can apply transformations to the imported values during the mapping process.
+<!--
+A transform will use the fields but in a much more complicated way. It’s just a complicated mapping.
+-->
 
-Transformations are useful in a variety of scenarios, for example:
+When mapping user record fields from your source system into Hornbill user fields, there may be situations where the data you receive is not in the exact format you want to store, display, or work with in Hornbill. By applying transformations in your mappings, you can change data from one thing to another during the import. This is useful to ensure consistency, accuracy, and usability of your user records.
+
+For example, in a custom attribute (Attrib 7) in the image below, the admin has added the `replace` transform to the mapping so as to change the department name *Research* to *R&D* when the user records are imported.
+
+![Using the Replace transform](/_books/data-imports-guide/cloud-users/images/transform-replace.png)
+
+Consider the following uses for data transforms:
 
 * **Formatting data** – Standardizing phone numbers, capitalizing names, or converting usernames into a preferred format.
 * **Cleaning up values** – Removing unnecessary characters, trimming spaces, or handling special characters.
