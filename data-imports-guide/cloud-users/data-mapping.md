@@ -5,10 +5,6 @@ keywords: handle, update imported users
 ---
 # Data mapping and manipulation
 
-_____
-This *Cloud Data Imports* section of the documentation covers a feature coming soon that will be available in Hornbill Core UI builds higher than 2475.
-_____
-
 When you create your import configuration, a large part of what you are doing is mapping data. You are mapping your user data from your source (such as from Entra ID or Google Workspace) into target Hornbill user fields. You complete most of this mapping by typing in fields and by selecting from dropdowns in the Cloud Data Imports user interface. It is important to note, however, that some basic [string manipulation methods](/data-imports-guide/cloud-users/data-mapping#applying-transforms) are also available.
 
 ## Mapping data with tags

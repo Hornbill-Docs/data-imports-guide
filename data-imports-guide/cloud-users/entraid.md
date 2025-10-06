@@ -6,10 +6,6 @@ keywords: copy import
 
 # Setting up your Entra ID user import
 
-_____
-This *Cloud Data Imports* section of the documentation covers a feature coming soon that will be available in Hornbill Core UI builds higher than 2475.
-_____
-
 Before you begin, make sure you [understand the ways of filtering the data you import](/data-imports-guide/cloud-users/entraid#filtering-import-only-the-users-you-need).
 
 This article also covers the [default fields](/data-imports-guide/cloud-users/entraid#about-default-fields) Hornbill brings in for each user when you do an import.

@@ -6,10 +6,6 @@ keywords: members, roles
 
 # Memberships and role assignments
 
-_____
-This *Cloud Data Imports* section of the documentation covers a feature coming soon that will be available in Hornbill Core UI builds higher than 2475.
-_____
-
 In the Data Source tab of your import configuration, in *Source/Import Options*, it is important to specify the groups and roles your users will be assigned to as part of the import process.
 
 ## Memberships
