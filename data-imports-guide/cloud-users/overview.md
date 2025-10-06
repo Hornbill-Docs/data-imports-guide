@@ -128,5 +128,9 @@ Once you are happy with the import configuration you have set up, its mappings, 
 1. In **Configuration > Platform Configuration > Data > Cloud Data Imports**, in the list of imports, find the configuration you want and click its name.
 1. Click the **Control & Schedule** tab.
 1. Set up your schedule as required, specifying recurrence, time zone, next run date, days of the week, and number of executions before expiring.
+    ::: important
+    Avoid using the 0500-0600 UTC time window because this is when Hornbill does updates. Your instance could be restarted halfway through an update, which could cause problems in the run of the import.
+    :::
 1. (Optional) If the schedule has previously run, click **View Log** to see its history.
 1. Click **Save & Run**.
+
