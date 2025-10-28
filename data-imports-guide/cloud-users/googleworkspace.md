@@ -103,6 +103,28 @@ Define how user data should map to Hornbill fields during import.
 
 - Supports [Mustache templates](/data-imports-guide/cloud-users/data-mapping) for custom formatting or combining data.
 - Input fields offer auto-complete to help you select fields from your Google Workspace source.
+
+***About the Action and User Type Action import options.*** When you are configuring your import in the **Data Source** tab, it's possible to configure the import with some inconsistent options. These won't cause the import to fail, but it's important to understand the relationship between some of the options available, as sometimes, in order for one option to be effective, a related option must also be configured in a particular way.
+
+* The Action option is the action to perform for the users returned from your data source. (This is the main Action option). You can choose **Create**, **Update**, or **Create & Update**.
+
+    ![The action to perform](/_books/data-imports-guide/cloud-users/images/main-action-for-import.png)
+
+* In the User Properties option, there are account details you must specify, including User Type Action. This specifies when an update to the user type should be performed. The options are **Create**, and **Create & Update**.
+
+    ![Update the user type](/_books/data-imports-guide/cloud-users/images/user-type-action.png)
+
+    This User Type Action is *only* relevant when the main action is **Create** or **Create & Update**. When the main action is **Update**, there are no user types to create. While you must select an option,  it has no bearing on the import.
+
+#### Profile Picture
+Choose what Hornbill should do with the users' profile pictures it finds:
+
+- **No Processing** – Ignore the image data.
+- **Update** – Take the image data and make it the user's profile picture in Hornbill.  
+- **Clear** – Use this option to remove the image data during the import.
+
+The Clear option in Profile Picture is only relevant when the main action is **Update** or **Create & Update**.
+
 ---
 
 ## Filtering: Import only the users you need
