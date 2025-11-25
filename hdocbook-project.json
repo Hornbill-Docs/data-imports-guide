@@ -5,7 +5,9 @@
     "exclude_paths": []
   },
   "validation": {
-    "exclude_links": [],
+    "exclude_links": [
+      "https://login.virima.com/www_em/constructs.html#FilterPojo"
+    ],
     "exclude_spellcheck":[
       {
           "document_path": "data-imports-guide/requests/from-servicenow/configuration",

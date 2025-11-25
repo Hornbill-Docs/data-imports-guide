@@ -19,8 +19,8 @@ Ultimately, the executable will be scheduled in the Windows task scheduler (see 
 When you first run the utility it will prompt you for two vital pieces of information:
 
 - The Instance ID (also referred to as the instance name) can be found in the URL used by your organization to access the Hornbill service:
-    - https://live.hornbill.com/instanceid (case sensitive).
-- A valid [API key]/data-imports-guide/assets/authentication#api-keys). This needs to be created against a Hornbill user account with enough rights to create and update asset records in Document Manager. Details on how to create an API key can be found in the [Hornbill Platform Fundamentals]/esp-fundamentals/security/api-keys) book.
+    - `https://live.hornbill.com/instanceid` (case sensitive).
+- A valid [API key](/data-imports-guide/document-manager/authentication#api-keys). This needs to be created against a Hornbill user account with enough rights to create and update asset records in Document Manager. Details on how to create an API key can be found in the [Hornbill Platform Fundamentals](/esp-fundamentals/security/api-keys) book.
 This information will be encrypted and stored locally on the host computer that will run the utility. For each subsequent import run, the utility will decrypt your instance ID and API key from the client and will use those to make the API calls back into Hornbill as necessary to perform the import.
 
 :::important
@@ -29,7 +29,7 @@ The authentication information can only be decrypted on the computer (physical o
 
 ## Testing Overview
 
-There is no substitute for hands-on experience when becoming familiar with the Hornbill import utilities. The Asset Import utility accepts and understands a number of [command line arguments]/data-imports-guide/document-manager/command#command-line-arguments) that can be used when running the utility from the Windows command line or PowerShell.
+There is no substitute for hands-on experience when becoming familiar with the Hornbill import utilities. The Asset Import utility accepts and understands a number of [command line arguments](/data-imports-guide/document-manager/command#command-line-parameters) that can be used when running the utility from the Windows command line or PowerShell.
 
 :::tip
 The most important argument when testing is `-dryrun=true`. When this is provided, no documents will be sent to Hornbill. Instead, all import requests that would have been made into Hornbill are output to a log file, including input parameters, which provides you with an opportunity to review their content and understand any error messages that may occur.
