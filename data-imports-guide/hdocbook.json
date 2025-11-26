@@ -4,7 +4,7 @@
   "description": "How to use utilities to import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.5.61",
+  "version": "0.6.0",
   "audience": [
     "public"
   ],
@@ -396,6 +396,31 @@
                     "link": "data-imports-guide/users/ldap/debugging"
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "text": "Documents",
+            "items": [
+              {
+                "text": "Introduction",
+                "link": "data-imports-guide/document-manager/overview"
+              },
+              {
+                "text": "Authentication",
+                "link": "data-imports-guide/document-manager/authentication"
+              },
+              {
+                "text": "Configuration",
+                "link": "data-imports-guide/document-manager/configuration"
+              },
+              {
+                "text": "Running an Import",
+                "link": "data-imports-guide/document-manager/command"
+              },
+              {
+                "text": "Troubleshooting",
+                "link": "data-imports-guide/document-manager/debugging"
               }
             ]
           }
