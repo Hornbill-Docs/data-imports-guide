@@ -1,4 +1,4 @@
-# Configuration Example - Lansweeper 7.1
+# Configuration Example - Lansweeper Cloud
 
 The following is an example of the SourceConfig, AssetTypes and data mapping configuration that could be used to import computer-type assets from a Lansweeper Cloud site. This means that the Keysafe Key that holds the credentials to authenticate requests to the Lansweeper Cloud API should be of type [Lansweeper Cloud Authentication](/data-imports-guide/assets/authentication#key-type-lansweeper-cloud). 
 
