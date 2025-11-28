@@ -4,7 +4,7 @@
 The utility provides a quick and easy method of uploading and updating organizations from an external data source into Hornbill instance.
 
 ## Open Source
-The Hornbill SQL Organzsation Import Utility is provided open source under the Hornbill Community License and can be found Here on GitHub
+The Hornbill SQL Organzsation Import Utility is provided open source under the Hornbill Community Licenseand can be found [here on GitHub](https://github.com/hornbill/goHornbillOrgImport).
 
 ## Installation Overview
 ### Windows Installation
