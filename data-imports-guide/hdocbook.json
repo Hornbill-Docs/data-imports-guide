@@ -4,7 +4,7 @@
   "description": "How to use utilities to import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "audience": [
     "public"
   ],
@@ -198,6 +198,35 @@
                 "link": "data-imports-guide/contacts/debugging"
               }
             ]
+          },
+          {
+            "text": "Documents",
+            "items": [
+              {
+                "text": "Introduction",
+                "link": "data-imports-guide/document-manager/overview"
+              },
+              {
+                "text": "Authentication",
+                "link": "data-imports-guide/document-manager/authentication"
+              },
+              {
+                "text": "Configuration",
+                "link": "data-imports-guide/document-manager/configuration"
+              },
+              {
+                "text": "Running an Import",
+                "link": "data-imports-guide/document-manager/command"
+              },
+              {
+                "text": "Troubleshooting",
+                "link": "data-imports-guide/document-manager/debugging"
+              }
+            ]
+          },
+          {
+            "text": "Organization",
+            "link": "/data-imports-guide/organization/overview"
           },
           {
             "text": "Requests",
@@ -400,31 +429,6 @@
                     "link": "data-imports-guide/users/ldap/debugging"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "text": "Documents",
-            "items": [
-              {
-                "text": "Introduction",
-                "link": "data-imports-guide/document-manager/overview"
-              },
-              {
-                "text": "Authentication",
-                "link": "data-imports-guide/document-manager/authentication"
-              },
-              {
-                "text": "Configuration",
-                "link": "data-imports-guide/document-manager/configuration"
-              },
-              {
-                "text": "Running an Import",
-                "link": "data-imports-guide/document-manager/command"
-              },
-              {
-                "text": "Troubleshooting",
-                "link": "data-imports-guide/document-manager/debugging"
               }
             ]
           }
