@@ -1,18 +1,18 @@
 # Organization Import
 
 ## About the Organization Import Utility
-The utility provides a quick and easy method of uploading and updating organizations from an external data source into Hornbill instance.
+The utility provides a quick and easy method of uploading and updating organizations from an external data source into a Hornbill instance.
 
 ## Open Source
-The Hornbill SQL Organzsation Import Utility is provided open source under the Hornbill Community Licenseand can be found [here on GitHub](https://github.com/hornbill/goHornbillOrgImport).
+The Hornbill SQL Organization Import Utility is provided open source under the Hornbill Community Licenseand can be found [here on GitHub](https://github.com/hornbill/goHornbillOrgImport).
 
 ## Installation Overview
 ### Windows Installation
-* Download the ZIP archive relevant to your OS and architecture. This contains the tool executable file, configuration file and license;
-* Extract the ZIP archive into a folder you would like the application to run from e.g. 'C:\organization_import\'.
+* Download the ZIP archive relevant to your OS and architecture. This contains the tool executable file, configuration file and license.
+* Extract the ZIP archive into a folder you would like the application to run from, for example 'C:\organization_import\'.
 
 ## Configuration Overview
-The configuration of this utility is managed through a JSON file (conf.json), which is supplied with each release:
+The configuration of this utility is managed through a JSON file (conf.json), which is supplied with each release.
 
 ```json
 {   "APIKey": "your_api_key_here",
@@ -84,7 +84,7 @@ The configuration of this utility is managed through a JSON file (conf.json), wh
 * **OrganizationMapping**. Maps data from your data source into the generic Hornbill organization record. Any value wrapped with "" will be populated with the corresponding response from the SQL Query and is treated literally as a written example.
 
 ## Set up ODBC Connector for CSV files
-To create a 64 bit ODBC connector for CSV files, you need to have Microsoft Access Text Driver installed. This comes with the Microsoft Access Database Engine which can be found as an MS 2010 Redistributable or as an optional part of the Microsoft Office Suite.
+To create a 64 bit ODBC connector for CSV files, you need to have Microsoft Access Text Driver installed. This comes with the Microsoft Access Database Engine, which can be found as an MS 2010 Redistributable or as an optional part of the Microsoft Office Suite.
 
 #### Step 1
 1. In Windows menu open ODBC Data Sources app as Administrator (in Windows 10 you can type in "ODBC" in the search box on the taskbar to quickly find the ODBC Data Sources app).
