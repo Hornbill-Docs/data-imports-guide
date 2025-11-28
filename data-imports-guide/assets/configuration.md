@@ -197,6 +197,8 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
 :::
 - `LogSizeBytes` - Type: `integer` - The maximum size that the generated Log Files should be in bytes. Setting this value to 0 will cause the tool to create one log file and not split the results between multiple logs.
 - `HornbillUserIDColumn` - Type: `string` - Used to specify the Hornbill User ID column for matching users against (asset owners, used by etc). Supported values: `h_user_id` (default), `h_employee_id`, `h_email`, `h_name`, `h_attrib1`, `h_attrib8` and `h_login_id`. **Please note:** `last logged on`, `owned by` and `used by` will use the same field - i.e. one can NOT specify which column to match to individually.
+- `SkipSelfUpdate` - Type: `boolean` - Defaults to `false`. If set to `true` then the binary will NOT [self-update](/data-imports-guide/assets/overview#updates) when there is a newer minor or patch release available
+- `SkipExtendedAudit` - Type: `boolean` - Defaults to `false`. If set to `true` then updates to the Extended Attribute fields will not be audited on your Hornbill instance 
 
 #### SourceConfig
 
@@ -209,6 +211,7 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
   - `csv` - CSV / Text file(s) - doesn't require KeySafe keys
   - `nexthink` - Nexthink - will use KeySafe key type [Username + Password](/data-imports-guide/assets/authentication#key-type-username-password)
   - `ldap` - LDAP / Active Directory - will use KeySafe key type [LDAP Authentication](/data-imports-guide/assets/authentication#key-type-ldap)
+  - `lansweepercloud` - Lansweeper Cloud - will use KeySafe key type [Lansweeper Cloud](/data-imports-guide/assets/authentication#key-type-lansweeper-cloud)
   - `google` - Google Workspace Enterprise Chrome OS - will use KeySafe key type [Google Workspace](/data-imports-guide/assets/authentication#key-type-google-workspace)
   - `manageengine` - Manage Engine - will use KeySafe  key type [oAuth 2.0](/data-imports-guide/assets/authentication#key-type-oauth-20)
   - `certero` - Certero - will use KeySafe key type [Certero](/data-imports-guide/assets/authentication#key-type-certero)
@@ -228,6 +231,8 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
       - `SQL` - uses SQL Server authentication, and will use the details in the KeySafe Key defined to connect. The Key Type should be [Database Authentication](/data-imports-guide/assets/authentication#key-type-database-authentication)
     - `Encrypt` - Type: `boolean` - Used to specify whether the connection between the script and the database should be encrypted. **NOTE** There is a bug in SQL Server 2008 and below that causes the connection to fail if the connection is encrypted. Only set this to `true` if your SQL Server has been patched accordingly.
     - `Query` - Type: `string` - The basic SQL query to retrieve asset information from the data source. See `AssetTypes` below for further information on filtering.
+- `LansweeperCloud` - Type: `object` - Only in use if `Source` is set to `lansweepercloud`
+    - `SiteID` - Type: `string` - The ID of the Site you wish to query
 - `LDAP` - Type: `object` - Only in use if `Source` is set to `ldap`
     - `Server` - Type: `object` - LDAP host specific configuration:
       - `InsecureSkipVerify` - Type: `boolean` - Used in conjunction with SSL or TLS connection types and allows the verification of SSL Certifications to be disabled i.e. `ON` sets the InsecureSkipVerify variable when querying the LDAP to `true`.
@@ -321,6 +326,12 @@ During the import process assets of each type as defined below are retrieved fro
 * `CynerioFilters` - Type: `object` - A list of fields and values to use when filtering the Cynerio asset API call resultsets by, in the following format:
   * `"CynerioFieldName":"ValueToMatch"`
 * `Virima` - Type: `array` - A list of filters to apply to the Virima CI query, as per the [FilterPojo construct](https://login.virima.com/www_em/constructs.html#FilterPojo) in the Virima documentation
+* `LansweeperCloudConditions` - Type: `object` - Used for applying conditions when using the Lansweeper Cloud data source. See the [Lansweeper Cloud Filtered Query Documentation](https://developer.lansweeper.com/docs/data-api/guides/getting-data#filtered-query) for more information.
+  * `Conjunction` - Type: `string` - The [conjunction](https://developer.lansweeper.com/docs/data-api/reference/types#exportfilterconjunction) to apply to the list of conconditions, below. Can be `AND` or `OR`
+  * `Conditions`- Type: `array` of `objects` - A list of [conditions](https://developer.lansweeper.com/docs/data-api/reference/types#exportfilterscondition) to apply to the Lansweeper Cloud API query, to filter the list of returned asset records:
+    * `Path` - Type: `string` - The path of the Lansweeper Cloud asset column to query. Supported Paths can be found in the [Lansweeper Developer Portal Documentation](https://developer.lansweeper.com/docs/data-api/guides/getting-data#setting-up-the-filter)
+    * `Operator` - Type: `string` - The [operator](https://developer.lansweeper.com/docs/data-api/reference/types#exportfiltertype) to apply to the condition
+    * `Value` - Type: `string` - The value to apply to the condition
 * `AdditionalFilters` - Type: `array` - A list of filter objects, to further filter the list of assets returned from `Cynerio`, `Intune` or `Google Workspace`. Each item in the list must match as `true` for the asset to be imported, and are defined as objects containing:
   * `Field` - Type: `string` - The data source field ID to perform the filter against.
   * `Operator` - Type: `string` - The operator to apply to the filter, can be one of:

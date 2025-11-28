@@ -79,6 +79,8 @@ As the Asset Import utility supports the import of asset data from many differen
   * `swsql` - Supportworks SQL (Core Services v3.x).
 * [Google Workspace](/data-imports-guide/assets/authentication#key-type-google-workspace) - Used for the following data sources:
   * `google` - Google Workspace Enterprise Chrome OS.
+* [Lansweeper Cloud](/data-imports-guide/assets/authentication#key-type-lansweeper-cloud) - Used for the following data sources:
+  * `lasweepercloud` - Lansweeper Cloud.
 * [Jamf](/data-imports-guide/assets/authentication#key-type-jamf) - Used for the following data sources:
   * `jamf` - Jamf 
 * [LDAP Authentication](/data-imports-guide/assets/authentication#key-type-ldap) - Used for the following data sources:
@@ -189,6 +191,18 @@ Keys of this type require a Cynerio API Key to be created against a user account
 * `Jamf Server` - The name that appears in the url when you login to Jamf, for example: "https://'JAMF SERVER NAME'.jamfcloud.com/". Please only include the name as it appears in the URL.
 * `Password` - The password associated with the above username.
 * Click `Create Key`.
+
+### Key Type - Lansweeper Cloud
+
+* In Hornbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
+* Click `+ Create New Key`.
+* Choose a key type of `Lansweeper Cloud`.
+* Give the KeySafe key a Title.
+* Optionally add a Description.
+* Click `Create Key`.
+* Once the Key is created, you will need to connect to Lansweeper Cloud and your account, in order to authorize the Hornbill App to perform the listed Lansweeper Cloud site options. Click `Connect` and you will be redirected to Lansweeper Cloud in a popup window.
+* Log in to your Lansweeper Cloud account, and then you will be prompted to review the operations you are authorizing the Hornbill App to be allowed to perform with the chosen Lansweeper Cloud account.
+* Select the scopes/permissions relevant to the import, and click `Continue`. You will then be returned to your KeySafe key.
 
 ### Key Type - Microsoft Intune
 

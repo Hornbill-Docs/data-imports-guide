@@ -5,6 +5,7 @@ Ultimately, the executable will be scheduled in the Windows task scheduler (see 
 ## Command Line Arguments
 
 - `creds` - Defaults to `false` - Set to `true` to decrypt and output the API key that is stored locally. The utility will prompt you for your Instance ID, and this can only be decrypted by the user who originally performed the encryption, and only on the same machine that it was encrypted on.
+- `credspath` - Defaults to `/info.cfg` - Set to a full path if you wish to store your encrypted credentials outside of the current working directory when utility is run
 - `debug` - Defaults to `false` - Set to `true` to enable debug mode, which will output additional debugging information to the log.
 - `debugdata` - Defaults to `false` - Set to `true` to enable debug data mode, which when used with the `debug` argument above. and one of the following datasources, will output the datasource response payload as JSON files to the local disk in a folder called `.\debugDataSource` in the current working directory, to aid in debugging data source issues:
   - `Azure Resource Query (Arc)`
@@ -12,6 +13,7 @@ Ultimately, the executable will be scheduled in the Windows task scheduler (see 
   - `Cynerio`
   - `Google Workspace`
   - `Jamf`
+  - `Lansweeper Cloud`
   - `Manage Engine`
   - `Microsoft Intune`
   - `Nexthink`
@@ -19,11 +21,13 @@ Ultimately, the executable will be scheduled in the Windows task scheduler (see 
 - `dryrun` - Defaults to `false` - Set to `true` and the API calls to create and update asset records will not be run. Instead, the API call request payloads will be output to the log file to aid in debugging.
 - `file` - Defaults to `conf.json` - The name of the import configuration file to use.
 - `forceupdates` - Defaults to `false` - The utility will, by default, perform a comparison between new data and old data in order to decided whether the record needs an update or not. The decision is, in essence, a detection of changes in SOURCE data, and not any data that might have been manipulated either by using the import template, the Service Manager application in your browser, or by the Hornbill API directly. This paramater caters for this - i.e. set to `true` and an update will always be attempted - whether or not there are going to be any changes.
-- `concurrent` - Defaults to `3` - Allows you to change the number of worker threads used to process the import; increasing this can improve performance on slow import but using too many workers can have a detriment to the performance of your Hornbill instance while the import is running.
+- `setupkey` - A valid API key for your Hornbill instance - When setting up the import utility for its first run, you can use this argument along with the `setupinstance` argument below, to prevent the tool from interactively prompting for your instance credentials
+- `setupinstance` - Your Hornbill instance ID - When setting up the import utility for its first run, you can use this argument along with the `setupkey` argument below, to prevent the tool from interactively prompting for your instance credentials
+
 
 ## First Run
 
-When you first run the utility it will prompt you for two vital pieces of information:
+When you first run the utility, and you do not provide the Instance ID and API Key using the `setupinstance` and `setupkey` command line arguments, you will be prompted for two vital pieces of information:
 
 - The Instance ID (also referred to as the instance name) can be found in the URL used by your organization to access the Hornbill service:
   - ht<span>tps://live.hornbill.com/</span>`instanceid` (case sensitive).

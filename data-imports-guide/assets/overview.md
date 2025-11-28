@@ -12,13 +12,13 @@ The utility can be downloaded from [GitHub](https://github.com/hornbill/asset-im
 
 ## Installation
 
-Once downloaded, the ZIP archive for the utility should be extracted into a new folder within the local user profile of the user who will run the tool - whether that be your user profile to manually run the utility or the profile of a service account that will be used to schedule the running of it. For example:
+Once downloaded, the ZIP archive for the utility should be extracted into a new folder that the user who will run the tool has read-write access to - whether that be your user profile to manually run the utility, the profile of a service account that will be used to schedule the running of it, or another folder that is accessible by the running account (domain user, local user, local system account or global managed system account). For example:
 
 `C:\Users\YourUserOrServiceAccountID\Hornbill\asset_import`
 
 ## Updates
 
-The utility will self-update when it detects that a newer minor or patch version has been released on GitHub. All of the import tools use [semantic versioning](https://semver.org/), where:
+If the feature is enabled, the utility will self-update when it detects that a newer minor or patch version has been released on GitHub. All of the import tools use [semantic versioning](https://semver.org/), where:
 
 * Major version updates will contain new feature(s), and include breaking changes to the tool configuration 
 * Minor version updates will contain new feature(s) and do not include breaking changes to the tool configuration
