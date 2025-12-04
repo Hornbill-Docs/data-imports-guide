@@ -4,7 +4,7 @@
   "description": "How to use utilities to import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "audience": [
     "public"
   ],
@@ -44,6 +44,15 @@
               {
                 "text": "Memberships and Role Assignments",
                 "link": "data-imports-guide/cloud-users/memberships-and-roles"
+              }
+            ]
+          },
+          {
+            "text": "Assets",
+            "items": [
+              {
+                "text": "Snow License Manager Cloud Asset Import",
+                "link": "data-imports-guide/cloud-assets/snow-license-manager"
               }
             ]
           }
