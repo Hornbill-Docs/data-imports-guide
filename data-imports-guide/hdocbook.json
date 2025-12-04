@@ -4,7 +4,7 @@
   "description": "How to use utilities to import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "audience": [
     "public"
   ],
@@ -231,7 +231,7 @@
           {
             "text": "Requests",
             "expand": false,
-            "draft": true,
+            "draft": false,
             "items": [
               {
                 "text": "From a Database",
