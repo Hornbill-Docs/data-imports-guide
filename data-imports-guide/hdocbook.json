@@ -4,7 +4,7 @@
   "description": "How to use utilities to import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "audience": [
     "public"
   ],
@@ -22,6 +22,15 @@
         "expand": true,
         "draft": false,
         "items": [
+          {
+            "text": "Assets",
+            "items": [
+              {
+                "text": "Snow License Manager",
+                "link": "data-imports-guide/cloud-assets/snow-license-manager"
+              }
+            ]
+          },
           {
             "text": "Users",
             "items": [
@@ -44,15 +53,6 @@
               {
                 "text": "Memberships and Role Assignments",
                 "link": "data-imports-guide/cloud-users/memberships-and-roles"
-              }
-            ]
-          },
-          {
-            "text": "Assets",
-            "items": [
-              {
-                "text": "Snow License Manager Cloud Asset Import",
-                "link": "data-imports-guide/cloud-assets/snow-license-manager"
               }
             ]
           }
@@ -175,6 +175,15 @@
                     "link": "data-imports-guide/asset-relationships/debugging"
                   }
                 ]
+              },
+              {
+                "text": "Asset Tags",
+                "items": [
+                {
+                  "text": "Meridian Asset Tag",
+                  "link": "data-imports-guide/asset-tags/meridian-asset-tags"
+                }
+               ]
               }
             ]
           },
