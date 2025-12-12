@@ -4,7 +4,7 @@
   "description": "How to use utilities to import your data into the Hornbill platform and applications",
   "publicSource": "https://github.com/Hornbill-Docs/data-imports-guide",
   "productFamily": "esp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "audience": [
     "public"
   ],
@@ -22,16 +22,6 @@
         "expand": true,
         "draft": false,
         "items": [
-          {
-            "text": "Assets",
-            "expand": false,
-            "items": [
-              {
-                "text": "Snow License Manager",
-                "link": "data-imports-guide/cloud-assets/snow-license-manager"
-              }
-            ]
-          },
           {
             "text": "Users",
             "items": [
@@ -85,7 +75,7 @@
                   },
                   {
                     "text": "Configuration Examples",
-                    "expand":false,
+                    "expand": false,
                     "items": [
                       {
                         "text": "Azure Resource Query",
@@ -126,6 +116,10 @@
                       {
                         "text": "SCCM",
                         "link": "data-imports-guide/assets/configexamples/sccm"
+                      },
+                      {
+                        "text": "Snow License Manager",
+                        "link": "data-imports-guide/cloud-assets/snow-license-manager"
                       },
                       {
                         "text": "Virima",
@@ -181,11 +175,11 @@
                 "text": "Asset Tags",
                 "expand": false,
                 "items": [
-                {
-                  "text": "Meridian Asset Tags",
-                  "link": "data-imports-guide/asset-tags/meridian-asset-tags"
-                }
-               ]
+                  {
+                    "text": "Meridian Asset Tags",
+                    "link": "data-imports-guide/asset-tags/meridian-asset-tags"
+                  }
+                ]
               }
             ]
           },
