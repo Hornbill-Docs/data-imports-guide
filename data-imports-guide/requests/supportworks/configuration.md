@@ -120,7 +120,7 @@ Click "Read More" to expand this section and show an example conf.json file
       }
     },
     {
-      "Description":"This object configures the importing of Business Process Tasks",
+      "Description":"This object configures the importing of Workflow Tasks",
       "Import":true,
       "CallClass": "Incident",
       "SupportworksCallClass":"B.P Task",

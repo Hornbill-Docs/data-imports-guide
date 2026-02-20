@@ -1,73 +1,79 @@
 # Authentication
 
-The User Import - Azure utility uses API Keys to authenticate all API calls into Hornbill instances, and KeySafe to securely store Entra ID credentials.
+The User Import - Azure utility uses API keys to authenticate all API calls into Hornbill instances. It uses KeySafe to store Microsoft Entra ID credentials securely.
 
-## API Keys
+## API keys
 
-[[INCLUDE https://raw.githubusercontent.com/Hornbill-Docs/hdoc-library/main/hdoc-library/dataimports/users-apikeys.md]]
+The User Import - Azure utility requires specific permissions to interact with your Hornbill instance. You must configure your [API Key rules](/esp-fundamentals/security/api-keys#api-key-rules) to include the following Hornbill Platform APIs. You can also add IP rules to increase security.
 
-### API Key Rules
+### Required API key rules
 
-The User Imports require access to the following Hornbill Platform APIs, and your [API Key rules](/esp-fundamentals/security/api-keys#api-key-rules) should reflect those, plus additional security hardening in the form of IP rules:
-
-```cmd
-activity:profileImageSet 
-admin:keysafeGetKey 
-admin:sysOptionGet 
-admin:userAddGroup 
-admin:userAddRole 
-admin:userCreate 
-admin:userDeleteGroup 
-admin:userProfileSet 
-admin:userSetAccountStatus 
-admin:userUpdate 
-data:entityAddRecord 
-data:entityGetRecord 
-data:entityUpdateRecord 
-data:queryExec 
-session:getSystemLicenseInfo 
-```
+* `activity:profileImageSet`
+* `admin:keysafeGetKey`
+* `admin:sysOptionGet`
+* `admin:userAddGroup`
+* `admin:userAddRole`
+* `admin:userCreate`
+* `admin:userDeleteGroup`
+* `admin:userProfileSet`
+* `admin:userSetAccountStatus`
+* `admin:userUpdate`
+* `data:entityAddRecord`
+* `data:entityGetRecord`
+* `data:entityUpdateRecord`
+* `data:queryExec`
+* `session:getSystemLicenseInfo`
 
 ## KeySafe
 
-For the import utility to access Entra ID data, authentication credentials are required to be stored in KeySafe.
+The import utility requires authentication credentials stored in KeySafe to access Microsoft Entra ID data.
 
-:::note
-We recommend that you read the [KeySafe documentation](/esp-fundamentals/security/keysafe) before storing credentials in KeySafe.
-:::
+Review the [KeySafe documentation](/esp-fundamentals/security/keysafe) before you store credentials.
 
-### Entra ID App Registration
+### Register an Entra ID application
 
-Before creating a KeySafe Key, you will first need details of an appropriate App Registration from your Entra ID tenant. Your Entra ID administrator will be able to help you with this, but the basic steps to create this are as follows:
+Before you create a KeySafe key, you must obtain details from an App Registration in your Microsoft Entra ID tenant. If you do not have administrative access to Azure, contact your Microsoft Entra ID administrator for assistance.
 
-* Log into your Azure portal
-* Navigate to `Azure Active Directory`
-* In the `App registrations` menu item, click the `New Registration` button
-* Provide a name for the application, select the appropriate account type, and click the `Register` button
-* Once created, several API permissions need to be applied to the app. We have found that the following permissions need to be granted within Azure, though these could differ for your tenant so please rely on your internal Azure expertise:
-  * Application Permissions:
+#### Registration steps
+
+1. Sign in to the **Azure portal**.
+2. Go to **Microsoft Entra ID**.
+3. Select **App registrations** from the side menu.
+4. Select **New Registration**.
+5. Enter a name for the application.
+6. Select the appropriate account type.
+7. Select **Register**.
+8. Select **API permissions** from the menu to apply the required permissions.
+9. Grant the following **Application Permissions**:
     * `Group.Read.All`
     * `GroupMember.Read.All`
     * `Team.ReadBasic.All`
     * `TeamMember.Read.All`
     * `User.Read.All`
-  * Delegated Permission:
+10. Grant the following **Delegated Permission**:
     * `User.Read`
-* The permission settings need confirming by clicking `Grant admin consent`
-* The `Client ID` and `Tenant ID` can be found and copied from within the Overview section (as `Application (client) ID` and `Directory (tenant) ID` respectively)
-* Next, you will need to generate a `Client Secret`, by navigating to `Certificates & Secrets` in the menu, clicking `New Client Secret`, and providing a description and expiry date, before clicking the `Add` button
-* Copy the `Value` of the Client Secret before continuing 
+11. Select **Grant admin consent** to confirm the permission settings.
+12. Go to the **Overview** section.
+13. Copy the **Application (client) ID** and the **Directory (tenant) ID**.
+14. Select **Certificates & secrets** from the menu.
+15. Select **New client secret**.
+16. Enter a description, select an expiry date, and select **Add**.
+17. Copy the **Value** of the client secret.
 
-### Key Creation
+### Create a KeySafe key
 
-Now you have a Client ID, Tenant ID and Client Secret for your Entra ID app registration, you can create a KeySafe key as so:
+Use the Client ID, Tenant ID, and Client Secret from your Microsoft Entra ID app registration to create the KeySafe key in Hornbill.
 
-* In Hornbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`;
-* Click `+ Create New Key`
-* Choose a key type of `Azure Imports`
-* Give the KeySafe key a Title
-* Optionally add a Description
-* Populate the `Tenant ID`, `Client ID` and `Client Secret` inputs with the values copied above
-* Click `Create Key`
+#### KeySafe creation steps
 
-Once the key has been created, you can then lock access to it down to the API Key created against your service account. See the [KeySafe documentation](/esp-fundamentals/security/keysafe#access-control-and-usability) for more information regarding this.
+1. In Hornbill, go to **Configuration** > **Platform Configuration** > **KeySafe**.
+2. Select **+ Create New Key**.
+3. Select **Azure Imports** as the key type.
+4. Enter a **Title** for the KeySafe key.
+5. Optional: Enter a **Description**.
+6. Enter the **Tenant ID**, **Client ID**, and **Client Secret** values you copied from the Azure portal.
+7. Select **Create Key**.
+
+#### Expected Result
+
+The key appears in your KeySafe list. You can now restrict access to this key so only the API key created for your service account can use it. For more information, see the [KeySafe documentation](/esp-fundamentals/security/keysafe#access-control-and-usability) regarding access control.
