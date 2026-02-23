@@ -41,7 +41,7 @@ Before you create a KeySafe key, you must obtain details from an App Registratio
 3. Select **App registrations** from the side menu.
 4. Select **New Registration**.
 5. Enter a name for the application.
-::: tip
+:::tip
    We reccomend selecting 'Multiple Entra ID tenants' at this phase.
 :::
 7. Select the appropriate account type.
