@@ -41,27 +41,27 @@ Before you create a KeySafe key, you must obtain details from an App Registratio
 3. Select **App registrations** from the side menu.
 4. Select **New Registration**.
 5. Enter a name for the application.
+6. Select the appropriate account type.
 :::tip
    We reccomend selecting 'Multiple Entra ID tenants' at this phase.
 :::
-7. Select the appropriate account type.
-8. Select **Register**.
-9. Select **API permissions** from the menu to apply the required permissions.
-10. Grant the following **Application Permissions**:
+7. Select **Register**.
+8. Select **API permissions** from the menu to apply the required permissions.
+9. Grant the following **Application Permissions**:
     * `Group.Read.All`
     * `GroupMember.Read.All`
     * `Team.ReadBasic.All`
     * `TeamMember.Read.All`
     * `User.Read.All`
-11. Grant the following **Delegated Permission**:
+10. Grant the following **Delegated Permission**:
     * `User.Read`
-12. Select **Grant admin consent** to confirm the permission settings.
-13. Go to the **Overview** section.
-14. Copy the **Application (client) ID** and the **Directory (tenant) ID**.
-15. Select **Certificates & secrets** from the menu.
-16. Select **New client secret**.
-17. Enter a description, select an expiry date, and select **Add**.
-18. Copy the **Value** of the client secret.
+11. Select **Grant admin consent** to confirm the permission settings.
+12. Go to the **Overview** section.
+13. Copy the **Application (client) ID** and the **Directory (tenant) ID**.
+14. Select **Certificates & secrets** from the menu.
+15. Select **New client secret**.
+16. Enter a description, select an expiry date, and select **Add**.
+17. Copy the **Value** of the client secret.
 
 ### Create a KeySafe key
 
