@@ -41,11 +41,11 @@ Before you create a KeySafe key, you must obtain details from an App Registratio
 3. Select **App registrations** from the side menu.
 4. Select **New Registration**.
 5. Enter a name for the application.
-   ![App Name and Account Type](/books/data-imports-guide/users/azure/images/appRegName.png)
+   ![App Name and Account Type](/books/data-imports-guide/users/azure/images/app-reg-name.png)
 6. Select the appropriate account type. We reccomend selecting `'Multiple Entra ID tenants'` at this phase.
 7. Select **Register**.
 8. Select **API permissions** from the menu to apply the required permissions.
-![Application API Example](/books/data-imports-guide/users/azure/images/appRegApi.png)
+![Application API Example](/books/data-imports-guide/users/azure/images/app-reg-api.png)
 9. Grant the following **Application Permissions**:
     * `Group.Read.All`
     * `GroupMember.Read.All`
@@ -59,7 +59,7 @@ Before you create a KeySafe key, you must obtain details from an App Registratio
 13. Copy the **Application (client) ID** and the **Directory (tenant) ID**.
 14. Select **Certificates & secrets** from the menu.
 15. Select **New client secret**.
-![App Secret Example](/books/data-imports-guide/users/azure/images/appRegSecret.png)
+![App Secret Example](/books/data-imports-guide/users/azure/images/app-reg-secret.png)
 16. Enter a description, select an expiry date, and select **Add**.
 17. Copy the **Value** of the client secret.
 
