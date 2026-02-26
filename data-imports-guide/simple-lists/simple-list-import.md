@@ -9,6 +9,10 @@ The following tasks are carried out when the tool is executed:
 * New list entries are created within the configured application's Simple List.
 * The list value needs to be unique within the application's particular list.
 
+## Download
+
+The utility can be downloaded from [GitHub](https://github.com/hornbill/simple-list-import/releases/latest). Please ensure to download the latest version of the ZIP archive that is relevant to the architecture of the computer it will be executed and scheduled to run on.
+
 ## Installation Overview
 
 ### Windows Installation
