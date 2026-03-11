@@ -17,13 +17,14 @@ In the Data Source tab of your import configuration, in the Memberships field, y
   - `Update` – Add user only during Update actions.
   - `Create & Update` – Add user during both.
   - `Unassign if Assigned` – Remove user from the group if already assigned.
-- **Organization ID** – The ID of the group you want to assign.
+- **Name** – The name of the group to assign.
 - **Membership** – Choose one:
   - `Member`
   - `Team Leader`
   - `Manager`
-- **Can View Tasks** – Should this user be able to *see* tasks for the group?
-- **Can Action Tasks** – Should this user be able to *work on* tasks?
+- **Can View Tasks** – If selected,the user will be able to *see* tasks for the group.
+- **Can Action Tasks** – If selected, the user will be able to *work on* tasks.
+- **User's Home Organization** – If selected, this organization will be the user's home organization.
 - **Single Assignment per Group Type** – Ensures the user belongs to just one group per type, removing them from others of the same type.
 
 ---
