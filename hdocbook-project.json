@@ -6,7 +6,9 @@
   },
   "validation": {
     "exclude_links": [
-      "https://login.virima.com/www_em/constructs.html#FilterPojo"
+      "https://login.virima.com/www_em/constructs.html#FilterPojo",
+      "https://api-console.zoho.com*",
+      "https://developer.lansweeper.com*"
     ],
     "exclude_spellcheck":[
       {
