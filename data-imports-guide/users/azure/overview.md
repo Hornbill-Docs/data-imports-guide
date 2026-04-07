@@ -20,14 +20,15 @@ Once downloaded, the ZIP archive for the utility should be extracted into a new 
 
 The utility will self-update when it detects that a newer minor or patch version has been released on GitHub. All of the import tools use [semantic versioning](https://semver.org/), where:
 
-* Major version updates will contain new feature(s), and include breaking changes to the tool configuration 
+* Major version updates will contain new feature(s), and include breaking changes to the tool configuration
 * Minor version updates will contain new feature(s) and do not include breaking changes to the tool configuration
-* Patch version updates will contain bug fixes only 
+* Patch version updates will contain bug fixes only
 
 When there is a Major version update, the utility will not self-update but instead will output a message to the command line & log(s) stating that there is a newer version available to download from GitHub. In this instance, you should download the [latest release from GitHub](https://github.com/hornbill/user-import-azure/releases/latest), and review the breaking configuration changes against your existing import configuration before implementation. You can also check the [Hornbill Community Forum](https://community.hornbill.com/forum/135-announcements/) for real-time release updates.
 
-## Requirements 
+## Requirements
 
 [[INCLUDE https://raw.githubusercontent.com/Hornbill-Docs/hdoc-library/main/hdoc-library/dataimports/requirements.md]]
+
 * `https://login.microsoftonline.com/*` - allows access generate access tokens for Azure, to cache your defined Azure information
 * `https://graph.microsoft.com/*` - allows access to cache your defined Azure information
