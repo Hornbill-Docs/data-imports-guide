@@ -89,6 +89,19 @@ For example:
 - The value of `onPremisesUserPrincipalName` can be returned and mapped into your Hornbill user records, and *does* support filtering using the documented OData query operators.
 :::
 
+### Manager mapping and advanced queries
+
+When you map the **Manager** field in your import configuration, Hornbill automatically requests manager details from the Microsoft Graph API alongside each user record. This is the only way to reliably retrieve manager information without making a separate API call for every user being imported.
+
+However, this has an important consequence: **Microsoft Graph does not support [advanced queries](https://learn.microsoft.com/en-us/graph/aad-advanced-queries?tabs=http) when manager data is being requested at the same time.** Advanced queries unlock additional filter operators and the ability to filter on a wider range of properties.
+
+This means:
+
+- **If you do not map the Manager field** – advanced queries are fully supported, and you can use the extended filter operators and properties described in the [advanced queries documentation](https://learn.microsoft.com/en-us/graph/aad-advanced-queries?tabs=http).
+- **If you do map the Manager field** – Hornbill automatically includes the manager expand in the API request, and advanced queries cannot be used. Your filter must use only the [standard OData operators and filterable properties](https://learn.microsoft.com/en-us/graph/filter-query-parameter?tabs=http).
+
+If your filtering requirements need advanced query support, consider whether manager data is essential for your import. If it is not, leave the Manager field unmapped to take full advantage of advanced filtering.
+
 ---
 
 #### Group ID filter
