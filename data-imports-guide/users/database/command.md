@@ -7,7 +7,7 @@ Ultimately, the executable will be scheduled in the Windows task scheduler (see 
 - `creds` - Defaults to `false` - Set to `true` to decrypt and output the API key that is stored locally. The utility will prompt you for your Instance ID, and this can only be decrypted by the user who originally performed the encryption, and only on the same machine that it was encrypted on.
 - `dryrun` - Defaults to `false` - Set to `true` and the API calls to create and update users will not be run. Instead, the API call request payloads will be output to the log file to aid in debugging.
 - `file` - Defaults to `conf.json` - The name of the import configuration file to use.
-- `forcerun` - Defaults to `false` - Set to `true` to to bypass the existing running job check. This should be used if a previous run did not successfully complete and the utility is reporting that an import is in progress.
+- `forcerun` - Defaults to `false` - Set to `true` to bypass the existing running job check. This should be used if a previous run did not successfully complete and the utility is reporting that an import is in progress.
 - `workers` - Defaults to `3` - Allows you to change the number of worker threads used to process the import; increasing this can improve performance on slow import but using too many workers can have a detriment to the performance of your Hornbill instance while the import is running.
 
 :::warning
@@ -46,7 +46,7 @@ Below are some high level steps to help you build confidence in your configurati
 
 1. In the configuration, write your SQL query accordingly to target a single or small set of user objects. It's good practice to initially test against a single, or small set of, user objects, as this allows the dryrun to complete quicker and there is less log content to review.
 1. Perform a dryrun (by executing the utility along with the `-dryrun=true` command line parameter) - this allows you to confirm that the configuration is correct and that a connection to the source database can be established, without importing any user data into your Hornbill instance. 
-1. Review the commind line output and log file for any errors or warnings, and where necessary check and rectify any errors against the Common Error Messages listed in the [Troubleshooting Database User Imports](/data-imports-guide/users/database/debugging) section of this book.
+1. Review the command line output and log file for any errors or warnings, and where necessary check and rectify any errors against the Common Error Messages listed in the [Troubleshooting Database User Imports](/data-imports-guide/users/database/debugging) section of this book.
 1. Continue with dryrun tests until you are happy that all the errors are accounted for.
 1. Perform a live import against a single user object (set `-dryrun=false`).
 1. Review the imported user account in Hornbill and check all user properties are as expected i.e. email contains an email address etc.
@@ -54,7 +54,7 @@ Below are some high level steps to help you build confidence in your configurati
 1. Loop through steps 5 - 7 as many times as is necessary until you are happy with the information being transported into the Hornbill user account properties.
 1. Amend the SQL Query to target the user objects required for a full import.
 1. Perform a dryrun
-1. Review the commind line output and log file for any errors or warnings, and where necessary check and rectify any errors against Common Error Messages listed in the [Troubleshooting Database User Imports](/data-imports-guide/users/database/debugging) section of this book.
+1. Review the command line output and log file for any errors or warnings, and where necessary check and rectify any errors against Common Error Messages listed in the [Troubleshooting Database User Imports](/data-imports-guide/users/database/debugging) section of this book.
 1. Continue with dryrun tests until you are happy that all the errors are accounted for.
 
 ## Command Line Examples

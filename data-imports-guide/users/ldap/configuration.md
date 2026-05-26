@@ -94,21 +94,21 @@ Directory attributes can be quickly mapped using the attribute picker located to
 General rules for the attribute mapping:
 
 * Any value wrapped with `[]` will be treated as a directory attribute.
-* Any value wrapped with `{}` will be treated as an attribute that has been processed and output by a `Pre Import Action`, documented later this this article.
+* Any value wrapped with `{}` will be treated as an attribute that has been processed and output by a `Pre Import Action`, documented later in this article.
 * Any value of `__clear__` will clear the target column for user records being updated.
-* It is possible to construct a value by specifying multiple directory and/or Pre Imnport attributes against a Hornbill user property, for example:
+* It is possible to construct a value by specifying multiple directory and/or Pre Import attributes against a Hornbill user property, for example:
    * `[givenName] [sn]` - Both Variables are evaluated from LDAP and set to the specified parameter.
 
 There are a number of field-specific attribute mapping rules too:
 
-* `Password` - The password field can. and should, be left empty as the utility generates a secure password that adheres to the User Password Policy as specified on your Hornbill instance. This password will only be temporary as the user should use the "Forgot Password" link available on the Hornbill Login Screen to reset their password the first time they navigate to your Hornbill instance. If necessary during testing, this can be populated to apply a specific password to imported accounts.
+* `Password` - The password field can and should, be left empty as the utility generates a secure password that adheres to the User Password Policy as specified on your Hornbill instance. This password will only be temporary as the user should use the "Forgot Password" link available on the Hornbill Login Screen to reset their password the first time they navigate to your Hornbill instance. If necessary during testing, this can be populated to apply a specific password to imported accounts.
 * `Site` - This can be populated with the unique key (integer) of a Hornbill [Location](/esp-config/organizational-data/locations). Note - if you plan on using the `Site Lookup` mechanism described later in this article, then this can be left blank, as this can make a location association based on the contents of a directory attribute.
 * `User Type` - This defines if a user is Co-Worker or Basic user and should ONLY have the value "user" or "basic".
 * `Country Code` - Expects ISO 3166 Alpha 2 two Character Country Code. (Active Directory references can be found in the [Microsoft documentation](https://learn.microsoft.com/en-gb/windows/win32/ad/values-for-the-countrycode-and-c-properties)
 
 ### User Profile
 
-Mappings to the extended Hornbill user profile properties works in exactly the same way as the user account mapping above. The user profile mappings are only applied on update to an exising account. These will not show when an account is first created.   
+Mappings to the extended Hornbill user profile properties works in exactly the same way as the user account mapping above. The user profile mappings are only applied on update to an existing account. These will not show when an account is first created.   
 
 <img src="/_books/data-imports-guide/users/ldap/images/ldap-user-import-profile.png" width="650px" alt="User Profile Mapping Example"/>
 
@@ -212,14 +212,14 @@ The name of the Organization (group) in Hornbill must match the value of the att
 * `Set As Home Organization` - Only visible when the Type is Company. When set to `ON`, the Company will be set as the users Home Organization.
 
 :::note
-A successful association of a user to a Group is dependant upon the import finding a Hornbill Group with a name that matches the contents of the specified user attribute in your directory.
+A successful association of a user to a Group is dependent upon the import finding a Hornbill Group with a name that matches the contents of the specified user attribute in your directory.
 :::
 
 Users can be associated to more than one group during the same import. Click the blue **+** button to add another group.
 
 ### Pre Import Actions
 
-This section allows you to create and configure any pre-import actions that should be carried out against LDAP attribute values before presenting them back as additional variables that can be used in your user record field mappings. Pre Import Avtion   
+This section allows you to create and configure any pre-import actions that should be carried out against LDAP attribute values before presenting them back as additional variables that can be used in your user record field mappings. Pre Import Action   
 
 <img src="/_books/data-imports-guide/users/ldap/images/ldap-user-import-preaction.jpg" width="650px" alt="Pre Import Example"/>
 

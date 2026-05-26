@@ -35,7 +35,7 @@ This key safely stores your login credentials and gives Hornbill permission to a
 Once your KeySafe key is ready and connected to your cloud platform account, you’re all set to move on.
 
 ## How many separate imports will you do?
-If you have both Full Users and Basic Users, you will likely want to do two imports. This is because all users brought in from a single import get assigned the same user type. You cannot import all of your users in one import and then later specify that some of them are are Full Users and others are Basic Users. You will need to do *more* than two imports if you'll have more than two user types. Plan your separate import jobs based on how many different groups you will organize your users into.
+If you have both Full Users and Basic Users, you will likely want to do two imports. This is because all users brought in from a single import get assigned the same user type. You cannot import all of your users in one import and then later specify that some of them are Full Users and others are Basic Users. You will need to do *more* than two imports if you'll have more than two user types. Plan your separate import jobs based on how many different groups you will organize your users into.
 
 ## Using the correct platform-specific import instructions
 
@@ -75,7 +75,7 @@ You can change the default number of records returned in a data preview. For exa
 **To run a preview for an import configuration:**
 1. In **Configuration > Platform Configuration > Data > Cloud Data Imports**, in the list of imports, find the config you want and click its name.
 1. In any of the tabs, click **Run Import > Data Preview**.
-1. Click the Processing History tab, and then the date for the the most recent run.
+1. Click the Processing History tab, and then the date for the most recent run.
 1. In the Details tab, you can view the processing information.
     * The Details tab provides information about the import run as well as a summary of counts for records added and updated, new users added, roles granted, groups assigned, and any problems encountered.
     * The Log tab provides detailed information about each step of the run in chronological order. You can filter what you see in the log by source (System, iBridge, or Import) and by severity (Error, Warning, Notice, Info).
@@ -91,7 +91,7 @@ When you use the **Analyze Impact** option in the **Run Import** dropdown, the s
 **To run an impact analysis for an import configuration:**
 1. In **Configuration > Platform Configuration > Data > Cloud Data Imports**, in the list of imports, find the config you want and click its name.
 1. In any of the tabs, click **Run Import > Analyze Impact**.
-1. Click the Processing History tab, and then the date for the the most recent run.
+1. Click the Processing History tab, and then the date for the most recent run.
 1. In the Processing Information view, you can view the impact analysis.
     * The Details tab provides information about the import run as well as a summary of counts for records added and updated, new users added, roles granted, groups assigned, and any problems encountered.
     * The Log tab provides detailed information about each step of the run in chronological order. You can filter what you see in the log by source (System, iBridge, or Import) and by severity (Error, Warning, Notice, Info).
