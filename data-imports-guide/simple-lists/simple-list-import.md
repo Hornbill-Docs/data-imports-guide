@@ -1,186 +1,202 @@
 # Simple List Import Utility
-The utility provides a simple, safe and secure way to populate list data from a database or ODBC connection in to any of the Simple Lists within any of the applications within the Hornbill Collaboration Tool. The tool is designed to run behind your corporate firewall, and requires access to your request data host(s) or ODBC connection.
 
-The tool connects to your Hornbill instance in the cloud over HTTPS/SSL, so as long as you have standard internet access then you should be able to use the tool without the need to make any firewall configuration changes.
+The utility provides a simple, safe and secure way to populate list data from a database or ODBC connection into any of the Simple Lists within any of the applications within the Hornbill platform. The tool is designed to run behind your corporate firewall, and requires access to your data host(s) or ODBC connection.
 
-The following tasks are carried out when the tool is executed:
+The tool connects to your Hornbill instance in the cloud over HTTPS/SSL, so as long as you have standard internet access you should be able to use the tool without any firewall configuration changes.
 
-* List data is extracted as per your specification, as outlined in the Configuration section of this document
-* New list entries are created within the configured application's Simple List.
-* The list value needs to be unique within the application's particular list.
+When the tool is executed it will:
+
+- Extract list data as per your specification (outlined in the Configuration section)
+- Create new list entries within the configured application's Simple List
+- The list item value must be unique within the application's particular list; duplicates are skipped
 
 ## Download
 
-The utility can be downloaded from [GitHub](https://github.com/hornbill/simple-list-import/releases/latest). Please ensure to download the latest version of the ZIP archive that is relevant to the architecture of the computer it will be executed and scheduled to run on.
+The utility can be downloaded from [GitHub](https://github.com/hornbill/simple-list-import/releases/latest). Please ensure you download the latest version of the ZIP archive relevant to the architecture of the computer it will run on.
 
 ## Installation Overview
 
 ### Windows Installation
 
-* Download the OS and architecture-specific ZIP archive
-* Extract zip into a folder you would like the application to run from e.g. **C:\\list\_import\\**
-* Open **conf.json** and add in the necessary configuration
-* Open a Command Line Prompt as Administrator
-* Change Directory to the folder containing the utility **C:\\list\_import\\**
-* Determine the appropriate executable and possibly rename it to remove confusion.
-* Run the command relevant to the OS of the machine you are running this on:
+1. Download the OS and architecture-specific ZIP archive
+2. Extract the zip into a folder, e.g. `C:\list_import\`
+3. Open `conf.json` and add the necessary configuration
+4. Open a Command Prompt as Administrator
+5. Change directory to the folder containing the utility: `C:\list_import\`
+6. Run a dry run to validate your configuration before importing:
 
-Windows:`goHornbillSimpleListImport.exe -dryrun=true` 
+```
+goHornbillSimpleListImport.exe -dryrun=true
+```
 
 ## Configuration Overview
 
-A demonstration configuration file is provided within the package, which includes configuration for importing request data from your data source. If a configuration file is not specified as a command line argument when executing the tool, then a default configuration file named conf.json, containing the correct JSON, must exist. The following configuration file contains the configuration elements required when importing request data:
+A demonstration configuration file (`conf.json`) is provided within the package. If a configuration file is not specified as a command line argument when executing the tool, a default file named `conf.json` must exist in the same directory.
 
-### Example Configuration file
+### Example Configuration File
+
 ```json
 {
   "HBConf": {
-        "InstanceID": "yourInstanceId",
-        "APIKeysKeysafeIDs": [
-            11,12,13
-        ]
-    },
-    "AppDBConf": {
-        "keysafeKeyID": 2,
-        "Driver": "swsql",
-        "Encrypt": false
-    },
-    "Lists": [
+    "APIKeysKeysafeID": 1
+  },
+  "AppDBConf": {
+    "Driver": "mysql",
+    "KeysafeKeyID": 2,
+    "Encrypt": false
+  },
+  "Lists": [
+    {
+      "SQL": "SELECT val, disp FROM swlists",
+      "Rebuild": false,
+      "Application": "com.hornbill.servicemanager",
+      "ListName": "someList",
+      "ItemValue": "[val]",
+      "DefaultDisplay": "[disp]",
+      "Translations": [
         {
-            "SQL": "SELECT val, disp FROM swlists",
-            "Rebuild": false,
-            "Application": "com.hornbill.servicemanager",
-            "ListName": "someList",
-            "ItemValue": "[val]",
-            "DefaultDisplay": "[disp]",
-            "Translations": [
-                {
-                    "Language": "en-GB",
-                    "Display": "[disp]"
-                }
-            ]
+          "Language": "en-GB",
+          "Display": "[disp]"
         }
-    ]
+      ]
+    }
+  ]
 }
 ```
-  
-## What do I put in the Configuration file?
 
-### HBConfig
+## What Do I Put in the Configuration File?
+
+### HBConf
 
 Connection information for the Hornbill instance:
 
-* **InstanceID** \- This is the name of your Hornbill instance and can be found within the URL you use to navigate to it: live.hornbill.com/\[_**instance name**_\]/. This value is case sensitive.
-* **APIKeys** \- This is an array of hornbill KeysafeIDs (of type API Key) with which the tool will log the new requests. A minimum of 1 and a maximum of 10 can be defined. The more API keys provided, the more workers will import requests concurrently. API Keys can be created against the same user account in Hornbill
+- **`APIKeysKeysafeID`** — The integer ID of a Keysafe entry of type **API Key**. This key is used to authenticate all API calls made to your Hornbill instance into the Simple Lists. The Keysafe entry must contain a valid API key created against a user account with sufficient rights.
+
+> Your Instance ID and API key are stored securely in an encrypted `import.cfg` file created on first run — they are not stored in `conf.json`. See [On First Run](#on-first-run).
 
 ### AppDBConf
 
-Contains the connection information for the database (direct or via ODBC) that contains the request data for import.
+Connection information for the database (direct or via ODBC) that contains the data to import:
 
-* **Driver** \- the driver to use to connect to the database that holds the request data:  
-   * **swsql** : Supportworks 7.x SQL (MySQL v4.0.16). Also supports MySQL v3.2.0 to <v5.0  
-   * **mysql** : MySQL Server v5.0 or above, or MariaDB  
-   * **mssql** : Microsoft SQL Server (2005 or above)  
-   * **odbc** : An ODBC connection that resides on the machine performing the import  
-   * **csv** : An ODBC connection that resides on the machine performing the import, which is specifically using the "Microsoft Access Text Driver", and is configured to look at a folder containing CSV files.
-* **Encrypt** \- Boolean value to specify whether the connection between the script and the database should be encrypted. _NOTE_: There is a bug in SQL Server 2008 and below that causes the connection to fail if the connection is encrypted. Only set this to true if your SQL Server has been patched accordingly.
-* **KeysafeID** \- This is the ID of the keysafe entry for "database authentication"
+- **`Driver`** — The driver to use when connecting to the database:
+  - `swsql` — Supportworks 7.x SQL (MySQL v4.0.16). Also supports MySQL v3.2.0 to &lt;v5.0
+  - `mysql` — MySQL Server v5.0 or above, or MariaDB
+  - `mssql` — Microsoft SQL Server (2005 or above)
+  - `odbc` — An ODBC connection on the machine performing the import
+  - `csv` — An ODBC connection using the Microsoft Access Text Driver, configured to point at a folder containing CSV files
+- **`KeysafeKeyID`** — The integer ID of a Keysafe entry of type **Database Authentication**. This entry holds the server address, database name, username, password, and port used to connect to your data source.
+- **`Encrypt`** — Boolean. Whether the connection between the tool and the database should be encrypted. **Note:** There is a known bug in SQL Server 2008 and below that causes the connection to fail when encryption is enabled. Only set to `true` if your SQL Server has been patched accordingly.
 
-#### Database Authentication keysafe Type
+#### Database Authentication Keysafe Entry
 
-* **Server** \- The address for the database host (or 127.0.0.1 if using odbc or csv drivers)
-* **UserName** \- The username for the SQL database
-* **Password** \- Password for above User Name
-* **Port** \- SQL port if connecting to a database directly
-* **Encrypt** \- Boolean value to specify whether the connection between the script and the database should be encrypted. _NOTE_: There is a bug in SQL Server 2008 and below that causes the connection to fail if the connection is encrypted. Only set this to true if your SQL Server has been patched accordingly.
+The Keysafe entry referenced by `AppDBConf.KeysafeKeyID` must be of type **Database Authentication** and contain the following fields:
+
+| Field | Description |
+|-------|-------------|
+| Server | The address of the database host. Use `127.0.0.1` for ODBC or CSV drivers |
+| Username | The SQL database username |
+| Password | The password for the above username |
+| Database | The database name (or DSN name for ODBC/CSV connections) |
+| Port | The SQL port (if connecting directly to a database) |
 
 ### Lists
 
-A JSON array of objects that contain particular list settings:
+A JSON array of objects, each defining a Simple List to populate:
 
-* **SQL** \- the SQL string to obtain the information from the configured data-source
-* **Rebuild** \- a boolean - if set to **true** the indicated list will be REMOVED before inserting the new items
-* **Application** \- the technical name of the application for which the Simple Lists items are to be added (for Service Manager, this application would be: com.hornbill.servicemanager)
-* **ListName** \- the name of the Simple List within the application - the list will be created if it doesn't already exists
-* **ItemValue** \- a value of the list item (this needs to be unique in the list; any additional items being imported with the same value will be ignored (i.e. one cannot (yet) use the import tool to update the display names of values)) and will likely be fed from the SQL, so use the square brackets to obtain the value of the field.
-* **DefaultDisplay** \- the display of the values. The square brackets can be used to obtain the value of the field returned from the SQL query.
-* **Translations** \- an JSON array to indicate translations for the value on display.  
-   * **Language** \- the language code (this can be from an SQL result as well)  
-   * **Display** \- the display of the values. The square brackets can be used to obtain the value of the field returned from the SQL query.
+- **`SQL`** — The SQL query to retrieve data from the configured data source
+- **`Rebuild`** — Boolean. If `true`, the specified list will be **deleted in its entirety** before new items are inserted
+- **`Application`** — The technical application name for which the Simple List items are to be added (e.g. `com.hornbill.servicemanager` for Service Manager)
+- **`ListName`** — The name of the Simple List within the application. The list will be created if it does not already exist
+- **`ItemValue`** — The value for each list item. Must be unique within the list; items with duplicate values will be skipped. Use square brackets to reference a column from the SQL result, e.g. `[val]`
+- **`DefaultDisplay`** — The display name for each list item. Use square brackets to reference a column from the SQL result, e.g. `[disp]`
+- **`Translations`** — A JSON array of translation objects for the display name:
+  - **`Language`** — The language code (e.g. `en-GB`). Can be sourced from a SQL column using square brackets
+  - **`Display`** — The translated display value. Use square brackets to reference a SQL column, e.g. `[disp]`
 
 ## Command Line Parameters
 
-* file - Defaults to \`conf.json\` - Name of the Configuration file to load
-* dryrun - Defaults to \`false\` - Set to True and the XMLMC for the raising of new requests will not be called, and instead the generated XML for each request will be dumped to the log file. This is to aid in debugging the initial connection information.
+| Flag | Default | Description |
+|------|---------|-------------|
+| `-file` | `conf.json` | Name of the configuration file to load |
+| `-dryrun` | `false` | When `true`, no list items are created. The XML that would be sent to Hornbill is written to the log file instead — use this to validate mappings before a live run |
+| `-version` | — | Outputs the current version number and exits |
+| `-creds` | — | Prompts for your Instance ID and, if it matches the stored value, displays the stored API key |
 
-## API Key Rules
+## API Key Requirements
 
-This utility uses (API keys):
+The API key (sourced via the Keysafe entry referenced by `HBConf.APIKeysKeysafeID`) requires the following API permissions:
 
-* data:listAddItem
-* data:listDelete
-* admin:keysafeGetKey
+- `data:listAddItem`
+- `data:listDelete`
+- `admin:keysafeGetKey`
 
-  
-## Preparing to run the tool
-
-* Open **conf.json** and add in the necessary configration;
-* Open Command Line Prompt as Administrator;
-* Change Directory to the folder with simple-list-import executables 'C:\\simple-list-import  
-   * On 32 bit Windows PCs: simple-list-import.exe (windows-386)  
-   * On 64 bit Windows PCs: simple-list-import.exe (amd64)
-* Follow all on-screen prompts, taking careful note of all prompts and messages provided.
-
-  
 ## On First Run
 
-You will be prompted for two key pieces of information:
+When no `import.cfg` file exists in the tool's directory, you will be prompted for two pieces of information:
 
-* **APIKey** \- A valid API key created against a Hornbill user account with enough rights to run and retrieve the report (case sensitive). Details on how to create an API key can be found **here**.
-* **InstanceId** \- The Instance ID (also referred to as the instance name) can be found in the URL used by your organization to access your Hornbill instance i.e. `https://live.hornbill.com/**instanceid**/` (case sensitive).
+1. **Instance ID** — The name of your Hornbill instance, found in the URL: `https://live.hornbill.com/`**instanceid**`/` (case sensitive)
+2. **API Key** — A valid 32-character API key created against a Hornbill user account with sufficient rights (case sensitive). Details on creating an API key can be found in the Hornbill documentation. This key is used to connect to your instance and access keysafe.
 
-This will create an export.cfg file, this file is encrypted and contains your instance ID and API Key. The user who first ran the tool will be the only one able to run the tool until this file is deleted.
+These details are encrypted and saved to `import.cfg`. The file is tied to the local user account and computer — only the user who created it can run the tool until the file is deleted.
 
-  
+To verify stored credentials at any time, run the tool with the `-creds` flag.
+
+## Preparing to Run
+
+1. Ensure the required Keysafe entries exist in your Hornbill instance (API Key and Database Authentication)
+2. Open `conf.json` and add the necessary configuration
+3. Open a Command Prompt as Administrator
+4. Change directory to the folder containing the utility
+5. Run a dry run first to validate your data mappings:
+
+```
+goHornbillSimpleListImport.exe -dryrun=true -file=conf.json
+```
+
+6. Review the log file to confirm the XML output looks correct, then run without `-dryrun` to perform the import
+
+## HTTP Proxies
+
+If you route internet traffic through a proxy, set the following environment variables before running the tool:
+
+```
+set HTTP_PROXY=HOST:PORT
+set HTTPS_PROXY=HOST:PORT
+```
+
+Where `HOST` is the IP address or hostname of your proxy server and `PORT` is the port number.
+
+## Logging
+
+All log output is saved in the `log` directory, located in the same folder as the executable. Log file names follow the format:
+
+```
+list_import_20060102150405.log
+```
+
 ## Troubleshooting
 
-### HTTP Proxies
+### Common Errors
 
-If you use a proxy for all of your internet traffic, the HTTP\_PROXY Environment variable needs to be set. The https\_proxy environment variable holds the hostname or IP address of your proxy server. It is a standard environment variable and like any such variable, the specific steps you use to set it depends on your operating system.
-
-For windows machines, it can be set from the command line using the following:  
-`set HTTP_PROXY=HOST:PORT set HTTPS_PROXY=HOST:PORT`   
-Where "HOST" is the IP address or host name of your Proxy Server and "PORT" is the specific port number.
-
-### Testing Overview
-
-If you run the application with the argument -dryrun=true then no requests will be raised within Service Manager - the XML used to raise requests will be saved in the log file so you can ensure the database mappings are correct before running the import.
-
-`goHornbillSimpleListImport.exe -dryrun=true -file=conf.json` 
-
-### Logging Overview
-
-All logging output is saved in the log directory, in the same directory as the executable. The file name contains the date and time the import was run _**list\_import\_2015-11-06T14-26-13Z.log**_ 
-
-### Common Error Messages
-
-Below are some common errors that you may encounter in the log file and what they mean:
-
-* _**\[ERROR\] Error Decoding Configuration File:.....**_  \- this will be typically due to a missing quote (") or comma (,) somewhere in the configuration file. This is where an online JSON viewer/validator can come in handy rather than trawling the conf file looking for that proverbial needle in a haystack.
-* _**\[ERROR\] Database Query Error: read tcp 127.0.0.1:xxxx->127.0.0.1:xxxx: wsarecv: An established connection was aborted by the software in your host machine.**_  \- This is most likely due to an incorrect Username and/or password specified in the _AppDBConf_ section of the conf file. Check and confirm the username and password used to access your database.
-* _**\[ERROR\] Database Query Error: driver: bad connection.**_  \- Like the error above, this can be associated with an incorrect Username and/or password specified in the _AppDBConf_ section of the conf file. Check and confirm the username and password used to access your database.
+- **`[ERROR] Error Decoding Configuration File:…`** — Typically caused by a missing quote (`"`) or comma (`,`) in `conf.json`. Use an online JSON validator to locate the issue.
+- **`[ERROR] Database Query Error: read tcp … wsarecv: An established connection was aborted…`** — Most likely caused by incorrect credentials in the Keysafe entry referenced by `AppDBConf.KeysafeKeyID`. Check the username and password in that entry.
+- **`[ERROR] Database Query Error: driver: bad connection.`** — As above; verify the database credentials in your Keysafe entry.
 
 ### Error Codes
 
-* **100** \- Unable to create log File
-* **101** \- Unable to create log folder
-* **102** \- Unable to Load Configuration File
+| Code | Description |
+|------|-------------|
+| 100 | Unable to create log file |
+| 101 | Unable to create log folder |
+| 102 | Unable to load configuration file |
+| 103 | Error processing authentication details |
 
 ## Change Log
 
-Click "Read More" to view the Change Log.
+### v3.0.0 - 2026
+
+See release notes on GitHub.
 
 ### v2.0.0 - 2025
 
-Initial Release
-
+Initial release
