@@ -257,6 +257,30 @@ For example, if the source field `totalStorage` contained `1024`, this would res
 
 * The number to divide the source value by.
 
+### userIDFromLoginID
+
+Converts a Hornbill login identifier to a Hornbill user identifier.
+
+For example, if a user had a user identifier of 'JohnSmith' and a login identifier of 'john.smith@company.com', and the source field `internalId` contained `john.smith@company.com`, this would result in 'JohnSmith':
+
+> `{{internalId | userIDFromLoginID}}`
+
+**Arguments:**
+
+* The login ID to be converted.
+
+### userIDFromEmployeeID
+
+Converts a Hornbill employee identifier to a Hornbill user identifier.
+
+For example, if a user had a user identifier of 'JohnSmith' and a employee identifier of 'ABC123', and the source field `empId` contained `ABC123`, this would result in 'JohnSmith':
+
+> `{{empId | userIDFromEmployeeID}}`
+
+**Arguments:**
+
+* The employee ID to be converted.
+
 ## Using multiple transforms
 
 You can use multiple transforms in the same mapping configuration field, and they will be applied in the specified order. In the below example, if the source data record field `email` contained `your.user@hornbill.com`, this would result in `HORNBILL.COM` being applied to the field it is being mapped into. This is because we're applying a `slice` transform to remove `your.user@`, then applying an `upperCase` transform on the rest of the string.
