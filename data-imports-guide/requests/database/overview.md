@@ -2,7 +2,7 @@
 
 ## Overview
 
-The utility provides a simple, safe and secure way to migrate call data from a database or ODBC connection in to Hornbill Service Manager. The tool is designed to run behind your corporate firewall, and requires access to your request data host(s) or ODBC connection.
+The utility provides a simple, safe and secure way to migrate call data from a database, an ODBC connection, or CSV files in to Hornbill Service Manager. The tool is designed to run behind your corporate firewall, and requires access to your request data host(s), ODBC connection, or CSV files.
 
 The tool connects to your Hornbill instance in the cloud over HTTPS/SSL, so as long as you have standard internet access then you should be able to use the tool without the need to make any firewall configuration changes.
 

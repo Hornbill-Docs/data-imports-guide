@@ -272,11 +272,47 @@ Contains the connection information for the database (direct or via ODBC) that c
     - ``mssql`` : Microsoft SQL Server (2005 or above)
     - ``odbc`` : An ODBC connection that resides on the machine performing the import
     - ``csv`` : An ODBC connection that resides on the machine performing the import, which is specifically using the "Microsoft Access Text Driver", and is configured to look at a folder containing CSV files.
+    - ``csvfile`` : Native CSV file support. The tool reads request and historic update data directly from CSV files, without the need for an ODBC driver or DSN. See the [Native CSV Imports](#native-csv-imports) section below.
 - ``Server`` - The address for the database host (or 127.0.0.1 if using odbc or csv drivers)
 - ``UserName`` - The username for the SQL database
 ``Password`` - Password for above User Name
 ``Port`` - SQL port if connecting to a database directly
 ``Encrypt`` - Boolean value to specify whether the connection between the script and the database should be encrypted. NOTE: There is a bug in SQL Server 2008 and below that causes the connection to fail if the connection is encrypted. Only set this to true if your SQL Server has been patched accordingly.
+
+:::note
+When the ``csvfile`` driver is used, no other ``AppDBConf`` properties are required.
+:::
+
+### Native CSV Imports
+
+From version 1.13.0, the utility supports reading request and historic update data directly from CSV files, without the need for an ODBC driver or DSN. To enable this, set the ``Driver`` property in ``AppDBConf`` to ``csvfile``.
+
+When using the ``csvfile`` driver:
+
+- The first row of each CSV file must contain the column headers. These headers are used as the column names in the ``CoreFieldMapping``, ``AdditionalFieldMapping`` and ``HistoricUpdateMapping`` field mappings;
+- In each object within ``RequestTypesToImport``, the ``CSVFile`` property replaces ``RequestQuery``, and the ``CSVHistoricUpdatesFile`` and ``CSVHistoricUpdatesRefColumn`` properties replace ``RequestHistoricUpdateQuery``;
+- An optional top-level ``CSVConf`` object can be defined to control how the CSV files are parsed.
+
+#### **CSVConf**
+
+An optional object containing CSV parsing options, which apply to all CSV files read by the import:
+
+- ``CommaCharacter`` - The field delimiter character used in your CSV files. Defaults to a comma (,) when not set;
+- ``LazyQuotes`` - Boolean. When set to ``true``, a quote may appear in an unquoted field, and a non-doubled quote may appear in a quoted field;
+- ``FieldsPerRecord`` - Integer. When greater than 0, each record must contain this number of fields. When 0 or not set, the number of fields in the first (header) row is enforced for all records;
+- ``CarriageReturnRemoval`` - Boolean. When set to ``true``, carriage return characters are replaced with line feeds when reading the CSV files. Useful when your CSV files have legacy Mac-style (CR only) line endings.
+
+```json
+  "AppDBConf": {
+    "Driver": "csvfile"
+  },
+  "CSVConf": {
+    "CommaCharacter": ",",
+    "LazyQuotes": false,
+    "FieldsPerRecord": 0,
+    "CarriageReturnRemoval": false
+  },
+```
 
 #### **CustomerType**
 Should contain an integer value of 0 or 1, to determine the customer type for the records being imported:
@@ -313,14 +349,15 @@ A JSON array of objects that contain request-type specific configuration.
 - ``DefaultPriority`` - If a request is being imported, and the tool cannot verify its Priority, then the Priority from this variable is used to escalate the request.
 - ``DefaultService`` - If a request is being imported, and the tool cannot verify its Service from the mapping, then the Service from this variable is used to log the request.
 - ``DefaultCatalog`` - If the DefaultService (above) is being used for a record, then populating this with the primary key of the Catalog Item set against the Service for the Request Type being imported will ensure that the Catalog Item, and associated BPM Workflow, will be used when creating the Request. NOTE - the Catalog Item Primary Key value must be for the default language record, and not a translated catalog item record.
-- ``RequestQuery`` - The query used to retrieve request data from your data source
+- ``RequestQuery`` - The query used to retrieve request data from your data source. Not used when the ``csvfile`` driver is defined - see ``CSVFile`` below
     - When using a SQL source, this would be a SQL query
     - When using an ODBC source, this query would be specific to that ODBC connector, for example:
     - When the ODBC is using CSV files as its data source, the RequestQuery string may look like: SELECT * FROM requestImport.csv
     - When the ODBC is using The Microsoft Excel driver, and therefore an XLS or XLSX files as its data source, the RequestQuery string may look like the following, where [requestData$] refers to the worksheet in the spreadsheet that contains the request data: SELECT * FROM [requestData$]
     - IMPORTANT NOTE - When using an ODBC source to connect to CSV or Excel spreadsheets using the Microsoft Excel ODBC Driver, the SQL Query will not properly support DISTINCT or UNION statements and if using these then your data may be truncated to 255 characters per column. This is a limitation in the Microsoft Excel ODBC Driver and not this tool. The tool has extra code to help with this limitation and prevent duplication of records.
-- ``RequestReferenceColumn`` - This defines the column returned by the above query that holds the friendly name of the request reference
-- ``RequestGUID`` - This defines the column returned by the above query that holds the ID of the request reference. Depending on your data source, this may be the same as RequestReferenceColumn. This is used when searching for import request specific historic update data.
+- ``CSVFile`` - Only used when the ``csvfile`` driver is defined, and replaces ``RequestQuery``. The path to the CSV file that contains the request records to import. This can be an absolute path, or a path relative to the folder that the utility is run from
+- ``RequestReferenceColumn`` - This defines the column returned by the above query (or the column header in the ``CSVFile``) that holds the friendly name of the request reference
+- ``RequestGUID`` - This defines the column returned by the above query (or the column header in the ``CSVFile``) that holds the ID of the request reference. Depending on your data source, this may be the same as RequestReferenceColumn. This is used when searching for import request specific historic update data.
 - ``ParentRequestRefColumn`` - This defines the column returned by the above query that holds the ID of the Hornbill Request Reference, for the request that should be linked to the request being imported.
 - ``CoreFieldMapping`` - The core fields used by the API calls to raise requests within Service Manager, and how the imported data should be mapped into these fields.
     - Any value wrapped with [] will be populated with the corresponding response from the request Query
@@ -355,7 +392,9 @@ A JSON array of objects that contain request-type specific configuration.
     - ShowWorkaround - Show the workaround against the published record
     - Workaround - The workaround content
     - LastUpdated - The datetime that the published record was last updated
-- RequestHistoricUpdateQuery - The query used to retrieve request diary update data from your data source. To inject the request GUID as found in the rows returned by the RequestQuery, add {RequestGUID} in to the appropriate clause. For example, in a CSV import this may look like: SELECT * FROM diaryImport.csv WHERE CALLREFERENCE = '{RequestGUID}'. If this as an empty string, the tool will not try to add any historic update records.
+- RequestHistoricUpdateQuery - The query used to retrieve request diary update data from your data source. Not used when the ``csvfile`` driver is defined - see ``CSVHistoricUpdatesFile`` below. To inject the request GUID as found in the rows returned by the RequestQuery, add {RequestGUID} in to the appropriate clause. For example, in a CSV import this may look like: SELECT * FROM diaryImport.csv WHERE CALLREFERENCE = '{RequestGUID}'. If this as an empty string, the tool will not try to add any historic update records.
+- ``CSVHistoricUpdatesFile`` - Only used when the ``csvfile`` driver is defined, and replaces ``RequestHistoricUpdateQuery``. The path to the CSV file that contains the historic update records for the requests being imported. This can be an absolute path, or a path relative to the folder that the utility is run from. If this is an empty string, or not defined, the tool will not try to add any historic update records
+- ``CSVHistoricUpdatesRefColumn`` - Only used when the ``csvfile`` driver is defined. The column header in the ``CSVHistoricUpdatesFile`` that holds the source request identifier of the request that each historic update belongs to. Rows are matched against the source request GUID (the value from the ``RequestGUID`` column), falling back to the source request reference (the value from the ``RequestReferenceColumn`` column) when ``RequestGUID`` is not defined
 - HistoricUpdateMapping - The fields used by the API calls to store historic update records within Service Manager, and how the imported data should be mapped in to these fields. See **CoreFieldMapping** above for more information on how these should be mapped.
 - ``PriorityMapping**
 Allows for the mapping of Priorities between your source data and Hornbill Service Manager, where the left-side properties list the Priorities from the import source, and the right-side values are the corresponding Priorities from Hornbill that should be used when escalating the new requests.
