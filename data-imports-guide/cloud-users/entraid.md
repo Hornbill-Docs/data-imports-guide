@@ -30,7 +30,7 @@ or
 2. Give your import a clear and unique name.
 3. Select **Create**.
 4. The form for the new import will be displayed.
-5. Under the **Details** section you can optionally add a **Description** to explain what the purpose of the import.
+5. Under the **Details** section you can optionally add a **Description** to explain the purpose of the import.
 6. Make note of the **Import Enabled** toggle.  Before an import can run, you will need to toggle this to be enabled.
 
 > **Note:** The **Save Changes** button will remain inactive until all mandatory **Data Source** fields have been filled.
@@ -176,7 +176,7 @@ If your filtering requirements need advanced query support, consider whether man
 
 When you are configuring your import in the **Data Source** tab, there are two essential import options you need to be aware of: *group memberships* and *role assignments*.
 
-A user can be been assigned a membership to an organizational group. An organizational group in Hornbill can be a *Department*, *Company*, or a *Team*. The user's membership to a group can be set as *Member*, *Team Leader*, or *Manager*.
+A user can be assigned a membership to an organizational group. An organizational group in Hornbill can be a *Department*, *Company*, or *Team*. The user's membership to a group can be set as *Member*, *Team Leader*, or *Manager*.
 
 #### Profile Picture
 
@@ -186,7 +186,7 @@ Choose what Hornbill should do with the users' profile pictures it finds:
 * **Update** – Take the image data and make it the user's profile picture in Hornbill.  
 * **Clear** – Use this option to remove the image data in Hornbill during the import.
 
-> **Note**:The Clear option in Profile Picture is only relevant when the main action is **Update** or **Create & Update**.
+> **Note**: The Clear option in Profile Picture is only relevant when the main action is **Update** or **Create & Update**.
 
 ---
 
@@ -210,26 +210,26 @@ When you connect to Entra ID to import users, the system brings in a standard se
 * **jobTitle** – Job title or role.
 * **mail** – Email address.
 * **mailNickname** – Short name used in email.
-* **manager.id** - The ID of the user's manager.
-* **manager.displayName** - The display name of the user's manager.
-* **manager.mail** - The email address of the user's manager.
-* **manager.userPrincipalName** -  the login email or unique sign-in name of a user's assigned manager.
+* **manager.id** – The ID of the user's manager.
+* **manager.displayName** – The display name of the user's manager.
+* **manager.mail** – The email address of the user's manager.
+* **manager.userPrincipalName** – The login email or unique sign-in name of a user's assigned manager.
 * **memberOf** – An array of groups that the user belongs to. See [memberOf field mapping](/data-imports-guide/cloud-users/entraid#advanced-field-mapping-with-the-memberof-property) for more information.
 * **memberOfNames** – A comma-separated list of the display names of the groups that the user belongs to.
 * **mobilePhone** – Mobile number.
-* **officeLocation** – Office address or location
-* **onPremisesDistinguishedName** – Internal system path
-* **onPremisesDomainName** – Local network domain name
-* **onPremisesSamAccountName** – Network username
-* **onPremisesUserPrincipalName** – Network login name (e.g. email)
-* **otherMails** – A comma-separated list of extra email addresses stored against the user
-* **postalCode** – ZIP/postal code
-* **securityIdentifier** – Security ID from the system
-* **state** – State or region
-* **streetAddress** – Street address
-* **surname** – Last name
-* **userPrincipalName** – Main login name (often their email)
-* **userType** – Type of user (e.g., member or guest)
+* **officeLocation** – Office address or location.
+* **onPremisesDistinguishedName** – Internal system path.
+* **onPremisesDomainName** – Local network domain name.
+* **onPremisesSamAccountName** – Network username.
+* **onPremisesUserPrincipalName** – Network login name (e.g. email).
+* **otherMails** – A comma-separated list of extra email addresses stored against the user.
+* **postalCode** – ZIP/postal code.
+* **securityIdentifier** – Security ID from the system.
+* **state** – State or region.
+* **streetAddress** – Street address.
+* **surname** – Last name.
+* **userPrincipalName** – Main login name (often their email).
+* **userType** – Type of user (e.g., member or guest).
 
 ## Advanced field mapping with the memberOf property
 
@@ -326,6 +326,6 @@ Map only mail-enabled groups:
 * Decide if your field should contain one value (e.g. the first group) or multiple values (e.g. a list).
 * Use iteration (`{{#memberOf}}...{{/memberOf}}`) for handling multiple groups.
 * Be aware of trailing separators (commas, semicolons) when concatenating multiple values.
-* Some fields (like `mailEnabled` and `securityEnabled`) are boolean flags —- useful for filtering, not direct mapping.
+* Some fields (like `mailEnabled` and `securityEnabled`) are boolean flags — useful for filtering, not direct mapping.
 
 With these patterns, you can flexibly map group membership information from Entra ID into your Hornbill user fields.
