@@ -220,7 +220,7 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
   - `cynerio` - Cynerio - will use KeySafe type [Cynerio](/data-imports-guide/assets/authentication#key-type-cynerio)
   - `azureresourcequery` - Azure Resource Query - will use KeySafe type [Azure Resource Query](/data-imports-guide/assets/authentication#key-type-azure-resource-query)
   - `virima` - Virima - will use KeySafe type [Virima](/data-imports-guide/assets/authentication#key-type-virima)
-  - `autopilot` - Microsoft Autopilot - will use KeySafe type [Microsoft Autopilot Import](/data-imports-guide/assets/authentication#key-type-microsoft-autpilot)
+  - `autopilot` - Microsoft Autopilot - will use KeySafe type [Microsoft Autopilot Import](/data-imports-guide/assets/authentication#key-type-microsoft-autopilot)
 - `CSV` - Type: `object` - Only in use if `Source` is set to `csv`
     - `CarriageReturnRemoval` - Type: `boolean` - Certain CSV exporting systems will add extra carriage returns as a record delimiter. This is expected not to be common, hence the setting is left out of the configuration files (it is added to conf_computerSyste      * `json only for completeness sake). If not set, then the default value is `false` and no carriages returns will be stripped from the data. If set to `true`, then all carriage returns (possibly even intended ones) will be stripped.
     - `CommaCharacter` - Type: `string` - The field separator (single) character - if left out, the default character will be a comma.
