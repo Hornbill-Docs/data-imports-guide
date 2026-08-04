@@ -106,6 +106,10 @@
                         "link": "data-imports-guide/assets/configexamples/manageengine"
                       },
                       {
+                        "text": "Microsoft Autopilot",
+                        "link": "data-imports-guide/assets/configexamples/autopilot"
+                      },
+                      {
                         "text": "Microsoft Intune",
                         "link": "data-imports-guide/assets/configexamples/intune"
                       },
