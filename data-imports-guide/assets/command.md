@@ -15,6 +15,7 @@ Ultimately, the executable will be scheduled in the Windows task scheduler (see 
   - `Jamf`
   - `Lansweeper Cloud`
   - `Manage Engine`
+  - `Microsoft Autopilot`
   - `Microsoft Intune`
   - `Nexthink`
   - `vmware Workspace One UEM`

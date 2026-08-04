@@ -204,6 +204,18 @@ Keys of this type require a Cynerio API Key to be created against a user account
 * Log in to your Lansweeper Cloud account, and then you will be prompted to review the operations you are authorizing the Hornbill App to be allowed to perform with the chosen Lansweeper Cloud account.
 * Select the scopes/permissions relevant to the import, and click `Continue`. You will then be returned to your KeySafe key.
 
+### Key Type - Microsoft Autopilot
+
+* In Hornbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
+* Click `+ Create New Key`.
+* Choose a key type of `Microsoft Autopilot Import`.
+* Give the KeySafe key a Title.
+* Optionally add a Description.
+* Click `Create Key`.
+* Once the Key is created, you will need to connect to Microsoft and your account, in order to authorize the Hornbill App to perform the listed Autopilot options. Click `Connect` and you will be redirected to Microsoft in a popup window.
+* Log in to your Microsoft Autopilot account, and then you will be prompted to review the operations you are authorizing the Hornbill App to be allowed to perform with the chosen Autopilot account.
+* Select the scopes/permissions relevant to the import, and click `Continue`. You will then be returned to your KeySafe key.
+
 ### Key Type - Microsoft Intune
 
 * In Hornbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
