@@ -24,7 +24,7 @@ The service account that you create must be of type `User` (not `Basic`), and be
 
 ### API Key Rules
 
-The Asset Relationship Imports require access to the following Hornbill Platform and application APIs, and your [API Key rules](/esp-fundamentals/security/api-keys#api-key-rules) should reflect those, plus additional security hardening in the form of IP rules:
+The Asset Relationship Imports require access to the following Hornbill Platform and application APIs, and your [API Key rules](/esp-fundamentals/security/api-keys#api-key-security-controls) should reflect those, plus additional security hardening in the form of IP rules:
 
 This utility uses ([API keys](/esp-fundamentals/security/api-keys)):
 
@@ -48,7 +48,7 @@ For the import utility to access data from your source database, authentication 
 We recommend that you read the [KeySafe documentation](/esp-fundamentals/security/keysafe) before storing credentials in KeySafe.
 :::
 
-Once the relevant key has been created, you can then lock access to it down to the API Key created against your service account. See the [KeySafe documentation](/esp-fundamentals/security/keysafe#access-control-and-usability) for more information regarding this.
+Once the relevant key has been created, you can then lock access to it down to the API Key created against your service account. See the [KeySafe documentation](/esp-fundamentals/security/keysafe#keysafe-access-controls) for more information regarding this.
 
 ### Key Types
 
