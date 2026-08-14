@@ -4,7 +4,7 @@ The User Import - Azure utility uses API keys to authenticate all API calls into
 
 ## API keys
 
-The User Import - Azure utility requires specific permissions to interact with your Hornbill instance. You must configure your [API Key rules](/esp-fundamentals/security/api-keys#api-key-rules) to include the following Hornbill Platform APIs. You can also add IP rules to increase security.
+The User Import - Azure utility requires specific permissions to interact with your Hornbill instance. You must configure your [API Key rules](/esp-fundamentals/security/api-keys#api-key-security-controls) to include the following Hornbill Platform APIs. You can also add IP rules to increase security.
 
 ### Required API key rules
 
@@ -79,4 +79,4 @@ Use the Client ID, Tenant ID, and Client Secret from your Microsoft Entra ID app
 
 #### Expected Result
 
-The key appears in your KeySafe list. You can now restrict access to this key so only the API key created for your service account can use it. For more information, see the [KeySafe documentation](/esp-fundamentals/security/keysafe#access-control-and-usability) regarding access control.
+The key appears in your KeySafe list. You can now restrict access to this key so only the API key created for your service account can use it. For more information, see the [KeySafe documentation](/esp-fundamentals/security/keysafe#keysafe-access-controls) regarding access control.

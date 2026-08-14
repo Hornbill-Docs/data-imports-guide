@@ -245,7 +245,7 @@ Keys of this type require a Cynerio API Key to be created against a user account
 
 ### Key Type - oAuth 2.0
 
-* In Honbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
+- In Honbill, navigate to `Configuration` > `Platform Configuration` > `KeySafe`.
 - Click `+ Create New Key`.
 - Choose a key type of `oAuth 2.0`.
 - Give the KeySafe key a Title.
@@ -265,7 +265,7 @@ Keys of this type require a Cynerio API Key to be created against a user account
 - Click `Create Key`.
 
 :::note
-For Manage Engine integrations the 'client id' and 'client secret' will need to be set up [here](https://api-console.zoho.com). Please select a server based application when setting up and if the Key Safe Key is revoked a new sever based applicaiton will need to be created and the 'client id' and 'client secret' will need to be updated as the refresh token is only generated once.
+For Manage Engine integrations the 'client id' and 'client secret' will need to be set up [here](https://api-console.zoho.com). Please select a server based application when setting up and if the Key Safe Key is revoked a new sever based application will need to be created and the 'client id' and 'client secret' will need to be updated as the refresh token is only generated once.
 :::
 
 ### Key Type - Username + Password

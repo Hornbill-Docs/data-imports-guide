@@ -8,7 +8,7 @@ The User Import - LDAP utility uses API Keys to authenticate all API calls into 
 
 ### API Key Rules
 
-The User Imports require access to the following Hornbill Platform APIs, and your [API Key rules](/esp-fundamentals/security/api-keys#api-key-rules) should reflect those, plus additional security hardening in the form of IP rules:
+The User Imports require access to the following Hornbill Platform APIs, and your [API Key rules](/esp-fundamentals/security/api-keys#api-key-security-controls) should reflect those, plus additional security hardening in the form of IP rules:
 
 ```cmd
 activity:profileImageSet 
@@ -47,10 +47,10 @@ We recommend that you read the [KeySafe documentation](/esp-fundamentals/securit
   * `Host` - The IP address or hostname of your LDAP host.
   * `Port` - The port to access your LDAP through. 389 (LDAP) and 636 (LDAPS) are commonly used values.
   * `Username` - The username of the account that should be used to authenticate the connection to your LDAP.
-  * `Password` - The password for the above account. 
+  * `Password` - The password for the above account.
 * Click `Create Key`
 
-Once the key has been created, you can then lock access to it down to the API Key created against your service account. See the [KeySafe documentation](/esp-fundamentals/security/keysafe#access-control-and-usability) for more information regarding this.
+Once the key has been created, you can then lock access to it down to the API Key created against your service account. See the [KeySafe documentation](/esp-fundamentals/security/keysafe#keysafe-access-controls) for more information regarding this.
 
 ### Key Example
 
