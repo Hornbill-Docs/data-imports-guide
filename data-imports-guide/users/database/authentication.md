@@ -8,7 +8,7 @@ The User Import - Database utility uses API Keys to authenticate all API calls i
 
 ### API Key Rules
 
-The User Imports require access to the following Hornbill Platform APIs, and your [API Key rules](/esp-fundamentals/security/api-keys#api-key-rules) should reflect those, plus additional security hardening in the form of IP rules:
+The User Imports require access to the following Hornbill Platform APIs, and your [API Key rules](/esp-fundamentals/security/api-keys#api-key-security-controls) should reflect those, plus additional security hardening in the form of IP rules:
 
 ```cmd
 activity:profileImageSet 
