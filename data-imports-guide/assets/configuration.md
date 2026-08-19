@@ -462,6 +462,8 @@ Should the column name contain a space (this is more likely when the data is com
 
 Please be advised that there is still a distinct preference for the column names NOT to contain spaces. 
 
+**Data Transformations**
+
 Although it is preferred that any data normalization is handled in the source data, should some post-production be necessary, this is possible using Go Templates and one or more of the following template transform operations:
 
 * `{{.columnName | Upper}}` - Will UPPERCASE the value contained in columnName
@@ -471,7 +473,57 @@ Although it is preferred that any data normalization is handled in the source da
 * `{{.columnName | date_conversion "date time format of the content in .columnName"}}` - Provide the input format based on the following reference time of Jan 2nd 2006 4 minutes and 5 seconds past 3pm - eg "02/01/2006 15:04:05" will convert the regular UK/European date time format to the format useable in the Hornbill datetime field, whereas "01/02/2006 15:04" will process default US date time. Please note that IF your formatting is already in the Hornbill date time format (2006-01-02 15:04:05), you don't need to convert anything.
 * `{{.columnName | date_conversion_clear "date time format of the content in .columnName"}}` - Provide the input format based on the following reference time of Jan 2nd 2006 4 minutes and 5 seconds past 3pm - eg "02/01/2006 15:04:05" will convert the regular UK/European date time format to the format useable in the Hornbill datetime field, whereas "01/02/2006 15:04" will process default US date time. Defaulting to CLEAR the column if unable to convert.
 
+**Advanced Data Transformations**
+
 As well as the above transforms, we have also included the [Sprig package for Go templates](https://masterminds.github.io/sprig/), which contains over 70 additional template functions to allow you to perform more advanced transforms on your mapped data.
+
+The examples below are shown as they should be written within your JSON configuration file, so any double-quotes required by the template function are escaped with a backslash:
+
+* Convert a date from one format into the format required by a Hornbill DateTime field:
+
+```json
+"h_last_updated": "{{ toDate \"2006-01-02\" .ReceivedDate | date \"2006-01-02 15:04:05\" }}"
+```
+
+* Trim leading and trailing whitespace from a value, and fall back to a default when the source column is empty:
+
+```json
+"h_description": "{{ .Description | trim | default \"No description provided\" }}"
+```
+
+* Build a value from more than one source column, converting the manufacturer to title case:
+
+```json
+"h_name": "{{ printf \"%s %s\" (.Manufacturer | title) (.SerialNumber | upper) }}"
+```
+
+* Take one element from a delimited source value - here the first segment of a fully qualified domain name:
+
+```json
+"h_name": "{{ splitList \".\" .FQDN | first }}"
+```
+
+* Strip all non-numeric characters from a value using a regular expression:
+
+```json
+"h_asset_tag": "{{ regexReplaceAll \"[^0-9]\" .AssetTag \"\" }}"
+```
+
+* Populate a field conditionally, based on the content of a source column:
+
+```json
+"h_operational_state": "{{ if contains \"Retired\" .Status }}5{{ else }}0{{ end }}"
+```
+
+* Round a numeric value, converting bytes to whole gigabytes:
+
+```json
+"h_memory_info": "{{ divf (.MemoryBytes | float64) 1073741824 | round 0 | int }}"
+```
+
+:::tip
+Sprig functions can be chained with the Hornbill transforms documented above, and with each other, using the pipe character.
+:::
 
 
 #### AssetTypeFieldMapping
