@@ -395,26 +395,28 @@ A JSON array of objects that contain request-type specific configuration.
 - RequestHistoricUpdateQuery - The query used to retrieve request diary update data from your data source. Not used when the ``csvfile`` driver is defined - see ``CSVHistoricUpdatesFile`` below. To inject the request GUID as found in the rows returned by the RequestQuery, add {RequestGUID} in to the appropriate clause. For example, in a CSV import this may look like: SELECT * FROM diaryImport.csv WHERE CALLREFERENCE = '{RequestGUID}'. If this as an empty string, the tool will not try to add any historic update records.
 - ``CSVHistoricUpdatesFile`` - Only used when the ``csvfile`` driver is defined, and replaces ``RequestHistoricUpdateQuery``. The path to the CSV file that contains the historic update records for the requests being imported. This can be an absolute path, or a path relative to the folder that the utility is run from. If this is an empty string, or not defined, the tool will not try to add any historic update records
 - ``CSVHistoricUpdatesRefColumn`` - Only used when the ``csvfile`` driver is defined. The column header in the ``CSVHistoricUpdatesFile`` that holds the source request identifier of the request that each historic update belongs to. Rows are matched against the source request GUID (the value from the ``RequestGUID`` column), falling back to the source request reference (the value from the ``RequestReferenceColumn`` column) when ``RequestGUID`` is not defined
-- HistoricUpdateMapping - The fields used by the API calls to store historic update records within Service Manager, and how the imported data should be mapped in to these fields. See **CoreFieldMapping** above for more information on how these should be mapped.
-- ``PriorityMapping**
-Allows for the mapping of Priorities between your source data and Hornbill Service Manager, where the left-side properties list the Priorities from the import source, and the right-side values are the corresponding Priorities from Hornbill that should be used when escalating the new requests.
-- ``TeamMapping**
+- ``HistoricUpdateMapping`` - The fields used by the API calls to store historic update records within Service Manager, and how the imported data should be mapped in to these fields. See **CoreFieldMapping** above for more information on how these should be mapped.
+
+- ``PriorityMapping``
+Allows for the mapping of Priorities between your source data and Hornbill Service Manager, where the left-side properties list the Priorities from the import source, and the right-side values are the corresponding Priority Names from Hornbill that should be used when escalating the new requests.
+
+- ``TeamMapping``
 Allows for the mapping of Support Groups/Team between your source data and Hornbill Service Manager, where the left-side properties list the Support Group ID's from your source data, and the right-side values are the corresponding Team names from Hornbill that should be used when assigning the new requests.
 
-- ``CategoryMapping**
+- ``CategoryMapping``
 Allows for the mapping of Problem Profiles/Request Categories between your source data and Hornbill Service Manager, where the left-side properties list the Profile Codes from your source data, and the right-side values are the corresponding Profile Codes from Hornbill that should be used when categorizing the new requests.
 
-- ``OwnerMapping**
+- ``OwnerMapping``
 Allows for the mapping of Owner IDs between your source data and Hornbill Service Manager, where the left-side properties list the Owner IDs from your source data, and the right-side values are the corresponding User IDs from Hornbill that should be used when assigning the imported requests.
 
-- ``ResolutionCategoryMapping**
+- ``ResolutionCategoryMapping``
 Allows for the mapping of Resolution Profiles/Resolution Categories between your source data and Hornbill Service Manager, where the left-side properties list the Resolution Codes from your source data, and the right-side values are the corresponding Resolution Codes from Hornbill that should be used when applying Resolution Categories to the newly logged requests.
 
-- ``ServiceMapping**
+- ``ServiceMapping``
 Allows for the mapping of Services between your source data and Hornbill Service Manager, where the left-side properties list the Service names from your source data, and the right-side values are the corresponding Services from Hornbill that should be used when raising the new requests.
 
-- ``ServiceCatalogItemMapping**
+- ``ServiceCatalogItemMapping``
 Allows for the mapping of Services between your source data and Hornbill Service Manager, where the left-side properties list the Service Catalog Item names from your source data, and the right-side values are the corresponding primary keys (integer values) for the default language Catalog Item records from Hornbill that should be used when raising the new requests.
 
-- ``StatusMapping**
+- ``StatusMapping``
 Allows for the mapping of Request Statuses between your source data and Hornbill Service Manager, where the left-side properties list the Status IDs from your source data, and the right-side values are the corresponding Status IDs from Hornbill that should be used when importing the requests.
