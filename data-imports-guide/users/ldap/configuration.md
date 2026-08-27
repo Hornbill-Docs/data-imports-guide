@@ -161,8 +161,8 @@ This section of the import configuration allows you to define whether the manage
 * `Regex` - Optional regular expression to match the name from a DSN String. The following regex will work for the majority of situations: 
   * `CN=(.*?)(?:,[A-Z]+=|$)`
 * `Reverse` - Reverse the name string matched from the regular expression, above.
-* `Match Against DN` - Match the users manager against the Distinguished Name instead of their name.
-* `Search For Manager Id` - Lookup the Hornbill User ID of the users manager using their name. The Managers Name matched in the regular expression, above, must explicitly match the full name in Hornbill.
+* `Match Against DN` - Match the user's manager against the Distinguished Name instead of their name.
+* `Search For Manager Id` - Lookup the Hornbill User ID of the user's manager using their name. The manager's name matched in the regular expression, above, must explicitly match the full name in Hornbill.
 
 #### Image
 
