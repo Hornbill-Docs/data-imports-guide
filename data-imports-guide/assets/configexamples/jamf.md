@@ -12,6 +12,7 @@ For Computer Assests:
   "KeysafeKeyID": 0,
   "LogSizeBytes": 1000000,
   "HornbillUserIDColumn": "h_user_id",
+  "HornbillNotifyUsers": ["user","admin"],
     "SourceConfig": {
         "Source": "jamf",
         "Jamf": {

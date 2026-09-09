@@ -17,6 +17,7 @@ The utility will default to `conf.json` if a configuration file is not specified
   "KeySafeKeyID": 0,
   "LogSizeBytes": 1000000,
   "HornbillUserIDColumn": "h_user_id",
+  "HornbillNotifyUsers": ["user","admin"],
   "SourceConfig": {
     "Source": "mssql",
     "Database": {
@@ -197,6 +198,7 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
 :::
 - `LogSizeBytes` - Type: `integer` - The maximum size that the generated Log Files should be in bytes. Setting this value to 0 will cause the tool to create one log file and not split the results between multiple logs.
 - `HornbillUserIDColumn` - Type: `string` - Used to specify the Hornbill User ID column for matching users against (asset owners, used by etc). Supported values: `h_user_id` (default), `h_employee_id`, `h_email`, `h_name`, `h_attrib1`, `h_attrib8` and `h_login_id`. **Please note:** `last logged on`, `owned by` and `used by` will use the same field - i.e. one can NOT specify which column to match to individually.
+- `HornbillNotifyUsers` - Type: `string` - Used to define the users that will be notified when using the import tool. The `h_user_id` field is used to define the targeted users.
 - `SkipSelfUpdate` - Type: `boolean` - Defaults to `false`. If set to `true` then the binary will NOT [self-update](/data-imports-guide/assets/overview#updates) when there is a newer minor or patch release available
 - `SkipExtendedAudit` - Type: `boolean` - Defaults to `false`. If set to `true` then updates to the Extended Attribute fields will not be audited on your Hornbill instance 
 

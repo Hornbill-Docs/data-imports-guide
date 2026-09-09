@@ -12,6 +12,7 @@ For Devices and Software Assests:
     "KeysafeKeyID": 0,
     "LogSizeBytes": 1000000,
     "HornbillUserIDColumn": "h_user_id",
+    "HornbillNotifyUsers": ["user","admin"],
     "SourceConfig": {
         "Source": "manageengine",
         "ManageEngine": {
