@@ -18,6 +18,7 @@ Ultimately, the executable will be scheduled in the Windows task scheduler (see 
   - `Microsoft Autopilot`
   - `Microsoft Intune`
   - `Nexthink`
+  - `Orca Scan`
   - `vmware Workspace One UEM`
 - `dryrun` - Defaults to `false` - Set to `true` and the API calls to create and update asset records will not be run. Instead, the API call request payloads will be output to the log file to aid in debugging.
 - `file` - Defaults to `conf.json` - The name of the import configuration file to use.

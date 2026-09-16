@@ -223,6 +223,7 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
   - `azureresourcequery` - Azure Resource Query - will use KeySafe type [Azure Resource Query](/data-imports-guide/assets/authentication#key-type-azure-resource-query)
   - `virima` - Virima - will use KeySafe type [Virima](/data-imports-guide/assets/authentication#key-type-virima)
   - `autopilot` - Microsoft Autopilot - will use KeySafe type [Microsoft Autopilot Import](/data-imports-guide/assets/authentication#key-type-microsoft-autopilot)
+  - `orcascan` - Orca Scan sheet live data URL - doesn't require KeySafe keys. See the [Orca Scan configuration example](/data-imports-guide/assets/configexamples/orcascan) for details
 - `CSV` - Type: `object` - Only in use if `Source` is set to `csv`
     - `CarriageReturnRemoval` - Type: `boolean` - Certain CSV exporting systems will add extra carriage returns as a record delimiter. This is expected not to be common, hence the setting is left out of the configuration files (it is added to conf_computerSyste      * `json only for completeness sake). If not set, then the default value is `false` and no carriages returns will be stripped from the data. If set to `true`, then all carriage returns (possibly even intended ones) will be stripped.
     - `CommaCharacter` - Type: `string` - The field separator (single) character - if left out, the default character will be a comma.
@@ -272,6 +273,18 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
   - `Sort` - Type: `object` - record sort information.
 - `Autopilot` - Type: `object` - Only in use if `Source` is set to `autopilot`
     - `Query` - Type: `string` - Search string as per the [Microsoft Autopilot API Documentation](https://learn.microsoft.com/en-us/graph/api/intune-enrollment-windowsautopilotdeviceidentity-list?view=graph-rest-1.0)
+- `OrcaScan` - Type: `object` - Only in use if `Source` is set to `orcascan`. Holds the default Orca Scan options for all asset types; each option can be overridden per asset type using the `OrcaScan` object in `AssetTypes`, below. See the [Orca Scan configuration example](/data-imports-guide/assets/configexamples/orcascan#configuration-options) for a description of every option
+    - `EndpointURL` - Type: `string` - The Orca Scan sheets endpoint, defaults to `https://api.orcascan.com/sheets`. Can instead hold the full live data URL of a sheet, in which case `SheetID` is left empty
+    - `SheetID` - Type: `string` - The ID of the Orca Scan sheet to read, as shown in the sheet's live data URL
+    - `Columns` - Type: `array` - A list of sheet columns to return. These are the fields that can be mapped in the field mappings, below. Leave empty to return all columns
+    - `Barcode`, `SortBy`, `SortOrder`, `Limit`, `History`, `From`, `Deltas`, `ZeroDeltaBase` - Server-side query options, which map directly to the query parameters described in the [Orca Scan live data documentation](https://orcascan.com/guides/how-to-get-data-from-orca-scan-in-real-time-3e275a09)
+    - `DateTimeFormat`, `Timezone`, `GPS` - Type: `string` - Ask Orca Scan to format date/time and GPS columns before they are returned. Setting `DateTimeFormat` to `YYYY-MM-DD HH:mm:ss` returns dates in the format required by Hornbill date time fields
+    - `AdditionalParams` - Type: `object` - Any further query string parameters to send, as `"name": "value"` pairs
+    - `Headers` - Type: `object` - Any additional HTTP request headers to send, as `"name": "value"` pairs
+    - `MaxRetries` - Type: `integer` - Attempts made when Orca Scan responds with `429 Too Many Requests` or a server error. Defaults to `3`
+    - `ColumnAliases` - Type: `object` - `"Sheet column name": "alias"` pairs, making sheet columns whose names contain spaces available to the mapping templates under a template-friendly alias
+    - `SanitizeColumnNames` - Type: `boolean` - When `true`, every column is also made available under a template-friendly name, with runs of characters other than letters, numbers and underscores replaced by an underscore
+    - `TrimValues` - Type: `boolean` - When `true`, leading and trailing white space is removed from every value before mapping
 #### AssetTypes
 
 An array of objects detailing the asset types to import. 
@@ -313,6 +326,7 @@ During the import process assets of each type as defined below are retrieved fro
   * `mac_os`
   * `mobile`
 * `LDAPDSN` - Type: `string` - The Distinguished Name of the LDAP container to execute your query in. Only required when `SourceConfig > Source` is set to `LDAP`
+* `OrcaScan` - Type: `object` - Only used when `SourceConfig > Source` is set to `orcascan`, and optional. Accepts the same options as `SourceConfig > OrcaScan`, above, and any option set here overrides the default for this asset type only. This allows each asset type to read a different sheet, or a different set of columns from the same sheet. See the [Orca Scan configuration example](/data-imports-guide/assets/configexamples/orcascan#configuration-options)
 * `Query` - Type: `string` - Not used for Workspace One or direct CSV file imports. For the other data sources:
   * Additional SQL clauses to be appended to the Query from SourceConfig > Database > Query, to retrieve assets of that asset type. 
   * Certero oData filter for returning asset details for that asset type
@@ -336,7 +350,7 @@ During the import process assets of each type as defined below are retrieved fro
     * `Path` - Type: `string` - The path of the Lansweeper Cloud asset column to query. Supported Paths can be found in the [Lansweeper Developer Portal Documentation](https://developer.lansweeper.com/docs/data-api/guides/getting-data#setting-up-the-filter)
     * `Operator` - Type: `string` - The [operator](https://developer.lansweeper.com/docs/data-api/reference/types#exportfiltertype) to apply to the condition
     * `Value` - Type: `string` - The value to apply to the condition
-* `AdditionalFilters` - Type: `array` - A list of filter objects, to further filter the list of assets returned from `Cynerio`, `Intune` or `Google Workspace`. Each item in the list must match as `true` for the asset to be imported, and are defined as objects containing:
+* `AdditionalFilters` - Type: `array` - A list of filter objects, to further filter the list of assets returned from `Cynerio`, `Intune`, `Google Workspace` or `Orca Scan`. Each item in the list must match as `true` for the asset to be imported, and are defined as objects containing:
   * `Field` - Type: `string` - The data source field ID to perform the filter against.
   * `Operator` - Type: `string` - The operator to apply to the filter, can be one of:
     * `ISEMPTY` - Is the field empty (an empty string or NULL value)
@@ -462,7 +476,7 @@ Should the column name contain a space (this is more likely when the data is com
 
 * `{{index . \"Computer name\" }}`
 
-Please be advised that there is still a distinct preference for the column names NOT to contain spaces. 
+Please be advised that there is still a distinct preference for the column names NOT to contain spaces. When importing from Orca Scan, the `ColumnAliases` and `SanitizeColumnNames` options can be used to make such columns available under template-friendly names instead - see the [Orca Scan configuration example](/data-imports-guide/assets/configexamples/orcascan#sheet-columns-with-spaces-in-their-names).
 
 **Data Transformations**
 

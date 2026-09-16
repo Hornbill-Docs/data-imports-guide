@@ -95,7 +95,10 @@ As the Asset Import utility supports the import of asset data from many differen
   - `workspaceone` - VMware Workspace One UEM.
 
 :::tip
-The `csv - CSV / Text file(s)` data source reads its data from the file system (local or network), and therefore does not require Keysafe keys.
+The following data sources do not require KeySafe keys:
+
+- `csv - CSV / Text file(s)` reads its data from the file system (local or network).
+- `orcascan - Orca Scan` reads its data from the sheet's public live data URL, where access is controlled by the sheet ID in the URL rather than by credentials.
 :::
 
 ### Key Type - Azure Log Analytics
