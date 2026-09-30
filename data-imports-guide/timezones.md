@@ -73,7 +73,7 @@ Below is the list of TimeZones recognized within Hornbill:
 | China Standard Time | (GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi |
 | Taipei Standard Time | (GMT+08:00) Taipei |
 | W. Australia Standard Time | (GMT+08:00) Perth |
-| Malay Peninsula Standard Time | (GMT+08:00) Kuala Lumpur, Singapore |
+| Singapore Standard Time | (GMT+08:00) Kuala Lumpur, Singapore |
 | North Asia East Standard Time | (GMT+08:00) Irkutsk, Ulaan Bataar |
 | Korea Standard Time | (GMT+09:00) Seoul |
 | Tokyo Standard Time | (GMT+09:00) Osaka, Sapporo, Tokyo |
