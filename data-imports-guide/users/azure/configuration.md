@@ -136,6 +136,11 @@ The utility will default to `conf.json` if a configuration file is not specified
             "Action": "Both",
             "Value": "{{.officeLocation}}"
         },
+        "Identity": {
+            "Action": "Both",
+            "Description": "",
+            "UpdateChanged": true
+        },
         "Org": [
             {
                 "Action": "Both",
@@ -234,6 +239,14 @@ The utility will default to `conf.json` if a configuration file is not specified
   - `Site` - Type: `object` - Contains two properties, Import actions to perform on the [Location](/esp-config/organizational-data/locations) of the discovered user records:
     - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`.
     - `Value` - Type: `string` - The source mapping of the Location.
+  - `Identity` - Type: `object` - Optional. Associates each imported user's Microsoft Entra identity (the Entra tenant ID and the user's object ID) with their Hornbill account, so that trusted integrations can act on behalf of the user. The tenant ID is taken from the KeySafe key, and must be a GUID. When this object is omitted, no identities are managed.
+    - `Action` - Type: `string` - Can be `Create`, `Update`, `Both`, `Remove` or `None`. Defaults to `None`. `Remove` deletes the identity the import manages from each user returned by the Entra ID query, for example to withdraw access for a group of users by running a second configuration with a group filter and its own `ImportID`.
+    - `Description` - Type: `string` - Optional text stored against identities the import creates or updates. Defaults to `Entra ID Import (<ImportID>)`.
+    - `UpdateChanged` - Type: `boolean` - When `true`, if a user's Entra object ID has changed (for example the user was deleted and recreated in Entra ID), the identity the import manages for that user is updated to the new value. When `false`, a warning is logged and the existing identity is left as it is.
+
+    The import only touches Microsoft Entra identities for the tenant that the KeySafe key connects to. Identities of other kinds, identities for other Entra tenants, and identities added manually for other purposes are never changed or removed. The import never deletes an identity unless `Action` is `Remove`, and then only the identity whose value matches the user's current Entra tenant and object ID. If a user has more than one Entra identity for the tenant, the import leaves the others in place and logs a warning. If a user's Entra identity is already associated with a different Hornbill account, the import logs an error for that user and makes no change.
+
+    Guest (B2B) users are matched using the object ID of their guest object in your tenant. If your agent authenticates guests against their home tenant, add their identity manually.
   - `Org` - Type: `array` - An array of objects containing several properties of [Organizational Unit/Group](/esp-config/organizational-data/organization) information to associate the imported user with:
     - `Action` - Type: `string` - Can be `Create`, `Update`, or `Both`.
     - `Value` - Type: `string` - The mapped name of the Organizational Unit.
