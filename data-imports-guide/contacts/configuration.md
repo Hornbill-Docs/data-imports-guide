@@ -62,8 +62,8 @@ The utility will default to `conf.json` if a configuration file is not specified
 - `KeySafeKeyID` - Type: `integer` - The ID of the KeySafe Key that contains your data source authentication details. Set to 0 for importing directly from CSV files. 
 - `ContactAction` - Type: `string` - Options: **Create**, **Update** and **Both**
 - `AttachCustomerPortal` - Type: `boolean` - Allow contact to use the customer portal - logon_id will be used.
-- `CustomerPortalOrgView` - Type: `boolean` - **true** allows the imported contacts to see organisation level call viewing via portal.
-- `CustomerPortalOrgViewRevoke` - Type: `boolean` - **true** revokes the right for imported contacts to view organisation level calls.
+- `CustomerPortalOrgView` - Type: `boolean` - **true** allows the imported contacts to see organization level call viewing via portal.
+- `CustomerPortalOrgViewRevoke` - Type: `boolean` - **true** revokes the right for imported contacts to view organization level calls.
 - `UpdateContactStatus` - Type: `boolean` - ability to activate or archive the contacts being imported - depending on `"contact_status"`
 - `SubscribeToServiceID` - Type: `integer` - To automatically subscribe the imported contact to a particular service
 
