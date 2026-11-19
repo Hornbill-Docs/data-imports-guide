@@ -65,6 +65,7 @@ The utility will default to `conf.json` if a configuration file is not specified
 The KeySafe Key ID is the unique identifier of the key, and can be found in the URL when you are on the key details form in your browser. In the example below, `4` is the KeySafe Key ID:
 
 `https://live.hornbill.com/yourinstanceid/admin/platform/security/keysafe/4/`
+:::
 
 #### SourceConfig
 
@@ -72,8 +73,10 @@ The KeySafe Key ID is the unique identifier of the key, and can be found in the 
   - `mssql` - Microsoft SQL Server (2005 or above)
   - `Encrypt` - Type: `boolean` - Used to specify whether the connection between the script and the database should be encrypted. **NOTE** There is a bug in SQL Server 2008 and below that causes the connection to fail if the connection is encrypted. Only set this to `true` if your SQL Server has been patched accordingly.
   - `Query` - Type: `string` - The basic SQL query to retrieve contact information from the data source.
+  - `ContactID` - Type: `string` - The field name/columnName of the data source which contains the matching data (NO templating!).
+  - `FieldID` - Type: `string` - The field in Hornbill to match the record on.
 - `CSVConf` - Type: `object` - The CSV configuration for the import
-  - `DataSourceFile` - CSV / Text file(s) - doesn't require KeySafe keys
+  - `DataSourceFile` - CSV / Text file(s) - doesn't require KeySafe keys **NOTE** Both ''SQLConf.ContactID'' and ''SQLConf.FieldID'' need to be set.
    
 #### ContactGenericFieldMapping
 
