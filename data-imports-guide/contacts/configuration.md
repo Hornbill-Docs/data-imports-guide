@@ -60,6 +60,13 @@ The utility will default to `conf.json` if a configuration file is not specified
 #### Hornbill Instance Specific Configuration Properties
 
 - `KeySafeKeyID` - Type: `integer` - The ID of the KeySafe Key that contains your data source authentication details. Set to 0 for importing directly from CSV files. 
+- `ContactAction` - Type: `string` - Options: **Create**, **Update** and **Both**
+- `AttachCustomerPortal` - Type: `boolean` - Allow contact to use the customer portal - logon_id will be used.
+- `CustomerPortalOrgView` - Type: `boolean` - **true** allows the imported contacts to see organisation level call viewing via portal.
+- `CustomerPortalOrgViewRevoke` - Type: `boolean` - **true** revokes the right for imported contacts to view organisation level calls.
+- `UpdateContactStatus` - Type: `boolean` - ability to activate or archive the contacts being imported - depending on `"contact_status"`
+- `SubscribeToServiceID` - Type: `integer` - To automatically subscribe the imported contact to a particular service
+
 
 :::tip
 The KeySafe Key ID is the unique identifier of the key, and can be found in the URL when you are on the key details form in your browser. In the example below, `4` is the KeySafe Key ID:
@@ -93,7 +100,7 @@ Any other value is treated as written examples below:
 * `"logon_id":"{{.FIELD1}}"` - The value of FIELD1 is taken from the SQL output and populated within this field;
 * `"firstname":"{{.FIELD2}}"` - The value of FIELD2 is taken from the SQL output and populated within this field;
 * `"lastname":"{{.FIELD3}}"` - The value of FIELD3 is taken from the SQL output and populated within this field;
-* `company":"{{.FIELD4}}"` - When a valid Hornbill Company group name is passed to this field, the company is verified against your Hornbill instance, and the tool will complete the h_company_id and h_company_name columns appropriately.
+* `"company":"{{.FIELD4}}"` - When a valid Hornbill Company group name is passed to this field, the company is verified against your Hornbill instance, and the tool will complete the h_company_id and h_company_name columns appropriately.
 * `"email_1":"{{.FIELD5}}"` - The value of FIELD5 is taken from the SQL output and populated within this field;
 * `"email_2":""` - The value is taken from the SQL output and populated within this field;
 * `"tel_1":"{{.telext}}"` - The value of telext is taken from the SQL output and populated within this field;
